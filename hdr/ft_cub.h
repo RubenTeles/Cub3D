@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/09/13 16:34:07 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:06:08 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ t_map	ft_checker(int argc, char **argv);
 int		ft_check_map_info(t_map *map);
 void	ft_init_map_info(t_map *map);
 void	ft_free_map_inf(t_map map);
+int		ft_map_inf_filed(t_map *map, char *line);
 
 #endif

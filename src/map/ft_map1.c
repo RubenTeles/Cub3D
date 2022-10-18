@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:50:26 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/09/13 16:36:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:10:53 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ t_map	ft_checker(int argc, char **argv)
 			free(str);
 			break ;
 		}
-		if (string().len(str) && ft_is_path(str))
+		if (string().len(str) && ft_is_path(str) && !ft_map_inf_filed(&map, str))
 			ft_choose_inf_elm(&map, str);
-		else if (string().len(str) && ft_is_color(str))
+		else if (string().len(str) && ft_is_color(str) && !ft_map_inf_filed(&map, str))
 			ft_choose_inf_elm(&map, str);
 		else if (string().len(str))
 		{
@@ -92,7 +92,6 @@ t_map	ft_checker(int argc, char **argv)
 		}
 		free(str);
 	}
-	
 	map.map = ft_del_w_spc(map.map);
 	return (map);
 }

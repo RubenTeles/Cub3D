@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:11 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/09/13 16:11:32 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:02:57 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,16 @@ int	ft_is_color(char *str)
 
 void	ft_choose_inf_elm(t_map *map, char *line)
 {
-	if (ft_check_line(line) == 1)
+	if (ft_check_line(line) == 1 && map->NO == NULL)
 		map->NO = string().cpy(line + ft_is_path(line));
-	if (ft_check_line(line) == 2)
+	if (ft_check_line(line) == 2 && map->SO == NULL)
 		map->SO = string().cpy(line + ft_is_path(line));
-	if (ft_check_line(line) == 3)
+	if (ft_check_line(line) == 3 && map->WE == NULL)
 		map->WE = string().cpy(line + ft_is_path(line));
-	if (ft_check_line(line) == 4)
+	if (ft_check_line(line) == 4 && map->EA == NULL)
 		map->EA = string().cpy(line + ft_is_path(line));
-	if (ft_check_line(line) == 5)
+	if (ft_check_line(line) == 5 && map->F == NULL)
 		map->F = string().split(line + ft_is_color(line), ",");
-	if (ft_check_line(line) == 6)
-		map->C = string().split(line + ft_is_color(line), ",");
+	if (ft_check_line(line) == 6 && map->C == NULL)
+		map->C = string().split(line + ft_is_color(line), ",");		
 }
