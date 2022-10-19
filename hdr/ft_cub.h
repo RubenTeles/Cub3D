@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/18 18:06:08 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/19 17:47:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ int		ft_check_line(char *line);
 int		ft_is_path(char *str);
 int		ft_is_color(char *str);
 void	ft_choose_inf_elm(t_map *map, char *line);
-t_list	*ft_del_w_spc(t_list *map);
-t_map	ft_checker(int argc, char **argv);
+t_list	*ft_del_w_spc(t_list *map, int j);
+t_map	*ft_checker(int argc, char **argv);
 int		ft_check_map_info(t_map *map);
 void	ft_init_map_info(t_map *map);
-void	ft_free_map_inf(t_map map);
+void	ft_free_map_inf(t_map *map);
 int		ft_map_inf_filed(t_map *map, char *line);
+int		ft_checkplayer(t_map *map);
+int		ft_mapclosed(t_map *map);
 
 #endif
