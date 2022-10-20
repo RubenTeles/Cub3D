@@ -47,56 +47,56 @@ $(NAME): $(OBJS)
 	3D $(GREEN)ψ                                    $(ORANGE)$(OTHER)*\
 	*\n\
 	$(OTHER)**********************************************************\
-	************************\n$(GREY1)$(OTHER)\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
-	$(GREY1)            ____         ____  $(OTHER)**$(RED)\
+	************************\n$(GREY2)$(OTHER)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
+	$(GREY2)            ____         ____  $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
-	$(GREY1)  |      | |    | |     |      $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
+	$(GREY2)  |      | |    | |     |      $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
-	$(GREY1)  |      | |    | |     |___   $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
+	$(GREY2)  |      | |    | |     |___   $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)      /\             $(OTHER)**$(RED)\
-	$(GREY1)  |  /\  | |    | |     |      $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)      /\             $(OTHER)**$(RED)\
+	$(GREY2)  |  /\  | |    | |     |      $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)     /$(PURPLE)/|$(GREY1)|    ___     $(OTHER)\
-	**$(RED)$(GREY1)  |_/  \_| |____| |____ |      $(OTHER)\
+	**$(RED)$(GREY2)     /$(PURPLE)/|$(GREY2)|    ___     $(OTHER)\
+	**$(RED)$(GREY2)  |_/  \_| |____| |____ |      $(OTHER)\
 	**$(RED)$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)    /$(PURPLE)/_|$(GREY1)|___/\_/|    $(OTHER)\
-	**$(RED)       ____  ____  _______     $(GREY1)$(OTHER)\
+	**$(RED)$(GREY2)    /$(PURPLE)/_|$(GREY2)|___/\_/|    $(OTHER)\
+	**$(RED)       ____  ____  _______     $(GREY2)$(OTHER)\
 	**$(RED)$(PURPLE)   ___  ______  ___   $(OTHER)**\n\
-	**$(RED)$(GREY1)    | ___   ___ |    $(OTHER)\
-	**$(RED)$(OTHER)$(RED)      |     |    |    |        $(GREY1)$(OTHER)\
+	**$(RED)$(GREY2)    | ___   ___ |    $(OTHER)\
+	**$(RED)$(OTHER)$(RED)      |     |    |    |        $(GREY2)$(OTHER)\
 	**$(RED)$(PURPLE)   |  \/      \/  |   $(OTHER)**\n\
-	**$(RED)$(GREY1)    / ($(RED)Φ$(GREY1))   ($(RED)Φ$(GREY1)) \    $(OTHER)\
-	**$(RED)      |__   |____|    |        $(GREY1)$(OTHER)\
+	**$(RED)$(GREY2)    / ($(RED)Φ$(GREY2))   ($(RED)Φ$(GREY2)) \    $(OTHER)\
+	**$(RED)      |__   |____|    |        $(GREY2)$(OTHER)\
 	**$(RED)$(PURPLE)    \ ___     ___ /   $(OTHER)**\n\
-	**$(RED)$(GREY1)   <  ̅     ̅    >   $(OTHER)\
-	**$(RED)      |     |    |    |        $(GREY1)$(OTHER)\
+	**$(RED)$(GREY2)   <   ̅      ̅    >   $(OTHER)\
+	**$(RED)      |     |    |    |        $(GREY2)$(OTHER)\
 	**$(RED)$(PURPLE)    / $(ORANG2)$(PURPLE)($(ORANG2)Θ$(PURPLE))$(RED)\
 	$(PURPLE) __  $(ORANG2)$(PURPLE)($(ORANG2)Θ$(PURPLE))$(RED)\
 	$(PURPLE) \   $(OTHER)**\n\
-	**$(RED)$(GREY1)   << \      / >>    $(OTHER)\
-	**$(RED)      |____ |    |    |        $(GREY1)$(OTHER)**$(RED)\
-	$(PURPLE)   |  ̅  |$(OTHE2)$(PURPLE)oo$(RED)$(PURPLE)| ̅   |   $(OTHER)\
+	**$(RED)$(GREY2)   << \      / >>    $(OTHER)\
+	**$(RED)      |____ |    |    |        $(GREY2)$(OTHER)**$(RED)\
+	$(PURPLE)   |   ̅  |$(OTHE2)$(PURPLE)oo$(RED)$(PURPLE)|  ̅   |   $(OTHER)\
 	**\n\
-	**$(RED)$(GREY1)     \ \_$(PURPLE)<>$(GREY1)_/ /      $(OTHER)$(PURPLE)\
+	**$(RED)$(GREY2)     \ \_$(PURPLE)<>$(GREY2)_/ /      $(OTHER)$(PURPLE)\
 	$(OTHER)**$(RED)$(PURPLE)      ___     ____     __      $(OTHER)**$(RED)\
 	$(PURPLE)   |              |   $(OTHER)**\n\
-	**$(RED)$(GREY1)      \_$(WHITE)\/\/$(GREY1)_/       $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)      \_$(WHITE)\/\/$(GREY2)_/       $(OTHER)**$(RED)\
 	$(PURPLE)     |   | * /    \ | |  \     $(OTHER)**$(RED)$(PURPLE)    \_\
 	___________/    $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)\
+	**$(RED)$(GREY2)                     $(OTHER)\
 	**$(RED)$(PURPLE)     |___| | | ___    \__      $(OTHER)\
 	**$(RED)$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
 	$(PURPLE)     |     | |    |      |     $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
 	$(PURPLE)     |     | \____|   \__/     $(OTHER)\
 	**$(RED)$(PURPLE)                      $(OTHER)**\n\
-	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	**$(RED)$(GREY2)                     $(OTHER)**$(RED)\
 	$(PURPLE)                               $(OTHER)**$(RED)\
 	$(PURPLE)                      $(OTHER)**\n\
 	$(ORANGE)$(OTHER)********************************************************\
