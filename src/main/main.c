@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 	map = ft_check_map(argc, argv);
 	if (!map)
 		return (0);
+	
 	list().iter(map->map, ft_print_lst, 0);
 	ft_free_map_inf(map);
 	return (0);
