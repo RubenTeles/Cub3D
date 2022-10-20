@@ -6,7 +6,7 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/19 20:51:25 by rteles           ###   ########.fr        #
+#    Updated: 2022/10/20 02:00:18 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ GREY2 = \033[2;37m
 WHITE = \033[0;37m
 GREEN = \033[2;32m
 OTHER = \033[9;34m
+OTHE2 = \033[4;34m
+R1 = \033[2;31m
 
 CC			= 	gcc -g
 CFLAGS		= 	-Wall -Wextra -Werror
@@ -39,30 +41,72 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -Imlx_linux -o $(NAME)
 	@echo "\
-	$(OTHER)***********************************\n\
-	**$(ORANGE)           $(GREEN)ψ $(ORANGE)Cub3D $(GREEN)ψ           \
-	$(ORANGE)$(OTHER)**\n\
-	$(OTHER)***********************************\n$(GREY1)$(OTHER)\
-	**$(RED)$(GREY1)            ____         ____  $(OTHER)**\n\
-	**$(RED)$(GREY1)  |      | |    | |     |      $(OTHER)**\n\
-	**$(RED)$(GREY1)  |      | |    | |     |___   $(OTHER)**\n\
-	**$(RED)$(GREY1)  |  /\  | |    | |     |      $(OTHER)**\n\
-	**$(RED)$(GREY1)  |_/  \_| |____| |____ |      $(OTHER)**\n\
-	**$(RED)       ____  ____  _______     $(GREY1)$(OTHER)**\n\
-	$(RED)$(OTHER)**$(RED)      |     |    |    |        $(OTHER)**\n\
-	**$(RED)      |__   |____|    |        $(OTHER)**\n\
-	**$(RED)      |     |    |    |        $(OTHER)**\n\
-	**$(RED)      |____ |    |    |        $(OTHER)**\n$(PURPLE)$(OTHER)\
-	**$(RED)$(PURPLE)      ___     ____     __      $(OTHER)**\n\
-	**$(RED)$(PURPLE)     |   | * /    \ | |  \     $(OTHER)**\n\
-	**$(RED)$(PURPLE)     |___| | | ___    \__      $(OTHER)**\n\
-	**$(RED)$(PURPLE)     |     | |    |      |     $(OTHER)**\n\
-	**$(RED)$(PURPLE)     |     | \____|   \__/     $(OTHER)**\n\
-	**$(RED)$(PURPLE)                               $(OTHER)**\n\
-	$(ORANGE)$(OTHER)***********************************\n\
-	**$(ORANGE)  $(GREEN)ψ $(ORANGE)rteles $(GREEN)ψ     \
-	ψ $(ORANGE)amaria-m $(GREEN)ψ$(ORANGE)  $(OTHER)**\n\
-	***********************************$(WHITE)"
+	$(OTHER)**********************************************************\
+	************************\n\
+	**$(ORANGE)                                 $(GREEN)ψ $(ORANGE)Cub\
+	3D $(GREEN)ψ                                    $(ORANGE)$(OTHER)*\
+	*\n\
+	$(OTHER)**********************************************************\
+	************************\n$(GREY1)$(OTHER)\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(GREY1)            ____         ____  $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(GREY1)  |      | |    | |     |      $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(GREY1)  |      | |    | |     |___   $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)      /\             $(OTHER)**$(RED)\
+	$(GREY1)  |  /\  | |    | |     |      $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)     /$(PURPLE)/|$(GREY1)|    ___     $(OTHER)\
+	**$(RED)$(GREY1)  |_/  \_| |____| |____ |      $(OTHER)\
+	**$(RED)$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)    /$(PURPLE)/_|$(GREY1)|___/\_/|    $(OTHER)\
+	**$(RED)       ____  ____  _______     $(GREY1)$(OTHER)\
+	**$(RED)$(PURPLE)   ___  ______  ___   $(OTHER)**\n\
+	**$(RED)$(GREY1)    | ___   ___ |    $(OTHER)\
+	**$(RED)$(OTHER)$(RED)      |     |    |    |        $(GREY1)$(OTHER)\
+	**$(RED)$(PURPLE)   |  \/      \/  |   $(OTHER)**\n\
+	**$(RED)$(GREY1)    / ($(RED)Φ$(GREY1))   ($(RED)Φ$(GREY1)) \    $(OTHER)\
+	**$(RED)      |__   |____|    |        $(GREY1)$(OTHER)\
+	**$(RED)$(PURPLE)    \ ___     ___ /   $(OTHER)**\n\
+	**$(RED)$(GREY1)   <  ̅     ̅    >   $(OTHER)\
+	**$(RED)      |     |    |    |        $(GREY1)$(OTHER)\
+	**$(RED)$(PURPLE)    / $(ORANG2)$(PURPLE)($(ORANG2)Θ$(PURPLE))$(RED)\
+	$(PURPLE) __  $(ORANG2)$(PURPLE)($(ORANG2)Θ$(PURPLE))$(RED)\
+	$(PURPLE) \   $(OTHER)**\n\
+	**$(RED)$(GREY1)   << \      / >>    $(OTHER)\
+	**$(RED)      |____ |    |    |        $(GREY1)$(OTHER)**$(RED)\
+	$(PURPLE)   |  ̅  |$(OTHE2)$(PURPLE)oo$(RED)$(PURPLE)| ̅   |   $(OTHER)\
+	**\n\
+	**$(RED)$(GREY1)     \ \_$(PURPLE)<>$(GREY1)_/ /      $(OTHER)$(PURPLE)\
+	$(OTHER)**$(RED)$(PURPLE)      ___     ____     __      $(OTHER)**$(RED)\
+	$(PURPLE)   |              |   $(OTHER)**\n\
+	**$(RED)$(GREY1)      \_$(WHITE)\/\/$(GREY1)_/       $(OTHER)**$(RED)\
+	$(PURPLE)     |   | * /    \ | |  \     $(OTHER)**$(RED)$(PURPLE)    \_\
+	___________/    $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)\
+	**$(RED)$(PURPLE)     |___| | | ___    \__      $(OTHER)\
+	**$(RED)$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(PURPLE)     |     | |    |      |     $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(PURPLE)     |     | \____|   \__/     $(OTHER)\
+	**$(RED)$(PURPLE)                      $(OTHER)**\n\
+	**$(RED)$(GREY1)                     $(OTHER)**$(RED)\
+	$(PURPLE)                               $(OTHER)**$(RED)\
+	$(PURPLE)                      $(OTHER)**\n\
+	$(ORANGE)$(OTHER)********************************************************\
+	**************************\n\
+	**$(ORANGE)     $(GREEN)ψ $(ORANGE)rteles $(GREEN)ψ      $(ORANGE)\
+	$(OTHER)**$(ORANGE)           42 LISBON           $(OTHER)\
+	**$(ORANGE)     $(GREEN)ψ $(ORANGE)amaria-m $(GREEN)ψ\
+	$(ORANGE)     $(OTHER)**\n\
+	************************************************************************\
+	**********$(WHITE)"
 
 clean:
 	@$(RM) $(OBJS)
