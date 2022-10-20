@@ -61,30 +61,6 @@ char	**ft_split(const char *str, char *div)
 	return (arr);
 }
 
-int	ft_atoi(const char *str)
-{
-	int	number;
-	int	sign;
-
-	sign = 1;
-	number = 0;
-	while (*str == ' ' || *str == '\f' || *str == '\n'
-		|| *str == '\r' || *str == '\t' || *str == '\v')
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (*str > 47 && *str < 58)
-	{
-		number = (number * 10) + (*str - 48);
-		str++;
-	}
-	return (number * sign);
-}
-
 char	*ft_trim(const char *str)
 {
 	int	size;
@@ -122,4 +98,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	ptr[index] = '\0';
 	return (ptr);
+}
+
+char	*ft_iter(const char *str, char (*f)(char c))
+{
+	int		i;
+	char	*mem;
+
+	if (!str || !*str || !f)
+		return ((char *)str);
+	mem = malloc(sizeof(char) * (ft_len(str) + 1));
+	i = 0;
+	while (str && str[i])
+	{
+		mem[i] = f(str[i]);
+		i++;
+	}
+	mem[i] = 0;
+	return (mem);
 }

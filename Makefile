@@ -85,7 +85,7 @@ $(NAME): $(OBJS)
 	$(OTHER)**$(RED)$(PURPLE)      ___     ____     __      $(OTHER)**$(RED)\
 	$(PURPLE)   |              |   $(OTHER)**\n\
 	**$(RED)$(GREY2)      \_$(WHITE)\/\/$(GREY2)_/       $(OTHER)**$(RED)\
-	$(PURPLE)     |   | * /    \ | |  \     $(OTHER)**$(RED)$(PURPLE)    \_\
+	$(PURPLE)     |   | O /    \ | |  \     $(OTHER)**$(RED)$(PURPLE)    \_\
 	___________/    $(OTHER)**\n\
 	**$(RED)$(GREY2)                     $(OTHER)\
 	**$(RED)$(PURPLE)     |___| | | ___    \__      $(OTHER)\

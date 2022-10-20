@@ -27,9 +27,18 @@ int		ft_is_space(char c);
 char	*ft_join(const char *str1, const char *str2);
 char	*ft_replace(const char *str1, const char *str2, const char *hey);
 char	**ft_split(const char *str, char *div);
-int		ft_atoi(const char *str);
 char	*ft_trim(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_iter(const char *str, char (*f)(char c));
+char	*split_two_str(char *str, char c, int option);
+char	*ft_string_in_two_char(char *str, char c1, char c2);
+char	*replace_str(char *str1, char *str2);
+int		index_char(char *str, char c);
+int		ft_atoi(char *str);
+char	*ft_itoa(int n);
+int		ft_isalnum(char *str);
+char	*ft_strchr(const char *string, int c);
+char	*ft_strrchr(const char *string, int c);
+int	    ft_str_s_str(char *s1, char *s2);
 
 #endif
