@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:50:26 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/19 17:41:01 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:58:36 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 void	ft_init_map_info(t_map *map)
 {
 	map->map = NULL;
-	map->NO = NULL;
-	map->SO = NULL;
-	map->WE = NULL;
-	map->EA = NULL;
-	map->F = NULL;
-	map->C = NULL;
+	map->no = NULL;
+	map->so = NULL;
+	map->we = NULL;
+	map->ea = NULL;
+	map->f = NULL;
+	map->c = NULL;
 }
 
 int	ft_check_map_info(t_map *map)
 {
 	if (!map->map)
 		return (1);
-	if (!map->NO)
+	if (!map->no)
 		return (2);
-	if (!map->SO)
+	if (!map->so)
 		return (3);
-	if (!map->WE)
+	if (!map->we)
 		return (4);
-	if (!map->EA)
+	if (!map->ea)
 		return (5);
-	if (!map->F)
+	if (!map->f)
 		return (6);
-	if (!map->C)
+	if (!map->c)
 		return (7);
 	return (0);
 }
@@ -103,11 +103,11 @@ t_map	*ft_checker(int argc, char **argv)
 void	ft_free_map_inf(t_map *map)
 {
 	list().free(map->map);
-	free(map->NO);
-	free(map->SO);
-	free(map->WE);
-	free(map->EA);
-	array().free(map->C);
-	array().free(map->F);
+	free(map->no);
+	free(map->so);
+	free(map->we);
+	free(map->ea);
+	array().free(map->c);
+	array().free(map->f);
 	free(map);
 }

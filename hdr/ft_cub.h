@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/19 17:47:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:01:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,22 @@
 
 # define BUFFERSIZE 9999
 
-typedef struct	s_map_info
+typedef struct s_map_info
 {
 	t_list	*map;
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	**F;
-	char	**C;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	**f;
+	char	**c;
 }			t_map;
+
+typedef struct s_board_pos
+{
+	int	x;
+	int	y;
+}		t_pos;
 
 // utils
 char	*get_next_line(int fd);
@@ -52,6 +58,8 @@ void	ft_init_map_info(t_map *map);
 void	ft_free_map_inf(t_map *map);
 int		ft_map_inf_filed(t_map *map, char *line);
 int		ft_checkplayer(t_map *map);
+t_map	*ft_check_map(int argc, char **argv);
 int		ft_mapclosed(t_map *map);
+int		ft_nextpos(t_list *board, t_pos atual, t_pos *next);
 
 #endif
