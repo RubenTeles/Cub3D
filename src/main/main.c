@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 19:20:38 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 19:47:34 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	map = ft_check_map(argc, argv);
 	if (!map)
 		return (0);
-	ft_print_mapinf(map);
 	ft_free_map_inf(map);
 	return (0);
 }
