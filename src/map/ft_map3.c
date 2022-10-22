@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 19:18:21 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:47:15 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:24:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_list	*ft_lst_copy(t_list *lst)
 
 	copy = NULL;
 	i = -1;
-	while (list().get(lst, ++i))
+	while (++i < list().len(lst))
 	{
 		str = list().get(lst, i);
 		copy = list().add(copy, string().cpy(str));

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
+#    By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/20 02:00:18 by rteles           ###   ########.fr        #
+#    Updated: 2022/10/22 21:45:19 by amaria-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,13 +121,13 @@ re: fclean all
 norm :
 	@norminette -R CheckForbiddenSourceHeader $(SRCS)
 
-mc:
-	@make && make clean && clear
+mc:	all clean
+	@clear
 
-e:
-	@make re && make clean && clear && ./$(NAME) ex.cub
+e:	all clean
+	@clear && ./$(NAME) ex.cub
 
-v:
-	@make re && make clean && clear && valgrind ./$(NAME) ex.cub
+v:	all clean
+	@clear && valgrind ./$(NAME) ex.cub
 
-.PHONY: all re clean fclean norm e v
+.PHONY: all clean fclean re norm mc e v

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 19:47:34 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:33:04 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void	ft_print_mapinf(t_map *map)
 
 int	main(int argc, char **argv)
 {
-	t_map	*map;
+	t_all	all;
 
-	map = ft_check_map(argc, argv);
-	if (!map)
-		return (0);
-	ft_free_map_inf(map);
+	all.file = ft_check_map(argc, argv);
+	if (!all.file)
+		return (1);
+	if (ft_init_game(&all))
+		return (ft_free_all(all));
+	ft_free_all(all);
 	return (0);
 }

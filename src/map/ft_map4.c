@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 17:59:28 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 19:15:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 22:38:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ void	ft_free_map_inf(t_map *map)
 	free(map);
 }
 
+int	ft_free_all(t_all all)
+{
+	ft_free_map_inf(all.file);
+	array().free(all.pieces->board);
+	list().free(all.pieces->pigs);
+	free(all.pieces);
+	return (1);
+}
+
 char	**ft_lst_toarr(t_list *lst)
 {
 	char	**arr;
@@ -38,6 +47,7 @@ char	**ft_lst_toarr(t_list *lst)
 		str = list().get(lst, i);
 		str = string().cpy_n(str, string().len(str) - 1);
 		arr = array().add(arr, str);
+		free(str);
 	}
 	i = 0;
 	max_pos = 0;
@@ -47,6 +57,6 @@ char	**ft_lst_toarr(t_list *lst)
 	i = -1;
 	while (arr[++i])
 		while (string().len(arr[i]) < string().len(arr[max_pos]))
-			arr[i] = string().replace(arr[i], string().join(arr[i], " "));
+			arr = (array().set)(arr, string().join(arr[i], " "), i);
 	return (arr);
 }
