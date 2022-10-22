@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:31:24 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:49:54 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	main(int argc, char **argv)
 	if (!map)
 		return (0);
 	if (ft_find_paths(map, ft_player_pos(map->map)) == 0)
-		printf("Map is not closed\n");
+		printf("!! Map is not closed !!!\n");
+	else
+		printf("Niceee!\n");
 	ft_print_mapinf(map);
 	ft_free_map_inf(map);
 	return (0);

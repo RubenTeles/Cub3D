@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:04:23 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:32:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:49:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ t_pos	ft_player_pos(t_list *board)
 			pos.y = string().index_char(str, 'E');
 		if (string().contains(str, "W"))
 			pos.y = string().index_char(str, 'W');
+		if (pos.y != -1)
+			break ;
 	}
 	return (pos);
 }
