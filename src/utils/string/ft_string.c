@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:54:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/06/30 20:25:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 19:41:42 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <ft_str_util.h>
 
 /*
-len: //TODO
+len:
+retorna o comprimento de s
 
 copy:
 copia uma string (é preciso dar free);
@@ -22,9 +23,14 @@ copia uma string (é preciso dar free);
 copy_n:
 Copia a string SRC para a string DEST num determinado numero de caracteres
 
-strnstr: //TODO
+strnstr: 
+retorna um ponteiro que aponta para a string "needle" dentro da string "haystack"
+so procura até o index especificado por len
 
-contains: //TODO
+contains:
+retorna 0 se a string hey não se encontrar na str
+retorna (index + 1) se a string hey existir dentro de str
+index -> localização de hey na str
 
 compare:
 Compara 2 strings. Retorna 1 se for verdadeiro ou 0 se nao.
@@ -32,7 +38,9 @@ Compara 2 strings. Retorna 1 se for verdadeiro ou 0 se nao.
 compare_n:
 Compara 2 strings, com n casas. Retorna 1 se for verdadeiro ou 0 se nao.
 
-is_spc: //TODO
+is_spc: 
+retorna 1 se 'c' for um dos seguintes caracteres:
+'\t' , '\n' , '\v' , '\r' , ' '
 
 
 is_alfanumeric:
@@ -43,13 +51,17 @@ only_this_chars:
 Procura se a string tem apenas estes caracteres,
 Retorna 1 se tiver alem destes.
 
-join: //TODO
+join:
+retorna uma nova string que é a junção de str1 e str2
+não faz free de nenhuma string
 
 
 replace:
 Muda o valor da str1 para o str2.
 
-split: //TODO
+split:
+divide a string str em várias, tendo em conta o separador div (que pode ter qualquer tamanho)
+retorna uma array de strings
 
 sub_split_option:
 Nova string, divida por um caracter. Se a opção for 0 é do inicio ate ao c,
@@ -62,7 +74,11 @@ converte str de numeros em int.
 itoa:
 converte int em str.
 
-trim: //TODO
+trim:
+retorna uma string igual a 'str' mas sem os espaços em branco, 
+que se possam encontrar no inicio e fim de 'str'
+os espaços em branco correspondem aos seguintes caracteres:
+'\t' , '\n' , '\v' , '\r' , ' '
 
 sub_str:
 Substring, uma nova string que começa apartir de x casa com x len.
@@ -70,8 +86,12 @@ Substring, uma nova string que começa apartir de x casa com x len.
 sub_str_chars:
 Substring, um nova string que começa apartir de c1, ate c2.
 
-iter: //TODO
-
+iter:
+retorna uma nova string que é igual á string dada,
+mas com a função f aplicada a cada carater de str
+do seguinte modo:
+sendo mem a nova string,
+mem[i] = f(str[i]);
 
 pos_char:
 Retorna a primeira posição do char procurado.
