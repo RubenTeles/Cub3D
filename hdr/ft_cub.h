@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:15:01 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 19:14:47 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,12 @@ int		ft_nextpos(t_list *board, t_pos atual, t_pos *next);
 t_pos	ft_player_pos(t_list *board);
 int		ft_find_paths(t_map *map, t_pos atual);
 int		ft_mapclosed(t_map *map);
+char	**ft_lst_toarr(t_list *lst);
 
 // Aditional functions for lists
 t_list	*ft_lst_copy(t_list *lst);
+
+// test
+void	ft_try(t_list *lst);
 
 #endif
