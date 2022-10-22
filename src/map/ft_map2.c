@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:04:23 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:49:46 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:44:57 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,15 @@ int	ft_checkplayer(t_map *map)
 	i = -1;
 	while (list().get(map->map, ++i))
 	{
-		str = list().get(map->map, i);
-		while (*str)
+		str = list().get(map->map, i) - 1;
+		while (*(++str))
 		{
-			if (*str == 'N' || *str == 'S' || *str == 'E' || *str == 'W')
-			{
-				if (player == -1)
-					player = *str;
-				else
-					player = -2;
-			}
+			if (string().index_char("NSEW", *str) >= 0 && player == -1)
+				player = *str;
+			else if (string().index_char("NSEW", *str) >= 0 && player != -1)
+				player = -2;
 			else if (!(*str == '0' || *str == '1' || string().is_spc(*str)))
 				player = -3;
-			str++;
 		}
 	}
 	return (player);
@@ -66,7 +62,6 @@ t_map	*ft_check_map(int argc, char **argv)
 	t_map	*map;
 	int		map_info;
 	int		check_player;
-	// int		map_closed;
 
 	map = ft_checker(argc, argv);
 	map_info = ft_check_map_info(map);
@@ -83,13 +78,8 @@ t_map	*ft_check_map(int argc, char **argv)
 		ft_free_map_inf(map);
 		return (NULL);
 	}
-	// map_closed = ft_mapclosed(map);
-	// if (map_closed < 0)
-	// {
-	// 	printf("Error\n%i\n", map_closed);
-	// 	ft_free_map_inf(map);
-	// 	return (NULL);
-	// }
+	if (ft_mapclosed(map))
+		return (NULL);
 	return (map);
 }
 

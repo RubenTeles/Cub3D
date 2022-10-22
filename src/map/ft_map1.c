@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:50:26 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/21 18:58:36 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:00:16 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,33 @@ t_list	*ft_del_w_spc(t_list *map, int j)
 	return (map);
 }
 
+int	ft_checkerblock(t_map *map, int i)
+{
+	char	*str;
+
+	str = string().trim(list().get(map->map, i));
+	if (string().len(str) && ft_check_line(str) == 0)
+	{
+		free(str);
+		return (1);
+	}
+	if (string().len(str) && ft_is_path(str) && !ft_map_inf_filed(map, str))
+		ft_choose_inf_elm(map, str);
+	else if (string().len(str) && ft_is_color(str) && \
+	!ft_map_inf_filed(map, str))
+		ft_choose_inf_elm(map, str);
+	else if (string().len(str))
+	{
+		free(str);
+		return (1);
+	}
+	free(str);
+	return (0);
+}
+
 t_map	*ft_checker(int argc, char **argv)
 {
 	t_map	*map;
-	char	*str;
 	int		i;
 
 	map = malloc(sizeof(t_map));
@@ -78,36 +101,8 @@ t_map	*ft_checker(int argc, char **argv)
 		return (map);
 	i = -1;
 	while (list().get(map->map, ++i))
-	{
-		str = string().trim(list().get(map->map, i));
-		if (string().len(str) && ft_check_line(str) == 0)
-		{
-			free(str);
+		if (ft_checkerblock(map, i))
 			break ;
-		}
-		if (string().len(str) && ft_is_path(str) && !ft_map_inf_filed(map, str))
-			ft_choose_inf_elm(map, str);
-		else if (string().len(str) && ft_is_color(str) && !ft_map_inf_filed(map, str))
-			ft_choose_inf_elm(map, str);
-		else if (string().len(str))
-		{
-			free(str);
-			break ;
-		}
-		free(str);
-	}
 	map->map = ft_del_w_spc(map->map, i);
 	return (map);
-}
-
-void	ft_free_map_inf(t_map *map)
-{
-	list().free(map->map);
-	free(map->no);
-	free(map->so);
-	free(map->we);
-	free(map->ea);
-	array().free(map->c);
-	array().free(map->f);
-	free(map);
 }

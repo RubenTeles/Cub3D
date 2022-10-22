@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 19:18:21 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:13:56 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:47:15 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,40 @@ int	ft_nextpos(t_list *board, t_pos atual, t_pos *next)
 		}
 	}
 	return (2);
+}
+
+t_list	*ft_lst_copy(t_list *lst)
+{
+	t_list	*copy;
+	int		i;
+	char	*str;
+
+	copy = NULL;
+	i = -1;
+	while (list().get(lst, ++i))
+	{
+		str = list().get(lst, i);
+		copy = list().add(copy, string().cpy(str));
+	}
+	return (copy);
+}
+
+int	ft_mapclosed(t_map *map)
+{
+	t_list	*copy;
+	t_list	*mem;
+
+	copy = ft_lst_copy(map->map);
+	mem = map->map;
+	map->map = copy;
+	if (ft_find_paths(map, ft_player_pos(map->map)) == 0)
+	{
+		printf("Error\nMap is not closed\n");
+		ft_free_map_inf(map);
+		list().free(mem);
+		return (1);
+	}
+	list().free(map->map);
+	map->map = mem;
+	return (0);
 }

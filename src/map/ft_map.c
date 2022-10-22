@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:11 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/21 19:15:33 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:00:06 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ void	ft_choose_inf_elm(t_map *map, char *line)
 	if (ft_check_line(line) == 5 && map->f == NULL)
 		map->f = string().split(line + ft_is_color(line), ",");
 	if (ft_check_line(line) == 6 && map->c == NULL)
-		map->c = string().split(line + ft_is_color(line), ",");		
+		map->c = string().split(line + ft_is_color(line), ",");
 }
