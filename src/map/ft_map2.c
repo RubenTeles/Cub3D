@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:04:23 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:07:56 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:32:00 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_map	*ft_check_map(int argc, char **argv)
 	t_map	*map;
 	int		map_info;
 	int		check_player;
-	int		map_closed;
+	// int		map_closed;
 
 	map = ft_checker(argc, argv);
 	map_info = ft_check_map_info(map);
@@ -83,13 +83,13 @@ t_map	*ft_check_map(int argc, char **argv)
 		ft_free_map_inf(map);
 		return (NULL);
 	}
-	map_closed = ft_mapclosed(map);
-	if (map_closed < 0)
-	{
-		printf("Error\n%i\n", map_closed);
-		ft_free_map_inf(map);
-		return (NULL);
-	}
+	// map_closed = ft_mapclosed(map);
+	// if (map_closed < 0)
+	// {
+	// 	printf("Error\n%i\n", map_closed);
+	// 	ft_free_map_inf(map);
+	// 	return (NULL);
+	// }
 	return (map);
 }
 
@@ -117,20 +117,19 @@ t_pos	ft_player_pos(t_list *board)
 	return (pos);
 }
 
-int	ft_mapclosed(t_map *map)
+int	ft_find_paths(t_map *map, t_pos atual)
 {
-	t_pos	initial;
+	int		check;
 	t_pos	next;
-	t_pos	current;
-	int		paths;
-	int		i;
 
-	initial = ft_player_pos(map->map);
-	current = initial;
-	paths = 1;
-	while (paths > 0)
+	check = ft_nextpos(map->map, atual, &next);
+	while (check == 1)
 	{
-		
+		if (ft_find_paths(map, next) == 0)
+			return (0);
+		check = ft_nextpos(map->map, atual, &next);
 	}
+	if (check == 2)
+		return (1);
 	return (0);
 }

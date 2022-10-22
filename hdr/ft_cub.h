@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:01:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:28:09 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	ft_free_map_inf(t_map *map);
 int		ft_map_inf_filed(t_map *map, char *line);
 int		ft_checkplayer(t_map *map);
 t_map	*ft_check_map(int argc, char **argv);
-int		ft_mapclosed(t_map *map);
+//int		ft_mapclosed(t_map *map);
 int		ft_nextpos(t_list *board, t_pos atual, t_pos *next);
+t_pos	ft_player_pos(t_list *board);
+int		ft_find_paths(t_map *map, t_pos atual);
 
 #endif

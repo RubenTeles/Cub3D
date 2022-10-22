@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 19:18:21 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:10:40 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:13:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,14 @@ int	ft_nextpos_opts(t_list *board, t_pos atual, t_pos *next)
 	char	*str;
 	int		i;
 
-	if (atual.x == 0 || atual.y == )
+	if (atual.x == 0 || atual.y == 0 || atual.x == list().len(board) - 1)
+		return (0);
+	if (atual.y == string().len(list().get(board, atual.x)) - 1)
+		return (0);
+	if (atual.y == string().len(list().get(board, atual.x - 1)) - 1)
+		return (0);
+	if (atual.y == string().len(list().get(board, atual.x + 1)) - 1)
+		return (0);
 	ft_fill_nextpos(board, atual, next);
 	i = -1;
 	while (++i < 8)
@@ -61,6 +68,7 @@ int	ft_nextpos_opts(t_list *board, t_pos atual, t_pos *next)
 int	ft_nextpos(t_list *board, t_pos atual, t_pos *next)
 {
 	t_pos	opts[8];
+	char	*str;
 	int		i;
 
 	if (!ft_nextpos_opts(board, atual, opts))
@@ -72,8 +80,10 @@ int	ft_nextpos(t_list *board, t_pos atual, t_pos *next)
 		{
 			(*next).x = opts[i].x;
 			(*next).y = opts[i].y;
+			str = list().get(board, opts[i].x);
+			str[opts[i].y] = '1';
 			return (1);
 		}
 	}
-	return (0);
+	return (2);
 }
