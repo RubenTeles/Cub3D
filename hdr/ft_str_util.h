@@ -39,6 +39,6 @@ char	*ft_itoa(int n);
 int		ft_isalnum(char *str);
 char	*ft_strchr(const char *string, int c);
 char	*ft_strrchr(const char *string, int c);
-int	    ft_str_s_str(char *s1, char *s2);
+int		ft_str_s_str(char *s1, char *s2);
 
 #endif
