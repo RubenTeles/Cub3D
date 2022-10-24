@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
+#    By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/20 02:00:18 by rteles           ###   ########.fr        #
+#    Updated: 2022/10/24 16:47:51 by amaria-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,12 @@ SRCS		= 	$(shell find src/ -name '*.c')
 OBJS		= 	$(SRCS:.c=.o)
 
 .c.o:
-	@$(CC) $(CFLAGS) -Imlx_linux -I$(INCLUDES) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -I$(INCLUDES) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -Imlx_linux -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "\
 	$(OTHER)**********************************************************\
 	************************\n\
@@ -121,13 +121,13 @@ re: fclean all
 norm :
 	@norminette -R CheckForbiddenSourceHeader $(SRCS)
 
-mc:
-	@make && make clean && clear
+mc:	all clean
+	@clear
 
-e:
-	@make re && make clean && clear && ./$(NAME) ex.cub
+e:	all clean
+	@clear && ./$(NAME) ex.cub
 
-v:
-	@make re && make clean && clear && valgrind ./$(NAME) ex.cub
+v:	all clean
+	@clear && valgrind ./$(NAME) ex.cub
 
-.PHONY: all re clean fclean norm e v
+.PHONY: all clean fclean re norm mc e v

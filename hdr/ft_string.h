@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:53:41 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/06/30 20:16:38 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 19:02:49 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_string
 	int		(*only_this_chars)(char *s1, char *s2);
 	char	*(*join)(const char *str1, const char *str2);
 	char	*(*replace)(char *str1, char *str2);
-	char	*(*replace_in_str)(const char *str1, const char *str2,\
+	char	*(*replace_in_str)(const char *str1, const char *str2, \
 	const char *hey);
 	char	**(*split)(char const *s, char *div);
 	char	*(*sub_split_option)(char *str, char c, int option);
