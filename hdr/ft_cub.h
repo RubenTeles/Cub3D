@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 22:37:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:57:06 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@ typedef struct s_game_info
 	t_player	wolf;
 	t_list		*pigs;
 }				t_game;
+
+typedef struct t_image
+{
+	void	*img_ptr;
+	int		pixel_bits;
+	int		line_bytes;
+	int		endian;
+	char	*buffer;
+	int		width;
+	int		height;
+}		t_img;
 
 typedef struct s_all
 {
