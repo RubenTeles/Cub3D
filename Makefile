@@ -6,7 +6,7 @@
 #    By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/22 21:45:19 by amaria-m         ###   ########.fr        #
+#    Updated: 2022/10/24 16:47:51 by amaria-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,12 @@ SRCS		= 	$(shell find src/ -name '*.c')
 OBJS		= 	$(SRCS:.c=.o)
 
 .c.o:
-	@$(CC) $(CFLAGS) -Imlx_linux -I$(INCLUDES) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -I$(INCLUDES) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -Imlx_linux -o $(NAME)
+	@$(CC) $(CFLAGS) -I$(INCLUDES) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "\
 	$(OTHER)**********************************************************\
 	************************\n\
