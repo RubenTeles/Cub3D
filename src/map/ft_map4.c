@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 17:59:28 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 22:38:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:31:25 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,30 @@ char	**ft_lst_toarr(t_list *lst)
 		while (string().len(arr[i]) < string().len(arr[max_pos]))
 			arr = (array().set)(arr, string().join(arr[i], " "), i);
 	return (arr);
+}
+
+char	*ft_map_error(int i)
+{
+	if (i == 1)
+		return ("Problem reading file");
+	else if (i == 2)
+		return ("Problem with NO image");
+	else if (i == 3)
+		return ("Problem with SO image");
+	else if (i == 4)
+		return ("Problem with WE image");
+	else if (i == 5)
+		return ("Problem with EA image");
+	else if (i == 6)
+		return ("Problem with F(floor colors) info");
+	else if (i == 7)
+		return ("Problem with C(ceiling colors) info");
+	else if (i == -1)
+		return ("There's no player in map");
+	else if (i == -2)
+		return ("There's two players in map");
+	else if (i == -3)
+		return ("Map contains invalid characters");
+	else
+		return ("General error");
 }

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:04:23 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:44:57 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:32:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ t_map	*ft_check_map(int argc, char **argv)
 	map_info = ft_check_map_info(map);
 	if (map_info)
 	{
-		printf("Error\n%i\n", map_info);
+		printf("Error\n%s\n", ft_map_error(map_info));
 		ft_free_map_inf(map);
 		return (NULL);
 	}	
 	check_player = ft_checkplayer(map);
 	if (check_player < 0)
 	{
-		printf("Error\n%i\n", check_player);
+		printf("Error\n%s\n", ft_map_error(check_player));
 		ft_free_map_inf(map);
 		return (NULL);
 	}
