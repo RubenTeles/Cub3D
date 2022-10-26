@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/25 11:33:24 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:05:06 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ int	main(int argc, char **argv)
 	all.file = ft_check_map(argc, argv);
 	if (!all.file)
 		return (0);
-	if (ft_init_game(&all))
-		return (ft_free_all(all));
-	// mlx_loop(all.ptr);
-	ft_free_all(all);
+	ft_free_map_inf(all.file);
 	return (0);
 }

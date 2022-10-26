@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 17:59:28 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/25 11:31:25 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/26 15:03:16 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ void	ft_free_map_inf(t_map *map)
 	array().free(map->c);
 	array().free(map->f);
 	free(map);
-}
-
-int	ft_free_all(t_all all)
-{
-	ft_free_map_inf(all.file);
-	array().free(all.pieces->board);
-	list().free(all.pieces->pigs);
-	free(all.pieces);
-	return (1);
 }
 
 char	**ft_lst_toarr(t_list *lst)
