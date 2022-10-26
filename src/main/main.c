@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/25 11:32:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:33:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	main(int argc, char **argv)
 	file[2] = NULL;*/
 	all.file = ft_check_map(argc, argv);
 	if (!all.file)
-		return (1);
+		return (0);
 	if (ft_init_game(&all))
 		return (ft_free_all(all));
-	mlx_loop(all.ptr);
+	// mlx_loop(all.ptr);
 	ft_free_all(all);
 	/*if (ft_engine(0))
 		return (-1);*/
