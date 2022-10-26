@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/26 14:41:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:46:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ src/engine/ft_new_engine.c
 
 #include <ft_engine.h>
 #include <mlx.h>
-
 void	new_engine(void)
 {
 	engine().ptr = mlx_init();
