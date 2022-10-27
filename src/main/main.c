@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:09:29 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:23:21 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,27 @@ void	ft_print_mapinf(t_map *map)
 	(list().iter)(map->map, ft_print_lst, 0);
 }
 
+/*
+all.map é uma array de strings (char **) em que cada string é uma linha do mapa
+*/
 int	main(int argc, char **argv)
 {
 	t_all	all;
-	/*(void)argv;
-	(void)argc;
-	char	**file = malloc(sizeof(char *) * 3);
-	char	exe[8] = {"./cub3D"};
-	char	map[8] = {"ex.cub"};
+	char	**file;
 
-	argc = 2;
-	file[0] = exe;
-	file[1] = map;
-	file[2] = NULL;*/
-	all.file = ft_check_map(argc, argv);
+	file = array().create(2, "./cub3D", "ex.cub");
+	if (argc == 1)
+		all.file = ft_check_map(2, file);
+	else
+		all.file = ft_check_map(argc, argv);
 	if (!all.file)
 		return (0);
+	all.map = ft_lst_toarr(all.file->map);
 	if (ft_start(all.file))
 		return (-1);
+
+	array().free(file);
+	array().free(all.map);
 	ft_free_map_inf(all.file);
 	return (0);
 }

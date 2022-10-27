@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 12:52:40 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:11:21 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_board_pos
 typedef struct s_all
 {
 	t_map	*file;
+	char	**map;
 }			t_all;
 
 // utils
