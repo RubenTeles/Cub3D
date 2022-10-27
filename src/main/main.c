@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:34:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:35:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	main(int argc, char **argv)
 	if (!all.file)
 		return (0);
 	all.map = ft_lst_toarr(all.file->map);
-	printf("%s\n", all.map[1]);
 	if (ft_start(all.file))
 		return (-1);
 
