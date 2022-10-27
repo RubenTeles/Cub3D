@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/26 15:15:49 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:51:00 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,24 @@ void	ft_print_mapinf(t_map *map)
 int	main(int argc, char **argv)
 {
 	t_all	all;
-	//(void)argv;
-	//(void)argc;
-	/*char	**file = malloc(sizeof(char *) * 3);
+	(void)argv;
+	(void)argc;
+	char	**file = malloc(sizeof(char *) * 3);
 	char	exe[8] = {"./cub3D"};
 	char	map[8] = {"ex.cub"};
 
 	argc = 2;
 	file[0] = exe;
 	file[1] = map;
-	file[2] = NULL;*/
+	file[2] = NULL;
 	all.file = ft_check_map(argc, argv);
-	if (!all.file)
+	/*if (!all.file)
 		return (0);
-	ft_free_map_inf(all.file);
+	if (ft_init_game(&all))
+		return (ft_free_all(all));*/
+	if (ft_start(all.file))
+		return (-1);
+	//mlx_loop(all.ptr);
+	//ft_free_all(all);
 	return (0);
 }
