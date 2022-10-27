@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/25 11:31:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/26 21:00:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <math.h>
 # include <unistd.h> // read
 # include <fcntl.h> // open, close, ...
-
 # include <stdio.h> // printf
+# include <ft_engine.h>
+
 
 # define BUFFERSIZE 9999
 
@@ -107,5 +108,9 @@ int		ft_init_game(t_all *all);
 
 // test
 void	ft_try(t_list *lst);
+
+// Conjunto
+int		ft_start(t_map	*map);
+void	new_engine(t_map	*map);
 
 #endif
