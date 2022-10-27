@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:35:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:33:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*ft_print_lst(void *ptr)
 
 void	ft_print_mapinf(t_map *map)
 {
+	printf("------------------------------------------\n");
 	printf("no: %s\n", map->no);
 	printf("so: %s\n", map->so);
 	printf("we: %s\n", map->we);
@@ -60,10 +61,11 @@ int	main(int argc, char **argv)
 		all.file = ft_check_map(argc, argv);
 	if (!all.file)
 		return (0);
-	all.map = ft_lst_toarr(all.file->map);
+	all.map = ft_lst_toarr(&all);
 	if (ft_start(all.file))
 		return (-1);
-
+	/*ft_view_init(&all);
+	mlx_loop(all.caster.scrn.mlx);*/
 	array().free(file);
 	array().free(all.map);
 	ft_free_map_inf(all.file);

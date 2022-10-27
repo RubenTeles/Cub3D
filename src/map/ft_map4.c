@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 17:59:28 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:14:56 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:10:41 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_free_map_inf(t_map *map)
 	free(map);
 }
 
-char	**ft_lst_toarr(t_list *lst)
+char	**ft_lst_toarr(t_all *all)
 {
 	char	**arr;
 	char	*str;
@@ -33,9 +33,10 @@ char	**ft_lst_toarr(t_list *lst)
 
 	i = -1;
 	arr = NULL;
-	while (++ i < list().len(lst))
+	all->player = ft_player_pos(all->file->map);
+	while (++ i < list().len(all->file->map))
 	{
-		str = list().get(lst, i);
+		str = list().get(all->file->map, i);
 		str = string().cpy_n(str, string().len(str) - 1);
 		arr = array().add(arr, str);
 		free(str);

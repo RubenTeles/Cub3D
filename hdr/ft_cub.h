@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:11:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:23:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h> // open, close, ...
 # include <stdio.h> // printf
 # include <ft_engine.h>
+# include <ft_raycaster.h>
 
 # define BUFFERSIZE 9999
 
@@ -44,8 +45,10 @@ typedef struct s_board_pos
 
 typedef struct s_all
 {
-	t_map	*file;
-	char	**map;
+	t_map		*file;
+	char		**map;
+	t_pos		player;
+	t_caster	caster;
 }			t_all;
 
 // utils
@@ -69,14 +72,15 @@ int		ft_nextpos(t_list *board, t_pos atual, t_pos *next);
 t_pos	ft_player_pos(t_list *board);
 int		ft_find_paths(t_map *map, t_pos atual);
 int		ft_mapclosed(t_map *map);
-char	**ft_lst_toarr(t_list *lst);
+char	**ft_lst_toarr(t_all *all);
 char	*ft_map_error(int i);
 
 // Aditional functions for lists
 t_list	*ft_lst_copy(t_list *lst);
 
 // test
-void	ft_try(t_list *lst);
+void	ft_print_mapinf(t_map *map);
+int		ft_view_init(t_all *all);
 
 // Conjunto
 int		ft_start(t_map	*map);
