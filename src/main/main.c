@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:23:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 13:34:18 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ void	ft_print_mapinf(t_map *map)
 
 /*
 all.map é uma array de strings (char **) em que cada string é uma linha do mapa
+
+exemplo:
+all.map = {
+	"1111111111",
+	"1010N10011",
+	"1010000001",
+	"1010010011",
+	"1111111111"
+	};
+	
+Ou seja depois para mexer, vai ser assim,
+all.map[1] = "1010N10011"
+ou
+all.map[1][4] = 'N'
+
 */
 int	main(int argc, char **argv)
 {
@@ -46,6 +61,7 @@ int	main(int argc, char **argv)
 	if (!all.file)
 		return (0);
 	all.map = ft_lst_toarr(all.file->map);
+	printf("%s\n", all.map[1]);
 	if (ft_start(all.file))
 		return (-1);
 
