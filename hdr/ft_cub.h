@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 12:50:01 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:52:40 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <fcntl.h> // open, close, ...
 # include <stdio.h> // printf
 # include <ft_engine.h>
-
 
 # define BUFFERSIZE 9999
 

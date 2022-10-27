@@ -6,7 +6,7 @@
 #    By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/26 15:15:18 by amaria-m         ###   ########.fr        #
+#    Updated: 2022/10/27 13:08:16 by amaria-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,7 +128,7 @@ e:	all clean
 	@clear && ./$(NAME) ex.cub
 
 v:	all song clean
-	@clear && valgrind ./$(NAME) ex.cub
+	@clear && valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) ex.cub
 
 song:
 	@paplay src/music/pMLWWiBvWX8_48.ogg
