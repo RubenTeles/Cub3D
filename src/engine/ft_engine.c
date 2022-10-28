@@ -15,9 +15,12 @@
 
 int	ft_start(t_map *map)
 {
-	t_data	img;
+	t_data	data;
+	t_data	data_2;
+	t_img	imagem;
 	int		x;
 	int		y;
+	int		color;
 
 	new_engine(map);
 	if (!(engine())->ptr)
@@ -25,40 +28,27 @@ int	ft_start(t_map *map)
 	//path_images(all);
 	//verification_map(all, 0, 0, all->game);
 	//put_menu(all);
-	//(engine())->canva = malloc(sizeof(t_canva));//create_image();
+	//(engine())->canva = malloc(sizeof(t_canva)create_image();
 	//(engine())->canva->put_pixel = my_mlx_pixel_put;
-	img.img = mlx_new_image((engine())->ptr, 1344, 756);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-	&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	imagem.relative_path = "./sprite/forest.xpm";
+	imagem.img = mlx_xpm_file_to_image((engine())->ptr, imagem.relative_path, &imagem.img_width, &imagem.img_height);
+
+	//printf("%i \n%i\n", imagem.img_width, imagem.img_height);
+	data.img = mlx_new_image((engine())->ptr, imagem.img_width, imagem.img_height);
+	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length,
+	&data.endian);
+
+	data_2.addr = mlx_get_data_addr(imagem.img, &data_2.bits_per_pixel, &data_2.line_length,
+	&data_2.endian);
+	printf("Width: %i\nHeigth: %i\n", imagem.img_width, imagem.img_height);
 	y = -1;
-	while (++y < 756)
+	while (++y < imagem.img_height)
 	{
 		x = -1;
-		while (++x < 756)
-		{
-			if (x <= 50)
-				my_mlx_pixel_put(&img, x, y, 0xFF000000);
-			else if (x <= 100)
-				my_mlx_pixel_put(&img, x, y, 0x0FF00000);
-			else if (x <= 150)
-				my_mlx_pixel_put(&img, x, y, 0x00FF0000);
-			else if (x <= 200)
-				my_mlx_pixel_put(&img, x, y, 0x000FF000);
-			else if (x <= 250)
-				my_mlx_pixel_put(&img, x, y, 0x0000FF00);
-			else if (x <= 300)
-				my_mlx_pixel_put(&img, x, y, 0x00000FF0);
-			else if (x <= 350)
-				my_mlx_pixel_put(&img, x, y, 0x000000FF);
-		}
+		while (++x < imagem.img_width)
+			my_mlx_pixel_put(&data, x, y, get_pixel_color(&data_2, x, y));
 	}
-	mlx_put_image_to_window((engine())->ptr, (engine())->win, img.img, 0, 0);
-	//mlx_loop((engine()->ptr));
-
-
-
-	
+	mlx_put_image_to_window((engine())->ptr, (engine())->win, data.img, 0, 0);
 	mlx_key_hook((engine())->win, key_hook_mode1, 0); //teclas
 	mlx_hook((engine())->win, 17, 0, end_game, (engine()));
 	//mlx_loop_hook((engine())->ptr, put_images, (engine()));

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_cub.h>
-
+/*
 t_game	*ft_get_game_info(t_map *map)
 {
 	t_game	*game;
@@ -34,3 +34,4 @@ int	ft_init_game(t_all *all)
 	all->win = mlx_new_window(all->ptr, 1000, 1000, "Cub3D");
 	return (0);
 }
+*/

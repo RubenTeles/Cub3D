@@ -63,7 +63,6 @@ int	main(int argc, char **argv)
 	all.map = ft_lst_toarr(all.file->map);
 	if (ft_start(all.file))
 		return (-1);
-
 	array().free(file);
 	array().free(all.map);
 	ft_free_map_inf(all.file);
