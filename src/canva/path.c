@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 23:41:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 00:28:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/wolf/head1.xpm");
+		return ("./sprite/wolf/hand0.xpm");
 	if (sprite == FOREST)
 		return ("./sprite/forest.xpm");	
 	//printf("%c", sprite);
@@ -71,9 +71,9 @@ void	ft_sprite(char sprite, int x, int y)
 	&data.endian);
 	/*if (sprite == 'N')
 	{
-		printf("Width: %i = %i\nHeigth: %i = %i\n", data.larg, data.alt, rsz_x, rsz_y);
+		//printf("Width: %i = %i\nHeigth: %i = %i\n", data.larg, data.alt, rsz_x, rsz_y);
+		//resize_image(&data, data.larg, data.alt, 0, 0);
 	}*/
 	resize_image(&data, rsz_x, rsz_y, x * rsz_x, y * rsz_y);
-		//resize_image(&data, data.larg, data.alt, 0, 0);
 	return ;
 }

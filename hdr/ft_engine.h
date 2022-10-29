@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 22:44:15 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 00:21:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ struct s_canva {
 	t_data		*data;
 	void		(*sprite)(char sprite, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
-	void		(*resize)(t_data *img, int larg, int alt, int pos_x, int pos_y);
+	void		(*resize)(t_data *img, double larg, double alt, int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	void		(*destroy)(void);
 };
@@ -71,7 +71,7 @@ void	new_canva(void);
 //canva
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		get_pixel_color(t_data *data, int x, int y);
-void	resize_image(t_data *img, int larg, int alt, int pos_x, int pos_y);
+void	resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
 void	ft_sprite(char sprite, int x, int y);
 
 //Keys
