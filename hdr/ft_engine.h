@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 20:43:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/29 22:44:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ struct s_engine {
 
 struct s_canva {
 	t_data		*data;
-	void		(*sprite)(char sprite);
+	void		(*sprite)(char sprite, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
-	void		(*resize)(t_data *img, int larg, int alt);
+	void		(*resize)(t_data *img, int larg, int alt, int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	void		(*destroy)(void);
 };
@@ -67,13 +67,12 @@ t_canva		*canva(void);
 // Conjunto
 void	new_engine(char	**map);
 void	new_canva(void);
-void	ft_sprite(char sprite);
 
 //canva
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		get_pixel_color(t_data *data, int x, int y);
-void	resize_image(t_data *img, int larg, int alt);
-void	ft_sprite(char sprite);
+void	resize_image(t_data *img, int larg, int alt, int pos_x, int pos_y);
+void	ft_sprite(char sprite, int x, int y);
 
 //Keys
 int			key_hook_mode1(int keycode, void *all);

@@ -6,16 +6,17 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 20:34:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/29 23:34:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-void	resize_image(t_data *img, int larg, int alt)
+void	resize_image(t_data *img, int larg, int alt, int pos_x, int pos_y)
 {
 	int		x;
 	int		y;
+	int		color;
 	double	x_red;
 	double	y_red;	
 
@@ -28,7 +29,9 @@ void	resize_image(t_data *img, int larg, int alt)
 		x_red = 0;
 		while (++x <= larg)
 		{
-			my_mlx_pixel_put((canva())->data, x, y, get_pixel_color(img, x_red, y_red));
+			color = get_pixel_color(img, x_red, y_red);
+			if (color > 0)
+				my_mlx_pixel_put((canva())->data, x + pos_x, y + pos_y, color);
 			x_red += img->larg / larg;
 		}
 		y_red += img->alt / alt; 
