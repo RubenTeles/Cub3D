@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 00:21:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:43:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
+
+# define X 0
+# define Y 1
 
 typedef struct	s_img {
 	void	*img;
@@ -32,6 +35,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		larg;
+	int		alt;
 }				t_data;
 
 struct s_engine {
@@ -39,32 +44,42 @@ struct s_engine {
 	void		*win;
 	int			*status;
 	char		**game;
-	int			max_x;
-	int			max_y;
-	int			*check_point[2];
+	int			size[2];
+	int			max[2];
 	int			count;
-	t_canva		*canva;
+	int			pos[2];
 };
 
 struct s_canva {
 	t_data		*data;
-	t_canva		*next;
+	void		(*sprite)(char sprite);
+	int			(*getPxColor)(t_data *data, int x, int y);
+	void		(*resize)(t_data *img, int larg, int alt);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-
+	void		(*destroy)(void);
 };
 
-
+//static
 t_engine	*engine(void);
+t_canva		*canva(void);
+
+
+// Conjunto
+void	new_engine(char	**map);
+void	new_canva(void);
+void	ft_sprite(char sprite);
 
 //canva
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int	get_pixel_color(t_data *data, int x, int y);
+int		get_pixel_color(t_data *data, int x, int y);
+void	resize_image(t_data *img, int larg, int alt);
+void	ft_sprite(char sprite);
 
 //Keys
 int			key_hook_mode1(int keycode, void *all);
 
 //End
-int			end_game(void);
+int		end_game(void);
 
 # define BUFFERSIZE 9999
 

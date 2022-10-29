@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 13:11:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:43:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ t_list	*ft_lst_copy(t_list *lst);
 // test
 void	ft_try(t_list *lst);
 
-// Conjunto
-int		ft_start(t_map	*map);
-void	new_engine(t_map	*map);
+//conjunto
+int		ft_start(t_all	*all);
 
 #endif
