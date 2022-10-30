@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:21:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:04:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:07:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_data	*last_sprite(void)
 	return (aux);
 }
 
-t_data	*create_sprite(char sprite, char *path)
+t_data	*create_sprite(char sprite)
 {
 	t_data	*new;
 

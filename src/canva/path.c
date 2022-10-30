@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:04:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:07:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_sprite(char sprite, int x, int y)
 	//printf("%c\n", data->title);
 	data = (canva())->search(sprite);
 	if (!data)
-		data = (canva())->create(sprite, ft_path(sprite));
+		data = (canva())->create(sprite);
 	if (sprite != '1' || sprite != ' ')
 		ft_print_floor((canva())->rsz[X], (canva())->rsz[Y], x * (canva())->rsz[X], y * (canva())->rsz[Y]);
 	if (!data)

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 16:23:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:06:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 int	ft_start(t_all *all)
 {
-	int		x;
-	int		y;
-
-	y = -1;
 	new_engine(all->map);
 	if (!(engine())->ptr)
 		return (1);

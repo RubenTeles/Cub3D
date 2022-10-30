@@ -6,7 +6,7 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/30 19:55:47 by amaria-m          #+#    #+#              #
-#    Updated: 2022/10/29 00:19:47 by rteles           ###   ########.fr        #
+#    Updated: 2022/10/30 18:06:05 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OTHE2 = \033[4;34m
 R1 = \033[2;31m
 
 CC			= 	gcc -g
-CFLAGS		= 	#-Wall -Wextra -Werror
+CFLAGS		= 	-Wall -Wextra -Werror
 RM			= 	/bin/rm -f
 NAME		= 	cub3D
 

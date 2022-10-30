@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 17:40:27 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:07:27 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct s_canva {
 	int			(*getPxColor)(t_data *data, int x, int y);
 	void		(*resize)(t_data *img, double larg, double alt, int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-	t_data		*(*create)(char sprite, char *path);
+	t_data		*(*create)(char sprite);
 	t_data		*(*search)(char sprite);
 	t_data		*(*last)(void);
 	void		(*destroy)(void);
@@ -80,7 +80,7 @@ int		get_pixel_color(t_data *data, int x, int y);
 void	resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
 void	ft_sprite(char sprite, int x, int y);
 char	*ft_path(char sprite);
-t_data	*create_sprite(char sprite, char *path);
+t_data	*create_sprite(char sprite);
 t_data	*search_sprite(char sprite);
 t_data	*last_sprite(void);
 
