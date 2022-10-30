@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:55:15 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 19:09:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	colors_floor_ceilling(char **floor, char **ceilling)
 	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
 }
 
-void	new_engine(t_all *all)
+void	new_engine(t_all *all, int larg, int alt)
 {
 	(engine())->ptr = mlx_init();
 	if (!engine()->ptr)
@@ -67,12 +67,11 @@ void	new_engine(t_all *all)
 	(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
 	read_map(all->map);
-	(engine())->size[X] = 1344;
-	(engine())->size[Y] = 756;
+	(engine())->size[X] = larg;
+	(engine())->size[Y] = alt;
 	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X],
 		(engine())->size[Y], "WOLF EAT PIG'S");
 	colors_floor_ceilling(all->file->f, all->file->c);
-	printf("floor: %i ceilling: %i\n", (engine())->color[FLOOR], (engine())->color[CEILLING]);
 	new_canva();
 	create_images_map(all->map);
 	(engine())->game = NULL;

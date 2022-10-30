@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:43:23 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 19:09:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_start(t_all *all)
 {
-	new_engine(all);
+	new_engine(all, 1344, 756);
 	if (!(engine())->ptr)
 		return (1);
 	mlx_put_image_to_window((engine())->ptr, (engine())->win, (canva())->data->img, 0, 0);

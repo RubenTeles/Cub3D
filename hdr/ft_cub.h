@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:40:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 19:09:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	ft_try(t_list *lst);
 
 //conjunto
 int		ft_start(t_all	*all);
-void	new_engine(t_all *all);
+void	new_engine(t_all *all, int larg, int alt);
 
 #endif
