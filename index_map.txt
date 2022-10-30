@@ -1,0 +1,44 @@
+------- Index Map -------
+
+----- Mandatory -----
+
+N S W E = wolf (directions)
+0   = Floor (color)
+1   = Background (color)
+' ' = Nothing
+
+--- Item's --- (UPPER CASE)
+B = Bush
+C = Cristal
+D = Door
+E = [Player] (East)
+N = [Player] (Nort)
+R = Rock
+S = [Player] (South)
+T = Tree
+W = [Player] (West)
+Z = canva (DON'T USE)
+
+--- Enimies --- (DOWN CASE)
+b = bull
+c = chicken
+d = donkey
+g = goat
+p = pig (need separate in 3)
+s = sheep
+
+--- Background --- (Number's)
+0 = floor (color)
+1 = background (color);
+
+-- Wall -- (2 - 5)
+2 = Forest
+3 = House Straw
+4 = House Wood
+5 = House Brick
+
+-- Floor -- (6 - 9)
+6 = Cave
+7 = Floor Straw
+8 = Floor Wood
+9 = Floor Brick
