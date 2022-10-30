@@ -6,11 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/29 23:33:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:55:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_cub.h>
 
 static void	read_map(char **map)
 {
@@ -42,21 +43,38 @@ static void	create_images_map(char **map)
 	(engine())->max[Y] = y;
 }
 
-void	new_engine(char **map)
+static void	colors_floor_ceilling(char **floor, char **ceilling)
+{
+	char	r;
+	char	g;
+	char	b;
+
+	r = (string()).atoi(floor[0]);
+	g = (string()).atoi(floor[1]);
+	b = (string()).atoi(floor[2]);
+	(engine())->color[FLOOR] = ft_trgb(0, r, g, b);
+	r = (string()).atoi(ceilling[0]);
+	g = (string()).atoi(ceilling[1]);
+	b = (string()).atoi(ceilling[2]);
+	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
+}
+
+void	new_engine(t_all *all)
 {
 	(engine())->ptr = mlx_init();
 	if (!engine()->ptr)
 		return ;
 	(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
-	read_map(map);
+	read_map(all->map);
 	(engine())->size[X] = 1344;
 	(engine())->size[Y] = 756;
 	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X],
 		(engine())->size[Y], "WOLF EAT PIG'S");
+	colors_floor_ceilling(all->file->f, all->file->c);
+	printf("floor: %i ceilling: %i\n", (engine())->color[FLOOR], (engine())->color[CEILLING]);
 	new_canva();
-	//(canva())->sprite('N', 0, 0);
-	create_images_map(map);
+	create_images_map(all->map);
 	(engine())->game = NULL;
 }
 

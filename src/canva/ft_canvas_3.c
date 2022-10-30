@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:21:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:07:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:56:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_data	*create_sprite(char sprite)
 	{
 		printf("Erro: Sprite '%c' com o Path: '%s' não existe!\n", sprite, new->path);
 		free(new);
-		return (0);
+		return (NULL);
 	}
 	new->addr = mlx_get_data_addr(new->img, &new->bits_per_pixel, &new->line_length,
 	&new->endian);

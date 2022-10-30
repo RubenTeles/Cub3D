@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:07:27 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:54:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_data				t_data;
 
 # define X 0
 # define Y 1
+# define FLOOR 0
+# define CEILLING 1
 
 typedef struct	s_data {
 	char	title;
@@ -40,6 +42,7 @@ struct s_engine {
 	void		*win;
 	int			*status;
 	char		**game;
+	int			color[2];
 	int			size[2];
 	int			max[2];
 	int			count;
@@ -51,7 +54,8 @@ struct s_canva {
 	int			rsz[2];
 	void		(*sprite)(char sprite, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
-	void		(*resize)(t_data *img, double larg, double alt, int pos_x, int pos_y);
+	void		(*resize)(t_data *img, double larg, double alt,
+	int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	t_data		*(*create)(char sprite);
 	t_data		*(*search)(char sprite);
@@ -69,20 +73,25 @@ struct s_player
 t_engine	*engine(void);
 t_canva		*canva(void);
 
-
-// Conjunto
-void	new_engine(char	**map);
-void	new_canva(void);
-
 //canva
+void	new_canva(void);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		get_pixel_color(t_data *data, int x, int y);
-void	resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
+void	resize_image(t_data *img, double larg, double alt, int pos_x,
+int pos_y);
 void	ft_sprite(char sprite, int x, int y);
 char	*ft_path(char sprite);
 t_data	*create_sprite(char sprite);
 t_data	*search_sprite(char sprite);
 t_data	*last_sprite(void);
+
+//Colors
+int				ft_trgb(unsigned char t, unsigned char r,
+unsigned char g, unsigned char b);
+unsigned char	get_t(int trgb);
+unsigned char	get_r(int trgb);
+unsigned char	get_g(int trgb);
+unsigned char	get_b(int trgb);
 
 //Keys
 int			key_hook_mode1(int keycode, void *all);

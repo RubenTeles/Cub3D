@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:07:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 19:03:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ char	*ft_path(char sprite)
 	return (0);
 }
 
-void	ft_print_floor(int larg, int alt, int pos_x, int pos_y)
+void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
 {
 	int		x;
 	int		y;
-	int		color;
 
-	color = 0x000000FF;
 	y = -1;
 	while (++y <= alt)
 	{
@@ -49,17 +47,18 @@ void	ft_sprite(char sprite, int x, int y)
 {
 	t_data	*data;
 
-	//printf("%c\n", data->title);
 	data = (canva())->search(sprite);
-	if (!data)
+	if (!data && sprite != ' ' && sprite != '0')
 		data = (canva())->create(sprite);
-	if (sprite != '1' || sprite != ' ')
-		ft_print_floor((canva())->rsz[X], (canva())->rsz[Y], x * (canva())->rsz[X], y * (canva())->rsz[Y]);
+	if (sprite == ' ')
+		ft_print_color((canva())->rsz[X], (canva())->rsz[Y], x * (canva())->rsz[X], y * (canva())->rsz[Y], (engine())->color[CEILLING]);
+	else if (sprite != '1')
+		ft_print_color((canva())->rsz[X], (canva())->rsz[Y], x * (canva())->rsz[X], y * (canva())->rsz[Y], (engine())->color[FLOOR]);
 	if (!data)
 	{
-		if (sprite == '0')
+		if (sprite == '0' || sprite == ' ')
 			return ;
-		printf("Erro: '%s' não existe!\n", data->path);
+		printf("Erro: '%c' não existe!\n", sprite);
 		return ;
 	}
 	if (data->title == 'N')

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/29 20:40:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 18:24:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ int	main(int argc, char **argv)
 		return (0);
 	all.map = ft_lst_toarr(all.file->map);
 	if (ft_start(&all))
-		return (-1);
-	array().free(file);
-	array().free(all.map);
-	ft_free_map_inf(all.file);
+	{
+		array().free(file);
+		array().free(all.map);
+		ft_free_map_inf(all.file);
+	}
 	return (0);
 }

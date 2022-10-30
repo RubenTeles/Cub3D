@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_engine.c                                        :+:      :+:    :+:   */
+/*   ft_colors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 18:43:23 by rteles           ###   ########.fr       */
+/*   Created: 2022/10/30 18:24:36 by rteles            #+#    #+#             */
+/*   Updated: 2022/10/30 18:53:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
-#include <ft_cub.h>
 
-int	ft_start(t_all *all)
+int	ft_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
 {
-	new_engine(all);
-	if (!(engine())->ptr)
-		return (1);
-	mlx_put_image_to_window((engine())->ptr, (engine())->win, (canva())->data->img, 0, 0);
-	mlx_key_hook((engine())->win, key_hook_mode1, 0); //teclas
-	mlx_hook((engine())->win, 17, 0, end_game, (engine()));
-	mlx_loop((engine())->ptr);
-	//mlx_loop_hook((engine())->ptr, put_images, (engine()));
-	return (0);
+	return (*(int *)(unsigned char [4]){b, g, r, t});
+}
+
+unsigned char	get_t(int trgb)
+{
+	return (((unsigned char *)&trgb)[3]);
+}
+
+unsigned char	get_r(int trgb)
+{
+	return (((unsigned char *)&trgb)[2]);
+}
+
+unsigned char	get_g(int trgb)
+{
+	return (((unsigned char *)&trgb)[1]);
+}
+
+unsigned char	get_b(int trgb)
+{
+	return (((unsigned char *)&trgb)[0]);
 }
