@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_engine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 19:09:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/31 09:57:11 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	new_engine(t_all *all, int larg, int alt)
 	read_map(all->map);
 	(engine())->size[X] = larg;
 	(engine())->size[Y] = alt;
-	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X],
+	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X], \
 		(engine())->size[Y], "WOLF EAT PIG'S");
 	colors_floor_ceilling(all->file->f, all->file->c);
 	new_canva();

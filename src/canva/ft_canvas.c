@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/30 17:41:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/31 10:01:34 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void	new_canva(void)
 	(canva())->data = malloc(sizeof(t_data));
 	(canva())->data->title = 'Z';
 	(canva())->data->path = NULL;
-	(canva())->data->img = mlx_new_image((engine())->ptr, (engine())->size[X], (engine())->size[X]);
+	(canva())->data->img = mlx_new_image((engine())->ptr, (engine())->size[X], \
+	(engine())->size[X]);
 	(canva())->data->larg = (engine())->size[X];
 	(canva())->data->alt = (engine())->size[X];
-	(canva())->data->addr = mlx_get_data_addr((canva())->data->img, &(canva())->data->bits_per_pixel,
-	&(canva())->data->line_length, &(canva())->data->endian);
+	(canva())->data->addr = mlx_get_data_addr((canva())->data->img, \
+	&(canva())->data->bits_per_pixel, &(canva())->data->line_length, \
+	&(canva())->data->endian);
 	(canva())->data->next = NULL;
 	(canva())->rsz[X] = (engine())->size[X] / (engine())->max[X];
 	(canva())->rsz[Y] = (engine())->size[Y] / (engine())->max[Y];
@@ -51,7 +53,7 @@ void	new_canva(void)
 
 t_canva	*canva(void)
 {
-	static t_canva c;
-	
+	static t_canva	c;
+
 	return (&c);
 }
