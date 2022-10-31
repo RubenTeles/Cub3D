@@ -6,54 +6,75 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/26 21:49:06 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/30 19:09:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_cub.h>
 
-t_canva	*create_image(void)
+static void	read_map(char **map)
 {
-	/*t_canva	*c;
-	int		offset;
+	int	x;
+	int	y;
 
-	c = malloc(sizeof(t_canva));
-	c->data->img = mlx_new_image((engine())->ptr, 1344, 756);
-	c->data->addr = mlx_get_data_addr(c->data->img, &c->data->bits_per_pixel, \
-	&c->data->line_length, &c->data->endian);
-	offset = (756 * c->data->line_length + 1344 *\
-	(c->data->bits_per_pixel / 8));
-	//(void)offset;
-	c->put_pixel = my_mlx_pixel_put;
-	return (c);*/
-	return (0);
+	y = -1;
+	while (map[++y])
+	{		
+		x = (string()).len(map[y]);
+		if (x > (engine())->max[X])
+			(engine())->max[X] = x;
+	}
+	(engine())->max[Y] = y;
 }
 
-void	new_engine(t_map *map)
+static void	create_images_map(char **map)
 {
-	t_list	*aux;
+	int	x;
+	int	y;
 
-	aux = map->map;
-	/*while (aux)
-	{
-		printf("%p\n", (char *)aux->content);
-		aux = aux->content;
-	}*/
-	(void)aux;
+	y = -1;
+	while (map[++y])
+	{		
+		x = -1;
+		while (map[y][++x])
+			(canva())->sprite(map[y][x], x, y);
+	}
+	(engine())->max[Y] = y;
+}
+
+static void	colors_floor_ceilling(char **floor, char **ceilling)
+{
+	char	r;
+	char	g;
+	char	b;
+
+	r = (string()).atoi(floor[0]);
+	g = (string()).atoi(floor[1]);
+	b = (string()).atoi(floor[2]);
+	(engine())->color[FLOOR] = ft_trgb(0, r, g, b);
+	r = (string()).atoi(ceilling[0]);
+	g = (string()).atoi(ceilling[1]);
+	b = (string()).atoi(ceilling[2]);
+	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
+}
+
+void	new_engine(t_all *all, int larg, int alt)
+{
 	(engine())->ptr = mlx_init();
 	if (!engine()->ptr)
 		return ;
-	(engine())->win = mlx_new_window((engine())->ptr, 1344, 756, "WOLF EAT PIG'S");
+	(engine())->max[X] = -1;
+	(engine())->max[Y] = -1;
+	read_map(all->map);
+	(engine())->size[X] = larg;
+	(engine())->size[Y] = alt;
+	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X],
+		(engine())->size[Y], "WOLF EAT PIG'S");
+	colors_floor_ceilling(all->file->f, all->file->c);
+	new_canva();
+	create_images_map(all->map);
 	(engine())->game = NULL;
-	(engine())->max_x = 0;
-	(engine())->max_y = 0;
-	(engine())->check_point[0] = NULL;
-	(engine())->check_point[1] = NULL;
-	//(engine())->canva = malloc(sizeof(t_canva));//create_image();
-	//(engine())->canva->put_pixel = my_mlx_pixel_put;
-	//my_mlx_pixel_put((engine())->canva->data, 5, 5, 0x00FF0000);
-	//mlx_put_image_to_window((engine())->ptr, (engine())->win, (engine())->canva->data->img, 0, 0);
-	//mlx_loop((engine()->ptr));
 }
 
 t_engine	*engine(void)

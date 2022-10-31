@@ -6,10 +6,11 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:39 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/26 20:57:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:43:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_cub.h>
 #include <ft_engine.h>
 
 int	end_game(void)
@@ -17,6 +18,7 @@ int	end_game(void)
 	//int	y;
 
 	mlx_clear_window((engine())->ptr, (engine())->win);
+	(canva())->destroy();
 	//y = -1;
 	//while ((engine())->game[++y])
 	//	free((engine())->game[y]);
