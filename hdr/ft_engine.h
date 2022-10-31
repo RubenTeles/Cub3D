@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 09:56:57 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/10/31 23:34:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 # include <ft_cub.h>
 
+typedef struct s_engine				t_engine;
+typedef struct s_canva				t_canva;
+typedef struct s_data				t_data;
+
 # define X 0
 # define Y 1
 # define FLOOR 0
 # define CEILLING 1
-# define BUFFERSIZE 9999
 
 typedef struct s_data
 {
@@ -32,8 +35,8 @@ typedef struct s_data
 	char			*path;
 	int				larg;
 	int				alt;
-	struct s_data	*next;
-}					t_data;
+	t_data			*next;
+};
 
 typedef struct s_engine
 {
@@ -46,7 +49,7 @@ typedef struct s_engine
 	int			max[2];
 	int			count;
 	int			pos[2];
-}				t_engine;
+};
 
 typedef struct s_canva
 {
@@ -61,7 +64,7 @@ typedef struct s_canva
 	t_data		*(*search)(char sprite);
 	t_data		*(*last)(void);
 	void		(*destroy)(void);
-}				t_canva;
+};
 
 /*
 struct s_player
