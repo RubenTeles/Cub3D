@@ -12,54 +12,80 @@
 
 #include <ft_engine.h>
 
-int	key_hook_mode2(int keycode, void *a)
+//Apenas aceita uma vez
+int	key_esc(int keycode, void *a)
 {
 	(void)a;
-	if (keycode == 53 || keycode == 65307)
+
+	if (keycode == ESC)
 		return (end_game());
-	/*else if (keycode == 13 || keycode == 119)
-		i = ft_method_mode2(all, all->t.pos_x, all->t.pos_y - 1, 'W');
-	else if (keycode == 0 || keycode == 97)
-		i = ft_method_mode2(all, all->t.pos_x - 1, all->t.pos_y, 'A');
-	else if (keycode == 1 || keycode == 115)
-		i = ft_method_mode2(all, all->t.pos_x, all->t.pos_y + 1, 'S');
-	else if (keycode == 2 || keycode == 100)
-		i = ft_method_mode2(all, all->t.pos_x + 1, all->t.pos_y, 'D');
-	else
-		i = 0;
-	path_mode1(all, &all->t);
-	animation_player(all, all->t.pos_x, all->t.pos_y, 0);
-	put_menu(all);*/
 	return (0);
 }
 
-int	key_hook_mode1(int keycode, void *a)
+//Quando pressionar uma tecla
+int key_press(int keycode, void *param)
 {
-	(void)a;
-	/*int	i;
+	(void)param;
 
-	if (all->t.mode == 2)
-		i = key_hook_mode2(keycode, all);
-	else */
-	if (keycode == 53 || keycode == 65307)
-		return (end_game());
-	/*else if (keycode == 13 || keycode == 119)
-		i = ft_method(all, all->t.pos_x, all->t.pos_y - 1, 'W');
-	else if (keycode == 0 || keycode == 97)
-		i = ft_method(all, all->t.pos_x - 1, all->t.pos_y, 'A');
-	else if (keycode == 1 || keycode == 115)
-		i = ft_method(all, all->t.pos_x, all->t.pos_y + 1, 'S');
-	else if (keycode == 2 || keycode == 100)
-		i = ft_method(all, all->t.pos_x + 1, all->t.pos_y, 'D');
-	else if (keycode == 46 || keycode == 109)
-	{
-		path_mode2(all, &all->t);
-		i = animation_player(all, all->t.pos_x, all->t.pos_y, 0);
-	}
-	else
-		return (0);
-	all->m.paws += i;
-	put_menu(all);
-	return (i);*/
+	if (keycode == KEY_W)
+		return (printf("KEY: W\n"));
+	if (keycode == KEY_A)
+		return (printf("KEY: A\n"));
+	if (keycode == KEY_S)
+		return (printf("KEY: S\n"));
+	if (keycode == KEY_D)
+		return (printf("KEY: D\n"));
+	if (keycode == KEY_M)
+		return (printf("KEY: M\n"));
 	return (0);
 }
+
+//Quando pressionar o botao do rato
+int key_mouse_press(int button, int x, int y, void *param)
+{
+	(void)param;
+	(void)x;
+	(void)y;
+
+	if (button == BUTTON_RIGHT)
+		printf("Right Button PRESS\n");
+	return (0);
+}
+
+//Quando largar o botao do rato
+int key_mouse_out(int button, int x, int y, void *param)
+{
+	(void)param;
+	(void)x;
+	(void)y;
+	
+
+	if (button == BUTTON_RIGHT)
+		printf("Right Button OUT\n");
+		
+	return (0);
+}
+
+//Ao mexer o mouse
+int key_mouse_move(int x, int y, void *param)
+{
+	(void)param;
+	(void)x;
+	(void)y;
+
+	//printf("X: %i Y: %i\n", x, y);
+	return (0);
+}
+/*
+int key_mouse_move(int x, int y, void *param)
+{
+	(void)param;
+	(void)x;
+	(void)y;
+
+	//printf("X: %i Y: %i\n", x, y);
+	//printf("Button: %i X: %i Y: %i\n", button, x, y);
+	//mlx_destroy_window(vars->mlx, vars->win);
+	return (0);
+}
+*/
