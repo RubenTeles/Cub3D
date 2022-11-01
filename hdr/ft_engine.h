@@ -18,13 +18,22 @@
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
+typedef struct s_player				t_player;
 
 # define X 0
 # define Y 1
 # define FLOOR 0
 # define CEILLING 1
+# define ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_M 109
+# define BUTTON_RIGHT 3
+# define BUTTON_LEFT 1
 
-typedef struct s_data
+struct s_data
 {
 	char			title;
 	void			*img;
@@ -38,7 +47,7 @@ typedef struct s_data
 	t_data			*next;
 };
 
-typedef struct s_engine
+struct s_engine
 {
 	void		*ptr;
 	void		*win;
@@ -51,7 +60,7 @@ typedef struct s_engine
 	int			pos[2];
 };
 
-typedef struct s_canva
+struct s_canva
 {
 	t_data		*data;
 	int			rsz[2];
@@ -97,7 +106,11 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 //Keys
-int				key_hook_mode1(int keycode, void *all);
+int				key_esc(int keycode, void *all);
+int 			key_press(int keycode, void *param);
+int				key_mouse_press(int button, int x, int y, void *param);
+int 			key_mouse_out(int button, int x, int y, void *param);
+int				key_mouse_move(int x, int y, void *param);
 
 //End
 int				end_game(void);
