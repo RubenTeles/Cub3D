@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/31 09:45:03 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:28:25 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,42 @@ ou
 all.map[1][4] = 'N'
 
 */
+
+char	*print(const char *str)
+{
+	char	*mem;
+
+	mem = (char *)str;
+	printf("%s\n", str);
+	return (mem);
+}
+
+t_all	*all(void)
+{
+	static t_all	all;
+
+	return (&all);
+}
+
 int	main(int argc, char **argv)
 {
-	t_all	all;
 	char	**file;
 
 	file = array().create(2, "./cub3D", "ex.cub");
 	if (argc == 1)
-		all.file = ft_check_map(2, file);
+		(all())->file = ft_check_map(2, file);
 	else
-		all.file = ft_check_map(argc, argv);
-	if (!all.file)
+		(all())->file = ft_check_map(argc, argv);
+	if (!(all())->file)
 		return (0);
-	all.map = ft_lst_toarr(&all);
-	if (ft_start(&all))
+	array().iter(all()->map, print);
+	ft_start_caster();
+	/*if (ft_start(&all))
 	{
 		array().free(file);
 		array().free(all.map);
 		ft_free_map_inf(all.file);
-	}
+	}*/
+	//ft_view_init();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/31 09:41:19 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:10:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ t_list	*ft_lst_copy(t_list *lst);
 
 // test
 void	ft_print_mapinf(t_map *map);
-int		ft_view_init(t_all *all);
+void	ft_view_init(void);
+void	ft_start_caster(void);
+t_all	*all(void);
 
 //conjunto
 int		ft_start(t_all	*all);
