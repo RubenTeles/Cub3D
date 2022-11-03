@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_engine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 09:57:11 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:15:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
-
+/*
 static void	read_map(char **map)
 {
 	int	x;
@@ -26,8 +26,8 @@ static void	read_map(char **map)
 			(engine())->max[X] = x;
 	}
 	(engine())->max[Y] = y;
-}
-
+}*/
+/*
 static void	create_images_map(char **map)
 {
 	int	x;
@@ -41,8 +41,8 @@ static void	create_images_map(char **map)
 			(canva())->sprite(map[y][x], x, y);
 	}
 	(engine())->max[Y] = y;
-}
-
+}*/
+/*
 static void	colors_floor_ceilling(char **floor, char **ceilling)
 {
 	char	r;
@@ -57,24 +57,25 @@ static void	colors_floor_ceilling(char **floor, char **ceilling)
 	g = (string()).atoi(ceilling[1]);
 	b = (string()).atoi(ceilling[2]);
 	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
-}
+}*/
 
 void	new_engine(t_all *all, int larg, int alt)
 {
+	(void)all;
 	(engine())->ptr = mlx_init();
 	if (!engine()->ptr)
 		return ;
-	(engine())->max[X] = -1;
-	(engine())->max[Y] = -1;
-	read_map(all->map);
 	(engine())->size[X] = larg;
 	(engine())->size[Y] = alt;
+	/*(engine())->max[X] = -1;
+	(engine())->max[Y] = -1;
+	read_map(all->map);*/
 	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X], \
 		(engine())->size[Y], "WOLF EAT PIG'S");
-	colors_floor_ceilling(all->file->f, all->file->c);
+	//colors_floor_ceilling(all->file->f, all->file->c);
 	new_canva();
-	create_images_map(all->map);
-	(engine())->game = NULL;
+	//create_images_map(all->map);
+	//(engine())->game = NULL;
 }
 
 t_engine	*engine(void)

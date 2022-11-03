@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:15:54 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 09:59:19 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:59:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y)
 		while (++x <= larg)
 		{
 			color = get_pixel_color(img, x_red, y_red);
-			if (color > 0 && color != 5025616)
+			if (color > 0)
 				my_mlx_pixel_put((canva())->data, x + pos_x, y + pos_y, color);
 			x_red += img->larg / larg;
 		}

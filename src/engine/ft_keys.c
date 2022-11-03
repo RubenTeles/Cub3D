@@ -6,19 +6,35 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/26 20:56:47 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 00:52:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
 //Apenas aceita uma vez
-int	key_esc(int keycode, void *a)
+int	key_press_no_repeat(int keycode, char **map)
 {
-	(void)a;
+	static int key_m = 0;
 
 	if (keycode == ESC)
 		return (end_game());
+	if (keycode == KEY_M)
+	{
+		if (key_m == 0)
+		{
+			//repeat
+			create_images_map(map);
+			mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+				(canva())->data->img, 0, 0);
+			key_m = 1;
+		}
+		else
+		{
+			//no repeat
+			key_m = 0;
+		}
+	}
 	return (0);
 }
 
@@ -35,8 +51,6 @@ int key_press(int keycode, void *param)
 		return (printf("KEY: S\n"));
 	if (keycode == KEY_D)
 		return (printf("KEY: D\n"));
-	if (keycode == KEY_M)
-		return (printf("KEY: M\n"));
 	return (0);
 }
 

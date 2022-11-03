@@ -13,11 +13,12 @@ C = Cristal
 D = Door
 E = [Player] (East)
 N = [Player] (Nort)
+M = MAP (DON'T USE)  *
 R = Rock
 S = [Player] (South)
 T = Tree
 W = [Player] (West)
-Z = canva (DON'T USE)
+Z = canva (DON'T USE) *
 
 --- Enimies --- (DOWN CASE)
 b = bull

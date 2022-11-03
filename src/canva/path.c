@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 10:03:19 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:46:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 #define FOREST '1'
 #define PIG 'p'
 #define DOOR 'd'
+#define MAP 'M'
 
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/wolf/hand0.xpm");
+		return ("./sprite/wolf/head1.xpm");
 	if (sprite == FOREST)
-		return ("./sprite/forest.xpm");
+		return ("./sprite/item/tree_02.xpm");
 	if (sprite == PIG)
 		return ("pig/s");
+	if (sprite == MAP)
+		return ("./sprite/item/map.xpm");
 	if (sprite == DOOR)
 		return ("door");
 	return (0);
@@ -50,12 +53,12 @@ void	ft_sprite(char sprite, int x, int y)
 	data = (canva())->search(sprite);
 	if (!data && sprite != ' ' && sprite != '0')
 		data = (canva())->create(sprite);
-	if (sprite == ' ')
+	/*if (sprite == ' ')
 		ft_print_color((canva())->rsz[X], (canva())->rsz[Y], x * \
 		(canva())->rsz[X], y * (canva())->rsz[Y], (engine())->color[CEILLING]);
 	else if (sprite != '1')
 		ft_print_color((canva())->rsz[X], (canva())->rsz[Y], x * \
-		(canva())->rsz[X], y * (canva())->rsz[Y], (engine())->color[FLOOR]);
+		(canva())->rsz[X], y * (canva())->rsz[Y], (engine())->color[FLOOR]);*/
 	if (!data)
 	{
 		if (sprite == '0' || sprite == ' ')
@@ -63,14 +66,17 @@ void	ft_sprite(char sprite, int x, int y)
 		printf("Erro: '%c' não existe!\n", sprite);
 		return ;
 	}
-	if (data->title == 'N')
+	if (data->title == 'M')
+		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
+	else if (data->title == 'N')
 	{
-		printf("Width: %i = %i\nHeigth: %i = %i\n", data->larg, data->alt, \
+		printf("WOLF:\nWidth: %i = %i\nHeigth: %i = %i\n", data->larg, data->alt, \
 		(canva())->rsz[X], (canva())->rsz[Y]);
-		resize_image(data, 75, 40, x * (canva())->rsz[X] + \
-		(canva())->rsz[X]/4, y * (canva())->rsz[Y] + (canva())->rsz[Y]/4);
+		resize_image(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
+			x * (canva())->rsz[X] + ((canva())->rsz[X] * 0.25),\
+			y * (canva())->rsz[Y] + ((canva())->rsz[Y] * 0.25));
 	}
 	else
 		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
-		(canva())->rsz[X], y * (canva())->rsz[Y]);
+		(canva())->rsz[X], y * (canva())->rsz[Y]);	
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 23:39:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 00:50:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,11 @@ unsigned char	get_r(int trgb);
 unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
+//Map
+void			create_images_map(char **map);
+
 //Keys
-int				key_esc(int keycode, void *all);
+int				key_press_no_repeat(int keycode, char **map);
 int 			key_press(int keycode, void *param);
 int				key_mouse_press(int button, int x, int y, void *param);
 int 			key_mouse_out(int button, int x, int y, void *param);

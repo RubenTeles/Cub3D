@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 10:01:34 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:22:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	new_canva(void)
 	&(canva())->data->bits_per_pixel, &(canva())->data->line_length, \
 	&(canva())->data->endian);
 	(canva())->data->next = NULL;
-	(canva())->rsz[X] = (engine())->size[X] / (engine())->max[X];
-	(canva())->rsz[Y] = (engine())->size[Y] / (engine())->max[Y];
+	(canva())->rsz[X] = 0;
+	(canva())->rsz[Y] = 0;
 	(canva())->sprite = ft_sprite;
 	(canva())->getPxColor = get_pixel_color;
 	(canva())->put_pixel = my_mlx_pixel_put;
