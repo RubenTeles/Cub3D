@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c_map.c                                         :+:      :+:    :+:   */
+/*   c_map.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 15:24:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,9 @@ void	ft_print_map(char sprite, int x, int y)
 {
 	t_data	*data;
 
-	data = (canva())->search(sprite);
-	if (!data && sprite != ' ' && sprite != '0')
-		data = (canva())->create(sprite);
+	data = (canva())->sprite(sprite);
 	if (!data)
-	{
-		if (sprite == '0' || sprite == ' ')
-			return ;
-		printf("Erro: '%c' não existe!\n", sprite);
 		return ;
-	}
 	if (data->title == 'M')
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
 	else if (data->title == 'N')
@@ -75,6 +68,7 @@ void	create_images_map(char **map, int avatar)
 		while (map[y][++x])
 		{
 			title_image = map[y][x];
+			(void)avatar;
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
 				|| title_image == 'E') && avatar == 0)
 					continue ;

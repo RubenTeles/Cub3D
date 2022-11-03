@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 15:51:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 17:06:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define PIG 'p'
 #define DOOR 'd'
 #define MAP 'M'
+#define HAND 'H'
 
 char	*ft_path(char sprite)
 {
@@ -27,6 +28,8 @@ char	*ft_path(char sprite)
 		return ("pig/s");
 	if (sprite == MAP)
 		return ("./sprite/item/map.xpm");
+	if (sprite == HAND)
+		return ("./sprite/wolf/hand0(1).xpm");
 	if (sprite == DOOR)
 		return ("door");
 	return (0);
@@ -46,7 +49,7 @@ void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
 	}
 }
 
-void	ft_sprite(char sprite, int x, int y)
+t_data	*ft_sprite(char sprite)
 {
 	t_data	*data;
 
@@ -56,10 +59,15 @@ void	ft_sprite(char sprite, int x, int y)
 	if (!data)
 	{
 		if (sprite == '0' || sprite == ' ')
-			return ;
+			return (0);
 		printf("Erro: '%c' não existe!\n", sprite);
-		return ;
+		return (0);
 	}
+	return (data);
+}
+
+void	ft_put_canva(t_data *data, int x, int y)
+{
 	if (data->title == 'M')
 		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
 	else if (data->title == 'N')
@@ -72,5 +80,5 @@ void	ft_sprite(char sprite, int x, int y)
 	}
 	else
 		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
-		(canva())->rsz[X], y * (canva())->rsz[Y]);	
+		(canva())->rsz[X], y * (canva())->rsz[Y]);
 }

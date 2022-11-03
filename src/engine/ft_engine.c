@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 15:36:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 17:20:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	loop_game(char **map)
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
 		ft_background();
-		time += 0.5;
+		ft_hands();
+		time += (engine())->count * 0.001;
 		a = 1;
 		if ((engine())->map)
 		{

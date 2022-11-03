@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 15:54:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 16:50:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ struct s_canva
 {
 	t_data		*data;
 	int			rsz[2];
-	void		(*sprite)(char sprite, int x, int y);
+	t_data		*(*sprite)(char sprite);
+	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
@@ -96,7 +97,8 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
 void			resize_image(t_data *img, double larg, double alt, int pos_x, \
 int pos_y);
-void			ft_sprite(char sprite, int x, int y);
+t_data			*ft_sprite(char sprite);
+void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
 				int color);
 char			*ft_path(char sprite);
@@ -115,6 +117,7 @@ unsigned char	get_b(int trgb);
 //Map
 void			create_images_map(char **map, int avatar);
 void			ft_background(void);
+void			ft_hands(void);
 
 //Keys
 int				key_press_no_repeat(int keycode, char **map);

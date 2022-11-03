@@ -12,6 +12,7 @@ B = Bush
 C = Cristal
 D = Door
 E = [Player] (East)
+H = Hand (DONT'T USE) *
 N = [Player] (Nort)
 M = MAP (DON'T USE)  *
 R = Rock
