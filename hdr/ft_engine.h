@@ -6,13 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 00:50:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 15:54:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ENGINE_H
 # define FT_ENGINE_H
 
+# include <sys/time.h>
 # include <ft_cub.h>
 
 typedef struct s_engine				t_engine;
@@ -58,6 +59,10 @@ struct s_engine
 	int			max[2];
 	int			count;
 	int			pos[2];
+	int			map;
+	long int	time;
+	long int	dif_time;
+	int			sprt_for_sec;
 };
 
 struct s_canva
@@ -92,6 +97,8 @@ int				get_pixel_color(t_data *data, int x, int y);
 void			resize_image(t_data *img, double larg, double alt, int pos_x, \
 int pos_y);
 void			ft_sprite(char sprite, int x, int y);
+void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
+				int color);
 char			*ft_path(char sprite);
 t_data			*create_sprite(char sprite);
 t_data			*search_sprite(char sprite);
@@ -106,7 +113,8 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 //Map
-void			create_images_map(char **map);
+void			create_images_map(char **map, int avatar);
+void			ft_background(void);
 
 //Keys
 int				key_press_no_repeat(int keycode, char **map);

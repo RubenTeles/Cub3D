@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 00:52:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 14:57:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,15 @@
 //Apenas aceita uma vez
 int	key_press_no_repeat(int keycode, char **map)
 {
-	static int key_m = 0;
-
+	(void)map;
 	if (keycode == ESC)
 		return (end_game());
 	if (keycode == KEY_M)
 	{
-		if (key_m == 0)
-		{
-			//repeat
-			create_images_map(map);
-			mlx_put_image_to_window((engine())->ptr, (engine())->win,\
-				(canva())->data->img, 0, 0);
-			key_m = 1;
-		}
+		if ((engine())->map == 0)
+			(engine())->map = 1;
 		else
-		{
-			//no repeat
-			key_m = 0;
-		}
+			(engine())->map = 0;
 	}
 	return (0);
 }

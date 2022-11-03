@@ -6,43 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/02 23:15:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/03 15:45:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
-/*
-static void	read_map(char **map)
-{
-	int	x;
-	int	y;
 
-	y = -1;
-	while (map[++y])
-	{		
-		x = (string()).len(map[y]);
-		if (x > (engine())->max[X])
-			(engine())->max[X] = x;
-	}
-	(engine())->max[Y] = y;
-}*/
-/*
-static void	create_images_map(char **map)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (map[++y])
-	{		
-		x = -1;
-		while (map[y][++x])
-			(canva())->sprite(map[y][x], x, y);
-	}
-	(engine())->max[Y] = y;
-}*/
-/*
 static void	colors_floor_ceilling(char **floor, char **ceilling)
 {
 	char	r;
@@ -57,7 +27,7 @@ static void	colors_floor_ceilling(char **floor, char **ceilling)
 	g = (string()).atoi(ceilling[1]);
 	b = (string()).atoi(ceilling[2]);
 	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
-}*/
+}
 
 void	new_engine(t_all *all, int larg, int alt)
 {
@@ -67,15 +37,16 @@ void	new_engine(t_all *all, int larg, int alt)
 		return ;
 	(engine())->size[X] = larg;
 	(engine())->size[Y] = alt;
-	/*(engine())->max[X] = -1;
+	(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
-	read_map(all->map);*/
 	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X], \
 		(engine())->size[Y], "WOLF EAT PIG'S");
-	//colors_floor_ceilling(all->file->f, all->file->c);
+	colors_floor_ceilling(all->file->f, all->file->c);
+	(engine())->map = 0;
+	(engine())->time = 0;
+	(engine())->count = -1;
+	(engine())->sprt_for_sec = 6;
 	new_canva();
-	//create_images_map(all->map);
-	//(engine())->game = NULL;
 }
 
 t_engine	*engine(void)
