@@ -1,11 +1,11 @@
 
-NO ./ex.cub
-SO ./ex.cub
-WE ./ex.cub
-EA ./ex.cub
+NO ./sprite/forest.xpm
+SO ./sprite/forest.xpm
+WE ./sprite/forest.xpm
+EA ./sprite/forest.xpm
  
-F 220,100,250
-C 225,30,0
+F 86,125,70
+C 135,206,235
 
   11111111  
   10N10011  

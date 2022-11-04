@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/04 17:00:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:37:12 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ typedef struct s_algrithm
 	int		step_y;
 	int		hit;
 	int		side;
+	int		ln_hgt;
+	int		draw_str;
+	int		draw_end;
 }			t_algorithm;
 
 typedef struct s_caster
