@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 17:20:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/04 01:17:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	loop_game(char **map)
 {
 	static double	time = 0;
 	static int		a = 0;
-	static int		avatar = 0;
 
 	if ((engine())->count < 0 ||\
 		(engine())->count > (1000 / (engine())->sprt_for_sec))
@@ -43,18 +42,11 @@ int	loop_game(char **map)
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
 		ft_background();
-		ft_hands();
+		ft_hands(0.001);
 		time += (engine())->count * 0.001;
 		a = 1;
 		if ((engine())->map)
-		{
-			if (avatar == 0)
-				avatar = 1;
-			else
-				avatar = 0;
-			create_images_map(map, avatar);
-			printf("map print\n");
-		}
+			create_images_map(map);
 		printf("%fs\n", time);
 	}
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 16:50:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/04 01:50:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
 void			resize_image(t_data *img, double larg, double alt, int pos_x, \
 int pos_y);
+void	rev_resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
 t_data			*ft_sprite(char sprite);
 void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
@@ -115,9 +116,9 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 //Map
-void			create_images_map(char **map, int avatar);
+void			create_images_map(char **map);
 void			ft_background(void);
-void			ft_hands(void);
+void			ft_hands(double move);
 
 //Keys
 int				key_press_no_repeat(int keycode, char **map);

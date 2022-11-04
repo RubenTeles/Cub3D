@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 17:06:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/04 02:05:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define DOOR 'd'
 #define MAP 'M'
 #define HAND 'H'
+#define NICE 'n'
 
 char	*ft_path(char sprite)
 {
@@ -24,14 +25,16 @@ char	*ft_path(char sprite)
 		return ("./sprite/wolf/head1.xpm");
 	if (sprite == FOREST)
 		return ("./sprite/item/tree_02.xpm");
-	if (sprite == PIG)
-		return ("pig/s");
+	/*if (sprite == PIG)
+		return ("pig/s");*/
 	if (sprite == MAP)
 		return ("./sprite/item/map.xpm");
 	if (sprite == HAND)
-		return ("./sprite/wolf/hand0(1).xpm");
-	if (sprite == DOOR)
-		return ("door");
+		return ("./sprite/wolf/hand_1.xpm");
+	if (sprite == NICE)
+		return ("./sprite/wolf/hand_nice.xpm");
+	/*if (sprite == DOOR)
+		return ("door");*/
 	return (0);
 }
 

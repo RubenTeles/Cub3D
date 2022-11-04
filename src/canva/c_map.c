@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 16:45:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/04 00:59:34 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,17 @@ void	ft_print_map(char sprite, int x, int y)
 		(canva())->rsz[X], y * (canva())->rsz[Y]);	
 }
 
-void	create_images_map(char **map, int avatar)
+void	create_images_map(char **map)
 {
-	int		x;
-	int		y;
-	char	title_image;
+	int				x;
+	int				y;
+	char			title_image;
+	static int		avatar = 0;
 
+	if (avatar == 0)
+		avatar = 1;
+	else
+		avatar = 0;
 	(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
 	read_map(map);
