@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:05:02 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/02 18:27:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:19:19 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,20 @@ void	ft_start_caster(void)
 
 	all()->caster.player.pos_x = all()->player.x;
 	all()->caster.player.pos_y = all()->player.y;
+	printf("sddd\n");
 	dir = all()->map[all()->player.x][all()->player.y];
-	printf("%c\n", dir);
-	/*
-	east = (-1, 0)
-	west = (1, 0)
-	north = (0, 1)
-	south = (0, -1)
-	*/
+	if (dir == 'N' || dir == 'S')
+		all()->caster.player.dir_x = 0;
+	if (dir == 'W' || dir == 'E')
+		all()->caster.player.dir_y = 0;
+	if (dir == 'W')
+		all()->caster.player.dir_x = 1;
+	if (dir == 'E')
+		all()->caster.player.dir_x = -1;
+	if (dir == 'N')
+		all()->caster.player.dir_y = 1;
+	if (dir == 'S')
+		all()->caster.player.dir_y = -1;
 }
 
 void	ft_view_init(void)
