@@ -3,25 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 09:56:57 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/04 01:50:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ENGINE_H
 # define FT_ENGINE_H
 
+# include <sys/time.h>
 # include <ft_cub.h>
+
+typedef struct s_engine				t_engine;
+typedef struct s_canva				t_canva;
+typedef struct s_data				t_data;
+typedef struct s_player				t_player;
 
 # define X 0
 # define Y 1
 # define FLOOR 0
 # define CEILLING 1
-# define BUFFERSIZE 9999
+# define ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_M 109
+# define BUTTON_RIGHT 3
+# define BUTTON_LEFT 1
 
-typedef struct s_data
+struct s_data
 {
 	char			title;
 	void			*img;
@@ -32,10 +45,10 @@ typedef struct s_data
 	char			*path;
 	int				larg;
 	int				alt;
-	struct s_data	*next;
-}					t_data;
+	t_data			*next;
+};
 
-typedef struct s_engine
+struct s_engine
 {
 	void		*ptr;
 	void		*win;
@@ -46,13 +59,18 @@ typedef struct s_engine
 	int			max[2];
 	int			count;
 	int			pos[2];
-}				t_engine;
+	int			map;
+	long int	time;
+	long int	dif_time;
+	int			sprt_for_sec;
+};
 
-typedef struct s_canva
+struct s_canva
 {
 	t_data		*data;
 	int			rsz[2];
-	void		(*sprite)(char sprite, int x, int y);
+	t_data		*(*sprite)(char sprite);
+	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
@@ -61,7 +79,7 @@ typedef struct s_canva
 	t_data		*(*search)(char sprite);
 	t_data		*(*last)(void);
 	void		(*destroy)(void);
-}				t_canva;
+};
 
 /*
 struct s_player
@@ -79,7 +97,11 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
 void			resize_image(t_data *img, double larg, double alt, int pos_x, \
 int pos_y);
-void			ft_sprite(char sprite, int x, int y);
+void	rev_resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
+t_data			*ft_sprite(char sprite);
+void			ft_put_canva(t_data *data, int x, int y);
+void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
+				int color);
 char			*ft_path(char sprite);
 t_data			*create_sprite(char sprite);
 t_data			*search_sprite(char sprite);
@@ -93,8 +115,17 @@ unsigned char	get_r(int trgb);
 unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
+//Map
+void			create_images_map(char **map);
+void			ft_background(void);
+void			ft_hands(double move);
+
 //Keys
-int				key_hook_mode1(int keycode, void *all);
+int				key_press_no_repeat(int keycode, char **map);
+int 			key_press(int keycode, void *param);
+int				key_mouse_press(int button, int x, int y, void *param);
+int 			key_mouse_out(int button, int x, int y, void *param);
+int				key_mouse_move(int x, int y, void *param);
 
 //End
 int				end_game(void);

@@ -6,42 +6,12 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/04 18:58:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/04 19:18:13 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
-
-static void	read_map(char **map)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (map[++y])
-	{		
-		x = (string()).len(map[y]);
-		if (x > (engine())->max[X])
-			(engine())->max[X] = x;
-	}
-	(engine())->max[Y] = y;
-}
-
-static void	create_images_map(char **map)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (map[++y])
-	{		
-		x = -1;
-		while (map[y][++x])
-			(canva())->sprite(map[y][x], x, y);
-	}
-	(engine())->max[Y] = y;
-}
 
 static void	colors_floor_ceilling(char **floor, char **ceilling)
 {
@@ -61,20 +31,22 @@ static void	colors_floor_ceilling(char **floor, char **ceilling)
 
 void	new_engine(t_all *all, int larg, int alt)
 {
+	(void)all;
 	(engine())->ptr = mlx_init();
 	if (!engine()->ptr)
 		return ;
-	(engine())->max[X] = -1;
-	(engine())->max[Y] = -1;
-	read_map(all->map);
 	(engine())->size[X] = larg;
 	(engine())->size[Y] = alt;
+	(engine())->max[X] = -1;
+	(engine())->max[Y] = -1;
 	(engine())->win = mlx_new_window((engine())->ptr, (engine())->size[X], \
 		(engine())->size[Y], "WOLF EAT PIG'S");
 	colors_floor_ceilling(all->file->f, all->file->c);
+	(engine())->map = 0;
+	(engine())->time = 0;
+	(engine())->count = -1;
+	(engine())->sprt_for_sec = 7;
 	new_canva();
-	create_images_map(all->map);
-	(engine())->game = NULL;
 }
 
 t_engine	*engine(void)
