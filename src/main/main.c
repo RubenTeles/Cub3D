@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/03 17:19:12 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/04 16:19:29 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main(int argc, char **argv)
 		(all())->file = ft_check_map(argc, argv);
 	if (!(all())->file)
 		return (0);
+	all()->map = ft_lst_toarr(all());
 	ft_start_caster();
 	/*if (ft_start(&all))
 	{
@@ -85,6 +86,7 @@ int	main(int argc, char **argv)
 		ft_free_map_inf(all.file);
 	}*/
 	ft_view_init();
+	mlx_loop(all()->caster.scrn.mlx);
 	array().free(file);
 	array().free(all()->map);
 	ft_free_map_inf(all()->file);

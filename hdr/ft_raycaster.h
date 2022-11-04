@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 18:28:39 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:00:04 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,28 @@ typedef struct s_image
 	int		endian;
 }			t_img;
 
+typedef struct s_algrithm
+{
+	int		map_x;
+	int		map_y;
+	double	side_x;
+	double	side_y;
+	double	delta_x;
+	double	delta_y;
+	double	wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+}			t_algorithm;
+
 typedef struct s_caster
 {
 	t_img		img;
 	t_screen	scrn;
 	t_view		view;
 	t_player	player;
+	t_algorithm	alg;
 }				t_caster;
 
 #endif
