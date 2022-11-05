@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/03 14:57:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 21:00:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	key_press_no_repeat(int keycode, char **map)
 		else
 			(engine())->map = 0;
 	}
+	if (keycode == KEY_ENTER && (engine())->menu)
+		(engine())->menu = 0;
 	return (0);
 }
 
@@ -62,11 +64,9 @@ int key_mouse_out(int button, int x, int y, void *param)
 	(void)param;
 	(void)x;
 	(void)y;
-	
 
 	if (button == BUTTON_RIGHT)
 		printf("Right Button OUT\n");
-		
 	return (0);
 }
 
@@ -81,15 +81,11 @@ int key_mouse_move(int x, int y, void *param)
 	return (0);
 }
 /*
-int key_mouse_move(int x, int y, void *param)
+int begin(void *param)
 {
 	(void)param;
-	(void)x;
-	(void)y;
+	int		i;
 
-	//printf("X: %i Y: %i\n", x, y);
-	//printf("Button: %i X: %i Y: %i\n", button, x, y);
-	//mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-*/
+	i = 
+}*/
+

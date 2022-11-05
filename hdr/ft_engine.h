@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 14:41:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 23:02:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_player				t_player;
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_M 109
+# define KEY_ENTER 65293
 # define BUTTON_RIGHT 3
 # define BUTTON_LEFT 1
 
@@ -63,6 +64,7 @@ struct s_engine
 	long int	time;
 	long int	dif_time;
 	int			sprt_for_sec;
+	int			menu;
 };
 
 struct s_canva
@@ -106,7 +108,8 @@ char			*ft_path(char sprite);
 t_data			*create_sprite(char sprite);
 t_data			*search_sprite(char sprite);
 t_data			*last_sprite(void);
-int	put_clouds(t_data *img, int x, int pos_x);
+int				put_clouds(t_data *img, int x, int pos_x);
+void			ft_initial_menu(double move);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -120,13 +123,15 @@ unsigned char	get_b(int trgb);
 void			create_images_map(char **map);
 void			ft_background(double move);
 void			ft_hands(double move);
+void			ft_minimap(void);
 
-//Keys
+//Events
 int				key_press_no_repeat(int keycode, char **map);
 int 			key_press(int keycode, void *param);
 int				key_mouse_press(int button, int x, int y, void *param);
 int 			key_mouse_out(int button, int x, int y, void *param);
 int				key_mouse_move(int x, int y, void *param);
+int 			begin(void *param);
 
 //End
 int				end_game(void);
