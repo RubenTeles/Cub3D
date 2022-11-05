@@ -8,12 +8,14 @@ N S W E = wolf (directions)
 ' ' = Nothing
 
 --- Item's --- (UPPER CASE)
-A = CLOUD (DONT'T USE)	*
 B = Bush
 C = Cristal
 D = Door
 E = [Player] (East)
 H = Hand (DONT'T USE)	*
+I = CLOUD_1 (DONT'T USE)*
+J = CLOUD_2 (DONT'T USE)*
+K = CLOUD_3 (DONT'T USE)*
 N = [Player] (Nort)
 M = MAP (DON'T USE)		*
 R = Rock

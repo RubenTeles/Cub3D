@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 17:01:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:03:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,6 @@
 #define CLOUD_1 'I'
 #define CLOUD_2 'J'
 #define CLOUD_3 'K'
-
-/*
-void	put_clouds(t_data *img, double larg, double alt, int pos_x, int pos_y)
-{
-	int		x;
-	int		y;
-	int		color;
-	double	x_red;
-	double	y_red;
-	int		animation_x;
-
-	x_red = 0;
-	y_red = 0;
-	y = -1;
-	while (++y <= alt)
-	{
-		x = -1;
-		x_red = 0;
-		while (++x <= larg)
-		{
-			color = get_pixel_color(img, x_red, y_red);
-			animation_x = x + pos_x;
-			if (animation_x > (engine())->size[X])
-				animation_x = animation_x - (engine())->size[X] - 1;
-			if (color > 0)
-				my_mlx_pixel_put((canva())->data, animation_x, y + pos_y, color);
-			x_red += img->larg / larg;
-		}
-		y_red += img->alt / alt;
-	}
-}*/
-
 
 int	put_clouds(t_data *img, int x, int pos_x)
 {
