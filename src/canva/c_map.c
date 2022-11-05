@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/04 00:59:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 13:28:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	create_images_map(char **map)
 		while (map[y][++x])
 		{
 			title_image = map[y][x];
-			(void)avatar;
+			if (title_image == '1')
+				title_image = 'T';
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
 				|| title_image == 'E') && avatar == 0)
 					continue ;

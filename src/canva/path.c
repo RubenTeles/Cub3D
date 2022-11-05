@@ -3,30 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/04 19:17:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:22:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
 #define FOREST '1'
-#define PIG 'p'
 #define DOOR 'd'
-#define MAP 'M'
-#define HAND 'H'
 #define NICE 'n'
+#define PIG 'p'
+#define HAND 'H'
+#define CLOUD_1 'I'
+#define CLOUD_2 'J'
+#define CLOUD_3 'K'
+#define MAP 'M'
+#define TREE 'T'
 
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
 		return ("./sprite/wolf/head1.xpm");
-	if (sprite == FOREST)
+	if (sprite == TREE)
 		return ("./sprite/item/tree_02.xpm");
 	/*if (sprite == PIG)
 		return ("pig/s");*/
+	if (sprite == CLOUD_1)
+		return ("./sprite/item/cloud_1.xpm");
+	if (sprite == CLOUD_2)
+		return ("./sprite/item/cloud_2.xpm");
+	if (sprite == CLOUD_3)
+		return ("./sprite/item/cloud_3.xpm");
 	if (sprite == MAP)
 		return ("./sprite/item/map.xpm");
 	if (sprite == HAND)
