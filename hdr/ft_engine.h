@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/04 01:50:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 14:41:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char			*ft_path(char sprite);
 t_data			*create_sprite(char sprite);
 t_data			*search_sprite(char sprite);
 t_data			*last_sprite(void);
+int	put_clouds(t_data *img, int x, int pos_x);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -117,7 +118,7 @@ unsigned char	get_b(int trgb);
 
 //Map
 void			create_images_map(char **map);
-void			ft_background(void);
+void			ft_background(double move);
 void			ft_hands(double move);
 
 //Keys

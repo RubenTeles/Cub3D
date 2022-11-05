@@ -12,14 +12,17 @@ B = Bush
 C = Cristal
 D = Door
 E = [Player] (East)
-H = Hand (DONT'T USE) *
+H = Hand (DONT'T USE)	*
+I = CLOUD_1 (DONT'T USE)*
+J = CLOUD_2 (DONT'T USE)*
+K = CLOUD_3 (DONT'T USE)*
 N = [Player] (Nort)
-M = MAP (DON'T USE)  *
+M = MAP (DON'T USE)		*
 R = Rock
 S = [Player] (South)
-T = Tree
+T = TREE
 W = [Player] (West)
-Z = canva (DON'T USE) *
+Z = canva (DON'T USE)	*
 
 --- Enimies --- (DOWN CASE)
 b = bull
@@ -30,8 +33,8 @@ p = pig (need separate in 3)
 s = sheep
 
 --- Background --- (Number's)
-0 = floor (color)
-1 = background (color);
+0 = FLOOR
+1 = FOREST
 
 -- Wall -- (2 - 5)
 2 = Forest

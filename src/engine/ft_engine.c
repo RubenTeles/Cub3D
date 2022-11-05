@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 13:10:25 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/05 21:48:39 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,9 @@ int	loop_game(char **map)
 		(engine())->time = time_current();
 	}
 	(engine())->count = time_diff((engine())->time, time_current());
-	
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
-		ft_background();
+		ft_background(0.001);
 		ft_hands(0.001);
 		time += (engine())->count * 0.001;
 		a = 1;

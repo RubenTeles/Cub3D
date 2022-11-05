@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/04 19:23:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/05 12:30:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	if (!(all())->file)
 		return (0);
 	all()->map = ft_lst_toarr(all());
-	// ft_start_caster();
+	//ft_start_caster();
 	if (ft_start(all()))
 	{
 		array().free(file);

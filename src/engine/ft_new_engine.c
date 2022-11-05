@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_engine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/04 19:18:13 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:43:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	new_engine(t_all *all, int larg, int alt)
 	(engine())->map = 0;
 	(engine())->time = 0;
 	(engine())->count = -1;
-	(engine())->sprt_for_sec = 7;
+	(engine())->sprt_for_sec = 10;
 	new_canva();
 }
 

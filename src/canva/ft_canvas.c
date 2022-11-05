@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 12:40:53 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/05 21:48:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	new_canva(void)
 	(canva())->data->img = mlx_new_image((engine())->ptr, (engine())->size[X], \
 	(engine())->size[X]);
 	(canva())->data->larg = (engine())->size[X];
-	(canva())->data->alt = (engine())->size[X];
+	(canva())->data->alt = (engine())->size[Y];
 	(canva())->data->addr = mlx_get_data_addr((canva())->data->img, \
 	&(canva())->data->bits_per_pixel, &(canva())->data->line_length, \
 	&(canva())->data->endian);
