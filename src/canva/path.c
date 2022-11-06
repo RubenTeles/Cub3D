@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 23:01:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/06 18:19:24 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 #define MAP 'M'
 #define WALK 'Q'
 #define TREE 'T'
+#define N_WALL 'N'
+#define S_WALL 'S'
+#define W_WALL 'W'
+#define E_WALL 'E'
+
 
 #define AVATAR 'X'
 
@@ -56,6 +61,15 @@ char	*ft_path(char sprite)
 		return ("./sprite/wolf/head1.xpm");
 	if (sprite == WALK)
 		return ("./sprite/wolf/wolf_walk.xpm");
+	if (sprite == N_WALL)
+		return (all()->file->no);
+	if (sprite == S_WALL)
+		return (all()->file->so);
+	if (sprite == W_WALL)
+		return (all()->file->we);
+	if (sprite == E_WALL)
+		return (all()->file->ea);
+
 	/*if (sprite == DOOR)
 		return ("door");*/
 	return (0);
