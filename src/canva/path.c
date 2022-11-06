@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 16:22:23 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/05 23:01:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,25 @@
 #define FOREST '1'
 #define DOOR 'd'
 #define NICE 'n'
+#define MINIMAP 'm'
 #define PIG 'p'
+#define MENU 'A'
 #define HAND 'H'
 #define CLOUD_1 'I'
 #define CLOUD_2 'J'
 #define CLOUD_3 'K'
 #define MAP 'M'
+#define WALK 'Q'
 #define TREE 'T'
+
+#define AVATAR 'X'
 
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
 		return ("./sprite/wolf/head1.xpm");
+	if (sprite == MENU)
+		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
 		return ("./sprite/item/tree_02.xpm");
 	/*if (sprite == PIG)
@@ -39,10 +46,16 @@ char	*ft_path(char sprite)
 		return ("./sprite/item/cloud_3.xpm");
 	if (sprite == MAP)
 		return ("./sprite/item/map.xpm");
+	if (sprite == MINIMAP)
+		return ("./sprite/item/minimap.xpm");
 	if (sprite == HAND)
 		return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == NICE)
 		return ("./sprite/wolf/hand_nice.xpm");
+	if (sprite == AVATAR)
+		return ("./sprite/wolf/head1.xpm");
+	if (sprite == WALK)
+		return ("./sprite/wolf/wolf_walk.xpm");
 	/*if (sprite == DOOR)
 		return ("door");*/
 	return (0);

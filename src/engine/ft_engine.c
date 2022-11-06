@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 21:48:39 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:36:16 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
+int menu_game(void)
+{
+	static int	a = 0;
+	int			i;
+
+	ft_initial_menu(0.01);
+	if (a == 0)
+	{
+		//i = system("paplay src/music/pMLWWiBvWX8_48.ogg");
+		a = 1;
+	}
+	(void)i;
+	return (0);
+}
+
 int	loop_game(char **map)
 {
 	static double	time = 0;
@@ -40,8 +55,11 @@ int	loop_game(char **map)
 	(engine())->count = time_diff((engine())->time, time_current());
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
+		if ((engine())->menu)
+			return (menu_game());
 		ft_background(0.001);
 		ft_hands(0.001);
+		ft_minimap();
 		time += (engine())->count * 0.001;
 		a = 1;
 		if ((engine())->map)
@@ -71,8 +89,3 @@ int	ft_start(t_all *all)
 	mlx_loop((engine())->ptr);
 	return (0);
 }
-/*
-int	ft_game(t_all *all)
-{
-	
-}*/

@@ -8,6 +8,7 @@ N S W E = wolf (directions)
 ' ' = Nothing
 
 --- Item's --- (UPPER CASE)
+A = MENU BACKGROUND (DON'T USE) *
 B = Bush
 C = Cristal
 D = Door
@@ -29,6 +30,8 @@ b = bull
 c = chicken
 d = donkey
 g = goat
+n = NICE    (DONT'T USE)*
+m = MINIMAP (DONT'T USE)*
 p = pig (need separate in 3)
 s = sheep
 
