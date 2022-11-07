@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 23:02:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:38:59 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void			create_images_map(char **map);
 void			ft_background(double move);
 void			ft_hands(double move);
 void			ft_minimap(void);
+void			ft_walls(void);
 
 //Events
 int				key_press_no_repeat(int keycode, char **map);
