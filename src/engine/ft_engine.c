@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 18:50:12 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 22:25:42 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int menu_game(void)
 	//int			i;
 
 	ft_initial_menu(0.01);
-	ft_alpabeth(0);
+	ft_words_menu();
 	i++;
 	if (a == 0)
 	{

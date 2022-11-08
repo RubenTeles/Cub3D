@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 21:48:27 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 22:25:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ void	new_canva(void)
 	&(canva())->data->bits_per_pixel, &(canva())->data->line_length, \
 	&(canva())->data->endian);
 	(canva())->data->next = NULL;
+	(canva())->alphabet = NULL;
 	(canva())->rsz[X] = 0;
 	(canva())->rsz[Y] = 0;
 	(canva())->sprite = ft_sprite;
 	(canva())->getPxColor = get_pixel_color;
 	(canva())->put_pixel = my_mlx_pixel_put;
 	(canva())->resize = resize_image;
-	(canva())->create = create_sprite;
+	(canva())->create_sprite = create_sprite;
+	(canva())->create_alphabet = create_alphabet;
 	(canva())->search = search_sprite;
 	(canva())->last = last_sprite;
 	(canva())->destroy = __destroy;
