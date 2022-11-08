@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 23:04:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 00:24:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ long long	time_diff(long long past, long long pres)
 int menu_game(void)
 {
 	static int	a = 0;
-	int			i;
+	static int	i = 0;
+	//int			i;
 
 	ft_initial_menu(0.01);
+	ft_alpabeth(0);
+	i++;
 	if (a == 0)
 	{
 		//i = system("paplay src/music/pMLWWiBvWX8_48.ogg");
@@ -59,7 +62,7 @@ int	loop_game(char **map)
 			return (menu_game());
 		ft_background(0.001);
 		ft_hands(0.001);
-		ft_minimap();
+		ft_minimap(map);
 		time += (engine())->count * 0.001;
 		a = 1;
 		if ((engine())->map)

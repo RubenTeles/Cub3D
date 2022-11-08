@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 23:05:00 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 00:25:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	new_engine(t_all *all, int larg, int alt)
 	(engine())->time = 0;
 	(engine())->count = -1;
 	(engine())->sprt_for_sec = 10;
-	(engine())->menu = 0;
+	(engine())->menu = 1;
 	new_canva();
 }
 

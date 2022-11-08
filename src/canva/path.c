@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 23:01:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:20:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@
 #define CLOUD_2 'J'
 #define CLOUD_3 'K'
 #define MAP 'M'
+#define ALPHABET 'P'
 #define WALK 'Q'
 #define TREE 'T'
-
+#define SIGN 'U'
 #define AVATAR 'X'
 
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/wolf/head1.xpm");
+		return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
@@ -56,6 +57,10 @@ char	*ft_path(char sprite)
 		return ("./sprite/wolf/head1.xpm");
 	if (sprite == WALK)
 		return ("./sprite/wolf/wolf_walk.xpm");
+	if (sprite == SIGN)
+		return ("./sprite/item/sign.xpm");
+	if (sprite == ALPHABET)
+		return ("./sprite/item/alphabet.xpm");
 	/*if (sprite == DOOR)
 		return ("door");*/
 	return (0);
