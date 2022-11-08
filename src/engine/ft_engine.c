@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 00:24:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 18:12:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int menu_game(void)
 	//int			i;
 
 	ft_initial_menu(0.01);
-	ft_alpabeth(0);
+	ft_words_menu();
 	i++;
 	if (a == 0)
 	{

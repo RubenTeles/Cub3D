@@ -6,140 +6,69 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 00:25:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 19:07:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-#define ALPHABET 'P'
-
-void	x_alphabet_image(t_data *img, double larg, double alt, int pos_x, int pos_y)
+t_data	*create_alphabet(char c)
 {
-	int		x;
-	int		y;
-	int		color;
-	double	x_red;
-	double	y_red;	
+	t_data	*letter;
 
-	x_red = 0;
-	y_red = 0;
-	y = -1;
-	while (++y <= img->start_pos[Y])
+	letter = malloc(sizeof(t_data));
+	if (!letter)
+		return (0);
+	letter->title = c;
+	letter->path = path_alphabet(c);
+	letter->img = mlx_xpm_file_to_image((engine())->ptr, letter->path,\
+		&letter->larg, &letter->alt);
+	if (!letter->img)
 	{
-		x = -1;
-		x_red = 0;
-		while (++x <= img->start_pos[X])
-		{
-			color = get_pixel_color(img, x_red, y_red);
-			if (color > 0)
-				my_mlx_pixel_put((canva())->data, x + pos_x,\
-					y + pos_y, color);
-			x_red += img->larg / larg;
-		}
-		y_red += img->alt / alt;
+		printf("Erro: '%c' não existe!\n", c);
+		free(letter);
+		return (0);
 	}
+	letter->addr = mlx_get_data_addr(letter->img, &letter->bits_per_pixel,\
+		&letter->line_length, &letter->endian);
+	letter->next = NULL;
+	if ((canva())->search((canva())->alphabet, c))
+		(canva())->last((canva())->alphabet)->next = letter;
+	else
+		(canva())->alphabet = letter;
+	return (letter);
 }
 
-
-void	ft_alpabeth(int	letter)
+t_data	*ft_alphabet(char c)
 {
-	(void)letter;
-	/*t_data	*data;
-	int		x;
-	int		y;
-	int		color;
-	int		letter_x;
-	int		letter_y;
-	int		x_red;
-	int		y_red;	
+	t_data	*data;
 
-	//letter = 21;
-	x_red = 0;
-	letter_y = letter / 7;
-	letter_x = letter - letter_y * 7;
-	//printf("X: %i Y: %i\n", letter_x, letter_y);
-	data = (canva())->sprite(ALPHABET);
+	data = (canva())->search((canva())->alphabet, c);
+	if (!data && c != ' ')
+		data = (canva())->create_alphabet(c);
 	if (!data)
-		return ;
-	// || letter == 7 6
-	if (letter >= 0 && letter <= 4)
 	{
-		data->start_pos[X] = data->larg / 8 + 2;
-		data->start_pos[Y] = data->alt / 5 + 8;
+		if (c == ' ')
+			return (0);
+		printf("Erro: '%c' não existe!\n", c);
+		return (0);
 	}
-	else if (letter == 6 || letter == 12)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5;
-	}
-	else if (letter == 5)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 + 20;
-	}
-	else if (letter == 9)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 6;
-	}
-	else if (letter >= 7 && letter <= 13)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 8;
-	}
-	else if (letter == 14)
-	{
-		data->start_pos[X] = data->larg / 8 + 10;
-		data->start_pos[Y] = data->alt / 5 - 16;
-	}
-	else if (letter == 15 || letter == 18)
-	{
-		//printf("ahah");
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 14;	
-	}
-	else if (letter == 19 || letter == 17)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 12;	
-	}
-	else if (letter >= 17 && letter <= 20)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 12;	
-	}
-	else if (letter >= 21)
-	{
-		data->start_pos[X] = data->larg / 8;
-		data->start_pos[Y] = data->alt / 5 - 15;
-	}
-	y = 20 + (data->start_pos[Y] * (letter_y));
-	if (letter == 22 || letter == 25)
-		y = (data->start_pos[Y] * letter_y) + 5;
-	y_red = 0;
-	while (++y <= data->start_pos[Y] * (1 + letter_y))
-	{
-		x_red = 0;
-		x = 28 + (data->start_pos[X] * letter_x);
-		if (letter >= 21)
-			x = (data->start_pos[X] * letter_x);
-		while (++x <= data->start_pos[X] * (1 + letter_x))
-		{
-			color = get_pixel_color(data, x, y);
-			//if (color > 0)
-				my_mlx_pixel_put((canva())->data, x_red, y_red, color);
-			x_red++;
-		}
-		y_red++;
-	}*/
-		
+	return (data);
+}
 
-		
-   // 8/6
-   // totalx / 8
-   // totaly / 6
-    //printf("Y: %i X: %i\n", data->alt/5, data->larg/8);
-	/*x_alphabet_image(data, (engine())->size[X] * 0.2, (engine())->size[Y] * 0.2,\
-		(engine())->size[X] * 0.31, (engine())->size[Y] * 0.35);*/
+void	ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y)
+{
+	int	i;
+	int	len;
+	t_data	*letter;
+	
+	len = (string()).len(str);
+	i = -1;
+	larg = larg / len;
+	while (str[++i])
+	{
+		letter = ft_alphabet(str[i]);
+		if (letter)
+			(canva())->resize(letter, larg, alt, pos_x + larg * i, pos_y);
+	}
 }

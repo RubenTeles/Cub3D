@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/07 22:30:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 18:12:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ struct s_engine
 struct s_canva
 {
 	t_data		*data;
+	t_data		*alphabet;
 	int			rsz[2];
 	t_data		*(*sprite)(char sprite);
 	void		(*put)(t_data *data, int x, int y);
@@ -78,9 +79,10 @@ struct s_canva
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-	t_data		*(*create)(char sprite);
-	t_data		*(*search)(char sprite);
-	t_data		*(*last)(void);
+	t_data		*(*create_sprite)(char sprite);
+	t_data		*(*create_alphabet)(char c);
+	t_data		*(*search)(t_data *data, char sprite);
+	t_data		*(*last)(t_data *data);
 	void		(*destroy)(void);
 };
 
@@ -106,12 +108,16 @@ void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
 				int color);
 char			*ft_path(char sprite);
+char			*path_alphabet(char	letter);
+t_data			*create_alphabet(char c);
 t_data			*create_sprite(char sprite);
-t_data			*search_sprite(char sprite);
-t_data			*last_sprite(void);
+t_data			*search_sprite(t_data *data, char sprite);
+t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
+void			ft_words_menu(void);
 void			ft_initial_menu(double move);
-void			ft_alpabeth(int letter);
+t_data			*ft_alphabet(char c);
+void			ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \

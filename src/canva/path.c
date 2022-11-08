@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/07 19:20:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 17:26:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ t_data	*ft_sprite(char sprite)
 {
 	t_data	*data;
 
-	data = (canva())->search(sprite);
+	data = (canva())->search((canva())->data, sprite);
 	if (!data && sprite != ' ' && sprite != '0')
-		data = (canva())->create(sprite);
+		data = (canva())->create_sprite(sprite);
 	if (!data)
 	{
 		if (sprite == '0' || sprite == ' ')
