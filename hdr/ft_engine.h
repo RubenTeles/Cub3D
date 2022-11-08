@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/07 17:38:59 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:48:58 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ struct s_data
 	char			*path;
 	int				larg;
 	int				alt;
+	int				start_pos[2];
 	t_data			*next;
 };
 
@@ -110,6 +111,7 @@ t_data			*search_sprite(char sprite);
 t_data			*last_sprite(void);
 int				put_clouds(t_data *img, int x, int pos_x);
 void			ft_initial_menu(double move);
+void			ft_alpabeth(int letter);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -123,8 +125,7 @@ unsigned char	get_b(int trgb);
 void			create_images_map(char **map);
 void			ft_background(double move);
 void			ft_hands(double move);
-void			ft_minimap(void);
-void			ft_walls(void);
+void			ft_minimap(char **map);
 
 //Events
 int				key_press_no_repeat(int keycode, char **map);

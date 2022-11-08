@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/07 18:21:40 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:49:57 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define CLOUD_2 'J'
 #define CLOUD_3 'K'
 #define MAP 'M'
+#define ALPHABET 'P'
 #define WALK 'Q'
 #define TREE 'T'
 #define N_WALL 'N'
@@ -31,12 +32,13 @@
 #define E_WALL 'E'
 
 
+#define SIGN 'U'
 #define AVATAR 'X'
 
 char	*ft_path(char sprite)
 {
 	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/wolf/head1.xpm");
+		return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
@@ -70,6 +72,10 @@ char	*ft_path(char sprite)
 	if (sprite == E_WALL)
 		return (all()->file->ea);
 
+	if (sprite == SIGN)
+		return ("./sprite/item/sign.xpm");
+	if (sprite == ALPHABET)
+		return ("./sprite/item/alphabet.xpm");
 	/*if (sprite == DOOR)
 		return ("door");*/
 	return (0);
