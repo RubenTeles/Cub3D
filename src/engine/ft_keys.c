@@ -6,18 +6,32 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/05 21:00:06 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 23:54:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
 //Apenas aceita uma vez
-int	key_press_no_repeat(int keycode, char **map)
+int	key_press(int keycode, char **map)
 {
 	(void)map;
 	if (keycode == ESC)
 		return (end_game());
+	if ((engine())->menu == 0)
+		return (key_press_game(keycode, 0));
+	if ((engine())->menu > 0)
+		return (key_press_menu(keycode, 0));
+	return (0);
+}
+
+//Quando pressionar uma tecla
+int key_press_game(int keycode, void *param)
+{
+	(void)param;
+	
+	if ((engine())->menu > 0)
+		return (0);
 	if (keycode == KEY_M)
 	{
 		if ((engine())->map == 0)
@@ -25,16 +39,6 @@ int	key_press_no_repeat(int keycode, char **map)
 		else
 			(engine())->map = 0;
 	}
-	if (keycode == KEY_ENTER && (engine())->menu)
-		(engine())->menu = 0;
-	return (0);
-}
-
-//Quando pressionar uma tecla
-int key_press(int keycode, void *param)
-{
-	(void)param;
-
 	if (keycode == KEY_W)
 		return (printf("KEY: W\n"));
 	if (keycode == KEY_A)
@@ -53,6 +57,8 @@ int key_mouse_press(int button, int x, int y, void *param)
 	(void)x;
 	(void)y;
 
+	if ((engine())->menu > 0)
+		return (0);
 	if (button == BUTTON_RIGHT)
 		printf("Right Button PRESS\n");
 	return (0);
@@ -65,6 +71,8 @@ int key_mouse_out(int button, int x, int y, void *param)
 	(void)x;
 	(void)y;
 
+	if ((engine())->menu > 0)
+		return (0);
 	if (button == BUTTON_RIGHT)
 		printf("Right Button OUT\n");
 	return (0);
@@ -80,12 +88,3 @@ int key_mouse_move(int x, int y, void *param)
 	//printf("X: %i Y: %i\n", x, y);
 	return (0);
 }
-/*
-int begin(void *param)
-{
-	(void)param;
-	int		i;
-
-	i = 
-}*/
-
