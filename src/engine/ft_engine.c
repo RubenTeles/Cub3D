@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 10:46:22 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:12:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	loop_game(char **map)
 		if ((engine())->menu)
 			return (menu_game((engine())->count * 0.001));
 		ft_background(0.001);
-		//ft_walls();
+		ft_walls();
 		ft_hands(0.001);
 		ft_minimap(map);
 		a = 1;

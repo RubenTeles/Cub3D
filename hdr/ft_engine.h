@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 10:46:12 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:12:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void			create_images_map(char **map);
 void			ft_background(double move);
 void			ft_hands(double move);
 void			ft_minimap(char **map);
+void			ft_walls(void);
 
 //Events
 int				key_press(int keycode, char **map);
