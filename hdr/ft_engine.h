@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 18:12:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/09 01:32:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ struct s_engine
 	int			count;
 	int			pos[2];
 	int			map;
-	long int	time;
+	double		time;
 	long int	dif_time;
 	int			sprt_for_sec;
 	int			menu;
@@ -85,6 +85,7 @@ struct s_canva
 	t_data		*(*last)(t_data *data);
 	void		(*destroy)(void);
 };
+
 
 /*
 struct s_player
@@ -114,10 +115,16 @@ t_data			*create_sprite(char sprite);
 t_data			*search_sprite(t_data *data, char sprite);
 t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
-void			ft_words_menu(void);
-void			ft_initial_menu(double move);
 t_data			*ft_alphabet(char c);
 void			ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y);
+
+//Menu
+int				ft_login(double move);
+int 			menu_game(double time);
+int 			menu_hooks(void);
+void			ft_initial_menu(double move);
+void			ft_words_menu(void);
+void			ft_head_wolf(double move);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -134,15 +141,19 @@ void			ft_hands(double move);
 void			ft_minimap(char **map);
 
 //Events
-int				key_press_no_repeat(int keycode, char **map);
-int 			key_press(int keycode, void *param);
+int				key_press(int keycode, char **map);
+int 			key_press_game(int keycode, void *param);
 int				key_mouse_press(int button, int x, int y, void *param);
 int 			key_mouse_out(int button, int x, int y, void *param);
 int				key_mouse_move(int x, int y, void *param);
 int 			begin(void *param);
+int 			key_press_menu(int keycode, void *param);
+
+//Utils
+long long		time_current(void);
+long long		time_diff(long long past, long long pres);
 
 //End
 int				end_game(void);
-
 
 #endif
