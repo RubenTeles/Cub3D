@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 01:34:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/09 16:28:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int menu_game(double time)
 	static int	a = 0;
 	static int	i = 0;
 
-	if (ft_login(0.01))
-		return (0);
+	if (ft_login(0.0017))
+		return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+			(canva())->data->img, 0, 0));
 	(engine())->time += time;
 	ft_initial_menu(0.01);
 	ft_words_menu();
@@ -74,5 +75,6 @@ int menu_game(double time)
 		a = 1;
 	}
 	(void)i;
-	return (0);
+	return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+		(canva())->data->img, 0, 0));
 }
