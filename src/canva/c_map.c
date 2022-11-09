@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/07 18:20:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/08 19:20:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_print_map(char sprite, int x, int y)
 			y * (canva())->rsz[Y] + ((canva())->rsz[Y] * 0.25));
 	else
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
-		(canva())->rsz[X], y * (canva())->rsz[Y]);	
+		(canva())->rsz[X], y * (canva())->rsz[Y]);
 }
 
 void	create_images_map(char **map)
@@ -68,6 +68,8 @@ void	create_images_map(char **map)
 	ft_print_map('M', x, y);
 	(canva())->rsz[X] = (engine())->size[X] * 0.63 / (engine())->max[X];
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.80 / (engine())->max[X];
+	ft_put_word("MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
+		0.05, (engine())->size[X] * 0.425, (engine())->size[Y] * 0.16);
 	y = -1;
 	while (map[++y])
 	{		
@@ -80,7 +82,7 @@ void	create_images_map(char **map)
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
 				|| title_image == 'E') && avatar == 0)
 					continue ;
-			ft_print_map(title_image, x + 2, y + 2);
+			ft_print_map(title_image, x + 2, y + 2.5);
 		}
 	}
 }

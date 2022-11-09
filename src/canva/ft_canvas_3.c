@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:21:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/10/31 10:00:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:25:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-
-t_data	*search_sprite(char sprite)
+t_data	*search_sprite(t_data *data, char sprite)
 {
 	t_data	*aux;
 
-	aux = (canva())->data;
+	aux = data;
 	while (aux)
 	{
 		if (aux->title && aux->title == sprite)
@@ -27,11 +26,11 @@ t_data	*search_sprite(char sprite)
 	return (NULL);
 }
 
-t_data	*last_sprite(void)
+t_data	*last_sprite(t_data *data)
 {
 	t_data	*aux;
 
-	aux = (canva())->data;
+	aux = data;
 	while (aux)
 	{
 		if (!aux->next)
@@ -62,6 +61,6 @@ t_data	*create_sprite(char sprite)
 	new->addr = mlx_get_data_addr(new->img, &new->bits_per_pixel, \
 	&new->line_length, &new->endian);
 	new->next = NULL;
-	(canva())->last()->next = new;
+	(canva())->last((canva()->data))->next = new;
 	return (new);
 }

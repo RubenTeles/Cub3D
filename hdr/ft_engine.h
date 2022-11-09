@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 18:57:39 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:33:41 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ struct s_engine
 	int			count;
 	int			pos[2];
 	int			map;
-	long int	time;
+	double		time;
 	long int	dif_time;
 	int			sprt_for_sec;
 	int			menu;
@@ -71,6 +71,7 @@ struct s_engine
 struct s_canva
 {
 	t_data		*data;
+	t_data		*alphabet;
 	int			rsz[2];
 	t_data		*(*sprite)(char sprite);
 	void		(*put)(t_data *data, int x, int y);
@@ -78,11 +79,13 @@ struct s_canva
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-	t_data		*(*create)(char sprite);
-	t_data		*(*search)(char sprite);
-	t_data		*(*last)(void);
+	t_data		*(*create_sprite)(char sprite);
+	t_data		*(*create_alphabet)(char c);
+	t_data		*(*search)(t_data *data, char sprite);
+	t_data		*(*last)(t_data *data);
 	void		(*destroy)(void);
 };
+
 
 /*
 struct s_player
@@ -106,12 +109,22 @@ void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
 				int color);
 char			*ft_path(char sprite);
+char			*path_alphabet(char	letter);
+t_data			*create_alphabet(char c);
 t_data			*create_sprite(char sprite);
-t_data			*search_sprite(char sprite);
-t_data			*last_sprite(void);
+t_data			*search_sprite(t_data *data, char sprite);
+t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
+t_data			*ft_alphabet(char c);
+void			ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y);
+
+//Menu
+int				ft_login(double move);
+int 			menu_game(double time);
+int 			menu_hooks(void);
 void			ft_initial_menu(double move);
-void			ft_alpabeth(int letter);
+void			ft_words_menu(void);
+void			ft_head_wolf(double move);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -129,15 +142,19 @@ void			ft_minimap(char **map);
 void			ft_walls(void);
 
 //Events
-int				key_press_no_repeat(int keycode, char **map);
-int 			key_press(int keycode, void *param);
+int				key_press(int keycode, char **map);
+int 			key_press_game(int keycode, void *param);
 int				key_mouse_press(int button, int x, int y, void *param);
 int 			key_mouse_out(int button, int x, int y, void *param);
 int				key_mouse_move(int x, int y, void *param);
 int 			begin(void *param);
+int 			key_press_menu(int keycode, void *param);
+
+//Utils
+long long		time_current(void);
+long long		time_diff(long long past, long long pres);
 
 //End
 int				end_game(void);
-
 
 #endif

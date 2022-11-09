@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 19:01:36 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:34:11 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ t_data	*ft_sprite(char sprite)
 {
 	t_data	*data;
 
-	data = (canva())->search(sprite);
+	data = (canva())->search((canva())->data, sprite);
 	if (!data && sprite != ' ' && sprite != '0')
-		data = (canva())->create(sprite);
+		data = (canva())->create_sprite(sprite);
 	if (!data)
 	{
 		if (sprite == '0' || sprite == ' ')

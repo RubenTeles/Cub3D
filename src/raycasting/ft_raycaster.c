@@ -6,42 +6,42 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:05:02 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/04 18:38:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:00:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_raycaster.h>
 #include <ft_cub.h>
 
-void	pixel_put(t_img *img, int pixel, int color, void *mlx)
-{
-	if (img->bits != 32)
-		color = mlx_get_color_value(mlx, color);
-	if (img->endian)
-	{
-		img->addr[pixel + 0] = (color >> 24);
-		img->addr[pixel + 1] = (color >> 16) & 0xFF;
-		img->addr[pixel + 2] = (color >> 8) & 0xFF;
-		img->addr[pixel + 3] = (color) & 0xFF;
-	}
-	else
-	{
-		img->addr[pixel + 0] = (color) & 0xFF;
-		img->addr[pixel + 1] = (color >> 8) & 0xFF;
-		img->addr[pixel + 2] = (color >> 16) & 0xFF;
-		img->addr[pixel + 3] = (color >> 24);
-	}
-}
+// void	pixel_put(t_img *img, int pixel, int color, void *mlx)
+// {
+// 	if (img->bits != 32)
+// 		color = mlx_get_color_value(mlx, color);
+// 	if (img->endian)
+// 	{
+// 		img->addr[pixel + 0] = (color >> 24);
+// 		img->addr[pixel + 1] = (color >> 16) & 0xFF;
+// 		img->addr[pixel + 2] = (color >> 8) & 0xFF;
+// 		img->addr[pixel + 3] = (color) & 0xFF;
+// 	}
+// 	else
+// 	{
+// 		img->addr[pixel + 0] = (color) & 0xFF;
+// 		img->addr[pixel + 1] = (color >> 8) & 0xFF;
+// 		img->addr[pixel + 2] = (color >> 16) & 0xFF;
+// 		img->addr[pixel + 3] = (color >> 24);
+// 	}
+// }
 
-void	ft_init_cas_values(void)
-{
-	all()->caster.scrn.hgt = 480;
-	all()->caster.scrn.wdt = 640;
-	all()->caster.view.plane_x = 0;
-	all()->caster.view.plane_y = 0.66;
-	all()->caster.view.time = 0;
-	all()->caster.view.oldtime = 0;
-}
+// void	ft_init_cas_values(void)
+// {
+// 	all()->caster.scrn.hgt = 480;
+// 	all()->caster.scrn.wdt = 640;
+// 	all()->caster.view.plane_x = 0;
+// 	all()->caster.view.plane_y = 0.66;
+// 	all()->caster.view.time = 0;
+// 	all()->caster.view.oldtime = 0;
+// }
 
 // void	ft_set_camera(void)
 // {
