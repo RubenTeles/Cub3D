@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/09 15:34:05 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:31:01 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,9 @@ void	ft_walls(void)
 		{
 			a->tex_y = (int)a->texpos & (a->tex_hgt - 1);
 			a->texpos += a->step;
-			Uint32 color = data[a->texnum]. [a->tex_wdh * a->tex_y + a->tex_x];
+			Uint32 color = data[a->texnum]->addr[a->tex_wdh * a->tex_y + a->tex_x];
 			if (a->side == 1)
 				color = (color >> 1) & 8355711;
-			buffer[y][x] = color;
+			a->buffer[a->y][a->x] = color;
 		}
 }

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/09 14:12:22 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:06:25 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_algorithm
 	double	step;
 	int		tex_wdh;
 	int		tex_hgt;
+	char	buffer[10000][10000];
 }			t_alg;
 
 typedef struct s_caster
