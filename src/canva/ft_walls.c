@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/07 18:29:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:52:10 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	ft_walls(void)
 {
 	t_data	*data[4];
-	int		pos;
+	//int		pos;
 
 	data[0] = (canva())->sprite(N_WALL);
 	data[1] = (canva())->sprite(S_WALL);

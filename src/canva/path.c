@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 18:49:57 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/08 19:01:36 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 #define S_WALL 'S'
 #define W_WALL 'W'
 #define E_WALL 'E'
-
-
 #define SIGN 'U'
 #define AVATAR 'X'
 
