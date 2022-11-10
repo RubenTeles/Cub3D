@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:16:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:29:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void			create_images_map(char **map);
 void			ft_background(double move);
 void			ft_hands(double move);
 void			ft_minimap(char **map);
+void			ft_walls(void);
 
 //Events
 int				key_press(int keycode, char **map);

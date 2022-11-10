@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:21:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:29:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	loop_game(char **map)
 		if ((engine())->menu)
 			return (menu_game((engine())->count * 0.001));
 		ft_background(0.00017);
-		ft_hands(0.00017);
+		ft_walls();
+		ft_hands(0.0004);
 		ft_minimap(map);
 		a = 1;
 		if ((engine())->map)

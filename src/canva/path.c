@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 17:26:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 18:05:17 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@
 #define ALPHABET 'P'
 #define WALK 'Q'
 #define TREE 'T'
+#define N_WALL 'N'
+#define S_WALL 'S'
+#define W_WALL 'W'
+#define E_WALL 'E'
 #define SIGN 'U'
 #define AVATAR 'X'
 
 char	*ft_path(char sprite)
 {
-	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/wolf/hand_1.xpm");
+	// if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
+	// 	return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
@@ -57,6 +61,15 @@ char	*ft_path(char sprite)
 		return ("./sprite/wolf/head1.xpm");
 	if (sprite == WALK)
 		return ("./sprite/wolf/wolf_walk.xpm");
+	if (sprite == N_WALL)
+		return (all()->file->no);
+	if (sprite == S_WALL)
+		return (all()->file->so);
+	if (sprite == W_WALL)
+		return (all()->file->we);
+	if (sprite == E_WALL)
+		return (all()->file->ea);
+
 	if (sprite == SIGN)
 		return ("./sprite/item/sign.xpm");
 	if (sprite == ALPHABET)
