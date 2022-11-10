@@ -6,13 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:25:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 20:23:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-void	ft_print_map(char sprite, int x, int y)
+void	ft_print_map(char sprite, double x, double y)
 {
 	t_data	*data;
 
@@ -24,9 +24,11 @@ void	ft_print_map(char sprite, int x, int y)
 	if (data->title == 'M')
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
 	else if (data->title == 'X')
+	{
 		(canva())->resize(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
 			x * (canva())->rsz[X] + ((canva())->rsz[X] * 0.25),\
 			y * (canva())->rsz[Y] + ((canva())->rsz[Y] * 0.25));
+	}
 	else
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
 		(canva())->rsz[X], y * (canva())->rsz[Y]);
@@ -40,11 +42,13 @@ void	create_images_map(char **map)
 	static int		avatar = 0;
 
 	avatar++;
-	if (avatar >= 16)
+	if ((player())->move > 0)
+	{
+		avatar = 8;
+		(player())->move = 0;
+	}
+	else if (avatar >= 16)
 		avatar = 0;
-	/*(engine())->max[X] = -1;
-	(engine())->max[Y] = -1;
-	read_map(map);*/
 	(canva())->rsz[X] = (engine())->size[X] * 0.85;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.85;
     x = (engine())->size[X] - (engine())->size[X] * 0.94;

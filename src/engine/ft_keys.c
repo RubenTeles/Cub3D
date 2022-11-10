@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:27:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 20:24:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,16 @@ int key_press_game(int keycode, void *param)
 		else
 			(engine())->map = 0;
 	}
-	if (keycode == KEY_W && (player())->pos[X] >= 0)
-	{
-		(player())->pos[Y] -= 1;
-		return (printf("KEY: W\n"));
-	}
-	if (keycode == KEY_A && (player())->pos[X] >= 0)
-	{
-		(player())->pos[X] -= 1;
-		return (printf("KEY: A\n"));
-	}
-	if (keycode == KEY_S && (player())->pos[X] <= (engine())->max[X])
-	{
-		(player())->pos[Y] += 1;
-		return (printf("KEY: S\n"));
-	}
-	if (keycode == KEY_D && (player())->pos[X] <= (engine())->max[Y])
-	{
-		(player())->pos[X] += 1;
-		return (printf("KEY: D\n"));
-	}
+	if (keycode == KEY_W && (player())->pos[Y] > 0 && ++(player())->move)
+		(player())->pos[Y] -= 0.1;
+	if (keycode == KEY_A && (player())->pos[X] > 0 && ++(player())->move)
+		(player())->pos[X] -= 0.1;
+	if (keycode == KEY_S && (player())->pos[Y] < (engine())->max[Y] - 1\
+		&& ++(player())->move)
+		(player())->pos[Y] += 0.1;
+	if (keycode == KEY_D && (player())->pos[X] < (engine())->max[X] - 1\
+		&& ++(player())->move)
+		(player())->pos[X] += 0.1;
 	return (0);
 }
 
