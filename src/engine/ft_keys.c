@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:13 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 20:24:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 21:25:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ int key_press_game(int keycode, void *param)
 			(engine())->map = 0;
 	}
 	if (keycode == KEY_W && (player())->pos[Y] > 0 && ++(player())->move)
-		(player())->pos[Y] -= 0.1;
+		(player())->pos[Y] -= (player())->vel;
 	if (keycode == KEY_A && (player())->pos[X] > 0 && ++(player())->move)
-		(player())->pos[X] -= 0.1;
+		(player())->pos[X] -= (player())->vel;
 	if (keycode == KEY_S && (player())->pos[Y] < (engine())->max[Y] - 1\
 		&& ++(player())->move)
-		(player())->pos[Y] += 0.1;
+		(player())->pos[Y] += (player())->vel;
 	if (keycode == KEY_D && (player())->pos[X] < (engine())->max[X] - 1\
 		&& ++(player())->move)
-		(player())->pos[X] += 0.1;
+		(player())->pos[X] += (player())->vel;
 	return (0);
 }
 
