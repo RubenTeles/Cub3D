@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 15:33:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:04:20 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
-typedef struct s_player				t_player;
+typedef struct s_player1			t_player1;
 
 # define X 0
 # define Y 1
@@ -86,12 +86,15 @@ struct s_canva
 	void		(*destroy)(void);
 };
 
-
-/*
-struct s_player
+struct s_player1
 {
-
-};*/
+	char	title;
+	t_data	*sprite;
+	int		pos[2];
+	char	key;
+	int		life;
+	int		lives;
+};
 
 //static
 t_engine		*engine(void);

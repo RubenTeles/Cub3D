@@ -54,9 +54,8 @@ void	create_images_map(char **map)
 	char			title_image;
 	static int		avatar = 0;
 
-	if (avatar == 0)
-		avatar = 1;
-	else
+	avatar++;
+	if (avatar >= 16)
 		avatar = 0;
 	(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
@@ -80,7 +79,7 @@ void	create_images_map(char **map)
 			if (title_image == '1')
 				title_image = 'T';
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
-				|| title_image == 'E') && avatar == 0)
+				|| title_image == 'E') && avatar < 8)
 					continue ;
 			ft_print_map(title_image, x + 2, y + 2.5);
 		}

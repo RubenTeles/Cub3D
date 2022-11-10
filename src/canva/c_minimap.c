@@ -26,9 +26,9 @@ void	ft_minimap(char	**map)
 		 (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086, 0xe6be7e);
 	(canva())->resize(data, (engine())->size[X] * 0.30, (engine())->size[Y] *\
 		0.35, (engine())->size[X] * 0.70, (engine())->size[Y] * 0.00);
-	/*							Word MiniMAP
+	/*							Word MiniMAP*/
 	ft_put_word("MINI MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
-		0.04, (engine())->size[X] * 0.775, (engine())->size[Y] * 0.26);*/
+		0.04, (engine())->size[X] * 0.775, (engine())->size[Y] * 0.26);
 	(void)map;
 	/*
 	while (map[++y])
