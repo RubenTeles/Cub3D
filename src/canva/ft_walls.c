@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/10 18:46:48 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:11:34 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ double	ft_abs(double x)
 void	ft_set_camera(void)
 {
 	char	dir;
+	int		mem;
 
 	all()->player = ft_player_pos(all()->file->map);
+	mem = all()->player.x;
+	all()->player.x = all()->player.y;
+	all()->player.y = mem;
 	all()->caster.player.pos_x = (double)all()->player.x;
 	all()->caster.player.pos_y = (double)all()->player.y;
 	dir = all()->map[all()->player.x][all()->player.y];
