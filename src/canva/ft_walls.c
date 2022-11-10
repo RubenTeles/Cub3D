@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/10 19:11:34 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:20:38 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_set_camera(void)
 	all()->player.y = mem;
 	all()->caster.player.pos_x = (double)all()->player.x;
 	all()->caster.player.pos_y = (double)all()->player.y;
-	dir = all()->map[all()->player.x][all()->player.y];
-	all()->map[all()->player.x][all()->player.y] = '0';
+	dir = all()->map[all()->player.y][all()->player.x];
+	all()->map[all()->player.y][all()->player.x] = '0';
 	if (dir == 'N' || dir == 'S')
 		all()->caster.player.dir_x = 0;
 	if (dir == 'W' || dir == 'E')
@@ -137,7 +137,7 @@ void	ft_walls(void)
 				a->map_y += a->step_y;
 				a->side = 1;
 			}
-			if (all()->map[a->map_x][a->map_y] > '0')
+			if (all()->map[a->map_y][a->map_x] > '0')
 				a->hit = 1;
 		}
 		if (a->side == 0)
@@ -151,7 +151,7 @@ void	ft_walls(void)
 		a->draw_end = a->ln_hgt / 2 + a->h / 2;
 		if (a->draw_end >= a->h)
 			a->draw_end = a->h - 1;
-		a->texnum = all()->map[a->map_x][a->map_y] - 1;
+		a->texnum = all()->map[a->map_y][a->map_x] - 1;
 		if (a->side == 0)
 			a->wall_x = view->pos_y + a->perp_dist * a->ray_y;
 		else
@@ -171,7 +171,7 @@ void	ft_walls(void)
 			a->texpos += a->step;
 			// a->color = canva()->getPxColor(data[0], a->x, a->y);
 			// printf("x: %i, y: %i\n", );
-			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
+			a->color = canva()->getPxColor(data[0], a->x, a->y);
 			// a->color = 12324;
 			// printf("x: %i, y:%i\n", a->tex_x, a->tex_y);
 			// printf("color: %i\n", a->color);
