@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/09 17:31:01 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:04:10 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 #define S_WALL 'S'
 #define W_WALL 'W'
 #define E_WALL 'E'
+
+double	ft_abs(double x)
+{
+	if (x < (double)0)
+		return (x * (double)-1);
+	return (x);
+}
 
 void	ft_set_camera(void)
 {
@@ -45,9 +52,9 @@ void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
 	all()->caster.view.plane_y = all()->caster.player.dir_x * -1;
-	if (abs(all()->caster.view.plane_x) == (double)1)
+	if (ft_abs(all()->caster.view.plane_x) == (double)1)
 		all()->caster.view.plane_x *= 0.66;
-	if (abs(all()->caster.view.plane_y) == (double)1)
+	if (ft_abs(all()->caster.view.plane_y) == (double)1)
 		all()->caster.view.plane_y *= 0.66;
 }
 
@@ -68,6 +75,8 @@ void	ft_walls(void)
 	view = &(all()->caster.view);
 	a = &(all()->caster.alg);
 	a->x = -1;
+	a->h = canva()->data->alt;
+	a->w = canva()->data->larg;
 	while (++(a->x) < a->w)
 	{
 		a->cam_x = 2 * a->x / (double)(a->w) - 1;
@@ -78,11 +87,11 @@ void	ft_walls(void)
 		if (a->ray_x == 0)
 			a->delta_x = 1e30;
 		else
-			a->delta_x = abs(1 / a->ray_x);
+			a->delta_x = ft_abs(1 / a->ray_x);
 		if (a->ray_y == 0)
 			a->delta_y = 1e30;
 		else
-			a->delta_y = abs(1 / a->ray_y);
+			a->delta_y = ft_abs(1 / a->ray_y);
 		a->hit = 0;
 		if (a->ray_x < 0)
 		{
@@ -148,11 +157,18 @@ void	ft_walls(void)
 		a->y = a->draw_str - 1;
 		while (++(a->y) < a->draw_end)
 		{
-			a->tex_y = (int)a->texpos & (a->tex_hgt - 1);
+			a->tex_y = (int)a->texpos & (data[0]->alt - 1);
 			a->texpos += a->step;
-			Uint32 color = data[a->texnum]->addr[a->tex_wdh * a->tex_y + a->tex_x];
-			if (a->side == 1)
-				color = (color >> 1) & 8355711;
-			a->buffer[a->y][a->x] = color;
+			// a->color = canva()->getPxColor(data[0], a->x, a->y);
+			a->color = (int)(data[0]->addr[data[0]->larg * a->y + a->x]);
+			// a->color = 2324;
+			// printf("x: %i, y:%i\n", a->tex_x, a->tex_y);
+			// printf("color: %i\n", a->color);
+			// color = data[a->texnum]->addr[data[0]->larg * a->tex_y + a->tex_x];
+			// if (a->side == 1)
+			// 	a->color = (a->color >> 1) & 8355711;
+			ft_print_color(1, 1, a->x, a->y, a->color);
+			//a->buffer[a->y][a->x] = color;
 		}
+	}
 }
