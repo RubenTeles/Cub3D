@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/10 13:04:10 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:46:48 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_set_camera(void)
 	all()->caster.player.pos_x = (double)all()->player.x;
 	all()->caster.player.pos_y = (double)all()->player.y;
 	dir = all()->map[all()->player.x][all()->player.y];
-	dir = 'E';
+	all()->map[all()->player.x][all()->player.y] = '0';
 	if (dir == 'N' || dir == 'S')
 		all()->caster.player.dir_x = 0;
 	if (dir == 'W' || dir == 'E')
@@ -51,11 +51,15 @@ void	ft_set_camera(void)
 void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
-	all()->caster.view.plane_y = all()->caster.player.dir_x * -1;
+	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
 	if (ft_abs(all()->caster.view.plane_x) == (double)1)
 		all()->caster.view.plane_x *= 0.66;
 	if (ft_abs(all()->caster.view.plane_y) == (double)1)
 		all()->caster.view.plane_y *= 0.66;
+	all()->caster.view.dir_x = all()->caster.player.dir_x;
+	all()->caster.view.dir_y = all()->caster.player.dir_y;
+	all()->caster.view.pos_x = all()->caster.player.pos_x;
+	all()->caster.view.pos_y = all()->caster.player.pos_y;
 }
 
 void	ft_walls(void)
@@ -77,6 +81,8 @@ void	ft_walls(void)
 	a->x = -1;
 	a->h = canva()->data->alt;
 	a->w = canva()->data->larg;
+	a->tex_hgt = data[0]->alt;
+	a->tex_wdh = data[0]->larg;
 	while (++(a->x) < a->w)
 	{
 		a->cam_x = 2 * a->x / (double)(a->w) - 1;
@@ -146,7 +152,7 @@ void	ft_walls(void)
 			a->wall_x = view->pos_y + a->perp_dist * a->ray_y;
 		else
 			a->wall_x = view->pos_x + a->perp_dist * a->ray_x;
-		a->wall_x -= floor((a->wall_x));
+		a->wall_x -= floor(a->wall_x);
 		a->tex_x = (int)(a->wall_x * (double)(a->tex_wdh));
 		if (a->side == 0 && a->ray_x > 0)
 			a->tex_x = a->tex_wdh - a->tex_x - 1;
@@ -157,18 +163,25 @@ void	ft_walls(void)
 		a->y = a->draw_str - 1;
 		while (++(a->y) < a->draw_end)
 		{
-			a->tex_y = (int)a->texpos & (data[0]->alt - 1);
+			a->tex_y = ((int)(a->texpos)) & (data[0]->alt - 1);
 			a->texpos += a->step;
 			// a->color = canva()->getPxColor(data[0], a->x, a->y);
-			a->color = (int)(data[0]->addr[data[0]->larg * a->y + a->x]);
-			// a->color = 2324;
+			// printf("x: %i, y: %i\n", );
+			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
+			// a->color = 12324;
 			// printf("x: %i, y:%i\n", a->tex_x, a->tex_y);
 			// printf("color: %i\n", a->color);
 			// color = data[a->texnum]->addr[data[0]->larg * a->tex_y + a->tex_x];
-			// if (a->side == 1)
-			// 	a->color = (a->color >> 1) & 8355711;
+			if (a->side == 1)
+				a->color = (a->color >> 1) & 8355711;
+			// printf("x: %i, y: %i\n", a->tex_x, a->tex_y);
 			ft_print_color(1, 1, a->x, a->y, a->color);
 			//a->buffer[a->y][a->x] = color;
 		}
 	}
 }
+
+// void	ft_walls1(void)
+// {
+	
+// }
