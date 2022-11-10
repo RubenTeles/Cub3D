@@ -6,32 +6,17 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 19:20:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:25:48 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-static void	read_map(char **map)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (map[++y])
-	{		
-		x = (string()).len(map[y]);
-		if (x > (engine())->max[X])
-			(engine())->max[X] = x;
-	}
-	(engine())->max[Y] = y;
-}
-
 void	ft_print_map(char sprite, int x, int y)
 {
 	t_data	*data;
 
-	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
+	if (sprite == (player())->sprite->title)
 		sprite = 'X';
 	data = (canva())->sprite(sprite);
 	if (!data)
@@ -57,9 +42,9 @@ void	create_images_map(char **map)
 	avatar++;
 	if (avatar >= 16)
 		avatar = 0;
-	(engine())->max[X] = -1;
+	/*(engine())->max[X] = -1;
 	(engine())->max[Y] = -1;
-	read_map(map);
+	read_map(map);*/
 	(canva())->rsz[X] = (engine())->size[X] * 0.85;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.85;
     x = (engine())->size[X] - (engine())->size[X] * 0.94;
@@ -79,9 +64,12 @@ void	create_images_map(char **map)
 			if (title_image == '1')
 				title_image = 'T';
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
-				|| title_image == 'E') && avatar < 8)
+				|| title_image == 'E'))
 					continue ;
 			ft_print_map(title_image, x + 2, y + 2.5);
 		}
 	}
+	if (avatar >= 8)
+		ft_print_map((player())->sprite->title, (player())->pos[X] + 2,\
+			(player())->pos[Y] + 2.5);
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 16:28:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:02:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int key_press_menu(int keycode, void *param)
 		{
 			(engine())->menu = 0;
 			(engine())->time = 0;
+			//ft_create_game();
 		}
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 16:27:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:21:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	ft_start(t_all *all)
 	new_engine(all, 1344, 756);
 	if (!(engine())->ptr)
 		return (1);
+	ft_create_game();//TEMP.
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0);
 	mlx_hook((engine())->win, 17, 0, end_game, (engine()));//X
-	mlx_key_hook((engine())->win, key_press, all->map);
+	mlx_hook((engine())->win, 2, 1L<<0, key_press, all->map);
+	//mlx_key_hook((engine())->win, key_press, all->map);
 	mlx_hook((engine())->win, 4, 1L<<2, key_mouse_press, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_mouse_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);

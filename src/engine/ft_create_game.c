@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   ft_create_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:06:52 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/10 19:25:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-#define HAND 'H'
-
-void	new_player(void)
+void	game_read_map(char **map)
 {
-	(player())->title = 'P';
-	(player())->sprite = (canva())->sprite(HAND);
-	(player())->pos[X] = all()->player.x;
-	(player())->pos[Y] = all()->player.y;
-	(player())->dir[X] = all()->caster.player.pos_x;
-	(player())->dir[Y] = all()->caster.player.pos_y;
-	(player())->key = 'W';
-	(player())->life = 100;
-	(player())->lives = 3;
+	int	x;
+	int	y;
+
+	y = -1;
+	while (map[++y])
+	{		
+		x = (string()).len(map[y]);
+		if (x > (engine())->max[X])
+			(engine())->max[X] = x;
+	}
+	(engine())->max[Y] = y;
 }
 
-t_player1	*player(void)
+void 	ft_create_game(void)
 {
-	static t_player1	p;
+	static int  a = 0;
 
-	return (&p);
+	if (a > 0)
+		return ;
+	new_player();
+	game_read_map(all()->map);
+	a++;
 }

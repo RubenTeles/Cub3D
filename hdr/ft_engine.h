@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 14:14:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:16:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ struct s_player1
 {
 	char	title;
 	t_data	*sprite;
-	int		pos[2];
+	double	pos[2];
+	int		dir[2];
 	char	key;
 	int		life;
 	int		lives;
@@ -99,6 +100,7 @@ struct s_player1
 //static
 t_engine		*engine(void);
 t_canva			*canva(void);
+t_player1		*player(void);
 
 //canva
 void			new_canva(void);
@@ -128,6 +130,10 @@ int 			menu_hooks(void);
 void			ft_initial_menu(double move);
 void			ft_words_menu(void);
 void			ft_head_wolf(double move);
+void		 	ft_create_game(void);
+
+//Objects
+void			new_player(void);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
