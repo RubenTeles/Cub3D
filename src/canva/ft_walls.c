@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/11 13:11:49 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:45:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void	ft_walls(void)
 		{
 			a->tex_y = ((int)(a->texpos)) & (data[0]->alt - 1);
 			a->texpos += a->step;
-			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
+			a->color = canva()->getPxColor(data[0], a->x, a->y);
 			// a->color = (int)(data[a->texnum]->addr[data[0]->line_length * a->tex_y + a->tex_x * (data[0]->bits_per_pixel / 8)]);
 			if (a->side == 1)
 				a->color = (a->color >> 1) & 8355711;
