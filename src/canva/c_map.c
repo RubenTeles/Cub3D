@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 20:23:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:36:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void	ft_print_map(char sprite, double x, double y)
 	if (data->title == 'M')
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
 	else if (data->title == 'X')
-	{
 		(canva())->resize(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
-			x * (canva())->rsz[X] + ((canva())->rsz[X] * 0.25),\
-			y * (canva())->rsz[Y] + ((canva())->rsz[Y] * 0.25));
-	}
+			(x * (canva())->rsz[X]) - (((canva())->rsz[Y] * 0.50) / 2), \
+			(y * (canva())->rsz[Y]) - (((canva())->rsz[Y] * 0.50) / 2));
 	else
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
 		(canva())->rsz[X], y * (canva())->rsz[Y]);
