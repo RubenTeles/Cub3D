@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/11 18:09:33 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/11 19:00:59 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	ft_calc_plane(void)
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
 	all()->caster.view.pos_y = all()->caster.player.pos_y;
 }
+
+// const char *pattern[] = {
+// 	"1", "1", "1",
+// 	"1", "0", "0",
+// 	"1", "1", "1",
+// };
 
 void	ft_walls(void)
 {
@@ -164,7 +170,8 @@ void	ft_walls(void)
 		{
 			a->tex_y = ((int)(a->texpos)) & (data[0]->alt - 1);
 			a->texpos += a->step;
-			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
+			if (a->y > 0 && a->y < data[0]->alt)
+				a->color = canva()->getPxColor(data[0], a->tex_x, a->y);
 			// a->color = (int)(data[a->texnum]->addr[data[0]->line_length * a->tex_y + a->tex_x * (data[0]->bits_per_pixel / 8)]);
 			if (a->side == 1)
 				a->color = (a->color >> 1) & 8355711;
