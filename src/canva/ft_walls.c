@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/11 15:45:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:07:49 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_set_camera(void)
 	if (dir == 'E')
 		all()->caster.player.dir_x = 1;
 	if (dir == 'N')
-		all()->caster.player.dir_y = 1;
-	if (dir == 'S')
 		all()->caster.player.dir_y = -1;
+	if (dir == 'S')
+		all()->caster.player.dir_y = 1;
 }
 
 void	ft_calc_plane(void)
