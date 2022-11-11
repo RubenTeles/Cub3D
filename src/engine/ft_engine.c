@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:29:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 20:11:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	loop_game(char **map)
 		if ((engine())->map)
 			create_images_map(map);
 		(engine())->time += (engine())->count * 0.001;
-		printf("%fs\n", (engine())->time);
+		//printf("%fs\n", (engine())->time);
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0);
 	}
@@ -65,6 +65,7 @@ int	ft_start(t_all *all)
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0);
 	mlx_hook((engine())->win, 17, 0, end_game, (engine()));//X
+	mlx_do_key_autorepeaton((engine())->ptr);
 	mlx_hook((engine())->win, 2, 1L<<0, key_press, all->map);
 	//mlx_key_hook((engine())->win, key_press, all->map);
 	mlx_hook((engine())->win, 4, 1L<<2, key_mouse_press, 0);

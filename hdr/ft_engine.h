@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:29:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 21:32:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ struct s_player1
 	t_data	*sprite;
 	double	pos[2];
 	int		dir[2];
+	double	vel;
+	int		move;
 	char	key;
 	int		life;
 	int		lives;

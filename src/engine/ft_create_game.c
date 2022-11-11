@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:25:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:49:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void 	ft_create_game(void)
 
 	if (a > 0)
 		return ;
-	new_player();
 	game_read_map(all()->map);
+	new_player();
 	a++;
 }
