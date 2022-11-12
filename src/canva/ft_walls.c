@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 13:04:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:32:51 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
 	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
-	if (ft_abs(all()->caster.view.plane_x) == (double)1)
-		all()->caster.view.plane_x *= -0.66;
-	if (ft_abs(all()->caster.view.plane_y) == (double)1)
-		all()->caster.view.plane_y *= -0.66;
+	all()->caster.view.plane_x *= -0.66;
+	all()->caster.view.plane_y *= -0.66;
 	all()->caster.view.dir_x = all()->caster.player.dir_x;
 	all()->caster.view.dir_y = all()->caster.player.dir_y;
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
@@ -172,7 +170,7 @@ void	ft_walls(void)
 			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
 			// a->color = *(unsigned int *)(data[0]->addr + (a->tex_y * data[0]->larg + a->tex_x * (data[0]->bits_per_pixel / 8)));
 			// a->color = (int)(data[a->texnum]->addr[data[0]->line_length * a->tex_y + a->tex_x * (data[0]->bits_per_pixel / 8)]);
-			if (a->side == 1)
+			if (a->side == 1 && a->color != 0)
 				a->color = (a->color >> 1) & 8355711;
 			ft_print_color(1, 1, a->x, a->y, a->color);
 		}

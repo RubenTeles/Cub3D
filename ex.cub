@@ -4,7 +4,7 @@ SO ./sprite/forest.xpm
 WE ./sprite/forest.xpm
 EA ./sprite/forest.xpm
  
-F 86,125,70
+F 34,125,70
 C 135,206,235
 
 11111111111
