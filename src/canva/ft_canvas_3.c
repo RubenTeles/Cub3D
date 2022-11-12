@@ -5,62 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 17:21:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 17:25:52 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/12 14:17:23 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/12 14:18:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-t_data	*search_sprite(t_data *data, char sprite)
+void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
 {
-	t_data	*aux;
+	int		x;
+	int		y;
 
-	aux = data;
-	while (aux)
+	y = -1;
+	while (++y <= alt)
 	{
-		if (aux->title && aux->title == sprite)
-			return (aux);
-		aux = aux->next;
+		x = -1;
+		while (++x <= larg)
+			my_mlx_pixel_put((canva())->data, x + pos_x, y + pos_y, color);
 	}
-	return (NULL);
 }
 
-t_data	*last_sprite(t_data *data)
+void	ft_put_canva(t_data *data, int x, int y)
 {
-	t_data	*aux;
-
-	aux = data;
-	while (aux)
+	if (data->title == 'M')
+		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
+	else if (data->title == 'N')
 	{
-		if (!aux->next)
-			break ;
-		aux = aux->next;
+		printf("WOLF:\nWidth: %i = %i\nHeigth: %i = %i\n", data->larg, data->alt, \
+		(canva())->rsz[X], (canva())->rsz[Y]);
+		resize_image(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
+			x * (canva())->rsz[X] + ((canva())->rsz[X] * 0.25),\
+			y * (canva())->rsz[Y] + ((canva())->rsz[Y] * 0.25));
 	}
-	return (aux);
-}
-
-t_data	*create_sprite(char sprite)
-{
-	t_data	*new;
-
-	new = malloc(sizeof(t_data));
-	if (!new)
-		return (0);
-	new->title = sprite;
-	new->path = ft_path(sprite);
-	new->img = mlx_xpm_file_to_image((engine())->ptr, new->path, &new->larg, \
-	&new->alt);
-	if (!new->img)
-	{
-		printf("Erro: Sprite '%c' com o Path: '%s' não existe!\n", \
-		sprite, new->path);
-		free(new);
-		return (NULL);
-	}
-	new->addr = mlx_get_data_addr(new->img, &new->bits_per_pixel, \
-	&new->line_length, &new->endian);
-	new->next = NULL;
-	(canva())->last((canva()->data))->next = new;
-	return (new);
+	else
+		resize_image(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
+		(canva())->rsz[X], y * (canva())->rsz[Y]);
 }

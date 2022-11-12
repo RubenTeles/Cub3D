@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/11 16:56:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:24:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,24 @@
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
+typedef struct s_key				t_key;
 typedef struct s_player1			t_player1;
 
 # define X 0
 # define Y 1
 # define FLOOR 0
 # define CEILLING 1
-# define ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_M 109
-# define KEY_ENTER 65293
-# define BUTTON_RIGHT 3
-# define BUTTON_LEFT 1
+
+struct s_key
+{
+	int		key;
+	int		on;
+	t_key	*next;
+    t_key	*(*create)(int keycode);
+	t_key	*(*search)(int keycode);
+	t_key	*(*last)(void);
+	void	(*destroy)(void);
+};
 
 struct s_data
 {
@@ -66,6 +69,7 @@ struct s_engine
 	long int	dif_time;
 	int			sprt_for_sec;
 	int			menu;
+	t_key		*key;
 };
 
 struct s_canva
@@ -125,6 +129,18 @@ int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
 void			ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y);
 
+//Keys
+void			new_key(void);
+t_data			*create(char sprite);
+t_data			*search(t_data *data, char sprite);
+t_data			*last(t_data *data);
+int				key_press_in(int keycode);
+int				key_press_out(int keycode);
+int				key_mouse_move(int x, int y, void *param);
+int				key_management(void);
+int 			begin(void *param);
+int				key_esc(void);
+
 //Menu
 int				ft_login(double move);
 int 			menu_game(double time);
@@ -151,15 +167,6 @@ void			ft_background(double move);
 void			ft_hands(double move);
 void			ft_minimap(char **map);
 void			ft_walls(void);
-
-//Events
-int				key_press(int keycode, char **map);
-int 			key_press_game(int keycode, void *param);
-int				key_mouse_press(int button, int x, int y, void *param);
-int 			key_mouse_out(int button, int x, int y, void *param);
-int				key_mouse_move(int x, int y, void *param);
-int 			begin(void *param);
-int 			key_press_menu(int keycode, void *param);
 
 //Utils
 long long		time_current(void);

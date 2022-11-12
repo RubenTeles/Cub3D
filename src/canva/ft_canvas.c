@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 22:25:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:13:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ static void	__destroy(void)
 	t_data	*aux_2;
 
 	aux = (canva())->data;
+	while (aux)
+	{
+		aux_2 = aux;
+		aux = aux->next;
+		free(aux_2);
+	}
+	aux = (canva())->alphabet;
 	while (aux)
 	{
 		aux_2 = aux;
