@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 15:32:51 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:52:04 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	ft_calc_plane(void)
 	all()->caster.view.dir_y = all()->caster.player.dir_y;
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
 	all()->caster.view.pos_y = all()->caster.player.pos_y;
+	player()->dir[X] = all()->caster.player.dir_x;
+	player()->dir[Y] = all()->caster.player.dir_y;
+
 }
 
 // const char *pattern[] = {
