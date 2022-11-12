@@ -6,56 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 19:29:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:53:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
-
-//Quando pressionar uma tecla
-int key_press_menu(int keycode, void *param)
-{
-	(void)param;
-
-	if ((engine())->time < 0.2)
-		return (0);
-	if ((engine())->menu == 1)
-	{
-		if (keycode == KEY_W)
-			(engine())->menu = 3;
-		else if (keycode == KEY_S)
-			(engine())->menu = 2;
-		else if (keycode == KEY_ENTER)
-		{
-			(engine())->menu = 0;
-			(engine())->time = 0;
-			//ft_create_game();
-		}
-		return (1);
-	}
-	else if ((engine())->menu == 2)
-	{
-		if (keycode == KEY_W)
-			(engine())->menu = 1;
-		if (keycode == KEY_S)
-			(engine())->menu = 3;
-		/*if (keycode == KEY_ENTER)
-			(engine())->menu = 4;*/
-		return (1);
-	}
-	else if ((engine())->menu == 3)
-	{
-		if (keycode == KEY_W)
-			(engine())->menu = 2;
-		if (keycode == KEY_S)
-			(engine())->menu = 1;
-		/*if (keycode == KEY_ENTER)
-			(engine())->menu = 5;*/
-		return (1);
-	}
-	return (0);
-}
+#include <ft_keys.h>
 
 int menu_game(double time)
 {
@@ -69,6 +26,7 @@ int menu_game(double time)
 	ft_initial_menu(0.01);
 	ft_words_menu();
 	ft_head_wolf(0);
+	key_management();
 	i++;
 	if (a == 0)
 	{

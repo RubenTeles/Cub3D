@@ -6,15 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 01:19:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 14:14:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_sprites.h>
 
-#define MENU 'A'
-#define SIGN 'U'
-#define AVATAR 'X'
 
 void	ft_head_wolf(double move)
 {

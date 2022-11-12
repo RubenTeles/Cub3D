@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/11 18:04:16 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:53:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	loop_game(char **map)
 		ft_walls();
 		ft_hands(0.0004);
 		ft_minimap(map);
+		key_management();
 		a = 1;
 		if ((engine())->map)
 			create_images_map(map);
@@ -66,10 +67,10 @@ int	ft_start(t_all *all)
 		(canva())->data->img, 0, 0);
 	mlx_hook((engine())->win, 17, 0, end_game, (engine()));//X
 	mlx_do_key_autorepeaton((engine())->ptr);
-	mlx_hook((engine())->win, 2, 1L<<0, key_press, all->map);
-	//mlx_key_hook((engine())->win, key_press, all->map);
-	mlx_hook((engine())->win, 4, 1L<<2, key_mouse_press, 0);
-	mlx_hook((engine())->win, 5, 1L<<3, key_mouse_out, 0);
+	mlx_hook((engine())->win, 2, 1L<<0, key_press_in, 0);
+	mlx_hook((engine())->win, 3, 1L<<1, key_press_out, 0);
+	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
+	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
 	mlx_loop_hook((engine())->ptr, loop_game, all->map);
 	mlx_loop((engine())->ptr);
