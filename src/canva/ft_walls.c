@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 12:50:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:04:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_set_camera(void)
 {
 	char	dir;
 
-	all()->player = ft_player_pos(all()->file->map);
 	all()->caster.player.pos_x = (player())->pos[X];
 	all()->caster.player.pos_y = (player())->pos[Y];
 	dir = all()->map[all()->player.y][all()->player.x];
