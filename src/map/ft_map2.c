@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:04:23 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/27 16:30:49 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:59:37 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_checkplayer(t_map *map)
 				player = *str;
 			else if (string().index_char("NSEW", *str) >= 0 && player != -1)
 				player = -2;
-			else if (!(*str == '0' || *str == '1' || string().is_spc(*str)))
+			else if (!(!string().is_alfanumeric(str) || string().is_spc(*str)))
 				player = -3;
 		}
 	}

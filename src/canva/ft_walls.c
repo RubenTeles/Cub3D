@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 21:51:52 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 22:09:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define S_WALL 'S'
 #define W_WALL 'W'
 #define E_WALL 'E'
+#define HAY '#'
 
 double	ft_abs(double x)
 {
@@ -77,7 +78,7 @@ void	ft_calc_plane(void)
 
 void	ft_walls(void)
 {
-	t_data	*data[4];
+	t_data	*data[5];
 	t_view	*view;
 	t_alg	*a;
 
@@ -85,6 +86,7 @@ void	ft_walls(void)
 	data[1] = (canva())->sprite(S_WALL);
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
+	data[4] = (canva())->sprite(HAY);
 	if (!data[2] || !data[1] || !data[2] || !data[3])
 		return ;
 	ft_set_camera();
