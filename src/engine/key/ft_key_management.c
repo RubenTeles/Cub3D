@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 16:16:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:52:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 //Quando pressionar uma tecla
 static int key_game(void)
 {
+	int	x;
+	int	y;
+	
+	x = 1;
+	y
+	/*x = all()->caster.player.dir_x;
+	y = all()->caster.player.dir_y;
+	if (x == 0)
+		x = -1;
+	if (y == 0)
+		y = 1;*/
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 0))
 			(engine())->map = 1;
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 2))
@@ -25,15 +36,15 @@ static int key_game(void)
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 3))
 			(engine())->map = 0;
 	if ((engine())->key->search(KEY_W)->on && (player())->pos[Y] > 0 && ++(player())->move)
-		(player())->pos[Y] -= (player())->vel;
+		(player())->pos[Y] -= ((player())->vel * y);
 	if ((engine())->key->search(KEY_A)->on && (player())->pos[X] > 0 && ++(player())->move)
-		(player())->pos[X] -= (player())->vel;
+		(player())->pos[X] -= ((player())->vel * x);
 	if ((engine())->key->search(KEY_S)->on && (player())->pos[Y] < (engine())->max[Y] - 1\
 		&& ++(player())->move)
-		(player())->pos[Y] += (player())->vel;
+		(player())->pos[Y] += ((player())->vel * y);
 	if ((engine())->key->search(KEY_D)->on && (player())->pos[X] < (engine())->max[X] - 1\
 		&& ++(player())->move)
-		(player())->pos[X] += (player())->vel;
+		(player())->pos[X] += ((player())->vel * x);
 	if ((engine())->key->search(BUTTON_RIGHT)->on)
 		printf("Right Button PRESS\n");
 	return (0);
