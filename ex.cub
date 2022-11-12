@@ -1,8 +1,8 @@
 
 NO ./sprite/forest.xpm
-SO ./sprite/forest.xpm
-WE ./sprite/forest.xpm
-EA ./sprite/forest.xpm
+SO ./sprite/item/background_menu.xpm
+WE ./sprite/item/minimap.xpm
+EA ./sprite/item/sign.xpm
  
 F 34,125,70
 C 135,206,235

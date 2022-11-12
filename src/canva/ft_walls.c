@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 16:52:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 18:32:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,23 @@ void	ft_set_camera(void)
 
 	all()->caster.player.pos_x = (player())->pos[X];
 	all()->caster.player.pos_y = (player())->pos[Y];
-	dir = all()->map[all()->player.y][all()->player.x];
-	if (dir == 'N' || dir == 'S')
-		all()->caster.player.dir_x = 0;
-	if (dir == 'W' || dir == 'E')
-		all()->caster.player.dir_y = 0;
-	if (dir == 'W')
-		all()->caster.player.dir_x = -1;
-	if (dir == 'E')
-		all()->caster.player.dir_x = 1;
-	if (dir == 'N')
-		all()->caster.player.dir_y = -1;
-	if (dir == 'S')
-		all()->caster.player.dir_y = 1;
+	if (all()->caster.player.dir_x == 0 && all()->caster.player.dir_y == 0)
+	{
+		dir = all()->map[all()->player.y][all()->player.x];
+		all()->map[all()->player.y][all()->player.x] = '0';
+		if (dir == 'N' || dir == 'S')
+			all()->caster.player.dir_x = 0;
+		if (dir == 'W' || dir == 'E')
+			all()->caster.player.dir_y = 0;
+		if (dir == 'W')
+			all()->caster.player.dir_x = -1;
+		if (dir == 'E')
+			all()->caster.player.dir_x = 1;
+		if (dir == 'N')
+			all()->caster.player.dir_y = -1;
+		if (dir == 'S')
+			all()->caster.player.dir_y = 1;
+	}
 }
 
 void	ft_calc_plane(void)
@@ -60,12 +64,6 @@ void	ft_calc_plane(void)
 	player()->dir[Y] = all()->caster.player.dir_y;
 
 }
-
-// const char *pattern[] = {
-// 	"1", "1", "1",
-// 	"1", "0", "0",
-// 	"1", "1", "1",
-// };
 
 void	ft_walls(void)
 {
@@ -86,8 +84,6 @@ void	ft_walls(void)
 	a->x = -1;
 	a->h = canva()->data->alt;
 	a->w = canva()->data->larg;
-	a->tex_hgt = data[0]->alt;
-	a->tex_wdh = data[0]->larg;
 	while (++(a->x) < a->w)
 	{
 		a->cam_x = 2 * a->x / (double)(a->w) - 1;
@@ -153,27 +149,38 @@ void	ft_walls(void)
 		if (a->draw_end >= a->h)
 			a->draw_end = a->h - 1;
 		a->texnum = all()->map[a->map_y][a->map_x] - 49;
+		if (a->texnum == 0)
+		{
+			if (a->side == 1 && view->dir_y > 0)
+				a->texnum = 1;
+			else if (a->side == 0 && view->dir_x > 0)
+				a->texnum = 3;
+			else if (a->side == 0 && view->dir_x < 0)
+				a->texnum = 2;
+			else if (a->side == 0 && view->dir_x == 0 && a->map_x > view->pos_x)
+				a->texnum = 3;
+			else if (a->side == 0 && view->dir_x == 0)
+				a->texnum = 2;
+		}
 		if (a->side == 0)
 			a->wall_x = view->pos_y + a->perp_dist * a->ray_y;
 		else
 			a->wall_x = view->pos_x + a->perp_dist * a->ray_x;
 		a->wall_x -= floor(a->wall_x);
-		a->tex_x = (int)(a->wall_x * (double)(a->tex_wdh));
+		a->tex_x = (int)(a->wall_x * (double)(data[a->texnum]->larg));
 		if (a->side == 0 && a->ray_x > 0)
-			a->tex_x = a->tex_wdh - a->tex_x - 1;
+			a->tex_x = data[a->texnum]->larg - a->tex_x - 1;
 		if (a->side == 1 && a->ray_y < 0)
-			a->tex_x = a->tex_wdh - a->tex_x - 1;
-		a->step = 1.0 * a->tex_hgt / a->ln_hgt;
+			a->tex_x = data[a->texnum]->larg - a->tex_x - 1;
+		a->step = 1.0 * data[a->texnum]->alt / a->ln_hgt;
 		a->texpos = (a->draw_str - a->h / 2 + a->ln_hgt / 2) * a->step;
 		a->y = a->draw_str - 1;
 		while (++(a->y) < a->draw_end)
 		{
 			a->tex_y = (int)a->texpos;
 			a->texpos += a->step;
-			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
-			// a->color = *(unsigned int *)(data[0]->addr + (a->tex_y * data[0]->larg + a->tex_x * (data[0]->bits_per_pixel / 8)));
-			// a->color = (int)(data[a->texnum]->addr[data[0]->line_length * a->tex_y + a->tex_x * (data[0]->bits_per_pixel / 8)]);
-			if (a->side == 1 && a->color != 0)
+			a->color = canva()->getPxColor(data[a->texnum], a->tex_x, a->tex_y);
+			if (a->side == 1)
 				a->color = (a->color >> 1) & 8355711;
 			ft_print_color(1, 1, a->x, a->y, a->color);
 		}
