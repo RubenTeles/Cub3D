@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 18:39:11 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:18:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ double	ft_abs(double x)
 	if (x < (double)0)
 		return (x * (double)-1);
 	return (x);
+}
+
+void	ft_rotate_dir(double a)
+{
+	double	dir_x;
+	double	dir_y;
+
+	dir_x = all()->caster.player.dir_x;
+	dir_y = all()->caster.player.dir_y;
+	all()->caster.player.dir_x = dir_x * cos(a) - dir_y * sin(a);
+	all()->caster.player.dir_y = dir_x * sin(a) + dir_y * cos(a);
 }
 
 void	ft_set_camera(void)
@@ -62,7 +73,6 @@ void	ft_calc_plane(void)
 	all()->caster.view.pos_y = all()->caster.player.pos_y;
 	player()->dir[X] = all()->caster.player.dir_x;
 	player()->dir[Y] = all()->caster.player.dir_y;
-
 }
 
 void	ft_walls(void)

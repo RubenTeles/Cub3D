@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 14:27:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:01:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@
 # define KEY_ENTER 65293
 # define BUTTON_RIGHT 3
 # define BUTTON_LEFT 1
+# define KEY_K 107
+# define KEY_J 106
 
 #endif

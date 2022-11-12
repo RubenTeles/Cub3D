@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 18:49:35 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:02:29 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ static int key_game(void)
 		(player())->pos[X] -= (player())->vel * (player())->dir[Y];
 	if ((engine())->key->search(BUTTON_RIGHT)->on)
 		printf("Right Button PRESS\n");
+	if ((engine())->key->search(KEY_K)->on)
+		ft_rotate_dir(0.05);
+	if ((engine())->key->search(KEY_J)->on)
+		ft_rotate_dir(-0.05);
 	return (0);
 }
 

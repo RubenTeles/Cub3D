@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 15:37:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/12 20:02:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ void	new_key(void)
 	create_key(KEY_ENTER);
 	create_key(BUTTON_RIGHT);
 	create_key(BUTTON_LEFT);
+	create_key(KEY_K);
+	create_key(KEY_J);
 }
