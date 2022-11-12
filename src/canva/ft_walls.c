@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/11 19:00:59 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:50:31 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	ft_walls(void)
 		a->draw_end = a->ln_hgt / 2 + a->h / 2;
 		if (a->draw_end >= a->h)
 			a->draw_end = a->h - 1;
-		a->texnum = all()->map[a->map_y][a->map_x] - 1;
+		a->texnum = all()->map[a->map_y][a->map_x] - 49;
 		if (a->side == 0)
 			a->wall_x = view->pos_y + a->perp_dist * a->ray_y;
 		else
@@ -168,10 +168,10 @@ void	ft_walls(void)
 		a->y = a->draw_str - 1;
 		while (++(a->y) < a->draw_end)
 		{
-			a->tex_y = ((int)(a->texpos)) & (data[0]->alt - 1);
+			a->tex_y = (int)a->texpos;
 			a->texpos += a->step;
-			if (a->y > 0 && a->y < data[0]->alt)
-				a->color = canva()->getPxColor(data[0], a->tex_x, a->y);
+			a->color = canva()->getPxColor(data[0], a->tex_x, a->tex_y);
+			// a->color = *(unsigned int *)(data[0]->addr + (a->tex_y * data[0]->larg + a->tex_x * (data[0]->bits_per_pixel / 8)));
 			// a->color = (int)(data[a->texnum]->addr[data[0]->line_length * a->tex_y + a->tex_x * (data[0]->bits_per_pixel / 8)]);
 			if (a->side == 1)
 				a->color = (a->color >> 1) & 8355711;

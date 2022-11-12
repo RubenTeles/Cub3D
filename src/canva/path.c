@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/11 18:51:46 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:49:37 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 
 char	*ft_path(char sprite)
 {
-	if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
-		return ("./sprite/phpUnsLhe.xpm");
+	// if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
+	// 	return ("./sprite/phpUnsLhe.xpm");
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
