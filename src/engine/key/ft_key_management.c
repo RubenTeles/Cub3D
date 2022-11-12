@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 20:02:29 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:08:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,27 @@ static int key_game(void)
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 3))
 			(engine())->map = 0;
 	if ((engine())->key->search(KEY_W)->on && (player())->pos[Y] > 0 && ++(player())->move)
+	{
 		(player())->pos[Y] += (player())->vel * (player())->dir[Y];
+		(player())->pos[X] -= (player())->vel * (player())->dir[X];
+	}
 	if ((engine())->key->search(KEY_A)->on && (player())->pos[X] > 0 && ++(player())->move)
+	{
 		(player())->pos[X] += (player())->vel * (player())->dir[Y];
+		(player())->pos[Y] -= (player())->vel * (player())->dir[X];
+	}
 	if ((engine())->key->search(KEY_S)->on && (player())->pos[Y] < (engine())->max[Y] - 1\
 		&& ++(player())->move)
+	{
 		(player())->pos[Y] -= (player())->vel * (player())->dir[Y];
+		(player())->pos[X] += (player())->vel * (player())->dir[X];
+	}
 	if ((engine())->key->search(KEY_D)->on && (player())->pos[X] < (engine())->max[X] - 1\
 		&& ++(player())->move)
+	{
 		(player())->pos[X] -= (player())->vel * (player())->dir[Y];
+		(player())->pos[Y] += (player())->vel * (player())->dir[X];
+	}
 	if ((engine())->key->search(BUTTON_RIGHT)->on)
 		printf("Right Button PRESS\n");
 	if ((engine())->key->search(KEY_K)->on)
