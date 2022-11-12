@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 19:18:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:51:52 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,11 +161,11 @@ void	ft_walls(void)
 		a->texnum = all()->map[a->map_y][a->map_x] - 49;
 		if (a->texnum == 0)
 		{
-			if (a->side == 1 && view->dir_y > 0)
+			if (a->side == 1 && a->map_y > view->pos_y)
 				a->texnum = 1;
-			else if (a->side == 0 && view->dir_x > 0)
+			else if (a->side == 0 && a->map_x > view->pos_x)
 				a->texnum = 3;
-			else if (a->side == 0 && view->dir_x < 0)
+			else if (a->side == 0 && a->map_x < view->pos_x)
 				a->texnum = 2;
 			else if (a->side == 0 && view->dir_x == 0 && a->map_x > view->pos_x)
 				a->texnum = 3;
