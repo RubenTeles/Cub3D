@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 18:32:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/12 18:39:11 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void	ft_walls(void)
 			else if (a->side == 0 && view->dir_x == 0)
 				a->texnum = 2;
 		}
+		else
+			a->texnum += 3;
 		if (a->side == 0)
 			a->wall_x = view->pos_y + a->perp_dist * a->ray_y;
 		else
