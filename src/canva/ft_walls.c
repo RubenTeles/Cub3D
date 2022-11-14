@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/14 16:23:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:41:13 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,70 +76,76 @@ void	ft_calc_plane(void)
 	player()->dir[Y] = all()->caster.player.dir_y;
 }
 
-void	ft_floor(t_view *view)
+void	ft_floor(t_view *view, t_alg_fl a)
 {
-	t_alg_fl	a;
-
 	a.h = canva()->data->alt;
+	a.w = canva()->data->larg;
 	a.y = -1;
 	while (++(a.y) < a.h)
 	{
 		a.ray_x0 = (float)(view->dir_x - view->plane_x);
 		a.ray_y0 = (float)(view->dir_y - view->plane_y);
-		a.ray_x1 = (float)(view->dir_x - view->plane_x);
-		a.ray_y1 = (float)(view->dir_y - view->plane_y);
-		a.p = a.y - screenHeight / 2;
-		a.posz = 0.5 * screenHeight;
+		a.ray_x1 = (float)(view->dir_x + view->plane_x);
+		a.ray_y1 = (float)(view->dir_y + view->plane_y);
+		a.p = a.y - a.h / 2;
+		a.posz = 0.5 * (float)a.h;
 		a.rowdist = a.posz / a.p;
-		a.stepx = a.rowdist * (a.ray_x1 - a.ray_x0) / screenWidth;
-		a.stepy = a.rowdist * (a.ray_y1 - a.ray_y0) / screenWidth;
-		a.floorx = view->pos_x + a.rowdist * a.ray_x0;
-		a.floory = view->pos_y + a.rowdist * a.ray_y0;
-
+		a.stepx = a.rowdist * (a.ray_x1 - a.ray_x0) / (float)a.w;
+		a.stepy = a.rowdist * (a.ray_y1 - a.ray_y0) / (float)a.w;
+		a.floorx = (float)view->pos_x + a.rowdist * a.ray_x0;
+		a.floory = (float)view->pos_y + a.rowdist * a.ray_y0;
 		a.x = -1;
-		while (++(a.x) < screenWidth)
+		while (++(a.x) < a.w)
 		{
+			a.floortex = 4;
+			a.c_tex = 0;
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
-			a.tx = (int)(texWidth * (a.floorx - a.cellx)) & (texWidth - 1);
-			a.ty = (int)(texHeight * (a.floory - a.celly)) & (texHeight - 1);
+			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx)) & (a.data[a.floortex]->larg - 1);
+			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly)) & (a.data[a.floortex]->alt - 1);
 			a.floorx += a.stepx;
 			a.floory += a.stepy;
-			a.floortex = 3;
-			a.c_tex = 6;
-
-			a.color = texture[a.floortex][texWidth * a.ty + a.tx];
-			a.color = (a.color >> 1) & 8355711; // make a bit darker
-			buffer[a.y][a.x] = a.color;
-
-			a.color = texture[a.c_tex][texWidth * a.ty + a.tx];
-			a.color = (a.color >> 1) & 8355711; // make a bit darker
-			buffer[screenHeight - a.y - 1][a.x] = a.color;
+			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
+			{
+				if (all()->map[(int)a.floory][(int)a.floorx] == '3')
+				{
+					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
+					a.color = (a.color >> 1) & 8355711;
+					ft_print_color(1, 1, a.x, a.y, a.color);
+					a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
+					a.color = (a.color >> 1) & 8355711;
+					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
+				}
+			}
 		}
 	}
 }
 
 void	ft_walls(void)
 {
-	t_data	*data[5];
-	t_view	*view;
-	t_alg	*a;
+	t_data		*data[5];
+	t_view		*view;
+	t_alg		*a;
+	t_alg_fl	b;
 
 	data[0] = (canva())->sprite(N_WALL);
 	data[1] = (canva())->sprite(S_WALL);
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
-	data[4] = (canva())->sprite(HAY);
 	if (!data[2] || !data[1] || !data[2] || !data[3])
+		return ;
+	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
 		return ;
 	ft_set_camera();
 	ft_calc_plane();
 	view = &(all()->caster.view);
 	a = &(all()->caster.alg);
-	a->x = -1;
+	b.data = data;
+	ft_floor(view, b);
 	a->h = canva()->data->alt;
 	a->w = canva()->data->larg;
+	a->x = -1;
 	while (++(a->x) < a->w)
 	{
 		a->cam_x = 2 * a->x / (double)(a->w) - 1;
@@ -190,7 +196,7 @@ void	ft_walls(void)
 				a->map_y += a->step_y;
 				a->side = 1;
 			}
-			if (all()->map[a->map_y][a->map_x] > '0')
+			if (all()->map[a->map_y][a->map_x] > '0' && all()->map[a->map_y][a->map_x] != '3')
 				a->hit = 1;
 		}
 		if (a->side == 0)
