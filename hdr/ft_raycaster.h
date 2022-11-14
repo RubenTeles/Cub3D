@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/10 17:51:13 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:42:43 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,30 @@ typedef struct s_algorithm
 	char	buffer[10000][10000];
 }			t_alg;
 
-// typedef struct s_fov
-// {
-// 	int		pos_x;
-// 	int		pos_y;
-// 	float	angle;
-// }	t_fov;
+typedef struct s_alg_floor
+{
+	int		y;
+	int		x;
+	int		h;
+	float	ray_x0;
+	float	ray_y0;
+	float	ray_x1;
+	float	ray_y1;
+	int		p;
+	float	posz;
+	float	rowdist;
+	float	stepx;
+	float	stepy;
+	float	floorx;
+	float	floory;
+	int		cellx;
+	int		celly;
+	int		tx;
+	int		ty;
+	int		floortex;
+	int		c_tex;
+	int		color;
+}			t_alg_fl;
 
 typedef struct s_caster
 {

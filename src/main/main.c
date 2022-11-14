@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/11 16:14:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/14 14:58:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ int	main(int argc, char **argv)
 		array().free(all()->map);
 		ft_free_map_inf(all()->file);
 	}
-
 	return (0);
 }

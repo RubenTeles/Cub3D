@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/12 22:09:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:23:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,49 @@ void	ft_calc_plane(void)
 	player()->dir[Y] = all()->caster.player.dir_y;
 }
 
+void	ft_floor(t_view *view)
+{
+	t_alg_fl	a;
+
+	a.h = canva()->data->alt;
+	a.y = -1;
+	while (++(a.y) < a.h)
+	{
+		a.ray_x0 = (float)(view->dir_x - view->plane_x);
+		a.ray_y0 = (float)(view->dir_y - view->plane_y);
+		a.ray_x1 = (float)(view->dir_x - view->plane_x);
+		a.ray_y1 = (float)(view->dir_y - view->plane_y);
+		a.p = a.y - screenHeight / 2;
+		a.posz = 0.5 * screenHeight;
+		a.rowdist = a.posz / a.p;
+		a.stepx = a.rowdist * (a.ray_x1 - a.ray_x0) / screenWidth;
+		a.stepy = a.rowdist * (a.ray_y1 - a.ray_y0) / screenWidth;
+		a.floorx = view->pos_x + a.rowdist * a.ray_x0;
+		a.floory = view->pos_y + a.rowdist * a.ray_y0;
+
+		a.x = -1;
+		while (++(a.x) < screenWidth)
+		{
+			a.cellx = (int)(a.floorx);
+			a.celly = (int)(a.floory);
+			a.tx = (int)(texWidth * (a.floorx - a.cellx)) & (texWidth - 1);
+			a.ty = (int)(texHeight * (a.floory - a.celly)) & (texHeight - 1);
+			a.floorx += a.stepx;
+			a.floory += a.stepy;
+			a.floortex = 3;
+			a.c_tex = 6;
+
+			a.color = texture[a.floortex][texWidth * a.ty + a.tx];
+			a.color = (a.color >> 1) & 8355711; // make a bit darker
+			buffer[a.y][a.x] = a.color;
+
+			a.color = texture[a.c_tex][texWidth * a.ty + a.tx];
+			a.color = (a.color >> 1) & 8355711; // make a bit darker
+			buffer[screenHeight - a.y - 1][a.x] = a.color;
+		}
+	}
+}
+
 void	ft_walls(void)
 {
 	t_data	*data[5];
@@ -86,6 +129,7 @@ void	ft_walls(void)
 	data[1] = (canva())->sprite(S_WALL);
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
+	data[4] = (canva())->sprite(HAY);
 	data[4] = (canva())->sprite(HAY);
 	if (!data[2] || !data[1] || !data[2] || !data[3])
 		return ;
