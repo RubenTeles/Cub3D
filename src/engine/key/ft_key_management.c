@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 19:11:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:27:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int key_game_2(void)
 	}
 	return (0);
 }
+
 //Quando pressionar uma tecla
 static int key_game(void)
 {

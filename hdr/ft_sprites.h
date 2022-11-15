@@ -36,6 +36,7 @@
 #define W_WALL 'W'
 #define AVATAR 'X'
 #define HAY '#'
+#define WOOD_FLOOR 'w'
 
 //Numbers
 #define FOREST '1'

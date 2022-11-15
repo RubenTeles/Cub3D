@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 17:58:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:53:15 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	*ft_path(char sprite)
 		return (all()->file->we);
 	if (sprite == E_WALL)
 		return (all()->file->ea);
-
+	if (sprite == WOOD_FLOOR)
+		return ("./sprite/item/house_wall.xpm");
 	if (sprite == SIGN)
 		return ("./sprite/item/sign.xpm");
 	if (sprite == ALPHABET)
