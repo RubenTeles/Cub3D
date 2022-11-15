@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/14 18:41:13 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:44:02 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_floor(t_view *view, t_alg_fl a)
 			a.floory += a.stepy;
 			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
 			{
-				if (all()->map[(int)a.floory][(int)a.floorx] == '3')
+				if (all()->map[(int)a.floory][(int)a.floorx] == '3' && a.p >= 0)
 				{
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
 					a.color = (a.color >> 1) & 8355711;
