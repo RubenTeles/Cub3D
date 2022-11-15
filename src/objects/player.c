@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 12:45:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:20:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	new_player(void)
 	(player())->dir[Y] = all()->caster.player.dir_y;
 	(player())->vel = 0.10;
 	(player())->turn = 0.05;
+	(player())->vision = 0.66;
 	(player())->move = 0;
 	(player())->life = 100;
 	(player())->lives = 3;

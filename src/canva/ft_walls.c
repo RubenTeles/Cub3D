@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/15 18:51:28 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:20:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
 	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
-	all()->caster.view.plane_x *= -0.66;
-	all()->caster.view.plane_y *= -0.66;
+	all()->caster.view.plane_x *= -(player())->vision;
+	all()->caster.view.plane_y *= -(player())->vision;
 	all()->caster.view.dir_x = all()->caster.player.dir_x;
 	all()->caster.view.dir_y = all()->caster.player.dir_y;
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
