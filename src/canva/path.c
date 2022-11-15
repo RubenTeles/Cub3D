@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 22:09:42 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 13:08:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_path(char sprite)
 	// if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
 	// 	return ("./sprite/item/sign.xpm");
 	if (sprite == HAY)
-		return ("./sprite/item/hay.xpm");
+		return ("./sprite/item/hay.xpm");//"./sprite/item/house_wall.xpm"
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)
@@ -58,7 +58,7 @@ char	*ft_path(char sprite)
 		return ("./sprite/item/sign.xpm");
 	if (sprite == ALPHABET)
 		return ("./sprite/item/alphabet.xpm");
-	/*if (sprite == DOOR)
-		return ("door");*/
+	if (sprite == DOOR)
+		return ("./sprite/item/house_door.xpm");
 	return (0);
 }
