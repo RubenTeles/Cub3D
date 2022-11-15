@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
 /*   Updated: 2022/11/15 00:04:24 by rteles           ###   ########.fr       */

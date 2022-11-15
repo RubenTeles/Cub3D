@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
 /*   Updated: 2022/11/15 00:11:40 by rteles           ###   ########.fr       */
@@ -195,6 +195,7 @@ void			ft_background(double move);
 void			ft_hands(double move, int nice);
 void			ft_minimap(char **map);
 void			ft_walls(void);
+void			ft_rotate_dir(double a);
 
 //Utils
 long long		time_current(void);
