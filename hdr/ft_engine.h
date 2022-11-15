@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 19:18:52 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 00:11:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
 typedef struct s_key				t_key;
+typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
 
 # define X 0
@@ -70,6 +71,7 @@ struct s_engine
 	int			sprt_for_sec;
 	int			menu;
 	t_key		*key;
+	t_object	*object;
 };
 
 struct s_canva
@@ -90,13 +92,35 @@ struct s_canva
 	void		(*destroy)(void);
 };
 
+
+struct s_object
+{
+	char		title;
+	t_data		*avatar;
+	t_data		*sprite;
+	double		pos[2];
+	double		dir[2];
+	double		vel;
+	double		turn;
+	int			life;
+	int			collision;
+	void		(*create)(char title, int x, int y);
+	int			(*is_collision)(t_object *obj, int x, int y);
+	t_object	*(*last)(void);
+	void		(*destroy)(void);
+	t_object	*next;
+};
+
 struct s_player1
 {
 	char	title;
+	t_data	*avatar;
 	t_data	*sprite;
 	double	pos[2];
 	double	dir[2];
 	double	vel;
+	double	turn;
+	int		collision;
 	int		move;
 	char	key;
 	int		life;
@@ -141,6 +165,10 @@ int				key_management(void);
 int 			begin(void *param);
 int				key_esc(void);
 
+//Object
+void			ft_new_object(char title, int x, int y);
+int				is_collision(t_object *obj, int x, int y);
+
 //Menu
 int				ft_login(double move);
 int 			menu_game(double time);
@@ -164,7 +192,7 @@ unsigned char	get_b(int trgb);
 //Map
 void			create_images_map(char **map);
 void			ft_background(double move);
-void			ft_hands(double move);
+void			ft_hands(double move, int nice);
 void			ft_minimap(char **map);
 void			ft_walls(void);
 void			ft_rotate_dir(double a);

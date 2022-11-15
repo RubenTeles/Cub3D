@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_map.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/11 17:52:58 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 00:03:48 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	ft_print_map(char sprite, double x, double y)
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
 	else if (data->title == 'X')
 		(canva())->resize(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
-			(x * (canva())->rsz[X]) - (((canva())->rsz[Y] * 0.50) / 2), \
-			(y * (canva())->rsz[Y]) - (((canva())->rsz[Y] * 0.50) / 2));
+			((engine())->size[X] * 0.17) + (x * (canva())->rsz[X]) - (((canva())->rsz[Y] * 0.50) / 2),\
+			((engine())->size[Y] * 0.25) + (y * (canva())->rsz[Y]) - (((canva())->rsz[Y] * 0.50) / 2));
 	else
-		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x * \
-		(canva())->rsz[X], y * (canva())->rsz[Y]);
+		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y],\
+			((engine())->size[X] * 0.17) + (x * (canva())->rsz[X]),
+			((engine())->size[Y] * 0.25) + (y * (canva())->rsz[Y]));
 }
 
 void	create_images_map(char **map)
@@ -68,10 +69,10 @@ void	create_images_map(char **map)
 			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
 				|| title_image == 'E'))
 					continue ;
-			ft_print_map(title_image, x + 2, y + 2.5);
+			ft_print_map(title_image, x, y);
 		}
 	}
 	if (avatar >= 8)
-		ft_print_map((player())->sprite->title, (player())->pos[X] + 2,\
-			(player())->pos[Y] + 2.5);
+		ft_print_map((player())->sprite->title, (player())->pos[X],\
+			(player())->pos[Y]);
 }
