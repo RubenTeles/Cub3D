@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 01:37:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 18:46:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ struct s_player1
 	double	dir[2];
 	double	vel;
 	double	turn;
+	double	vision;
 	int		collision;
 	int		move;
 	int		life;
