@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:11:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:30:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ struct s_object
 	int			life;
 	int			collision;
 	void		(*create)(char title, int x, int y);
-	int			(*is_collision)(t_object *obj, int x, int y);
+	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(void);
 	void		(*destroy)(void);
 	t_object	*next;
@@ -120,9 +120,9 @@ struct s_player1
 	double	dir[2];
 	double	vel;
 	double	turn;
+	double	vision;
 	int		collision;
 	int		move;
-	char	key;
 	int		life;
 	int		lives;
 };
@@ -167,7 +167,7 @@ int				key_esc(void);
 
 //Object
 void			ft_new_object(char title, int x, int y);
-int				is_collision(t_object *obj, int x, int y);
+int				is_collision(t_object *obj, double x, double y);
 
 //Menu
 int				ft_login(double move);

@@ -3,15 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:04:24 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 19:30:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_keys.h>
+
+static int key_game_2(void)
+{
+	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move)
+	{
+		if ((player())->vision >= 0.53)
+			(player())->vision -= 0.01;
+		(player())->vel = 0.30;
+		(player())->move = 0;
+	}
+	else if ((engine())->key->search(KEY_SHIFT)->on &&
+		(player())->vision <= 0.66 && (player())->move == 0)\
+		(player())->vision += 0.001;
+	if ((engine())->key->search(KEY_SHIFT)->on == 0 &&\
+		(player())->vision <= 0.66)
+	{
+		(player())->vision += 0.02;
+		(player())->vel = 0.10;
+	}
+	return (0);
+}
 
 //Quando pressionar uma tecla
 static int key_game(void)
@@ -64,8 +85,10 @@ static int key_game(void)
 		ft_rotate_dir((player())->turn);
 	if ((engine())->key->search(KEY_J)->on)
 		ft_rotate_dir(-(player())->turn);
+	key_game_2();
 	return (0);
 }
+
 
 //Quando pressionar uma tecla
 static int key_menu(void)

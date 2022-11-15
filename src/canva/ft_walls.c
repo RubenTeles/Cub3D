@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/14 18:41:13 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:30:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
+#include <ft_sprites.h>
 
-#define N_WALL 'N'
-#define S_WALL 'S'
-#define W_WALL 'W'
-#define E_WALL 'E'
-#define HAY '#'
+// #define N_WALL 'N'
+// #define S_WALL 'S'
+// #define W_WALL 'W'
+// #define E_WALL 'E'
+// #define HAY '#'
 
 double	ft_abs(double x)
 {
@@ -66,8 +67,8 @@ void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
 	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
-	all()->caster.view.plane_x *= -0.66;
-	all()->caster.view.plane_y *= -0.66;
+	all()->caster.view.plane_x *= -(player())->vision;
+	all()->caster.view.plane_y *= -(player())->vision;
 	all()->caster.view.dir_x = all()->caster.player.dir_x;
 	all()->caster.view.dir_y = all()->caster.player.dir_y;
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
@@ -97,17 +98,19 @@ void	ft_floor(t_view *view, t_alg_fl a)
 		a.x = -1;
 		while (++(a.x) < a.w)
 		{
-			a.floortex = 4;
-			a.c_tex = 0;
+			a.floortex = 5;
+			a.c_tex = 5;
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
-			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx)) & (a.data[a.floortex]->larg - 1);
-			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly)) & (a.data[a.floortex]->alt - 1);
+			// printf("-----\n");
+			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
+			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
+			// printf("afaf\n");
 			a.floorx += a.stepx;
 			a.floory += a.stepy;
 			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
 			{
-				if (all()->map[(int)a.floory][(int)a.floorx] == '3')
+				if (all()->map[(int)a.floory][(int)a.floorx] == '3' && a.p >= 0)
 				{
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
 					a.color = (a.color >> 1) & 8355711;
@@ -123,7 +126,7 @@ void	ft_floor(t_view *view, t_alg_fl a)
 
 void	ft_walls(void)
 {
-	t_data		*data[5];
+	t_data		*data[7];
 	t_view		*view;
 	t_alg		*a;
 	t_alg_fl	b;
@@ -133,7 +136,9 @@ void	ft_walls(void)
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
-	if (!data[2] || !data[1] || !data[2] || !data[3])
+	data[5] = (canva())->sprite(WOOD_FLOOR);
+	data[6] = (canva())->sprite(DOOR);
+	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
 		return ;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
 		return ;
@@ -198,6 +203,8 @@ void	ft_walls(void)
 			}
 			if (all()->map[a->map_y][a->map_x] > '0' && all()->map[a->map_y][a->map_x] != '3')
 				a->hit = 1;
+			// if (all()->map[a->map_y][a->map_x] == '3')
+			// 	ft_floor(view, b);
 		}
 		if (a->side == 0)
 			a->perp_dist = (a->side_x - a->delta_x);
@@ -244,7 +251,7 @@ void	ft_walls(void)
 			a->tex_y = (int)a->texpos;
 			a->texpos += a->step;
 			a->color = canva()->getPxColor(data[a->texnum], a->tex_x, a->tex_y);
-			if (a->side == 1)
+			if (a->side == 1 || a->texnum <= 3)
 				a->color = (a->color >> 1) & 8355711;
 			ft_print_color(1, 1, a->x, a->y, a->color);
 		}
