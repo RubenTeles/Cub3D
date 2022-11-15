@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:03:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:44:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	ft_print_map(char sprite, double x, double y)
 
 void	create_images_map(char **map)
 {
-	int				x;
-	int				y;
-	char			title_image;
+	t_object		*aux;
 	static int		avatar = 0;
 
+	(void)map;
+	aux = (engine())->object;
 	avatar++;
 	if ((player())->move > 0)
 	{
@@ -50,27 +50,17 @@ void	create_images_map(char **map)
 		avatar = 0;
 	(canva())->rsz[X] = (engine())->size[X] * 0.85;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.85;
-    x = (engine())->size[X] - (engine())->size[X] * 0.94;
-    y = (engine())->size[Y] - (engine())->size[Y] * 0.94;
-	ft_print_map('M', x, y);
+	ft_print_map('M', (engine())->size[X] - (engine())->size[X] * 0.94,\
+		(engine())->size[Y] - (engine())->size[Y] * 0.94);
 	(canva())->rsz[X] = (engine())->size[X] * 0.63 / (engine())->max[X];
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.80 / (engine())->max[X];
 	ft_put_word("MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
 		0.05, (engine())->size[X] * 0.425, (engine())->size[Y] * 0.16);
-	y = -1;
-	while (map[++y])
-	{		
-		x = -1;
-		while (map[y][++x])
-		{
-			title_image = map[y][x];
-			if (title_image == '1')
-				title_image = 'T';
-			if ((title_image == 'N' || title_image == 'S' || title_image == 'W'\
-				|| title_image == 'E'))
-					continue ;
-			ft_print_map(title_image, x, y);
-		}
+	while (aux)
+	{
+		if (aux->title)
+			ft_print_map(aux->title, aux->pos[X], aux->pos[Y]);
+		aux = aux->next;
 	}
 	if (avatar >= 8)
 		ft_print_map((player())->sprite->title, (player())->pos[X],\

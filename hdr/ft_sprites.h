@@ -31,14 +31,13 @@
 #define ALPHABET 'P'
 #define WALK 'Q'
 #define S_WALL 'S'
-#define TREE 'T'
 #define SIGN 'U'
 #define W_WALL 'W'
 #define AVATAR 'X'
-#define HAY '#'
 #define WOOD_FLOOR 'w'
 
 //Numbers
-#define FOREST '1'
+#define TREE '1'
+#define HAY '2'
 
 #endif

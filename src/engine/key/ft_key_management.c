@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:25:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:42:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int key_game_2(void)
 {
 	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move)
 	{
-		if ((player())->vision >= 0.53)
+		if ((player())->vision >= 0.60)
 			(player())->vision -= 0.01;
 		(player())->vel = 0.30;
 		(player())->move = 0;
@@ -28,7 +28,7 @@ static int key_game_2(void)
 	if ((engine())->key->search(KEY_SHIFT)->on == 0 &&\
 		(player())->vision <= 0.66)
 	{
-		(player())->vision += 0.02;
+		(player())->vision += 0.002;
 		(player())->vel = 0.10;
 	}
 	return (0);
