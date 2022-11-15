@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:25:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,45 +38,21 @@ static int key_game_2(void)
 static int key_game(void)
 {
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 0))
-			(engine())->map = 1;
+		(engine())->map = 1;
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 2))
-			(engine())->map = 3;
+		(engine())->map = 3;
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 1))
-			(engine())->map = 2;
+		(engine())->map = 2;
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 3))
-			(engine())->map = 0;
-	if ((engine())->key->search(KEY_W)->on && ++(player())->move &&\
-		!is_collision(0,\
-		(player())->pos[X] + (player())->vel * (player())->dir[X],\
-		(player())->pos[Y] + (player())->vel * (player())->dir[Y]))
-	{
-		(player())->pos[X] += (player())->vel * (player())->dir[X];
-		(player())->pos[Y] += (player())->vel * (player())->dir[Y];
-	}
-	if ((engine())->key->search(KEY_A)->on && ++(player())->move &&\
-		!is_collision(0,\
-		(player())->pos[X] + (player())->vel * (player())->dir[Y],\
-		(player())->pos[Y] - (player())->vel * (player())->dir[X]))
-	{
-		(player())->pos[X] += (player())->vel * (player())->dir[Y];
-		(player())->pos[Y] -= (player())->vel * (player())->dir[X];
-	}
-	if ((engine())->key->search(KEY_S)->on && ++(player())->move &&\
-		!is_collision(0,\
-		(player())->pos[X] - (player())->vel * (player())->dir[X],\
-		(player())->pos[Y] - (player())->vel * (player())->dir[Y]))
-	{
-		(player())->pos[X] -= (player())->vel * (player())->dir[X];
-		(player())->pos[Y] -= (player())->vel * (player())->dir[Y];
-	}
-	if ((engine())->key->search(KEY_D)->on && ++(player())->move &&\
-		!is_collision(0,\
-		(player())->pos[X] - (player())->vel * (player())->dir[Y],\
-		(player())->pos[Y] + (player())->vel * (player())->dir[X]))
-	{
-		(player())->pos[X] -= (player())->vel * (player())->dir[Y];
-		(player())->pos[Y] += (player())->vel * (player())->dir[X];
-	}
+		(engine())->map = 0;
+	if ((engine())->key->search(KEY_W)->on && ++(player())->move)
+		(player())->movement(1, 1, X, Y);
+	if ((engine())->key->search(KEY_A)->on && ++(player())->move)
+		(player())->movement(1, -1, Y, X);
+	if ((engine())->key->search(KEY_S)->on && ++(player())->move)
+		(player())->movement(-1, -1, X, Y);
+	if ((engine())->key->search(KEY_D)->on && ++(player())->move)
+		(player())->movement(-1, 1, Y, X);
 	if ((engine())->key->search(BUTTON_RIGHT)->on)
 		printf("Right Button PRESS\n");
 	if ((engine())->key->search(KEY_N)->on)

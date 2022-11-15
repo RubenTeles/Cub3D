@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:24:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ struct s_player1
 	int		move;
 	int		life;
 	int		lives;
+	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
 };
 
 //static
