@@ -6,13 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/09 15:36:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 00:03:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-void	ft_hands(double move)
+void	ft_hands(double move, int nice)
 {
 	t_data			*data;
 	static int		a = 0;
@@ -26,9 +26,11 @@ void	ft_hands(double move)
 	x1 += move;
 	x2 -= move;
 	y += move;
-	count++;
-	/*if (count > 35)
+	if (nice == 1)
+		count = 1;
+	if (count > 0)
 	{
+		count++;
 		data = (canva())->sprite('n');
 		if (!data)
 			return ;
@@ -36,10 +38,10 @@ void	ft_hands(double move)
 			0.4, (engine())->size[X] * 0.42, (engine())->size[Y] * 0.66);
 		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
 			0.4, (engine())->size[X] * 0.31, (engine())->size[Y] * 0.66);
-		if (count == 40)
+		if (count == 15)
 			count = 0;
 		return ;
-	}*/
+	}
 	data = (canva())->sprite('H');
 	if (!data)
 		return ;
