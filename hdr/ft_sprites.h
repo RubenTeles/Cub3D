@@ -35,6 +35,7 @@
 #define SIGN 'U'
 #define W_WALL 'W'
 #define AVATAR 'X'
+#define HAY '#'
 
 //Numbers
 #define FOREST '1'

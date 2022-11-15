@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 13:08:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 17:58:00 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-#define HAY '#'
-
 char	*ft_path(char sprite)
 {
 	// if (sprite == 'N' || sprite == 'S' || sprite == 'W' || sprite == 'E')
 	// 	return ("./sprite/item/sign.xpm");
 	if (sprite == HAY)
-		return ("./sprite/item/hay.xpm");//"./sprite/item/house_wall.xpm"
+		return ("./sprite/item/house_wall.xpm");//"./sprite/item/house_wall.xpm"
 	if (sprite == MENU)
 		return ("./sprite/item/background_menu.xpm");
 	if (sprite == TREE)

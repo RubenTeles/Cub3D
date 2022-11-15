@@ -6,18 +6,19 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/15 17:02:46 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:16:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
+#include <ft_sprites.h>
 
-#define N_WALL 'N'
-#define S_WALL 'S'
-#define W_WALL 'W'
-#define E_WALL 'E'
-#define HAY '#'
+// #define N_WALL 'N'
+// #define S_WALL 'S'
+// #define W_WALL 'W'
+// #define E_WALL 'E'
+// #define HAY '#'
 
 double	ft_abs(double x)
 {
@@ -97,12 +98,14 @@ void	ft_floor(t_view *view, t_alg_fl a)
 		a.x = -1;
 		while (++(a.x) < a.w)
 		{
-			a.floortex = 4;
+			a.floortex = 3;
 			a.c_tex = 0;
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
+			// printf("-----\n");
 			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx)) & (a.data[a.floortex]->larg - 1);
 			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly)) & (a.data[a.floortex]->alt - 1);
+			// printf("afaf\n");
 			a.floorx += a.stepx;
 			a.floory += a.stepy;
 			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
@@ -123,7 +126,7 @@ void	ft_floor(t_view *view, t_alg_fl a)
 
 void	ft_walls(void)
 {
-	t_data		*data[5];
+	t_data		*data[7];
 	t_view		*view;
 	t_alg		*a;
 	t_alg_fl	b;
@@ -133,7 +136,9 @@ void	ft_walls(void)
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
-	if (!data[2] || !data[1] || !data[2] || !data[3])
+	data[5] = (canva())->sprite(DOOR);
+	data[6] = (canva())->sprite(DOOR);
+	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
 		return ;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
 		return ;
@@ -244,7 +249,7 @@ void	ft_walls(void)
 			a->tex_y = (int)a->texpos;
 			a->texpos += a->step;
 			a->color = canva()->getPxColor(data[a->texnum], a->tex_x, a->tex_y);
-			if (a->side == 1)
+			if (a->side == 1 || a->texnum <= 3)
 				a->color = (a->color >> 1) & 8355711;
 			ft_print_color(1, 1, a->x, a->y, a->color);
 		}
