@@ -6,12 +6,26 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 19:29:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 21:24:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
+
+static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
+{
+	if (!is_collision(0,\
+		(player())->pos[X] +\
+		(move_x * ((player())->vel * (player())->dir[dir_x])),\
+		(player())->pos[Y]))
+		(player())->pos[X] += move_x * ((player())->vel * (player())->dir[dir_x]);
+	if (!is_collision(0,\
+		(player())->pos[X],\
+		(player())->pos[Y] +\
+		(move_y * ((player())->vel * (player())->dir[dir_y]))))
+		(player())->pos[Y] += move_y * ((player())->vel * (player())->dir[dir_y]);
+}
 
 void	new_player(void)
 {
@@ -28,6 +42,7 @@ void	new_player(void)
 	(player())->move = 0;
 	(player())->life = 100;
 	(player())->lives = 3;
+	(player())->movement = player_movement;
 }
 
 t_player1	*player(void)
