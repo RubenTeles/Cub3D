@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:18:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 01:37:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ struct s_object
 	int			life;
 	int			collision;
 	void		(*create)(char title, int x, int y);
-	int			(*is_collision)(t_object *obj, int x, int y);
+	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(void);
 	void		(*destroy)(void);
 	t_object	*next;
@@ -166,7 +166,7 @@ int				key_esc(void);
 
 //Object
 void			ft_new_object(char title, int x, int y);
-int				is_collision(t_object *obj, int x, int y);
+int				is_collision(t_object *obj, double x, double y);
 
 //Menu
 int				ft_login(double move);

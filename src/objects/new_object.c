@@ -6,14 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:11:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/15 01:47:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-int	is_collision(t_object *obj, int x, int y)
+int	is_collision(t_object *obj, double x, double y)
 {
 	t_object	*aux;
 	
@@ -21,14 +21,16 @@ int	is_collision(t_object *obj, int x, int y)
 	while (aux)
 	{
 		if (aux->collision == 1 && aux != obj && \
-			(aux->pos[X] == x && aux->pos[Y] == y))
+			((aux->pos[X] >= x - 1.10 && (aux->pos[X] <= x + 0.1 ) &&\
+				(aux->pos[Y] >= y - 1.10 && aux->pos[Y] <= y + 0.1 ))))
 			{
-				printf("colide\n");
+				printf("colide X: %f y: %f\n", x , y);
 			return (1);
 			}
 		aux = aux->next;
 	}
-	if (obj && (player())->pos[X] == x && (player())->pos[Y] == y)
+	if (obj && (((player())->pos[X] >= x - 1.10 && (player())->pos[X] <= x + 0.1) &&\
+				((player())->pos[Y] >= y - 1.10 && (player())->pos[Y] <= y + 0.1 )))
 			{
 				printf("colide\n");
 			return (1);
