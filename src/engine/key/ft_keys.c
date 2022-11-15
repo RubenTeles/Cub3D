@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 20:02:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/15 00:04:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	new_key(void)
 	create_key(KEY_A);
 	create_key(KEY_S);
 	create_key(KEY_D);
+	create_key(KEY_N);
 	create_key(KEY_M);
 	create_key(KEY_ENTER);
 	create_key(BUTTON_RIGHT);
