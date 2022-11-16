@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/15 17:02:53 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:10:32 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_all
 	char		**map;
 	t_pos		player;
 	t_caster	caster;
+	int			wall;
 }			t_all;
 
 // utils
