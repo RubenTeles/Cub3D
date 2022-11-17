@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:12:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 10:50:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ struct s_player1
 	double	vision;
 	int		collision;
 	int		move;
+	double	fadigue;
 	int		life;
 	int		lives;
 	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
@@ -184,8 +185,9 @@ void		 	ft_create_game(void);
 //Pause
 void			ft_pause(void);
 
-//Objects
+//PLAYER
 void			new_player(void);
+void			ft_life(void);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \

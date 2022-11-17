@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 18:53:15 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:17:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*ft_path(char sprite)
 		return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == NICE)
 		return ("./sprite/wolf/hand_nice.xpm");
+	if (sprite == AVATAR_2)
+		return ("./sprite/wolf/head0.xpm");
 	if (sprite == AVATAR)
 		return ("./sprite/wolf/head1.xpm");
 	if (sprite == WALK)

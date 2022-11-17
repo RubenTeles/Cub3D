@@ -18,6 +18,7 @@
 #define NICE 'n'
 #define MINIMAP 'm'
 #define PIG 'p'
+#define WOOD_FLOOR 'w'
 
 //UPER CASE
 #define MENU 'A'
@@ -34,7 +35,7 @@
 #define SIGN 'U'
 #define W_WALL 'W'
 #define AVATAR 'X'
-#define WOOD_FLOOR 'w'
+#define AVATAR_2 'Y'
 
 //Numbers
 #define TREE '1'
