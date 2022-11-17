@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_life.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 10:54:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 11:12:36 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_life_percent(void)
 	double	life;
 	int		color;
 
-	/*if ((player())->life > 5)
-		(player())->life -= 5;*/
+	if ((player())->life > 5)
+		(player())->life -= 5;
 	life = (double)(player())->life / 1000;
 	if (life > 0.50)
 		color = 0X467527;

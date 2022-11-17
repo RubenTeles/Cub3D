@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/16 17:10:51 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:29:49 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	main(int argc, char **argv)
 	if (!(all())->file)
 		return (0);
 	all()->map = ft_lst_toarr(all());
+	printf("x:%i, y:%i\n", all()->player.x, all()->player.y);
 	if (ft_start(all()))
 	{
 		array().free(file);
