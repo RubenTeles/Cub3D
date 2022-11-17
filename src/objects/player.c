@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:24:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/16 23:01:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	new_player(void)
 	(player())->dir[Y] = all()->caster.player.dir_y;
 	(player())->vel = 0.10;
 	(player())->turn = 0.05;
+	(player())->turn_times = 0;
 	(player())->vision = 0.66;
 	(player())->move = 0;
 	(player())->life = 100;

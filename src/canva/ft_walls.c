@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/16 18:07:38 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,8 @@ void	ft_floor(t_view *view, t_alg_fl a)
 			a.c_tex = 5;
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
-			// printf("-----\n");
 			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
 			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
-			// printf("afaf\n");
 			a.floorx += a.stepx;
 			a.floory += a.stepy;
 			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
@@ -137,7 +135,7 @@ void	ft_walls(void)
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
 	data[5] = (canva())->sprite(WOOD_FLOOR);
-	data[6] = (canva())->sprite(DOOR);
+	data[6] = (canva())->sprite(SIGN);
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
 		return ;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
@@ -201,10 +199,14 @@ void	ft_walls(void)
 				a->map_y += a->step_y;
 				a->side = 1;
 			}
+			// if (a->map_x <= 0 || a->map_y <= 0 || a->map_y >= (array().len(all()->map) - 1) || a->map_x >= (string().len(all()->map[a->map_y]) - 1))
+			// 	a->hit = 1;
 			if (all()->map[a->map_y][a->map_x] > '0' && all()->map[a->map_y][a->map_x] != '3')
 				a->hit = 1;
-			// if (all()->map[a->map_y][a->map_x] == '3')
-			// 	ft_floor(view, b);
+			if (all()->map[a->map_y][a->map_x] == '4' && all()->wall == 0)
+			{
+				a->hit = 0;
+			}
 		}
 		if (a->side == 0)
 			a->perp_dist = (a->side_x - a->delta_x);
@@ -256,4 +258,5 @@ void	ft_walls(void)
 			ft_print_color(1, 1, a->x, a->y, a->color);
 		}
 	}
+	all()->wall = (all()->wall == 0);
 }

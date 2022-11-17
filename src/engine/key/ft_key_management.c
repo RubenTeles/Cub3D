@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:42:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/16 23:09:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,18 @@ static int key_game(void)
 	if ((engine())->key->search(KEY_N)->on)
 		ft_hands(0, 1);
 	if ((engine())->key->search(KEY_K)->on)
+	{
 		ft_rotate_dir((player())->turn);
+		(player())->turn_times -= (player())->turn;
+	}
 	if ((engine())->key->search(KEY_J)->on)
-		ft_rotate_dir(-(player())->turn);
+	{
+		ft_rotate_dir(-(player())->turn);	
+		(player())->turn_times += (player())->turn;
+	}
 	key_game_2();
 	return (0);
 }
-
 
 //Quando pressionar uma tecla
 static int key_menu(void)
