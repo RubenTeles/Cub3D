@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/17 10:25:42 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:07:37 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ void	ft_walls(void)
 {
 	t_data		*data[7];
 	t_view		*view;
-	t_alg		*a;
+	int			x;
 	t_alg_fl	b;
 
 	data[0] = (canva())->sprite(N_WALL);
@@ -239,12 +239,9 @@ void	ft_walls(void)
 	ft_set_camera();
 	ft_calc_plane();
 	view = &(all()->caster.view);
-	a = &(all()->caster.alg);
 	b.data = data;
 	ft_floor(view, b);
-	a->h = canva()->data->alt;
-	a->w = canva()->data->larg;
-	a->x = -1;
-	while (++(a->x) < a->w)
-		ft_ray(a->x, view, data, 0);
+	x = -1;
+	while (++x < canva()->data->larg)
+		ft_ray(x, view, data, 0);
 }
