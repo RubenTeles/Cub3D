@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 15:30:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 15:43:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	ft_life(void)
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.107, 0xe6be7e);
 	ft_life_percent();
 	ft_fatigue();
-	/*if ((double)(player()->life / 1000 < 0.5))
-		(player())->avatar = (canva())->sprite(AVATAR_2);*/
+	if ((double)(player())->life / 1000 <= 0.5)
+		(player())->avatar = (canva())->sprite(AVATAR_2);
+	else
+		(player())->avatar = (canva())->sprite(AVATAR);
 	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
 	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
 	(engine())->size[Y] * 0.087);	

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 10:50:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 17:01:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,13 +140,14 @@ t_player1		*player(void);
 void			new_canva(void);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
-void			resize_image(t_data *img, double larg, double alt, int pos_x, \
+void			resize_image(t_data *img, double larg, double alt, int pos_x,\
 int pos_y);
-void	rev_resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y);
+void			rev_resize_image(t_data *img, double larg, double alt,\
+int pos_x, int pos_y);
 t_data			*ft_sprite(char sprite);
 void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
-				int color);
+int color);
 char			*ft_path(char sprite);
 char			*path_alphabet(char	letter);
 t_data			*create_alphabet(char c);
@@ -155,7 +156,8 @@ t_data			*search_sprite(t_data *data, char sprite);
 t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
-void			ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y);
+void			ft_put_word(char *str, double larg, double alt, int pos_x,\
+int pos_y);
 
 //Keys
 void			new_key(void);
@@ -197,11 +199,11 @@ unsigned char	get_r(int trgb);
 unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
-//Map
-void			create_images_map(char **map);
+//Scenes
+void			ft_map(void);
 void			ft_background(double move);
 void			ft_hands(double move, int nice);
-void			ft_minimap(char **map);
+void			ft_minimap(void);
 void			ft_walls(void);
 void			ft_rotate_dir(double a);
 

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 00:33:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 17:00:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,47 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
-void	ft_put_minimap(void)
+void	ft_put_minimap(int x, int y, double larg, double alt)
 {
 	t_object	*aux;
-	double		larg;
-	double		alt;
-	double		init_x;
-	double		init_y;
 	double		board_x;
 	double		board_y;
-	
-	init_x = (canva())->data->larg * 0.735;
-	init_y = (canva())->data->alt * 0.08;
-	alt = (canva())->data->alt * 0.245 - init_y;
-	larg = (canva())->data->larg * 0.955 - init_x;
-	//printf("inicial: %f, final: %f MAX: %d\n", ((canva())->data->larg * 0.735), larg, (canva())->data->larg);
 
-	board_x = ((player())->pos[X] - 10) + ((player())->pos[X] + 10);
-	board_y = ((player())->pos[Y] - 8) + ((player())->pos[Y] + 8);
+	board_x = 0;
+	if (((player())->pos[X] - x) > 0)
+		board_x = ((player())->pos[X] - x);
+	board_y = 0;
+	if (((player())->pos[Y] - y) > 0)
+		board_y = ((player())->pos[Y] - y);
+	(canva())->rsz[X] = (engine())->size[X] * 0.221 / 20;
+	(canva())->rsz[Y] = (engine())->size[Y] * 0.174 / 16;
 	aux = (engine())->object;
 	while (aux)
 	{
-		if (aux->pos[X] >= (player())->pos[X] - 10 && aux->pos[X] <= (player())->pos[X] + 10 &&\
-			aux->pos[Y] >= (player())->pos[Y] - 8 && aux->pos[Y] <= (player())->pos[Y] + 8)
-		{
+		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
+			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
 			if (aux->avatar)
-				(canva())->resize(aux->avatar, (canva())->data->larg * 0.01, (canva())->data->alt * 0.015,\
-				(init_x + (larg * (aux->pos[X] / board_x))), (init_y + (alt * (aux->pos[Y] / board_y))));
-		}
+				(canva())->resize(aux->avatar, (canva())->rsz[X], (canva())->rsz[Y],\
+				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
+				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
 		aux = aux->next;
 	}
-	(canva())->resize((player())->avatar, (canva())->data->larg * 0.01, (canva())->data->alt * 0.015,\
-	(init_x + (larg * ((player())->pos[X]/ board_x))), (init_y + (alt * ((player())->pos[Y] / board_y))));
-	
+	(canva())->resize((player())->avatar, (canva())->rsz[X], (canva())->rsz[Y],\
+	larg + (((player())->pos[X] - board_x) * (canva())->rsz[X]),\
+	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));	
 }
 
-void	ft_minimap(char	**map)
+void	ft_minimap(void)
 {
 	t_data		*data;
 
-	(void)map;
 	data = (canva())->sprite(MINIMAP);
 	if (!data)
 		return ;
 	ft_print_color((engine())->size[X] * 0.221, (engine())->size[Y] * 0.174,\
 		 (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086, 0xe6be7e);
-	ft_put_minimap();
+	ft_put_minimap(10, 8, (canva())->data->larg * 0.745,\
+		(canva())->data->alt * 0.09);
 	(canva())->resize(data, (engine())->size[X] * 0.30, (engine())->size[Y] *\
 		0.35, (engine())->size[X] * 0.70, (engine())->size[Y] * 0.00);
 	ft_put_word("MINI MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
