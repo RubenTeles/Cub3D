@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/16 23:01:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 10:36:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	new_player(void)
 	(player())->turn_times = 0;
 	(player())->vision = 0.66;
 	(player())->move = 0;
-	(player())->life = 100;
+	(player())->fadigue = 100;
+	(player())->life = 1000;
 	(player())->lives = 3;
 	(player())->movement = player_movement;
 }

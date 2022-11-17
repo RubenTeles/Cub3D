@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:55:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 10:58:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,28 @@ static int key_pause(void)
 
 static int key_game_2(void)
 {
-	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move)
+	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
+		(player()->fadigue - 2 >= 0))
 	{
 		if ((player())->vision >= 0.60)
 			(player())->vision -= 0.01;
 		(player())->vel = 0.30;
 		(player())->move = 0;
+		(player())->fadigue -= 2;
 	}
 	else if ((engine())->key->search(KEY_SHIFT)->on &&
-		(player())->vision <= 0.66 && (player())->move == 0)\
-		(player())->vision += 0.001;
+		(player())->vision <= 0.66 && (player())->move == 0)
+			(player())->vision += 0.001;
+	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
+		(player()->fadigue - 3 <= 0))
+		(player())->vel = 0.10;
 	if ((engine())->key->search(KEY_SHIFT)->on == 0 &&\
-		(player())->vision <= 0.66)
+		((player())->vision <= 0.66 || (player())->fadigue + 0.25 < 100))
 	{
-		(player())->vision += 0.002;
+		if ((player())->fadigue <= 100)
+			(player())->fadigue += 0.25;
+		if ((player())->vision <= 0.66)
+			(player())->vision += 0.001;
 		(player())->vel = 0.10;
 	}
 	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 0))
@@ -89,7 +97,7 @@ static int key_game(void)
 //Quando pressionar uma tecla
 static int key_menu(void)
 {
-	if ((engine())->time < 0.1)
+	if ((engine())->time < 0.01)
 		return (0);
 	if ((engine())->menu == 1)
 	{

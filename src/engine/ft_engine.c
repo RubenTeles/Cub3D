@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 10:16:36 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:03:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	pause_game()
 	ft_walls();
 	ft_hands(0, 0);
 	ft_minimap(0);
+	ft_life();
 	if (count >= 3)
 		key_management();
 	if ((engine())->map)
@@ -68,6 +69,7 @@ int	loop_game(char **map)
 			ft_background(0.00017);
 		ft_walls();
 		ft_hands(0.0004, 0);
+		ft_life();
 		ft_minimap(map);
 		key_management();
 		a = 1;
