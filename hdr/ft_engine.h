@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/16 23:03:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 08:12:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ struct s_engine
 	long int	dif_time;
 	int			sprt_for_sec;
 	int			menu;
+	int			pause;
 	t_key		*key;
 	t_object	*object;
 };
@@ -179,6 +180,9 @@ void			ft_initial_menu(double move);
 void			ft_words_menu(void);
 void			ft_head_wolf(double move);
 void		 	ft_create_game(void);
+
+//Pause
+void			ft_pause(void);
 
 //Objects
 void			new_player(void);

@@ -6,12 +6,21 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/16 23:09:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 08:55:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_keys.h>
+
+static int key_pause(void)
+{
+	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 1))
+		(engine())->pause = 2;
+	if (!(engine())->key->search(KEY_P)->on && ((engine())->pause == 2))
+		(engine())->pause = 0;
+	return (0);
+}
 
 static int key_game_2(void)
 {
@@ -30,6 +39,12 @@ static int key_game_2(void)
 	{
 		(player())->vision += 0.002;
 		(player())->vel = 0.10;
+	}
+	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 0))
+		(engine())->pause = 1;
+	if ((engine())->key->search(KEY_T)->on)
+	{
+		printf("Mostrar barra de Vidas\n");
 	}
 	return (0);
 }
@@ -57,12 +72,12 @@ static int key_game(void)
 		printf("Right Button PRESS\n");
 	if ((engine())->key->search(KEY_N)->on)
 		ft_hands(0, 1);
-	if ((engine())->key->search(KEY_K)->on)
+	if ((engine())->key->search(KEY_RIGHT)->on)
 	{
 		ft_rotate_dir((player())->turn);
 		(player())->turn_times -= (player())->turn;
 	}
-	if ((engine())->key->search(KEY_J)->on)
+	if ((engine())->key->search(KEY_LEFT)->on)
 	{
 		ft_rotate_dir(-(player())->turn);	
 		(player())->turn_times += (player())->turn;
@@ -118,6 +133,8 @@ int	key_management(void)
 	key_esc();
 	if ((engine())->menu > 0)
 		return (key_menu());
+	if ((engine())->pause)
+		return (key_pause());
 	if ((engine())->menu == 0)
 		return (key_game());
 	return (0);
