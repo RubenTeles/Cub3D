@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/14 17:25:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:48:57 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_algorithm
 	int		tex_wdh;
 	int		tex_hgt;
 	int		color;
-	char	buffer[10000][10000];
+	int		check;
 }			t_alg;
 
 typedef struct s_alg_floor

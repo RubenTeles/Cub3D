@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/16 23:02:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 11:03:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
+int	pause_game()
+{
+	static int	count = 0;
+	
+	ft_background(0);
+	ft_walls();
+	ft_hands(0, 0);
+	ft_minimap(0);
+	ft_life();
+	if (count >= 3)
+		key_management();
+	if ((engine())->map)
+		create_images_map(0);
+	ft_pause();
+	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+		(canva())->data->img, 0, 0);
+	count++;
+	if ((engine())->pause == 0)
+		count = 0;
+	return (0);
+}
+
 int	loop_game(char **map)
 {
 	static int		a = 0;
@@ -41,10 +63,13 @@ int	loop_game(char **map)
 	{
 		if ((engine())->menu)
 			return (menu_game((engine())->count * 0.001));
+		if ((engine())->pause > 0)
+			return (pause_game());
 		if (all()->wall == 0)
 			ft_background(0.00017);
 		ft_walls();
 		ft_hands(0.0004, 0);
+		ft_life();
 		ft_minimap(map);
 		key_management();
 		a = 1;

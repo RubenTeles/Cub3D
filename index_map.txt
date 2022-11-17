@@ -26,6 +26,7 @@ T = TREE
 U = SIGN (DON'T USE)	*
 W = [Player] (West)
 X = AVATAR (DON'T USE)	*
+Y = AVATAR_2 (DON'T USE)*
 Z = canva (DON'T USE)	*
 
 --- Enimies --- (DOWN CASE)

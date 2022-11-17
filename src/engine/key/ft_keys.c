@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 19:30:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 08:03:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ void	new_key(void)
 	create_key(KEY_ENTER);
 	create_key(BUTTON_RIGHT);
 	create_key(BUTTON_LEFT);
-	create_key(KEY_K);
-	create_key(KEY_J);
+	create_key(KEY_RIGHT);
+	create_key(KEY_LEFT);
 	create_key(KEY_SHIFT);
+	create_key(KEY_P);
+	create_key(KEY_T);
 }
