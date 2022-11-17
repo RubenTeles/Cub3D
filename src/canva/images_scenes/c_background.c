@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_background.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/10 12:04:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:08:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	ft_background(double move)
 	t_data			*data;
 	static double	x1 = 0;
 
-	x1 += move;
+	x1 += move + (player())->turn_times;
 	if (x1 > 1)
 		x1 = x1 - 1;
+	if (x1 < 0)
+		x1 = x1 + 1;
 	ft_print_color((engine())->size[X], (engine())->size[Y] / 2, 0,\
 		0, (engine())->color[CEILLING]);
 	data = (canva())->sprite(CLOUD_1);
@@ -68,4 +70,6 @@ void	ft_background(double move)
 		0.2, (engine())->size[X] * (0.50 + x1), (engine())->size[Y] * 0.36);
 	ft_print_color((engine())->size[X], (engine())->size[Y] / 2, 0,\
 		(engine())->size[Y] / 2, (engine())->color[FLOOR]);
+	if ((player())->turn_times)
+		(player())->turn_times = 0;
 }
