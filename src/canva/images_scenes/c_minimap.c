@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 00:23:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 00:33:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	ft_put_minimap(void)
 		{
 			if (aux->avatar)
 				(canva())->resize(aux->avatar, (canva())->data->larg * 0.01, (canva())->data->alt * 0.015,\
-				(init_x + (larg * (aux->pos[X]/ board_x))), (init_y + (alt * (aux->pos[Y] / board_y))));
-			//}
+				(init_x + (larg * (aux->pos[X] / board_x))), (init_y + (alt * (aux->pos[Y] / board_y))));
 		}
 		aux = aux->next;
 	}

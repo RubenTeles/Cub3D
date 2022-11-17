@@ -6,24 +6,25 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:44:24 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 00:42:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_sprites.h>
 
 void	ft_print_map(char sprite, double x, double y)
 {
 	t_data	*data;
 
-	if (sprite == (player())->sprite->title)
-		sprite = 'X';
 	data = (canva())->sprite(sprite);
+	if (sprite == (player())->sprite->title)
+		data = (player())->avatar;
 	if (!data)
 		return ;
-	if (data->title == 'M')
+	if (data->title == MAP)
 		(canva())->resize(data, (canva())->rsz[X], (canva())->rsz[Y], x, y);
-	else if (data->title == 'X')
+	else if (data->title == (player())->avatar->title)
 		(canva())->resize(data, (canva())->rsz[X] * 0.50, (canva())->rsz[Y] * 0.50,\
 			((engine())->size[X] * 0.17) + (x * (canva())->rsz[X]) - (((canva())->rsz[Y] * 0.50) / 2),\
 			((engine())->size[Y] * 0.25) + (y * (canva())->rsz[Y]) - (((canva())->rsz[Y] * 0.50) / 2));
