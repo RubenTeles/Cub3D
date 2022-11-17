@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 10:54:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/17 15:30:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_life_percent(void)
 	double	life;
 	int		color;
 
-	/*if ((player())->life > 5)
-		(player())->life -= 5;*/
+	if ((player())->life > 5)
+		(player())->life -= 5;
 	life = (double)(player())->life / 1000;
 	if (life > 0.50)
 		color = 0X467527;
-	else if (life > 0.20)
+	else if (life > 0.25)
 		color = 0xe8a620;
-	else if (life > 0.05)
+	else if (life > 0.10)
 		color = 0xf74a28;
 	else
 		color = 0x8a0904;
@@ -53,9 +53,6 @@ void	ft_fatigue(void)
 
 void	ft_life(void)
 {
-	t_data	*sprite;
-
-	sprite = (player())->avatar;
 	ft_put_word("WOLF", (engine())->size[X] * 0.10, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.065);
 	ft_print_color((engine())->size[X] * 0.077, (engine())->size[Y] * 0.1365,\
@@ -69,7 +66,8 @@ void	ft_life(void)
 	ft_life_percent();
 	ft_fatigue();
 	/*if ((double)(player()->life / 1000 < 0.5))
-		sprite = (canva())->sprite(AVATAR_2);*/
-	(canva())->resize(sprite, (engine())->size[X] * 0.068, (engine())->size[Y]\
-	* 0.08, (engine())->size[X] * 0.024, (engine())->size[Y] * 0.087);	
+		(player())->avatar = (canva())->sprite(AVATAR_2);*/
+	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
+	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
+	(engine())->size[Y] * 0.087);	
 }
