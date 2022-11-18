@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 17:00:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 01:07:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	ft_put_minimap(int x, int y, double larg, double alt)
 		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
 			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
 			if (aux->avatar)
-				(canva())->resize(aux->avatar, (canva())->rsz[X], (canva())->rsz[Y],\
+				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
 				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
 				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
 		aux = aux->next;
 	}
-	(canva())->resize((player())->avatar, (canva())->rsz[X], (canva())->rsz[Y],\
+	(canva())->resize((player())->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
 	larg + (((player())->pos[X] - board_x) * (canva())->rsz[X]),\
 	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));	
 }

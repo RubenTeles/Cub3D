@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 15:56:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 01:10:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_path(char sprite)
 	if (sprite == MAP)
 		return ("./sprite/item/map.xpm");
 	if (sprite == MINIMAP)
-		return ("./sprite/item/minimap.xpm");
+		return ("./sprite/item/minimap_2.xpm");
 	if (sprite == HAND)
 		return ("./sprite/wolf/hand_1.xpm");
 	if (sprite == NICE)
@@ -57,9 +57,11 @@ char	*ft_path(char sprite)
 		return ("./sprite/item/house_wall.xpm");
 	if (sprite == SIGN)
 		return ("./sprite/item/sign.xpm");
-	if (sprite == ALPHABET)
-		return ("./sprite/item/alphabet.xpm");
 	if (sprite == DOOR)
 		return ("./sprite/item/house_door.xpm");
+	if (sprite == DOOR_OPEN)
+		return ("./sprite/item/house_door_open.xpm");
+	if (sprite == RUN)
+		return ("./sprite/item/run_effect.xpm");
 	return (0);
 }

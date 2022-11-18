@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_walls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/17 10:25:42 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:10:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,7 @@ void	ft_walls(void)
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
 	data[5] = (canva())->sprite(WOOD_FLOOR);
-	data[6] = (canva())->sprite(SIGN);
+	data[6] = (canva())->sprite(DOOR_OPEN);
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
 		return ;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)

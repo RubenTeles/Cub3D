@@ -14,22 +14,23 @@
 # define FT_SPRITES_H
 
 //DOWN CASE
-#define DOOR 'd'
 #define NICE 'n'
 #define MINIMAP 'm'
 #define PIG 'p'
 #define WOOD_FLOOR 'w'
+#define RUN 'u'
 
 //UPER CASE
 #define MENU 'A'
+#define DOOR 'D'
 #define E_WALL 'E'
+#define DOOR_OPEN 'F'
 #define HAND 'H'
 #define CLOUD_1 'I'
 #define CLOUD_2 'J'
 #define CLOUD_3 'K'
 #define MAP 'M'
 #define N_WALL 'N'
-#define ALPHABET 'P'
 #define WALK 'Q'
 #define S_WALL 'S'
 #define SIGN 'U'
