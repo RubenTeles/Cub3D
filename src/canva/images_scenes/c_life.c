@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 11:12:36 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/18 14:27:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_life_percent(void)
 	life = (double)(player())->life / 1000;
 	if (life > 0.50)
 		color = 0X467527;
-	else if (life > 0.20)
+	else if (life > 0.25)
 		color = 0xe8a620;
-	else if (life > 0.05)
+	else if (life > 0.10)
 		color = 0xf74a28;
 	else
 		color = 0x8a0904;
@@ -53,9 +53,6 @@ void	ft_fatigue(void)
 
 void	ft_life(void)
 {
-	t_data	*sprite;
-
-	sprite = (player())->avatar;
 	ft_put_word("WOLF", (engine())->size[X] * 0.10, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.065);
 	ft_print_color((engine())->size[X] * 0.077, (engine())->size[Y] * 0.1365,\
@@ -68,8 +65,11 @@ void	ft_life(void)
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.107, 0xe6be7e);
 	ft_life_percent();
 	ft_fatigue();
-	/*if ((double)(player()->life / 1000 < 0.5))
-		sprite = (canva())->sprite(AVATAR_2);*/
-	(canva())->resize(sprite, (engine())->size[X] * 0.068, (engine())->size[Y]\
-	* 0.08, (engine())->size[X] * 0.024, (engine())->size[Y] * 0.087);	
+	if ((double)(player())->life / 1000 <= 0.5)
+		(player())->avatar = (canva())->sprite(AVATAR_2);
+	else
+		(player())->avatar = (canva())->sprite(AVATAR);
+	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
+	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
+	(engine())->size[Y] * 0.087);	
 }

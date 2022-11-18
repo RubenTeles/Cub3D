@@ -6,12 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 10:58:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 00:46:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_keys.h>
+#include <ft_sprites.h>
 
 static int key_pause(void)
 {
@@ -24,6 +25,8 @@ static int key_pause(void)
 
 static int key_game_2(void)
 {
+	t_data	*data;
+
 	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
 		(player()->fadigue - 2 >= 0))
 	{
@@ -32,6 +35,11 @@ static int key_game_2(void)
 		(player())->vel = 0.30;
 		(player())->move = 0;
 		(player())->fadigue -= 2;
+		data = (canva())->sprite(RUN);
+		if (!data)
+			return (0);
+		(canva())->resize(data, (canva())->data->larg,\
+		(canva())->data->alt, 0, 0);
 	}
 	else if ((engine())->key->search(KEY_SHIFT)->on &&
 		(player())->vision <= 0.66 && (player())->move == 0)

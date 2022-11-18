@@ -13,13 +13,13 @@ B = Bush
 C = Cristal
 D = Door
 E = [Player] (East)
+F = Door_Open
 H = Hand (DONT'T USE)	*
 I = CLOUD_1 (DONT'T USE)*
 J = CLOUD_2 (DONT'T USE)*
 K = CLOUD_3 (DONT'T USE)*
 N = [Player] (Nort)
 M = MAP (DON'T USE)		*
-P = ALPHABET  (DONT'T USE)*
 R = Rock
 S = [Player] (South)
 T = TREE
@@ -38,6 +38,7 @@ n = NICE    (DONT'T USE)*
 m = MINIMAP (DONT'T USE)*
 p = pig (need separate in 3)
 s = sheep
+u = RUN
 
 --- Background --- (Number's)
 0 = FLOOR

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 11:03:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 00:44:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	pause_game()
 	ft_background(0);
 	ft_walls();
 	ft_hands(0, 0);
-	ft_minimap(0);
+	ft_minimap();
 	ft_life();
 	if (count >= 3)
 		key_management();
 	if ((engine())->map)
-		create_images_map(0);
+		ft_map();
 	ft_pause();
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0);
@@ -48,7 +48,7 @@ int	pause_game()
 	return (0);
 }
 
-int	loop_game(char **map)
+int	loop_game(void)
 {
 	static int		a = 0;
 
@@ -69,12 +69,12 @@ int	loop_game(char **map)
 			ft_background(0.00017);
 		ft_walls();
 		ft_hands(0.0004, 0);
-		ft_life();
-		ft_minimap(map);
 		key_management();
+		ft_life();
+		ft_minimap();
 		a = 1;
 		if ((engine())->map)
-			create_images_map(map);
+			ft_map();
 		(engine())->time += (engine())->count * 0.001;
 		//printf("%fs\n", (engine())->time);
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
@@ -98,7 +98,7 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
-	mlx_loop_hook((engine())->ptr, loop_game, all->map);
+	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
 	return (0);
 }
