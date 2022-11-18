@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/18 14:27:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:56:00 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	ft_calc_plane(void)
 {
 	all()->caster.view.plane_x = all()->caster.player.dir_y;
 	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
-	all()->caster.view.plane_x *= -(player())->vision;
-	all()->caster.view.plane_y *= -(player())->vision;
-	all()->caster.view.dir_x = all()->caster.player.dir_x;
-	all()->caster.view.dir_y = all()->caster.player.dir_y;
+	all()->caster.view.plane_x *= -0.66;
+	all()->caster.view.plane_y *= -0.66;
+	all()->caster.view.dir_x = all()->caster.player.dir_x * (player())->vision;
+	all()->caster.view.dir_y = all()->caster.player.dir_y * (player())->vision;
 	all()->caster.view.pos_x = all()->caster.player.pos_x;
 	all()->caster.view.pos_y = all()->caster.player.pos_y;
 	player()->dir[X] = all()->caster.player.dir_x;
@@ -121,6 +121,18 @@ void	ft_floor(t_view *view, t_alg_fl a)
 		}
 	}
 }
+
+// void	ft_paint_ray(t_data	*data, int x, int y, double texpos)
+// {
+// 	int	tex_y;
+// 	int	color;
+
+// 	tex_y = (int)texpos;
+// 	color = canva()->getPxColor(data, a.tex_x, tex_y);
+// 	if (1)
+// 		color = (color >> 1) & 8355711;
+// 	ft_print_color(1, 1, x, y, color);
+// }
 
 void	ft_ray(int x, t_view *view, t_data **data, int hit)
 {
@@ -200,9 +212,7 @@ void	ft_ray(int x, t_view *view, t_data **data, int hit)
 		a.wall_x = view->pos_x + a.perp_dist * a.ray_x;
 	a.wall_x -= floor(a.wall_x);
 	a.tex_x = (int)(a.wall_x * (double)(data[a.texnum]->larg));
-	if (a.side == 0 && a.ray_x > 0)
-		a.tex_x = data[a.texnum]->larg - a.tex_x - 1;
-	if (a.side == 1 && a.ray_y < 0)
+	if ((a.side == 0 && a.ray_x > 0) || (a.side == 1 && a.ray_y < 0))
 		a.tex_x = data[a.texnum]->larg - a.tex_x - 1;
 	a.step = 1.0 * data[a.texnum]->alt / a.ln_hgt;
 	a.texpos = (a.draw_str - canva()->data->alt / 2 + a.ln_hgt / 2) * a.step;
@@ -231,9 +241,10 @@ void	ft_walls(void)
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
 	data[5] = (canva())->sprite(WOOD_FLOOR);
-	data[6] = (canva())->sprite(DOOR_OPEN);
+	data[6] = (canva())->sprite(WINDOW);
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
 		return ;
+	all()->data = data;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
 		return ;
 	ft_set_camera();

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 14:27:32 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:25:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ char	*ft_path(char sprite)
 		return ("./sprite/item/house_door_open.xpm");
 	if (sprite == RUN)
 		return ("./sprite/item/run_effect.xpm");
+	if (sprite == WINDOW)
+		return ("./sprite/item/house_window.xpm");
 	return (0);
 }

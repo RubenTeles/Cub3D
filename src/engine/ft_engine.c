@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 00:44:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 17:56:17 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ int	loop_game(void)
 			return (menu_game((engine())->count * 0.001));
 		if ((engine())->pause > 0)
 			return (pause_game());
-		if (all()->wall == 0)
-			ft_background(0.00017);
+		ft_background(0.00017);
 		ft_walls();
 		ft_hands(0.0004, 0);
 		key_management();

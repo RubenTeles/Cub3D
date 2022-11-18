@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 00:46:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/18 14:54:52 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int key_game_2(void)
 		if ((player())->fadigue <= 100)
 			(player())->fadigue += 0.25;
 		if ((player())->vision <= 0.66)
-			(player())->vision += 0.001;
+			(player())->vision += 0.1;
 		(player())->vel = 0.10;
 	}
 	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 0))

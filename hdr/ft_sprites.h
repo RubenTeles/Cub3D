@@ -25,6 +25,7 @@
 #define DOOR 'D'
 #define E_WALL 'E'
 #define DOOR_OPEN 'F'
+#define	WINDOW 'G'
 #define HAND 'H'
 #define CLOUD_1 'I'
 #define CLOUD_2 'J'
