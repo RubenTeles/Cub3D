@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 16:28:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:41:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,8 +204,15 @@ void			ft_map(void);
 void			ft_background(double move);
 void			ft_hands(double move, int nice);
 void			ft_minimap(void);
+
+// Raycasting
+double			ft_abs(double x);
+void			ft_set_camera(void);
+void			ft_calc_plane(void);
 void			ft_raycasting(void);
 void			ft_rotate_dir(double a);
+int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition);
+int				ft_texture_num(int map_x, int map_y, int side, t_view view);
 
 //Utils
 long long		time_current(void);

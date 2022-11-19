@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/19 19:21:34 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:41:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,7 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
-// #define N_WALL 'N'
-// #define S_WALL 'S'
-// #define W_WALL 'W'
-// #define E_WALL 'E'
-// #define HAY '#'
-
-double	ft_abs(double x)
-{
-	if (x < (double)0)
-		return (x * (double)-1);
-	return (x);
-}
-
-void	ft_rotate_dir(double a)
-{
-	double	dir_x;
-	double	dir_y;
-
-	dir_x = all()->caster.player.dir_x;
-	dir_y = all()->caster.player.dir_y;
-	all()->caster.player.dir_x = dir_x * cos(a) - dir_y * sin(a);
-	all()->caster.player.dir_y = dir_x * sin(a) + dir_y * cos(a);
-}
-
-void	ft_set_camera(void)
-{
-	char	dir;
-
-	all()->caster.player.pos_x = (player())->pos[X];
-	all()->caster.player.pos_y = (player())->pos[Y];
-	if (all()->caster.player.dir_x == 0 && all()->caster.player.dir_y == 0)
-	{
-		dir = all()->map[all()->player.y][all()->player.x];
-		all()->map[all()->player.y][all()->player.x] = '0';
-		if (dir == 'N' || dir == 'S')
-			all()->caster.player.dir_x = 0;
-		if (dir == 'W' || dir == 'E')
-			all()->caster.player.dir_y = 0;
-		if (dir == 'W')
-			all()->caster.player.dir_x = -1;
-		if (dir == 'E')
-			all()->caster.player.dir_x = 1;
-		if (dir == 'N')
-			all()->caster.player.dir_y = -1;
-		if (dir == 'S')
-			all()->caster.player.dir_y = 1;
-	}
-}
-
-void	ft_calc_plane(void)
-{
-	all()->caster.view.plane_x = all()->caster.player.dir_y;
-	all()->caster.view.plane_y = all()->caster.player.dir_x * (double)-1;
-	all()->caster.view.plane_x *= -0.66;
-	all()->caster.view.plane_y *= -0.66;
-	all()->caster.view.dir_x = all()->caster.player.dir_x * (player())->vision;
-	all()->caster.view.dir_y = all()->caster.player.dir_y * (player())->vision;
-	all()->caster.view.pos_x = all()->caster.player.pos_x;
-	all()->caster.view.pos_y = all()->caster.player.pos_y;
-	player()->dir[X] = all()->caster.player.dir_x;
-	player()->dir[Y] = all()->caster.player.dir_y;
-}
-
-void	ft_floor(t_view *view, t_alg_fl a)
+void	ft_ray_floor(t_view *view, t_alg_fl a)
 {
 	a.h = canva()->data->alt;
 	a.w = canva()->data->larg;
@@ -120,37 +57,6 @@ void	ft_floor(t_view *view, t_alg_fl a)
 			}
 		}
 	}
-}
-
-int	ft_texture_num(int map_x, int map_y, int side, t_view view)
-{
-	int	texnum;
-
-	texnum = all()->map[map_y][map_x] - 49;
-	if (texnum == 0)
-	{
-		if (side == 1 && map_y > view.pos_y)
-			return (1);
-		if (side == 0 && map_x > view.pos_x)
-			return (3);
-		if (side == 0 && map_x < view.pos_x)
-			return (2);
-		if (side == 0 && view.dir_x == 0 && map_x > view.pos_x)
-			return (3);
-		if (side == 0 && view.dir_x == 0)
-			return (2);
-	}
-	return (texnum + 3);
-}
-
-int	ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition)
-{
-	int	color;
-
-	color = canva()->getPxColor(data, tex_x, tex_y);
-	if (condition)
-		color = (color >> 1) & 8355711;
-	return (color);
 }
 
 void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
@@ -271,7 +177,7 @@ void	ft_raycasting(void)
 	b.data = data;
 	x = -1;
 	a.x = 0;
-	ft_floor(view, b);
+	ft_ray_floor(view, b);
 	while (++x < canva()->data->larg)
 		ft_ray(x, view, data, a);
 }
