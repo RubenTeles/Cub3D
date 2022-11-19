@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 17:56:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 16:37:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	pause_game()
 	static int	count = 0;
 	
 	ft_background(0);
-	ft_walls();
+	ft_raycasting();
 	ft_hands(0, 0);
 	ft_minimap();
 	ft_life();
@@ -66,7 +66,7 @@ int	loop_game(void)
 		if ((engine())->pause > 0)
 			return (pause_game());
 		ft_background(0.00017);
-		ft_walls();
+		ft_raycasting();
 		ft_hands(0.0004, 0);
 		key_management();
 		ft_life();

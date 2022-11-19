@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_walls.c                                         :+:      :+:    :+:   */
+/*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/18 17:56:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:21:34 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ft_floor(t_view *view, t_alg_fl a)
 			a.floory += a.stepy;
 			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
 			{
-				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4') && a.p >= 0)
+				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4' || all()->map[(int)a.floory][(int)a.floorx] == '2') && a.p >= 0)
 				{
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
 					a.color = (a.color >> 1) & 8355711;
@@ -122,46 +122,78 @@ void	ft_floor(t_view *view, t_alg_fl a)
 	}
 }
 
-// void	ft_paint_ray(t_data	*data, int x, int y, double texpos)
-// {
-// 	int	tex_y;
-// 	int	color;
-
-// 	tex_y = (int)texpos;
-// 	color = canva()->getPxColor(data, a.tex_x, tex_y);
-// 	if (1)
-// 		color = (color >> 1) & 8355711;
-// 	ft_print_color(1, 1, x, y, color);
-// }
-
-void	ft_ray(int x, t_view *view, t_data **data, int hit)
+int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 {
-	t_alg	a;
+	int	texnum;
 
-	a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
-	a.ray_x = view->dir_x + view->plane_x * a.cam_x;
-	a.ray_y = view->dir_y + view->plane_y * a.cam_x;
-	a.map_x = (int)(view->pos_x);
-	a.map_y = (int)(view->pos_y);
-	if (a.ray_x == 0)
-		a.delta_x = 1e30;
+	texnum = all()->map[map_y][map_x] - 49;
+	if (texnum == 0)
+	{
+		if (side == 1 && map_y > view.pos_y)
+			return (1);
+		if (side == 0 && map_x > view.pos_x)
+			return (3);
+		if (side == 0 && map_x < view.pos_x)
+			return (2);
+		if (side == 0 && view.dir_x == 0 && map_x > view.pos_x)
+			return (3);
+		if (side == 0 && view.dir_x == 0)
+			return (2);
+	}
+	return (texnum + 3);
+}
+
+int	ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition)
+{
+	int	color;
+
+	color = canva()->getPxColor(data, tex_x, tex_y);
+	if (condition)
+		color = (color >> 1) & 8355711;
+	return (color);
+}
+
+void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
+{
+	if (a.x == 0)
+	{	
+		a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
+		a.ray_x = view->dir_x + view->plane_x * a.cam_x;
+		a.ray_y = view->dir_y + view->plane_y * a.cam_x;
+		a.map_x = (int)(view->pos_x);
+		a.map_y = (int)(view->pos_y);
+		if (a.ray_x == 0)
+			a.delta_x = 1e30;
+		else
+			a.delta_x = ft_abs(1 / a.ray_x);
+		if (a.ray_y == 0)
+			a.delta_y = 1e30;
+		else
+			a.delta_y = ft_abs(1 / a.ray_y);
+		a.hit = 0;
+		a.step_x = 1 - ((a.ray_x < 0) * 2);
+		if (a.ray_x < 0)
+			a.side_x = (view->pos_x - a.map_x) * a.delta_x;
+		else
+			a.side_x = (a.map_x + 1.0 - view->pos_x) * a.delta_x;
+		a.step_y = 1 - ((a.ray_y < 0) * 2);
+		if (a.ray_y < 0)
+			a.side_y = (view->pos_y - a.map_y) * a.delta_y;
+		else
+			a.side_y = (a.map_y + 1.0 - view->pos_y) * a.delta_y;
+	}
 	else
-		a.delta_x = ft_abs(1 / a.ray_x);
-	if (a.ray_y == 0)
-		a.delta_y = 1e30;
-	else
-		a.delta_y = ft_abs(1 / a.ray_y);
-	a.hit = 0;
-	a.step_x = 1 - ((a.ray_x < 0) * 2);
-	if (a.ray_x < 0)
-		a.side_x = (view->pos_x - a.map_x) * a.delta_x;
-	else
-		a.side_x = (a.map_x + 1.0 - view->pos_x) * a.delta_x;
-	a.step_y = 1 - ((a.ray_y < 0) * 2);
-	if (a.ray_y < 0)
-		a.side_y = (view->pos_y - a.map_y) * a.delta_y;
-	else
-		a.side_y = (a.map_y + 1.0 - view->pos_y) * a.delta_y;
+	{
+		while (all()->map[a.map_y][a.map_x] == '4')
+		{
+			a.check = (a.side_x < a.side_y);
+			a.side = !a.check;
+			a.side_x += a.delta_x * a.check;
+			a.map_x += a.step_x * a.check;
+			a.side_y += a.delta_y * !a.check;
+			a.map_y += a.step_y * !a.check;
+		}
+	}
 	while (a.hit == 0)
 	{
 		a.check = (a.side_x < a.side_y);
@@ -174,10 +206,13 @@ void	ft_ray(int x, t_view *view, t_data **data, int hit)
 		// 	a.hit = 1;
 		if (all()->map[a.map_y][a.map_x] > '0' && all()->map[a.map_y][a.map_x] != '3')
 			a.hit = 1;
-		if (all()->map[a.map_y][a.map_x] == '4' && hit)
+		if (all()->map[a.map_y][a.map_x] == '4')
+		{
+			a.x = 1;
 			a.hit = 0;
-		if (all()->map[a.map_y][a.map_x] == '4' && !hit)
-			ft_ray(x, view, data, 1);
+			ft_ray(x, view, data, a);
+			a.hit = 1;
+		}
 	}
 	if (a.side == 0)
 		a.perp_dist = (a.side_x - a.delta_x);
@@ -190,22 +225,7 @@ void	ft_ray(int x, t_view *view, t_data **data, int hit)
 	a.draw_end = a.ln_hgt / 2 + canva()->data->alt / 2;
 	if (a.draw_end >= canva()->data->alt)
 		a.draw_end = canva()->data->alt - 1;
-	a.texnum = all()->map[a.map_y][a.map_x] - 49;
-	if (a.texnum == 0)
-	{
-		if (a.side == 1 && a.map_y > view->pos_y)
-			a.texnum = 1;
-		else if (a.side == 0 && a.map_x > view->pos_x)
-			a.texnum = 3;
-		else if (a.side == 0 && a.map_x < view->pos_x)
-			a.texnum = 2;
-		else if (a.side == 0 && view->dir_x == 0 && a.map_x > view->pos_x)
-			a.texnum = 3;
-		else if (a.side == 0 && view->dir_x == 0)
-			a.texnum = 2;
-	}
-	else
-		a.texnum += 3;
+	a.texnum = ft_texture_num(a.map_x, a.map_y, a.side, *view);
 	if (a.side == 0)
 		a.wall_x = view->pos_y + a.perp_dist * a.ray_y;
 	else
@@ -219,21 +239,19 @@ void	ft_ray(int x, t_view *view, t_data **data, int hit)
 	a.y = a.draw_str - 1;
 	while (++(a.y) < a.draw_end)
 	{
-		a.tex_y = (int)a.texpos;
+		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
 		a.texpos += a.step;
-		a.color = canva()->getPxColor(data[a.texnum], a.tex_x, a.tex_y);
-		if (a.side == 1 || a.texnum <= 3)
-			a.color = (a.color >> 1) & 8355711;
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
 }
 
-void	ft_walls(void)
+void	ft_raycasting(void)
 {
 	t_data		*data[7];
 	t_view		*view;
 	int			x;
 	t_alg_fl	b;
+	t_alg		a;
 
 	data[0] = (canva())->sprite(N_WALL);
 	data[1] = (canva())->sprite(S_WALL);
@@ -251,8 +269,9 @@ void	ft_walls(void)
 	ft_calc_plane();
 	view = &(all()->caster.view);
 	b.data = data;
-	ft_floor(view, b);
 	x = -1;
+	a.x = 0;
+	ft_floor(view, b);
 	while (++x < canva()->data->larg)
-		ft_ray(x, view, data, 0);
+		ft_ray(x, view, data, a);
 }
