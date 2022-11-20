@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 14:54:52 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:21:48 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static int key_game_2(void)
 		(player())->move = 0;
 		(player())->fadigue -= 2;
 		data = (canva())->sprite(RUN);
-		if (!data)
-			return (0);
 		(canva())->resize(data, (canva())->data->larg,\
 		(canva())->data->alt, 0, 0);
 	}

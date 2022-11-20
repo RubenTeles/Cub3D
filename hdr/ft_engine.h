@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 00:02:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:40:32 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ struct s_data
 	int				larg;
 	int				alt;
 	int				start_pos[2];
-	t_data			*next;
+	int				load;
 };
 
 struct s_engine
@@ -79,25 +79,25 @@ struct s_engine
 struct s_canva
 {
 	t_data		*data;
-	t_data		*alphabet;
+	int			max;
+	//t_data		*alphabet;
 	int			rsz[2];
-	t_data		*(*sprite)(char sprite);
+	t_data		*(*sprite)(int sprite);
 	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-	t_data		*(*create_sprite)(char sprite);
-	t_data		*(*create_alphabet)(char c);
-	t_data		*(*search)(t_data *data, char sprite);
-	t_data		*(*last)(t_data *data);
+	void 		(*create_data)(int min, int max);
+	t_data		(*create_sprite)(t_data new, int sprite);
+	t_data		*(*alphabet)(char c);
 	void		(*destroy)(void);
 };
 
 
 struct s_object
 {
-	char		title;
+	int			title;
 	t_data		*avatar;
 	t_data		*sprite;
 	double		pos[2];
@@ -145,16 +145,16 @@ void			resize_image(t_data *img, double larg, double alt, int pos_x,\
 int pos_y);
 void			rev_resize_image(t_data *img, double larg, double alt,\
 int pos_x, int pos_y);
-t_data			*ft_sprite(char sprite);
+t_data			*ft_sprite(int sprite);
 void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
 int color);
 char			*ft_path(char sprite);
 char			*path_alphabet(char	letter);
-t_data			*create_alphabet(char c);
-t_data			*create_sprite(char sprite);
-t_data			*search_sprite(t_data *data, char sprite);
-t_data			*last_sprite(t_data *data);
+//t_data			*create_alphabet(char c);
+t_data			create_sprite(t_data new, int sprite);
+//t_data			*search_sprite(t_data *data, char sprite);
+//t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
 void			ft_put_word(char *str, double larg, double alt, int pos_x,\
@@ -227,5 +227,8 @@ long long		time_diff(long long past, long long pres);
 
 //End
 int				end_game(void);
+
+//try
+void			ft_path_start(void);
 
 #endif

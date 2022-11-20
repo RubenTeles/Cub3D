@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 15:53:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 18:56:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int menu_game(double time)
 	static int	a = 0;
 	static int	i = 0;
 
+	printf("login\n");
 	if (ft_login(0.0017))
 		return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0));

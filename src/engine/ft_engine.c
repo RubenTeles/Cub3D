@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 22:58:53 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:40:40 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	pause_game()
 int	loop_game(void)
 {
 	static int		a = 0;
+	static int		x_wall = 0;
 
 	if ((engine())->count < 0 ||\
 		(engine())->count > (1000 / (engine())->sprt_for_sec))
@@ -61,6 +62,7 @@ int	loop_game(void)
 	(engine())->count = time_diff((engine())->dif_time, time_current());
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
+		x_wall++;
 		if ((engine())->menu)
 			return (menu_game((engine())->count * 0.001));
 		if ((engine())->pause > 0)
@@ -97,6 +99,7 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
+	ft_login(0.0017);
 	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
 	return (0);
