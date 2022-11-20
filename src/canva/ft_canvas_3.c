@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_canvas_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:17:23 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 17:28:48 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:30:47 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_sprites.h>
 
 void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
 {
@@ -23,7 +24,7 @@ void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
 		x = -1;
 		while (++x <= larg)
 			if (color > 0)
-				my_mlx_pixel_put((canva())->data, x + pos_x, y + pos_y, color);
+				my_mlx_pixel_put(&(canva())->data[CANVA], x + pos_x, y + pos_y, color);
 	}
 }
 

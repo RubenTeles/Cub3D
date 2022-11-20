@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 15:16:48 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:10:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ static t_object	*last_object(void)
 	return (0);
 }
 
+int		map_to_sprite(char title)
+{
+	if (title == '1')
+		return (TREE);
+	if (title == '2')
+		return (HAY);
+	return (0);
+}
+
 void	ft_new_object(char title, int x, int y)
 {
 	t_object	*new;
@@ -70,8 +79,10 @@ void	ft_new_object(char title, int x, int y)
 	new = malloc(sizeof(t_object));
 	if (!new)
 		return ;
-	new->title = title;
-	new->avatar = (canva())->sprite(title);
+	new->title = map_to_sprite(title);
+	new->avatar = 0;
+	if (new->title != 0)
+		new->avatar = (canva())->sprite(new->title);
 	new->sprite = 0;
 	new->pos[X] = x;
 	new->pos[Y] = y;

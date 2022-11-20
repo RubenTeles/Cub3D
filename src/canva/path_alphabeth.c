@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_2.c                                           :+:      :+:    :+:   */
+/*   path_alphabeth.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:04:15 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 18:18:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 17:17:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
-
+/*
 char	*path_alphabet_4(char letter)
 {
 	if (letter == '7')
@@ -105,3 +105,4 @@ char	*path_alphabet(char	letter)
 		return ("./sprite/alphabet/K.xpm");
 	return (path_alphabet_2(letter));
 }
+*/

@@ -6,11 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 00:03:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 19:14:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_sprites.h>
 
 void	ft_hands(double move, int nice)
 {
@@ -31,7 +32,7 @@ void	ft_hands(double move, int nice)
 	if (count > 0)
 	{
 		count++;
-		data = (canva())->sprite('n');
+		data = (canva())->sprite(NICE);
 		if (!data)
 			return ;
 		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
@@ -42,7 +43,7 @@ void	ft_hands(double move, int nice)
 			count = 0;
 		return ;
 	}
-	data = (canva())->sprite('H');
+	data = (canva())->sprite(HAND);
 	if (!data)
 		return ;
 	(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\

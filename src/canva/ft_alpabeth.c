@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_alpabeth.c                                       :+:      :+:    :+:   */
+/*   ft_alpabeth.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 19:07:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 21:17:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-t_data	*create_alphabet(char c)
+/*t_data	*create_alphabet(char c)
 {
 	t_data	*letter;
 
@@ -37,15 +37,18 @@ t_data	*create_alphabet(char c)
 	else
 		(canva())->alphabet = letter;
 	return (letter);
-}
+}*/
 
 t_data	*ft_alphabet(char c)
 {
 	t_data	*data;
-
-	data = (canva())->search((canva())->alphabet, c);
-	if (!data && c != ' ')
-		data = (canva())->create_alphabet(c);
+	int		letter;
+	
+	letter = c;
+	if (!((letter >= 47 && letter <= 57) || (letter >= 65 && letter <= 90)))
+		return (0);
+	(canva())->create_data(letter, letter);
+	data = &(canva())->data[letter];
 	if (!data)
 	{
 		if (c == ' ')

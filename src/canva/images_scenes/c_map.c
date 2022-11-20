@@ -6,14 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 17:02:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 19:16:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-void	ft_print_map(char sprite, double x, double y)
+void	ft_print_map(int sprite, double x, double y)
 {
 	t_data	*data;
 
@@ -50,7 +50,7 @@ void	ft_map(void)
 		avatar = 0;
 	(canva())->rsz[X] = (engine())->size[X] * 0.85;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.85;
-	ft_print_map('M', (engine())->size[X] - (engine())->size[X] * 0.94,\
+	ft_print_map(MAP, (engine())->size[X] - (engine())->size[X] * 0.94,\
 		(engine())->size[Y] - (engine())->size[Y] * 0.94);
 	(canva())->rsz[X] = (engine())->size[X] * 0.63 / (engine())->max[X];
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.80 / (engine())->max[X];

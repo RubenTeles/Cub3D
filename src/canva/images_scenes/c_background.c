@@ -6,15 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/16 23:08:07 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/19 19:21:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
-
-#define CLOUD_1 'I'
-#define CLOUD_2 'J'
-#define CLOUD_3 'K'
+#include <ft_sprites.h>
 
 int	put_clouds(t_data *img, int x, int pos_x)
 {
