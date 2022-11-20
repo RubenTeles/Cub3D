@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:03:23 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:59:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define KEY_D 100
 # define KEY_N 110
 # define KEY_M 109
+# define KEY_E 101
 # define KEY_ENTER 65293
 # define BUTTON_RIGHT 3
 # define BUTTON_LEFT 1

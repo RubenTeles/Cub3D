@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:27:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 18:01:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	key_press_in(int keycode)
 {
+	if (keycode == ESC)
+		return (end_game());
 	if ((engine())->key->search(keycode))
 		(engine())->key->search(keycode)->on = 1;
 	return (0);
@@ -35,12 +37,5 @@ int key_mouse_move(int x, int y, void *param)
 	(void)y;
 
 	//printf("X: %i Y: %i\n", x, y);
-	return (0);
-}
-
-int	key_esc(void)
-{
-	if ((engine())->key->search(ESC)->on)
-		return (end_game());
 	return (0);
 }

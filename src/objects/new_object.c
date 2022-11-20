@@ -6,34 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 15:39:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 18:16:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-
-int	is_collision(t_object *obj, double x, double y)
-{
-	t_object	*aux;
-
-	aux = (engine())->object;
-	while (aux)
-	{
-		if (aux->collision == 1 && aux != obj && \
-			((aux->pos[X] >= x - 1.10 && (aux->pos[X] <= x + 0.1) &&\
-				(aux->pos[Y] >= y - 1.10 && aux->pos[Y] <= y + 0.1))))
-				return (1);
-		aux = aux->next;
-	}
-	if (obj && (((player())->pos[X] >= x - 1.10 && (player())->pos[X] <= x + 0.1) &&\
-				((player())->pos[Y] >= y - 1.10 && (player())->pos[Y] <= y + 0.1)))
-			{
-				printf("colide\n");
-			return (1);
-			}
-	return (0);
-}
 
 static void	destroy_object(void)
 {
@@ -85,6 +63,7 @@ void	ft_new_object(char title, int x, int y)
 	new->turn = 0.05;
 	new->life = 100;
 	new->collision = 1;
+	new->interation = 0;
 	new->create = ft_new_object;
 	new->is_collision = is_collision;
 	new->last = last_object;

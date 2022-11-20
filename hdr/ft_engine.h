@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 15:37:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:52:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ struct s_canva
 {
 	t_data		*data;
 	int			max;
-	//t_data		*alphabet;
 	int			rsz[2];
 	t_data		*(*sprite)(int sprite);
 	void		(*put)(t_data *data, int x, int y);
@@ -95,7 +94,6 @@ struct s_canva
 	void		(*destroy)(void);
 };
 
-
 struct s_object
 {
 	int			title;
@@ -107,6 +105,7 @@ struct s_object
 	double		turn;
 	int			life;
 	int			collision;
+	double		interation;
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(void);
@@ -126,11 +125,13 @@ struct s_player1
 	double	turn_times;
 	double	vision;
 	int		collision;
+	double	interation;
 	int		move;
 	double	fadigue;
 	int		life;
 	int		lives;
 	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
+	void	(*obj_interation)(void);
 };
 
 //static
@@ -178,6 +179,7 @@ int				is_collision(t_object *obj, double x, double y);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
 int				ft_create_door(t_object *door);
+t_object		*is_interation(t_object *obj, double x, double y);
 
 //Menu
 int				ft_login(double move);

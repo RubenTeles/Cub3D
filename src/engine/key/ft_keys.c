@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:03:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:59:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ static t_key	*create_key(int keycode)
 
 void	new_key(void)
 {
-	create_key(ESC);
 	create_key(KEY_W);
 	create_key(KEY_A);
 	create_key(KEY_S);
 	create_key(KEY_D);
 	create_key(KEY_N);
 	create_key(KEY_M);
+	create_key(KEY_E);
 	create_key(KEY_ENTER);
 	create_key(BUTTON_RIGHT);
 	create_key(BUTTON_LEFT);

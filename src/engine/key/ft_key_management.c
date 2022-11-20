@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 15:52:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 18:18:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ static int key_pause(void)
 		(engine())->pause = 2;
 	if (!(engine())->key->search(KEY_P)->on && ((engine())->pause == 2))
 		(engine())->pause = 0;
+	return (0);
+}
+
+static int key_game_3(void)
+{
+	static int a = 0;
+
+	if (!(engine())->key->search(KEY_E)->on && a == 1)
+	{
+		(player())->obj_interation();
+		a = 0;
+	}
+	else if ((engine())->key->search(KEY_E)->on && a == 0)
+		a = 1;
 	return (0);
 }
 
@@ -60,6 +74,7 @@ static int key_game_2(void)
 	{
 		printf("Mostrar barra de Vidas\n");
 	}
+	key_game_3();
 	return (0);
 }
 
@@ -113,7 +128,7 @@ static int key_menu(void)
 			(engine())->menu = 2;
 		else if ((engine())->key->search(KEY_ENTER)->on)
 		{
-			(engine())->sound("paplay src/sound/wolf.ogg");
+			//(engine())->sound("paplay src/sound/wolf.ogg");
 			(engine())->menu = 0;
 			(engine())->time = 0;
 			//ft_create_game();
@@ -145,7 +160,6 @@ static int key_menu(void)
 
 int	key_management(void)
 {
-	key_esc();
 	if ((engine())->menu > 0)
 		return (key_menu());
 	if ((engine())->pause)

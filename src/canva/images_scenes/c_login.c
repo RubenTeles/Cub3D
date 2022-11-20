@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 15:51:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 18:12:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_login(double move)
 		return (ft_login_metric(move));
 	//(engine())->sound("paplay src/sound/music_open.ogg");
 	//(engine())->sound("paplay src/sound/pMLWWiBvWX8_48.ogg");
-	(engine())->sound("paplay src/sound/wolf_2.ogg");
+	//(engine())->sound("paplay src/sound/wolf_2.ogg");
 	(canva())->create_data(N_WALL, AVATAR);
 	data = (canva())->sprite(MENU);
 	if (!data)
