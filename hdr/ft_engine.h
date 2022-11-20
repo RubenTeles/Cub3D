@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 02:10:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 15:37:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,8 @@ t_data			*ft_sprite(int sprite);
 void			ft_put_canva(t_data *data, int x, int y);
 void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
 int color);
-char			*ft_path(char sprite);
-char			*path_alphabet(char	letter);
-//t_data			*create_alphabet(char c);
+void			ft_path_start(void);
 t_data			create_sprite(t_data new, int sprite);
-//t_data			*search_sprite(t_data *data, char sprite);
-//t_data			*last_sprite(t_data *data);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
 void			ft_put_word(char *str, double larg, double alt, int pos_x,\
@@ -179,6 +175,9 @@ int				key_esc(void);
 //Object
 void			ft_new_object(char title, int x, int y);
 int				is_collision(t_object *obj, double x, double y);
+int				ft_managemen_objects(char tittle, t_object *obj);
+int				map_to_sprite(char title);
+int				ft_create_door(t_object *door);
 
 //Menu
 int				ft_login(double move);
@@ -233,6 +232,5 @@ long long		time_diff(long long past, long long pres);
 int				end_game(void);
 
 //try
-void			ft_path_start(void);
 
 #endif
