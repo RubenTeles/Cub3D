@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/20 00:16:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 01:50:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 
 void	ft_raycasting(void)
 {
-	t_data		*data[7];
+	t_data		*data[9];
 	t_view		*view;
 	int			x;
 	t_alg_fl	b;
@@ -171,9 +171,12 @@ void	ft_raycasting(void)
 	data[2] = (canva())->sprite(W_WALL);
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
-	data[5] = (canva())->sprite(WOOD_FLOOR);
+	data[5] = (canva())->sprite(CAVE);
 	data[6] = (canva())->sprite(WINDOW);
-	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6])
+	data[7] = (canva())->sprite(DOOR);
+	data[8] = (canva())->sprite(CAVE);
+	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
+		|| !data[7] || !data[8])
 		return ;
 	all()->data = data;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)

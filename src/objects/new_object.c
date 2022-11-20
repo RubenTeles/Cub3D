@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:22:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 01:53:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,14 @@ int		map_to_sprite(char title)
 		return (TREE);
 	if (title == '2')
 		return (HAY);
+	if (title == '3')
+		return (WINDOW);
 	if (title == '4')
 		return (WINDOW);
+	if (title == '5')
+		return (DOOR);
+	if (title == '6')
+		return (CAVE);
 	return (0);
 }
 
@@ -96,6 +102,8 @@ void	ft_new_object(char title, int x, int y)
 	new->turn = 0.05;
 	new->life = 50;
 	new->collision = 1;
+	if (new->title == DOOR)
+		new->collision = 0;
 	new->create = ft_new_object;
 	new->is_collision = is_collision;
 	new->last = last_object;
