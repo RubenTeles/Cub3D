@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:21:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 15:52:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int key_game_2(void)
 			(player())->vision -= 0.01;
 		(player())->vel = 0.30;
 		(player())->move = 0;
-		(player())->fadigue -= 2;
+		//(player())->fadigue -= 2;
 		data = (canva())->sprite(RUN);
 		(canva())->resize(data, (canva())->data->larg,\
 		(canva())->data->alt, 0, 0);
@@ -113,6 +113,7 @@ static int key_menu(void)
 			(engine())->menu = 2;
 		else if ((engine())->key->search(KEY_ENTER)->on)
 		{
+			(engine())->sound("paplay src/sound/wolf.ogg");
 			(engine())->menu = 0;
 			(engine())->time = 0;
 			//ft_create_game();

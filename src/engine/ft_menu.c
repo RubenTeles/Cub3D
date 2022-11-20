@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 02:11:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 14:30:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int menu_game(double time)
 	ft_head_wolf(0);
 	key_management();
 	if (a == 0 && ++a)
-		(engine())->sound("paplay src/music/pMLWWiBvWX8_48.ogg");
+		++a;
 	return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0));
 }
