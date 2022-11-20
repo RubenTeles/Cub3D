@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:22:07 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 16:03:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	new_player(void)
 	(player())->title = 'P';
 	(player())->avatar = (canva())->sprite(AVATAR);
 	(player())->sprite = (canva())->sprite(HAND);
-	(player())->pos[X] = (double)all()->player.x + 0.5;
-	(player())->pos[Y] = (double)all()->player.y + 0.5;
+	(player())->pos[Y] = (double)all()->player.x + 0.5;
+	(player())->pos[X] = (double)all()->player.y + 0.5;
 	(player())->dir[X] = all()->caster.player.dir_x;
 	(player())->dir[Y] = all()->caster.player.dir_y;
 	(player())->vel = 0.10;

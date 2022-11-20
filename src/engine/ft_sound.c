@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 15:56:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 15:56:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_sound(char *sound)
 {
-	// int pid;
-	// int i;
+	int pid;
+	int i;
 
 	pid = fork();
 	if (pid == 0)
