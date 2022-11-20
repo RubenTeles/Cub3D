@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 00:17:02 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 01:27:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	ft_path_game(void)
 	(canva())->data[DOOR].path = "./sprite/item/house_door.xpm";
 	(canva())->data[DOOR_OPEN].path = "./sprite/item/house_door_open.xpm";
 	(canva())->data[HAY].path = "./sprite/item/house_wall.xpm";
+	(canva())->data[CAVE].path = "./sprite/item/cave.xpm";
 	return (ft_path_alphabet());
 }
 

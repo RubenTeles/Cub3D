@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 00:13:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 01:24:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void canva_reset_data(void)
 
 void	new_canva(void)
 {
-	(canva())->max = 96;
+	(canva())->max = 97;
 	(canva())->data = malloc(sizeof(t_data) * (canva())->max);
 	(canva())->rsz[X] = 0;
 	(canva())->rsz[Y] = 0;
