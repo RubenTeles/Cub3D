@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:20:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 02:10:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ struct s_engine
 	int			pause;
 	t_key		*key;
 	t_object	*object;
+	void		(*sound)(char *sound);
 };
 
 struct s_canva
@@ -136,6 +137,9 @@ struct s_player1
 t_engine		*engine(void);
 t_canva			*canva(void);
 t_player1		*player(void);
+
+//engine
+void		    ft_sound(char *sound);
 
 //canva
 void			new_canva(void);

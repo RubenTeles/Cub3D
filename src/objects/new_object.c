@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:53:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 02:03:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	ft_new_object(char title, int x, int y)
 	new->dir[Y] = -1;
 	new->vel = 0.05;
 	new->turn = 0.05;
-	new->life = 50;
+	new->life = 100;
 	new->collision = 1;
 	if (new->title == DOOR)
 		new->collision = 0;

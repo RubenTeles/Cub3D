@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 18:56:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 02:11:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 int menu_game(double time)
 {
 	static int	a = 0;
-	static int	i = 0;
 
-	printf("login\n");
 	if (ft_login(0.0017))
 		return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0));
@@ -28,13 +26,8 @@ int menu_game(double time)
 	ft_words_menu();
 	ft_head_wolf(0);
 	key_management();
-	i++;
-	if (a == 0)
-	{
-		//i = system("paplay src/music/pMLWWiBvWX8_48.ogg");
-		a = 1;
-	}
-	(void)i;
+	if (a == 0 && ++a)
+		(engine())->sound("paplay src/music/pMLWWiBvWX8_48.ogg");
 	return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0));
 }
