@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 16:37:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 22:58:53 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ long long	time_diff(long long past, long long pres)
 int	pause_game()
 {
 	static int	count = 0;
-	
+
 	ft_background(0);
 	ft_raycasting();
 	ft_hands(0, 0);

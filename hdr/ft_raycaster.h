@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/17 09:48:57 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:10:59 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_algorithm
 	int		tex_hgt;
 	int		color;
 	int		check;
+	int		percent;
 }			t_alg;
 
 typedef struct s_alg_floor

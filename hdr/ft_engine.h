@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 19:41:35 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:02:41 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/time.h>
 # include <ft_cub.h>
+# include <ft_raycaster.h>
 
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
@@ -213,6 +214,12 @@ void			ft_raycasting(void);
 void			ft_rotate_dir(double a);
 int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition);
 int				ft_texture_num(int map_x, int map_y, int side, t_view view);
+
+// Fog
+int				ft_fog(t_data *data);
+int				ft_linear_gradient(int colors[2], float percent);
+double			ft_dist_pts(double x1, double y1, double x2, double y2);
+
 
 //Utils
 long long		time_current(void);

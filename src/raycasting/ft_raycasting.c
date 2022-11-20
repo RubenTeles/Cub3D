@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/19 19:41:55 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:16:21 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,14 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	while (++(a.y) < a.draw_end)
 	{
 		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
+		int	arr[2];
+		arr[0] = 1;
+		arr[1] = a.color;
 		a.texpos += a.step;
+		double grade = ft_dist_pts(view->pos_x, view->pos_y, (double)a.map_x, (double)a.map_y);
+		if (grade < 1.5)
+			grade = 1.5;
+		a.color = ft_linear_gradient(arr, 100.0 / (float)grade);
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
 }

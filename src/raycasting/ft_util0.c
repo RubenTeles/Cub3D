@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ray_util.c                                      :+:      :+:    :+:   */
+/*   ft_util0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:34:46 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/19 19:38:20 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:15:15 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,13 @@ void	ft_calc_plane(void)
 
 int	ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition)
 {
+	int	arr[2];
 	int	color;
 
 	color = canva()->getPxColor(data, tex_x, tex_y);
+	arr[0] = 1;
+	arr[1] = color;
 	if (condition)
-		color = (color >> 1) & 8355711;
+		color = ft_linear_gradient(arr, 100);
 	return (color);
 }
