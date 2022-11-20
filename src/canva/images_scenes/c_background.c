@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_background.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 19:21:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:26:39 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	ft_background(double move)
 		(engine())->size[Y] / 2, (engine())->color[FLOOR]);
 	if ((player())->turn_times)
 		(player())->turn_times = 0;
+	ft_fog(canva()->data);
 }
