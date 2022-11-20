@@ -78,6 +78,7 @@
 #define CLOUD_3 20
 #define TREE 21
 #define WOOD_FLOOR 22
+#define	WINDOW 95
 #define DOOR 23
 #define DOOR_OPEN 24
 #define HAY 25
@@ -157,7 +158,7 @@
 #define _Y 89
 #define _Z 90
 
-//ALL: 94
+//ALL: 95
 
 
 #endif

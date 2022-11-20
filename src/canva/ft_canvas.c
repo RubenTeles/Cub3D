@@ -6,33 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 21:16:26 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 00:13:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-
-/*static void	__destroy(void)
-{
-	t_data	*aux;
-	t_data	*aux_2;
-
-	aux = (canva())->data;
-	while (aux)
-	{
-		aux_2 = aux;
-		aux = aux->next;
-		free(aux_2);
-	}
-	aux = (canva())->alphabet;
-	while (aux)
-	{
-		aux_2 = aux;
-		aux = aux->next;
-		free(aux_2);
-	}
-}*/
 
 static void	__destroy(void)
 {
@@ -41,7 +20,7 @@ static void	__destroy(void)
 
 void create_datas(int min, int max)
 {
-	while (min <= max && min <= (canva())->max)
+	while (min <= max && min < (canva())->max)
 	{
 		if (!(canva())->data[min].load && (canva())->data[min].path)
 			(canva())->data[min] = (canva())->create_sprite((canva())->data[min], min);
@@ -71,7 +50,7 @@ static void canva_reset_data(void)
 
 void	new_canva(void)
 {
-	(canva())->max = 94;
+	(canva())->max = 96;
 	(canva())->data = malloc(sizeof(t_data) * (canva())->max);
 	(canva())->rsz[X] = 0;
 	(canva())->rsz[Y] = 0;

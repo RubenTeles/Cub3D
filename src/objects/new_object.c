@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 00:10:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 00:15:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		map_to_sprite(char title)
 		return (TREE);
 	if (title == '2')
 		return (HAY);
+	if (title == '4')
+		return (WINDOW);
 	return (0);
 }
 
@@ -84,6 +86,8 @@ void	ft_new_object(char title, int x, int y)
 	if (new->title != 0)
 		new->avatar = (canva())->sprite(new->title);
 	new->sprite = 0;
+	if (new->title != 0)
+		new->sprite = new->sprite;
 	new->pos[X] = x;
 	new->pos[Y] = y;
 	new->dir[X] = 0;

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 00:10:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 00:14:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/time.h>
 # include <ft_cub.h>
+# include <ft_raycaster.h>
 
 typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
