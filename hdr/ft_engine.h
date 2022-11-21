@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 17:52:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 11:43:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ void			ft_pause(void);
 //PLAYER
 void			new_player(void);
 void			ft_life(void);
+int				all_interation(t_object *obj, double x, double y);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \

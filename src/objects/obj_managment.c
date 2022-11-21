@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 18:10:47 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 12:36:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ int	is_collision(t_object *obj, double x, double y)
 	while (aux)
 	{
 		if (aux->collision == 1 && aux != obj && \
-			((aux->pos[X] >= x - 1.10 && aux->pos[X] <= x + 0.1) &&\
-				(aux->pos[Y] >= y - 1.10 && aux->pos[Y] <= y + 0.1)))
+			((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
+			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 				return (1);
 		aux = aux->next;
 	}
-	if (obj && (((player())->pos[X] >= x - 1.10 && (player())->pos[X] <= x + 0.1) &&\
-				((player())->pos[Y] >= y - 1.10 && (player())->pos[Y] <= y + 0.1)))
-			{
-				printf("colide\n");
-			return (1);
-			}
+	if (obj && (((player())->pos[X] + 1.10 >= x &&\
+		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y &&\
+		(player())->pos[Y] - 0.1 <= y)))
+	{
+		printf("colide com o player\n");
+		return (1);
+	}
 	return (0);
 }
 
@@ -43,22 +44,49 @@ t_object	*is_interation(t_object *obj, double x, double y)
 	while (aux)
 	{
 		if (aux->interation > 0 && aux != obj && \
-			((aux->pos[X] >= x - 1.10 - aux->interation &&\
-			aux->pos[X] <= x + 0.1 + aux->interation) &&\
-			(aux->pos[Y] >= y - 1.10 - aux->interation &&\
-			aux->pos[Y] <= y + 0.1 + aux->interation)))
+			((aux->pos[X] + 1.10 + aux->interation >= x &&\
+			aux->pos[X] - 0.1 - aux->interation <= x) &&\
+			(aux->pos[Y] + 1.10 + aux->interation >= y  &&\
+			aux->pos[Y] - 0.1 - aux->interation <= y )) &&\
+			!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
+			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 				return (aux);
 		aux = aux->next;
 	}
-	
-	if (obj && (((player())->pos[X] >= x - 1.10 - (player())->interation &&\
-			(player())->pos[X] <= x + 0.1 + (player())->interation) &&\
-			((player())->pos[Y] >= y - 1.10 - (player())->interation &&\
-			(player())->pos[Y] <= y + 0.1 + (player())->interation)))
+	if (obj && (((player())->pos[X] + 1.10 + (player())->interation >= x &&\
+				(player())->pos[X] - 0.10 - (player())->interation <= x) &&\
+				((player())->pos[Y] + 1.10 + (player())->interation >= y &&\
+				(player())->pos[Y] - 0.10 - (player())->interation <= y)) &&\
+				!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
+				(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
+	{
+		printf("interagiu com o player\n");
+		return (0);
+	}
+	return (0);
+}
+
+int	all_interation(t_object *obj, double x, double y)
+{
+	t_object	*aux;
+
+	aux = (engine())->object;
+	while (aux)
+	{
+		if (aux->interation > 0 && aux != obj && \
+			((aux->pos[X] + 1.10 + aux->interation >= x &&\
+			aux->pos[X] - 0.1 - aux->interation <= x) &&\
+			(aux->pos[Y] + 1.10 + aux->interation >= y  &&\
+			aux->pos[Y] - 0.1 - aux->interation <= y )) &&\
+			!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
+			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 			{
-				printf("interagiu com o player\n");
-				return (0);
+				if (aux->title == DOOR)
+					printf("Press E\n");
+				return (1);
 			}
+		aux = aux->next;
+	}
 	return (0);
 }
 
