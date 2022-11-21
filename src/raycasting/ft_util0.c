@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:34:46 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/20 16:18:28 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 10:32:37 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int	ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition)
 	arr[0] = 1;
 	arr[1] = color;
 	if (condition)
-		color = ft_linear_gradient(arr, 100);
+		color = ft_linear_gradient(arr, 80);
 	return (color);
 }
