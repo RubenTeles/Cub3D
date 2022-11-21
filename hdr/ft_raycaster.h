@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 17:52:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:40:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,13 @@ typedef struct s_alg_floor
 	t_data	**data;
 }			t_alg_fl;
 
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		texture;
+}			t_spr;
+
 typedef struct s_sprites_values
 {
 	int		sprite_order[NUMSPRITES];
@@ -121,14 +128,9 @@ typedef struct s_sprites_values
 	int		d;
 	int		tex_y;
 	int		color;
+	double	*buffer;
+	t_spr	*sprite;
 }			t_spr_vls;
-
-typedef struct s_sprite
-{
-	double	x;
-	double	y;
-	int		texture;
-}			t_spr;
 
 typedef struct s_caster
 {
@@ -136,5 +138,10 @@ typedef struct s_caster
 	t_player	player;
 	t_alg		alg;
 }				t_caster;
+
+// SPRITES
+void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite);
+void	ft_sort_sprites(int *order, double *dist, int amount);
+void	ft_print_stripe(t_spr_vls *copy, t_data **data, int i, int vmovescreen);
 
 #endif
