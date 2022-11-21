@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 11:43:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 13:44:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,8 @@ void			ft_map(void);
 void			ft_background(double move);
 void			ft_hands(double move, int nice);
 void			ft_minimap(void);
+void			ft_press_e(void);
+
 
 // Raycasting
 double			ft_abs(double x);

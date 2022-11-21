@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 12:36:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 13:45:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	all_interation(t_object *obj, double x, double y)
 			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 			{
 				if (aux->title == DOOR)
-					printf("Press E\n");
+					ft_press_e();
 				return (1);
 			}
 		aux = aux->next;
