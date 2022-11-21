@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 12:30:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:34:21 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 
 void	ft_raycasting(void)
 {
-	t_data		*data[9];
+	t_data		*data[10];
 	t_spr		sprite[2];
 	t_view		*view;
 	int			x;
@@ -267,13 +267,14 @@ void	ft_raycasting(void)
 	data[6] = (canva())->sprite(WINDOW);
 	data[7] = (canva())->sprite(DOOR);
 	data[8] = (canva())->sprite(CAVE);
+	data[9] = (canva())->sprite(PIG_S0);
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
 		|| !data[7] || !data[8])
 		return ;
-	sprite[0].texture = 6;
+	sprite[0].texture = 9;
 	sprite[0].x = 10;
 	sprite[0].y = 10;
-	sprite[1].texture = 6;
+	sprite[1].texture = 9;
 	sprite[1].x = 20;
 	sprite[1].y = 10;
 	all()->data = data;
