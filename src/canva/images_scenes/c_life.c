@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_life.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/18 14:27:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 13:45:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	ft_life(void)
 {
 	ft_put_word("WOLF", (engine())->size[X] * 0.10, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.065);
-	ft_print_color((engine())->size[X] * 0.077, (engine())->size[Y] * 0.1365,\
+	ft_print_color((engine())->size[X] * 0.077, (engine())->size[Y] * 0.136,\
 		(engine())->size[X] * 0.021, (engine())->size[Y] * 0.061, 0X6b4324);
 	ft_print_color((engine())->size[X] * 0.07, (engine())->size[Y] * 0.124,\
 		(engine())->size[X] * 0.024, (engine())->size[Y] * 0.067, 0xe6be7e);
-	ft_print_color((engine())->size[X] * 0.177, (engine())->size[Y] * 0.0365,\
+	ft_print_color((engine())->size[X] * 0.177, (engine())->size[Y] * 0.036,\
 		(engine())->size[X] * 0.101, (engine())->size[Y] * 0.101, 0X6b4324);
 	ft_print_color((engine())->size[X] * 0.17, (engine())->size[Y] * 0.024,\
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.107, 0xe6be7e);

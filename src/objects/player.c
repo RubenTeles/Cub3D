@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 18:13:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 12:24:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,17 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 {
 	if (!is_collision(0, (player())->pos[X] + (move_x * ((player())->vel *\
 		(player())->dir[dir_x])), (player())->pos[Y]))
+	{
 		(player())->pos[X] += move_x * ((player())->vel * (player())->dir[dir_x]);
+		all_interation(0, (player())->pos[X], (player())->pos[Y]);
+	}
 	if (!is_collision(0, (player())->pos[X], (player())->pos[Y] +\
 		(move_y * ((player())->vel * (player())->dir[dir_y]))))
+	{
 		(player())->pos[Y] += move_y * ((player())->vel * (player())->dir[dir_y]);
+		all_interation(0, (player())->pos[X], (player())->pos[Y]);
+	}
+
 }
 
 static void	player_interation(void)
@@ -34,19 +41,15 @@ static void	player_interation(void)
 	{
 		obj->avatar = (canva())->sprite(DOOR_OPEN);
 		obj->sprite = (canva())->sprite(DOOR_OPEN);
-	printf("PLAYER: x: %f y: %f\n", (player())->pos[X], (player())->pos[Y]);
-
-		printf("abriu: x: %f y: %f\n", (player())->pos[X], (player())->pos[Y]);
 		obj->collision = 0;
+		(engine())->sound("paplay src/sound/open_door.ogg");
 	}
 	else if (obj->title == DOOR && obj->collision == 0)
 	{
 		obj->avatar = (canva())->sprite(DOOR);
 		obj->sprite = (canva())->sprite(DOOR);
-	printf("PLAYER: x: %f y: %f\n", (player())->pos[X], (player())->pos[Y]);
-
-		printf("fechou: x: %f y: %f\n", (player())->pos[X], (player())->pos[Y]);
 		obj->collision = 1;
+		(engine())->sound("paplay src/sound/open_door.ogg");
 	}
 }
 
