@@ -6,15 +6,17 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:25:21 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 13:45:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:18:27 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-void	ft_press_e(void)
+void	ft_press_e(double move, int option)
 {
+	(void)move;
+	(void)option;
 	ft_print_color((engine())->size[X] * 0.112, (engine())->size[Y] * 0.046,\
 		(engine())->size[X] * 0.021, (engine())->size[Y] * 0.261, 0X6b4324);
 	ft_print_color((engine())->size[X] * 0.105, (engine())->size[Y] * 0.034,\

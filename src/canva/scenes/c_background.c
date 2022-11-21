@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_background.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 15:33:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:15:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ int	put_clouds(t_data *img, int x, int pos_x)
 	return (animation_x);
 }
 
-void	ft_background(double move)
+void	ft_background(double move, int option)
 {
 	t_data			*data;
 	static double	x1 = 0;
 
+	(void)option;
 	x1 += move + (player())->turn_times;
 	if (x1 > 1)
 		x1 = x1 - 1;

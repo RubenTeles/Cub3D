@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 13:45:07 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:12:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_fatigue(void)
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.144, 0x2259f0);
 }
 
-void	ft_life(void)
+void	ft_life(double move, int option)
 {
 	ft_put_word("WOLF", (engine())->size[X] * 0.10, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.065);
@@ -71,5 +71,7 @@ void	ft_life(void)
 		(player())->avatar = (canva())->sprite(AVATAR);
 	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
 	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
-	(engine())->size[Y] * 0.087);	
+	(engine())->size[Y] * 0.087);
+	(void)move;
+	(void)option;
 }

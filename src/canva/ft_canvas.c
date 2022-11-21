@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:24:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:22:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	new_canva(void)
 	(canva())->create_sprite = create_sprite;
 	(canva())->destroy = __destroy;
 	canva_reset_data();
+	new_scenes(9);
 }
 
 t_canva	*canva(void)

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 16:35:46 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 19:30:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
+#include <ft_scenes.h>
 
 long long	time_current(void)
 {
@@ -30,16 +31,16 @@ int	pause_game()
 {
 	static int	count = 0;
 
-	ft_background(0);
+	(canva())->scene[S_BACKGROUND].show(0.00017, 0);
 	ft_raycasting();
-	ft_hands(0, 0);
-	ft_minimap();
-	ft_life();
+	(canva())->scene[S_HAND].show(0.0004, 0);
+	(canva())->scene[S_LIFE].show(0, 0);
+	(canva())->scene[S_MINI_MAP].show(0, 0);
 	if (count >= 3)
 		key_management();
 	if ((engine())->map)
-		ft_map();
-	ft_pause();
+		(canva())->scene[S_MAP].show(0, 0);
+	(canva())->scene[S_PAUSE].show(0, 0);
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 		(canva())->data->img, 0, 0);
 	count++;
@@ -67,15 +68,15 @@ int	loop_game(void)
 			return (menu_game((engine())->count * 0.001));
 		if ((engine())->pause > 0)
 			return (pause_game());
-		ft_background(0.00017);
+		(canva())->scene[S_BACKGROUND].show(0.00017, 0);
 		ft_raycasting();
-		ft_hands(0.0004, 0);
+		(canva())->scene[S_HAND].show(0.0004, 0);
 		key_management();
-		ft_life();
-		ft_minimap();
+		(canva())->scene[S_LIFE].show(0, 0);
+		(canva())->scene[S_MINI_MAP].show(0, 0);
 		a = 1;
 		if ((engine())->map)
-			ft_map();
+			(canva())->scene[S_MAP].show(0, 0);
 		(engine())->time += (engine())->count * 0.001;
 		// printf("%fs\n", (engine())->time);
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
@@ -99,7 +100,7 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
-	ft_login(0.0017);
+	(canva())->scene[S_LOGIN].show(0.0017, 0);
 	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
 	return (0);
