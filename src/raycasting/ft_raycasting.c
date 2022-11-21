@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 12:34:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:20:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite)
 		a.sprite_order[i] = i;
 		a.sprite_dist[i] = ((view->pos_x - sprite[i].x) * (view->pos_x - sprite[i].x) + (view->pos_x - sprite[i].y) * (view->pos_y - sprite[i].y)); //sqrt not taken, unneeded
 	}
-	// sortSprites(a.sprite_order, a.sprite_dist, NUMSPRITES);
 	i = -1;
 	while (++i < NUMSPRITES)
 	{
-		//translate sprite position to relative to camera
 		a.sprite_x = sprite[a.sprite_order[i]].x - view->pos_x;
 		a.sprite_y = sprite[a.sprite_order[i]].y - view->pos_y;
 
@@ -38,20 +36,20 @@ void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite)
 		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
 		// [ planeY   dirY ]                                          [ -planeY  planeX ]
 
-		a.invdet = 1.0 / (view->plane_x * view->dir_y - view->dir_x * view->plane_y); //required for correct matrix multiplication
+		a.invdet = 1.0 / (view->plane_x * view->dir_y - view->dir_x * view->plane_y);
 
 		a.transform_x = a.invdet * (view->dir_y * a.sprite_x - view->dir_x * a.sprite_y);
-		a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + view->plane_x * a.sprite_y); //this is actually the depth inside the screen, that what Z is in 3D
+		a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + view->plane_x * a.sprite_y);
 
 		a.sprite_scrn_x = (int)(((double)(canva()->data->larg) / 2) * (1 + a.transform_x / a.transform_y));
 
 		//calculate height of the sprite on screen
 		a.sprite_hgt = abs((int)((double)(canva()->data->alt) / (a.transform_y))); //using 'transformY' instead of the real distance prevents fisheye
 		//calculate lowest and highest pixel to fill in current stripe
-		a.draw_str_y = -a.sprite_hgt / 2 + canva()->data->alt / 2;
+		a.draw_str_y = -a.sprite_hgt / 2 + canva()->data->alt / 2 + (int)(-20.0 / a.transform_y);
 		if (a.draw_str_y < 0)
 			a.draw_str_y = 0;
-		a.draw_end_y = a.sprite_hgt / 2 + canva()->data->alt / 2;
+		a.draw_end_y = a.sprite_hgt / 2 + canva()->data->alt / 2 + (int)(-20.0 / a.transform_y);
 		if (a.draw_end_y >= canva()->data->alt)
 			a.draw_end_y = canva()->data->alt - 1;
 
@@ -79,7 +77,7 @@ void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite)
 				a.y = a.draw_str_y - 1;
 				while (++(a.y) < a.draw_end_y)
 				{
-					a.d = (a.y) * 256 - canva()->data->alt * 128 + a.sprite_hgt * 128; //256 and 128 factors to avoid floats
+					a.d = (a.y - (int)(-20.0 / a.transform_y)) * 256 - canva()->data->alt * 128 + a.sprite_hgt * 128; //256 and 128 factors to avoid floats
 					a.tex_y = ((a.d * data[sprite[a.sprite_order[i]].texture]->alt) / a.sprite_hgt) / 256;
 					a.color = canva()->getPxColor(data[sprite[a.sprite_order[i]].texture], a.tex_x, a.tex_y);
 					if ((a.color & 0x00FFFFFF) != 0)
@@ -123,25 +121,25 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 			{
 				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4' || all()->map[(int)a.floory][(int)a.floorx] == '2') && a.p >= 0)
 				{
-					// double grade = ft_dist_pts(view->pos_x, view->pos_y, a.floorx, a.floory);
-					// if (grade < 5)
-					// 	grade = 5;
-					// int	arr[2];
-					// arr[0] = 11251376;
+					double grade = ft_dist_pts(view->pos_x, view->pos_y, a.floorx, a.floory);
+					if (grade < 5)
+						grade = 5;
+					int	arr[2];
+					arr[0] = 11251376;
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
-					// if (a.c_tex == 5)
-					// {
-					// 	arr[1] = a.color;
-					// 	a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
-					// }
+					if (a.c_tex == 5)
+					{
+						arr[1] = a.color;
+						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
+					}
 					ft_print_color(1, 1, a.x, a.y, a.color);
 					
 					a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
-					// if (a.c_tex == 5)
-					// {
-					// 	arr[1] = a.color;
-					// 	a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
-					// }
+					if (a.c_tex == 5)
+					{
+						arr[1] = a.color;
+						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
+					}
 					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
 				}
 			}
@@ -237,13 +235,13 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	{
 		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
 		a.texpos += a.step;
-		// int	arr[2];
-		// arr[0] = 11251376;
-		// arr[1] = a.color;
-		// double grade = ft_dist_pts(view->pos_x, view->pos_y, (double)a.map_x, (double)a.map_y);
-		// if (grade < 5)
-		// 	grade = 5;
-		// a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
+		int	arr[2];
+		arr[0] = 11251376;
+		arr[1] = a.color;
+		double grade = ft_dist_pts(view->pos_x, view->pos_y, (double)a.map_x, (double)a.map_y);
+		if (grade < 5)
+			grade = 5;
+		a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
 	a.z_buffer[x] = a.perp_dist;
