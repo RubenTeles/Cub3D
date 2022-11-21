@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 13:44:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:36:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_engine				t_engine;
 typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
 typedef struct s_key				t_key;
+typedef struct s_scene				t_scene;
 typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
 
@@ -38,6 +39,12 @@ struct s_key
 	t_key	*(*search)(int keycode);
 	t_key	*(*last)(void);
 	void	(*destroy)(void);
+};
+
+struct s_scene
+{
+	int		on;
+    void	(*show)(double move, int option);
 };
 
 struct s_data
@@ -82,6 +89,7 @@ struct s_canva
 	t_data		*data;
 	int			max;
 	int			rsz[2];
+	t_scene		*scene;
 	t_data		*(*sprite)(int sprite);
 	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
@@ -182,20 +190,16 @@ int				ft_create_door(t_object *door);
 t_object		*is_interation(t_object *obj, double x, double y);
 
 //Menu
-int				ft_login(double move);
-int 			menu_game(double time);
 int 			menu_hooks(void);
-void			ft_initial_menu(double move);
 void			ft_words_menu(void);
 void			ft_head_wolf(double move);
 void		 	ft_create_game(void);
+int 			menu_game(double time);
 
 //Pause
-void			ft_pause(void);
 
 //PLAYER
 void			new_player(void);
-void			ft_life(void);
 int				all_interation(t_object *obj, double x, double y);
 
 //Colors
@@ -207,12 +211,16 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 //Scenes
-void			ft_map(void);
-void			ft_background(double move);
-void			ft_hands(double move, int nice);
-void			ft_minimap(void);
-void			ft_press_e(void);
-
+void			new_scenes(int len);
+void			ft_login(double move, int option);
+void			ft_initial_menu(double move, int option);
+void			ft_background(double move, int option);
+void			ft_hands(double move, int option);
+void			ft_map(double move, int option);
+void			ft_minimap(double move, int option);
+void			ft_life(double move, int option);
+void			ft_pause(double move, int option);
+void			ft_press_e(double move, int option);
 
 // Raycasting
 double			ft_abs(double x);
@@ -235,7 +243,5 @@ long long		time_diff(long long past, long long pres);
 
 //End
 int				end_game(void);
-
-//try
 
 #endif

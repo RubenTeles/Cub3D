@@ -6,19 +6,19 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 18:12:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:34:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-int	ft_login_metric(double move)
+void	ft_login_metric(double move)
 {
 	static double	x = 0;
 
 	if (x >= 0.37)
-		return (0);
+		return ;
 	x += move;
 	if (x > 0.37)
 		x = 0.37;
@@ -30,10 +30,9 @@ int	ft_login_metric(double move)
 		0.039, (engine())->size[X] * 0.314, (engine())->size[Y] * 0.587, 0X467527);
 	ft_put_word("LOADING", (engine())->size[X] * 0.25, (engine())->size[Y] *\
 		0.04, (engine())->size[X] * 0.37, (engine())->size[Y] * 0.585);
-	return (1);
 }
 
-int	ft_login_images(double move, int min, int max)
+void	ft_login_images(double move, int min, int max)
 {
 	(canva())->create_data(min, max);
 	ft_login_metric(move);
@@ -41,16 +40,15 @@ int	ft_login_images(double move, int min, int max)
 	(canva())->data->img, 0, 0);
 	if (max < (canva()->max))
 		ft_login_images(move + 0.01, min + 20, max + 20);
-	return (0);
 }
 
-int	ft_login_2(double move)
+void	ft_login_2(double move)
 {
 	t_data	*data;
 
 	data = (canva())->sprite(WALK);
 	if (!data)
-		return (0);
+		return ;
 	(canva())->resize(data, (engine())->size[X] * 0.4, (engine())->size[Y] * 0.8,\
 		(engine())->size[X] * 0.3, (engine())->size[Y] * 0.22);
 	ft_print_color((engine())->size[X] * 0.377, (engine())->size[Y] *\
@@ -60,24 +58,25 @@ int	ft_login_2(double move)
 	ft_put_word("MADE BY RTELES AMARIA/M", (engine())->size[X] * 0.35, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.022, (engine())->size[Y] * 0.949);
 	ft_login_metric(move);
-	return (ft_login_images(move + 0.01, 1, 20));
+	ft_login_images(move + 0.01, 1, 20);
 }
 
 
-int	ft_login(double move)
+void	ft_login(double move, int option)
 {
 	static double	x = 0;
 	t_data			*data;
 
+	(void)option;
 	if (x > 0)
-		return (ft_login_metric(move));
+		ft_login_metric(move);
 	//(engine())->sound("paplay src/sound/music_open.ogg");
 	//(engine())->sound("paplay src/sound/pMLWWiBvWX8_48.ogg");
 	//(engine())->sound("paplay src/sound/wolf_2.ogg");
 	(canva())->create_data(N_WALL, AVATAR);
 	data = (canva())->sprite(MENU);
 	if (!data)
-		return (0);
+		return ;
 	(canva())->resize(data, (engine())->size[X], (engine())->size[Y],\
 		0, 0);
 	ft_print_color((engine())->size[X] * 0.867, (engine())->size[Y] * 0.224,\
@@ -87,5 +86,5 @@ int	ft_login(double move)
 	ft_put_word("WOLF EAT PIGS", (engine())->size[X] * 0.8, (engine())->size[Y] *\
 		0.2, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.045);
 	x++;
-	return (ft_login_2(move));
+	ft_login_2(move);
 }

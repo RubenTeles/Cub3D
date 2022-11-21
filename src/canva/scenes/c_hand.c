@@ -6,14 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/19 19:14:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:16:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-void	ft_hands(double move, int nice)
+void	ft_hands(double move, int option)
 {
 	t_data			*data;
 	static int		a = 0;
@@ -27,7 +27,7 @@ void	ft_hands(double move, int nice)
 	x1 += move;
 	x2 -= move;
 	y += move;
-	if (nice == 1)
+	if (option == 1)
 		count = 1;
 	if (count > 0)
 	{
