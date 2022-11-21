@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:22:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:49:35 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void	__destroy(void)
 {
 	free((canva())->data);
+	free((canva()->scene));
 }
 
 void create_datas(int min, int max)

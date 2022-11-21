@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:30:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/21 19:48:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	pause_game()
 {
 	static int	count = 0;
 
-	(canva())->scene[S_BACKGROUND].show(0.00017, 0);
+	(canva())->scene[S_BACKGROUND].show(0, 0);
 	ft_raycasting();
-	(canva())->scene[S_HAND].show(0.0004, 0);
+	(canva())->scene[S_HAND].show(0, 0);
 	(canva())->scene[S_LIFE].show(0, 0);
 	(canva())->scene[S_MINI_MAP].show(0, 0);
 	if (count >= 3)
