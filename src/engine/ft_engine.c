@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 16:11:37 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:35:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	loop_game(void)
 		if ((engine())->map)
 			ft_map();
 		(engine())->time += (engine())->count * 0.001;
-		//printf("%fs\n", (engine())->time);
+		// printf("%fs\n", (engine())->time);
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0);
 	}

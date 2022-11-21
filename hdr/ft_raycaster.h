@@ -6,14 +6,14 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 12:18:16 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:52:41 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_RAYCASTER_H
 # define FT_RAYCASTER_H
 
-# define NUMSPRITES 2
+# define NUMSPRITES 3
 
 typedef struct s_data	t_data;
 
