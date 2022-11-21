@@ -6,12 +6,14 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/19 23:10:59 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:18:16 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_RAYCASTER_H
 # define FT_RAYCASTER_H
+
+# define NUMSPRITES 2
 
 typedef struct s_data	t_data;
 
@@ -67,6 +69,7 @@ typedef struct s_algorithm
 	int		color;
 	int		check;
 	int		percent;
+	double	*z_buffer;
 }			t_alg;
 
 typedef struct s_alg_floor
@@ -95,6 +98,37 @@ typedef struct s_alg_floor
 	int		color;
 	t_data	**data;
 }			t_alg_fl;
+
+typedef struct s_sprites_values
+{
+	int		sprite_order[NUMSPRITES];
+	double	sprite_dist[NUMSPRITES];
+	double	sprite_x;
+	double	sprite_y;
+	double	invdet;
+	double	transform_x;
+	double	transform_y;
+	int		sprite_scrn_x;
+	int		sprite_hgt;
+	int		draw_str_y;
+	int		draw_end_y;
+	int		sprite_wdt;
+	int		draw_str_x;
+	int		draw_end_x;
+	int		stripe;
+	int		tex_x;
+	int		y;
+	int		d;
+	int		tex_y;
+	int		color;
+}			t_spr_vls;
+
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		texture;
+}			t_spr;
 
 typedef struct s_caster
 {

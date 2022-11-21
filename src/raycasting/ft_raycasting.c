@@ -6,13 +6,89 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 10:30:00 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:30:18 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_sprites.h>
+
+void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite)
+{
+	t_spr_vls	a;
+	int			i;
+
+	i = -1;
+	while (++i < NUMSPRITES)
+	{
+		a.sprite_order[i] = i;
+		a.sprite_dist[i] = ((view->pos_x - sprite[i].x) * (view->pos_x - sprite[i].x) + (view->pos_x - sprite[i].y) * (view->pos_y - sprite[i].y)); //sqrt not taken, unneeded
+	}
+	// sortSprites(a.sprite_order, a.sprite_dist, NUMSPRITES);
+	i = -1;
+	while (++i < NUMSPRITES)
+	{
+		//translate sprite position to relative to camera
+		a.sprite_x = sprite[a.sprite_order[i]].x - view->pos_x;
+		a.sprite_y = sprite[a.sprite_order[i]].y - view->pos_y;
+
+		//transform sprite with the inverse camera matrix
+		// [ planeX   dirX ] -1                                       [ dirY      -dirX ]
+		// [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
+		// [ planeY   dirY ]                                          [ -planeY  planeX ]
+
+		a.invdet = 1.0 / (view->plane_x * view->dir_y - view->dir_x * view->plane_y); //required for correct matrix multiplication
+
+		a.transform_x = a.invdet * (view->dir_y * a.sprite_x - view->dir_x * a.sprite_y);
+		a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + view->plane_x * a.sprite_y); //this is actually the depth inside the screen, that what Z is in 3D
+
+		a.sprite_scrn_x = (int)(((double)(canva()->data->larg) / 2) * (1 + a.transform_x / a.transform_y));
+
+		//calculate height of the sprite on screen
+		a.sprite_hgt = abs((int)((double)(canva()->data->alt) / (a.transform_y))); //using 'transformY' instead of the real distance prevents fisheye
+		//calculate lowest and highest pixel to fill in current stripe
+		a.draw_str_y = -a.sprite_hgt / 2 + canva()->data->alt / 2;
+		if (a.draw_str_y < 0)
+			a.draw_str_y = 0;
+		a.draw_end_y = a.sprite_hgt / 2 + canva()->data->alt / 2;
+		if (a.draw_end_y >= canva()->data->alt)
+			a.draw_end_y = canva()->data->alt - 1;
+
+		//calculate width of the sprite
+		a.sprite_wdt = abs((int)((double)(canva()->data->alt) / (a.transform_y)));
+		a.draw_str_x = -a.sprite_wdt / 2 + a.sprite_scrn_x;
+		if (a.draw_str_x < 0)
+			a.draw_str_x = 0;
+		a.draw_end_x = a.sprite_wdt / 2 + a.sprite_scrn_x;
+		if (a.draw_end_x >= canva()->data->larg)
+			a.draw_end_x = canva()->data->larg - 1;
+
+		//loop through every vertical stripe of the sprite on screen
+		a.stripe = a.draw_str_x - 1;
+		while (++(a.stripe) < a.draw_end_x)
+		{
+			a.tex_x = (int)(256 * (a.stripe - (-a.sprite_wdt / 2 + a.sprite_scrn_x)) * data[sprite[a.sprite_order[i]].texture]->alt / a.sprite_wdt) / 256;
+			//the conditions in the if are:
+			//1) it's in front of camera plane so you don't see things behind you
+			//2) it's on the screen (left)
+			//3) it's on the screen (right)
+			//4) ZBuffer, with perpendicular distance
+			if (a.transform_y > 0 && a.stripe > 0 && a.stripe < canva()->data->larg && a.transform_y < buffer[a.stripe])
+			{
+				a.y = a.draw_str_y - 1;
+				while (++(a.y) < a.draw_end_y)
+				{
+					a.d = (a.y) * 256 - canva()->data->alt * 128 + a.sprite_hgt * 128; //256 and 128 factors to avoid floats
+					a.tex_y = ((a.d * data[sprite[a.sprite_order[i]].texture]->alt) / a.sprite_hgt) / 256;
+					a.color = canva()->getPxColor(data[sprite[a.sprite_order[i]].texture], a.tex_x, a.tex_y);
+					if ((a.color & 0x00FFFFFF) != 0)
+						ft_print_color(1, 1, a.stripe, a.y, a.color);
+				}
+			}
+		}
+	}
+}
 
 void	ft_ray_floor(t_view *view, t_alg_fl a)
 {
@@ -170,11 +246,13 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		// a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
+	a.z_buffer[x] = a.perp_dist;
 }
 
 void	ft_raycasting(void)
 {
 	t_data		*data[9];
+	t_spr		sprite[2];
 	t_view		*view;
 	int			x;
 	t_alg_fl	b;
@@ -192,6 +270,12 @@ void	ft_raycasting(void)
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
 		|| !data[7] || !data[8])
 		return ;
+	sprite[0].texture = 6;
+	sprite[0].x = 10;
+	sprite[0].y = 10;
+	sprite[1].texture = 6;
+	sprite[1].x = 20;
+	sprite[1].y = 10;
 	all()->data = data;
 	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
 		return ;
@@ -202,6 +286,9 @@ void	ft_raycasting(void)
 	x = -1;
 	a.x = 0;
 	ft_ray_floor(view, b);
+	a.z_buffer = malloc(sizeof(double) * canva()->data->larg);
 	while (++x < canva()->data->larg)
 		ft_ray(x, view, data, a);
+	ft_ray_sprites(a.z_buffer, view, data, sprite);
+	free(a.z_buffer);
 }
