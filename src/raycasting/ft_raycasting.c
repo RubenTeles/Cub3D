@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/20 19:49:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:42:53 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4' || all()->map[(int)a.floory][(int)a.floorx] == '2') && a.p >= 0)
 				{
 					double grade = ft_dist_pts(view->pos_x, view->pos_y, a.floorx, a.floory);
-					if (grade < 1)
-						grade = 1;
+					if (grade < 5)
+						grade = 5;
 					int	arr[2];
 					arr[0] = 11251376;
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
 					if (a.c_tex == 5)
 					{
 						arr[1] = a.color;
-						a.color = ft_linear_gradient(arr, 80.0 / (float)grade);
+						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
 					}
 					ft_print_color(1, 1, a.x, a.y, a.color);
 					
@@ -64,7 +64,7 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 					if (a.c_tex == 5)
 					{
 						arr[1] = a.color;
-						a.color = ft_linear_gradient(arr, 80.0 / (float)grade);
+						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
 					}
 					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
 				}
@@ -165,9 +165,9 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		arr[0] = 11251376;
 		arr[1] = a.color;
 		double grade = ft_dist_pts(view->pos_x, view->pos_y, (double)a.map_x, (double)a.map_y);
-		if (grade < 1)
-			grade = 1;
-		a.color = ft_linear_gradient(arr, 80.0 / (float)grade);
+		if (grade < 5)
+			grade = 5;
+		a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
 }
