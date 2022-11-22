@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 12:59:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:29:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # define S_MAP 7
 # define S_PRESS_E 8
 # define S_PAUSE 9
+# define S_TASKS 10
 
 //Number Max Scenes
-# define S_MAX_SCENES_IMG 10
+# define S_MAX_SCENES_IMG 11
 
 #endif

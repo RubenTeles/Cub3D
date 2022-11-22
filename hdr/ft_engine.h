@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:01:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:16:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_data				t_data;
 typedef struct s_key				t_key;
 typedef struct s_scene				t_scene;
 typedef struct s_scene_img			t_scene_img;
+typedef struct s_sound				t_sound;
 typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
 
@@ -54,9 +55,20 @@ struct s_scene_img
 {
 	int		on;
 	double	animation;
-	int		animation_on;
 	int		option;
-    void	(*show)(t_scene_img *scene);
+	void	(*show)(t_scene_img *scene);
+};
+
+struct s_sound
+{
+	int 		pid;
+	int			status;
+	char		*sound;
+	int			len;
+	long long	dif;
+	void		(*play)(t_sound *sound);
+	void		(*stop)(t_sound *sound);
+	void		(*destroy)(void);
 };
 
 struct s_data
@@ -86,14 +98,17 @@ struct s_engine
 	int			count;
 	int			pos[2];
 	int			map;
+	long long	start_time;	
 	double		time;
+	long long	start_pause;
+	double		pause_time;
 	long int	dif_time;
 	int			sprt_for_sec;
 	int			menu;
 	int			pause;
 	t_key		*key;
 	t_object	*object;
-	void		(*sound)(char *sound);
+	t_sound		*sound;
 };
 
 struct s_canva
@@ -163,8 +178,8 @@ t_engine		*engine(void);
 t_canva			*canva(void);
 t_player1		*player(void);
 
-//engine
-void		    ft_sound(char *sound);
+//Sound
+void			new_sound(void);
 
 //canva
 void			new_canva(void);
@@ -238,11 +253,12 @@ void			ft_login(t_scene_img *scene);
 void			ft_initial_menu(t_scene_img *scene);
 void			ft_background(t_scene_img *scene);
 void			ft_hands(t_scene_img *scene);
-void			ft_map(t_scene_img *scene);
-void			ft_minimap(t_scene_img *scene);
 void			ft_life(t_scene_img *scene);
-void			ft_pause(t_scene_img *scene);
+void			ft_minimap(t_scene_img *scene);
+void			ft_map(t_scene_img *scene);
 void			ft_press_e(t_scene_img *scene);
+void			ft_tasks(t_scene_img *scene);
+void			ft_pause(t_scene_img *scene);
 
 // Raycasting
 double			ft_abs(double x);

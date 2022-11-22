@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:19:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:04:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,14 @@ void	ft_hands(t_scene_img *scene)
 		option = scene->option;
 		animation = scene->animation;
 	}
-	if (option == 1 && !(engine())->pause && ++count)
+	if (option >= 1 && !(engine())->pause && ++count)
+	{
+		if (option == 1)
+			count = 1;
+		if (++option && scene)
+			scene->option = 2;
 		(player())->sprite = (canva())->sprite(NICE);
+	}
 	if (count == 15)
 	{
 		count = 0;

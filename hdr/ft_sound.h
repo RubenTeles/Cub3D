@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keys.h                                          :+:      :+:    :+:   */
+/*   ft_sound.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 17:43:48 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/22 14:04:52 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/22 16:00:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_KEYS_H
-# define FT_KEYS_H
+#ifndef FT_SOUND_H
+# define FT_SOUND_H
 
-# define ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_N 110
-# define KEY_M 109
-# define KEY_E 101
-# define KEY_ENTER 65293
-# define BUTTON_RIGHT 3
-# define BUTTON_LEFT 1
-# define KEY_K 107
-# define KEY_J 106
-# define KEY_SHIFT 65505
-# define KEY_P 112
-# define KEY_TAB 65289
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
+# define SD_WOLF 0
+# define SD_MUSIC 1
+# define SD_BREADING_IN 2
+# define SD_BREADING_OUT 3
+# define SD_DOOR 4
+# define SD_WOLF_HAPPY 5
+# define SD_WOLF_DIE 6
+
+//NUMBER MAX
+# define _MAX_SOUNDS_ 7
 
 #endif

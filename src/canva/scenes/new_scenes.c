@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:04:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:03:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:29:50 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void scene_pause(void)
 {
 	(canva())->scene_show[SC_PAUSE].complete = 0;
 	(canva())->scene_img[S_PAUSE].on = 1;
+	(canva())->scene_img[S_TASKS].on = 1;
 }
 
 void	new_scenes(void)
