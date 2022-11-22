@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:34:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:26:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_login_images(double move, int min, int max)
 	ft_login_metric(move);
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 	(canva())->data->img, 0, 0);
-	if (max < (canva()->max))
+	if (max < _MAX_SPRITES_)
 		ft_login_images(move + 0.01, min + 20, max + 20);
 }
 
@@ -62,14 +62,13 @@ void	ft_login_2(double move)
 }
 
 
-void	ft_login(double move, int option)
+void	ft_login(t_scene *scene)
 {
 	static double	x = 0;
 	t_data			*data;
 
-	(void)option;
 	if (x > 0)
-		ft_login_metric(move);
+		ft_login_metric(scene->animation);
 	//(engine())->sound("paplay src/sound/music_open.ogg");
 	//(engine())->sound("paplay src/sound/pMLWWiBvWX8_48.ogg");
 	//(engine())->sound("paplay src/sound/wolf_2.ogg");
@@ -86,5 +85,5 @@ void	ft_login(double move, int option)
 	ft_put_word("WOLF EAT PIGS", (engine())->size[X] * 0.8, (engine())->size[Y] *\
 		0.2, (engine())->size[X] * 0.1, (engine())->size[Y] * 0.045);
 	x++;
-	ft_login_2(move);
+	ft_login_2(scene->animation);
 }

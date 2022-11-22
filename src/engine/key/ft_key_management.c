@@ -6,13 +6,44 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 18:18:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 10:44:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_keys.h>
 #include <ft_sprites.h>
+#include <ft_scenes.h>
+
+
+static int key_atack(void)
+{
+	static long	long	time_start = 0;
+	long long			dif;
+
+	if ((engine())->key->search(BUTTON_RIGHT)->on && (player())->fadigue - 2 >= 0)
+	{
+		if (!(player())->atack)
+			(player())->atack = 1;
+		(player())->sprite = 0;
+		dif = time_diff(time_start, time_current());
+		if (dif > 750 || time_start == 0)
+		{
+			time_start = time_current();
+			(engine())->sound("paplay src/sound/breathe_in.ogg");
+		}
+		(player())->fadigue -= 2;
+	}
+	else if ((engine())->key->search(BUTTON_RIGHT)->on)
+		(engine())->key->search(BUTTON_RIGHT)->on = 0;
+	if (!(engine())->key->search(BUTTON_RIGHT)->on && (player())->atack == 1)
+	{
+		(player())->sprite = (canva())->sprite(HAND);
+		(engine())->sound("paplay src/sound/breathe_out.ogg");
+		(player())->atack = 0;
+	}
+	return (0);
+}
 
 static int key_pause(void)
 {
@@ -42,7 +73,7 @@ static int key_game_2(void)
 	t_data	*data;
 
 	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
-		(player()->fadigue - 2 >= 0))
+		(player())->fadigue - 2 >= 0)
 	{
 		if ((player())->vision >= 0.60)
 			(player())->vision -= 0.01;
@@ -75,6 +106,7 @@ static int key_game_2(void)
 		printf("Mostrar barra de Vidas\n");
 	}
 	key_game_3();
+	key_atack();
 	return (0);
 }
 
@@ -97,10 +129,8 @@ static int key_game(void)
 		(player())->movement(-1, -1, X, Y);
 	if ((engine())->key->search(KEY_D)->on && ++(player())->move)
 		(player())->movement(-1, 1, Y, X);
-	if ((engine())->key->search(BUTTON_RIGHT)->on)
-		printf("Right Button PRESS\n");
 	if ((engine())->key->search(KEY_N)->on)
-		ft_hands(0, 1);
+		(canva())->scene[S_HAND].option = 1;
 	if ((engine())->key->search(KEY_RIGHT)->on)
 	{
 		ft_rotate_dir((player())->turn);

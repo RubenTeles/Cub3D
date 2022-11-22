@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:36:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 10:26:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ struct s_key
 struct s_scene
 {
 	int		on;
-    void	(*show)(double move, int option);
+	double	animation;
+	int		animation_on;
+	int		option;
+    void	(*show)(t_scene *scene);
 };
 
 struct s_data
@@ -87,7 +90,6 @@ struct s_engine
 struct s_canva
 {
 	t_data		*data;
-	int			max;
 	int			rsz[2];
 	t_scene		*scene;
 	t_data		*(*sprite)(int sprite);
@@ -138,6 +140,7 @@ struct s_player1
 	double	fadigue;
 	int		life;
 	int		lives;
+	int		atack;
 	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
 	void	(*obj_interation)(void);
 };
@@ -212,15 +215,15 @@ unsigned char	get_b(int trgb);
 
 //Scenes
 void			new_scenes(int len);
-void			ft_login(double move, int option);
-void			ft_initial_menu(double move, int option);
-void			ft_background(double move, int option);
-void			ft_hands(double move, int option);
-void			ft_map(double move, int option);
-void			ft_minimap(double move, int option);
-void			ft_life(double move, int option);
-void			ft_pause(double move, int option);
-void			ft_press_e(double move, int option);
+void			ft_login(t_scene *scene);
+void			ft_initial_menu(t_scene *scene);
+void			ft_background(t_scene *scene);
+void			ft_hands(t_scene *scene);
+void			ft_map(t_scene *scene);
+void			ft_minimap(t_scene *scene);
+void			ft_life(t_scene *scene);
+void			ft_pause(t_scene *scene);
+void			ft_press_e(t_scene *scene);
 
 // Raycasting
 double			ft_abs(double x);

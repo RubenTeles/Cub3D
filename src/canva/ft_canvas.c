@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:49:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:25:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 static void	__destroy(void)
 {
 	free((canva())->data);
-	free((canva()->scene));
+	free((canva())->scene);
 }
 
 void create_datas(int min, int max)
 {
-	while (min <= max && min < (canva())->max)
+	while (min <= max && min < _MAX_SPRITES_)
 	{
 		if (!(canva())->data[min].load && (canva())->data[min].path)
 			(canva())->data[min] = (canva())->create_sprite((canva())->data[min], min);
@@ -45,14 +45,13 @@ static void canva_reset_data(void)
 	&(canva())->data[CANVA].endian);
 	ft_path_start();
 	i = 0;
-	while (++i <= (canva())->max)
+	while (++i <= _MAX_SPRITES_)
 		(canva())->data[i].load = 0;
 }
 
 void	new_canva(void)
 {
-	(canva())->max = 97;
-	(canva())->data = malloc(sizeof(t_data) * (canva())->max);
+	(canva())->data = malloc(sizeof(t_data) * _MAX_SPRITES_);
 	(canva())->rsz[X] = 0;
 	(canva())->rsz[Y] = 0;
 	(canva())->alphabet = ft_alphabet;

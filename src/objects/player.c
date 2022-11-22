@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 12:24:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 10:26:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	new_player(void)
 	(player())->interation = 0.1;
 	(player())->move = 0;
 	(player())->fadigue = 100;
+	(player())->atack = 0;
 	(player())->movement = player_movement;
 	(player())->obj_interation = player_interation;
 }

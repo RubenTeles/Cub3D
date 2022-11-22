@@ -6,17 +6,16 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:10:06 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:18:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:15:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 
-void	ft_pause(double move, int option)
+void	ft_pause(t_scene *scene)
 {
-	(void)move;
-	(void)option;
+	(void)scene;
 	ft_print_color((engine())->size[X] * 0.367, (engine())->size[Y] * 0.124,\
 		 (engine())->size[X] * 0.315, (engine())->size[Y] * 0.340, 0X6b4324);
 	ft_print_color((engine())->size[X] * 0.35, (engine())->size[Y] * 0.1,\

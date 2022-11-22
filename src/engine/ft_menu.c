@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:01:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:33:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:13:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int menu_game(double time)
 		return (mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0));*/
 	(engine())->time += time;
-	(canva())->scene[S_MENU].show(0.01, 0);
+	(canva())->scene[S_MENU].show(0);
 	ft_words_menu();
 	ft_head_wolf(0);
 	key_management();

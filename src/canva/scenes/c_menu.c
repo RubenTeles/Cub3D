@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:20:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:15:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,11 @@ void	ft_head_wolf(double move)
 		(engine())->size[X] * 0.21, (engine())->size[Y] * 0.71);
 }
 
-void	ft_initial_menu(double move, int option)
+void	ft_initial_menu(t_scene *scene)
 {
 	t_data	*data;
 
-	(void)move;
-	(void)option;
+	(void)scene;
 	data = (canva())->sprite(MENU);
 	if (!data)
 		return ;

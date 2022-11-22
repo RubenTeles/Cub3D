@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:31:15 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:12:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	all_interation(t_object *obj, double x, double y)
 			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 			{
 				if (aux->title == DOOR)
-					(canva())->scene[S_PRESS_E].show(0, 0);
+					(canva())->scene[S_PRESS_E].show(0);
 				return (1);
 			}
 		aux = aux->next;

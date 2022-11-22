@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/21 19:15:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 09:01:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ int	put_clouds(t_data *img, int x, int pos_x)
 	return (animation_x);
 }
 
-void	ft_background(double move, int option)
+void	ft_background(t_scene *scene)
 {
 	t_data			*data;
 	static double	x1 = 0;
 
-	(void)option;
-	x1 += move + (player())->turn_times;
+	x1 += scene->animation + (player())->turn_times;
 	if (x1 > 1)
 		x1 = x1 - 1;
 	if (x1 < 0)
