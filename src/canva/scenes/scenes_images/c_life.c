@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 11:29:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:42:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,43 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
+void	ft_lives(void)
+{
+	t_data  *data;
+
+	data = (canva())->sprite(HEART);
+	if (!data)
+		return ;
+	if ((player())->lives >= 1)
+		(canva())->resize(data,\
+		(engine())->size[X] * 0.03, (engine())->size[Y] * 0.03,\
+		(engine())->size[X] * 0.105, (engine())->size[Y] * 0.158);
+	if ((player())->lives >= 2)
+		(canva())->resize(data,\
+		(engine())->size[X] * 0.03, (engine())->size[Y] * 0.03,\
+		(engine())->size[X] * 0.14, (engine())->size[Y] * 0.158);
+	if ((player())->lives >= 3)
+		(canva())->resize(data,\
+		(engine())->size[X] * 0.03, (engine())->size[Y] * 0.03,\
+		(engine())->size[X] * 0.175, (engine())->size[Y] * 0.158);
+}
+
+void	ft_life_percent_2(int x, double life)
+{
+	ft_print_color((engine())->size[X] * 0.0001, (engine())->size[Y] * 0.024,\
+		(engine())->size[X] * 0.104 + (engine())->size[X] * x,\
+		(engine())->size[Y] * 0.107, 0X6b4324);
+	ft_put_word((string()).itoa((int)(life * 100)),\
+		(engine())->size[X] * 0.04, (engine())->size[Y] * 0.025,\
+		(engine())->size[X] * 0.1682, (engine())->size[Y] * 0.105);
+}
+
 void	ft_life_percent(void)
 {
 	double	x;
 	double	life;
 	int		color;
 
-	if ((player())->life > 5)
-		(player())->life -= 5;
 	life = (double)(player())->life / 1000;
 	if (life > 0.50)
 		color = 0X467527;
@@ -34,12 +63,7 @@ void	ft_life_percent(void)
 	x = life * 0.17;
 	ft_print_color((engine())->size[X] * x, (engine())->size[Y] * 0.024,\
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.107, color);
-	ft_print_color((engine())->size[X] * 0.0001, (engine())->size[Y] * 0.024,\
-		(engine())->size[X] * 0.104 + (engine())->size[X] * x,\
-		(engine())->size[Y] * 0.107, 0X6b4324);
-	ft_put_word((string()).itoa((int)(life * 100)),\
-		(engine())->size[X] * 0.04, (engine())->size[Y] * 0.025,\
-		(engine())->size[X] * 0.1682, (engine())->size[Y] * 0.105);
+	ft_life_percent_2(x, life);
 }
 
 void	ft_fatigue(void)
@@ -49,6 +73,13 @@ void	ft_fatigue(void)
 	fadigue = ((player())->fadigue / 100) * 0.17;
 	ft_print_color((engine())->size[X] * fadigue, (engine())->size[Y] * 0.01,\
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.144, 0x2259f0);
+	if ((double)(player())->life / 1000 <= 0.5)
+		(player())->avatar = (canva())->sprite(AVATAR_2);
+	else
+		(player())->avatar = (canva())->sprite(AVATAR);
+	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
+	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
+	(engine())->size[Y] * 0.087);
 }
 
 void	ft_life(t_scene_img *scene)
@@ -66,11 +97,5 @@ void	ft_life(t_scene_img *scene)
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.107, 0xe6be7e);
 	ft_life_percent();
 	ft_fatigue();
-	if ((double)(player())->life / 1000 <= 0.5)
-		(player())->avatar = (canva())->sprite(AVATAR_2);
-	else
-		(player())->avatar = (canva())->sprite(AVATAR);
-	(canva())->resize((player())->avatar, (engine())->size[X] * 0.068,\
-	(engine())->size[Y] * 0.08, (engine())->size[X] * 0.024,\
-	(engine())->size[Y] * 0.087);
+	ft_lives();
 }

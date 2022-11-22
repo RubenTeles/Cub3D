@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 11:30:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:58:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_head_wolf(double move)
 		(engine())->size[X] / data->larg * (engine())->size[X] * 0.07,\
 		(engine())->size[Y]/ data->alt * (engine())->size[X] * 0.07,
 		(engine())->size[X] * 0.59, (engine())->size[Y] * 0.52);
-	else
+	else if ((engine())->menu == 3)
 		(canva())->resize(data,\
 		(engine())->size[X] / data->larg * (engine())->size[X] * 0.07,\
 		(engine())->size[Y]/ data->alt * (engine())->size[X] * 0.07,

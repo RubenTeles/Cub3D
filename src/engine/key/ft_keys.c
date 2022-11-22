@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 17:59:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 17:44:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	new_key(void)
 	create_key(KEY_LEFT);
 	create_key(KEY_SHIFT);
 	create_key(KEY_P);
-	create_key(KEY_T);
+	create_key(KEY_TAB);
 }

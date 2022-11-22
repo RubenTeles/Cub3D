@@ -6,12 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 10:26:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:46:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
+#include <ft_sound.h>
 
 static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 {
@@ -27,7 +28,6 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 		(player())->pos[Y] += move_y * ((player())->vel * (player())->dir[dir_y]);
 		all_interation(0, (player())->pos[X], (player())->pos[Y]);
 	}
-
 }
 
 static void	player_interation(void)
@@ -42,14 +42,14 @@ static void	player_interation(void)
 		obj->avatar = (canva())->sprite(DOOR_OPEN);
 		obj->sprite = (canva())->sprite(DOOR_OPEN);
 		obj->collision = 0;
-		(engine())->sound("paplay src/sound/open_door.ogg");
+		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
 	}
 	else if (obj->title == DOOR && obj->collision == 0)
 	{
 		obj->avatar = (canva())->sprite(DOOR);
 		obj->sprite = (canva())->sprite(DOOR);
 		obj->collision = 1;
-		(engine())->sound("paplay src/sound/open_door.ogg");
+		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
 	}
 }
 

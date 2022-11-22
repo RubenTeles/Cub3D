@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:27:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:33:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,9 @@ void	ft_path_start(void)
 	(canva())->data[E_WALL].path = all()->file->ea;
 	(canva())->data[S_WALL].path = all()->file->so;
 	(canva())->data[W_WALL].path = all()->file->we;
-
 	(canva())->data[MENU].path = "./sprite/item/background_menu.xpm";
 	(canva())->data[SIGN].path = "./sprite/item/sign.xpm";
 	(canva())->data[WALK].path = "./sprite/wolf/wolf_walk.xpm";
-
 	(canva())->data[AVATAR].path = "./sprite/wolf/head1.xpm";
 	(canva())->data[AVATAR_2].path = "./sprite/wolf/head0.xpm";
 	(canva())->data[HAND].path = "./sprite/wolf/hand_1.xpm";
@@ -137,5 +135,6 @@ void	ft_path_start(void)
 	(canva())->data[ATACK_2].path = 0;
 	(canva())->data[ATACK_3].path = 0;
 	(canva())->data[RUN].path = "./sprite/item/run_effect.xpm";
+	(canva())->data[HEART].path = "./sprite/item/live.xpm";
 	ft_path_game();
 }
