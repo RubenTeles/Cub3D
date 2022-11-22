@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 18:40:56 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:59:17 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,11 @@ typedef struct s_caster
 void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite);
 void	ft_sort_sprites(int *order, double *dist, int amount);
 void	ft_print_stripe(t_spr_vls *copy, t_data **data, int i, int vmovescreen);
+
+// FLOOR
+void	ft_ray_floor(t_view *view, t_alg_fl a);
+
+// GRADIENT UTILS
+int		ft_linear_gradient(int colors[2], float percent);
 
 #endif

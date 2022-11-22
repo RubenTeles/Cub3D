@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:01:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:22:29 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,9 +254,10 @@ int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition);
 int				ft_texture_num(int map_x, int map_y, int side, t_view view);
 
 // Fog
-int				ft_fog(t_data *data);
+int				ft_fog(t_data *data, double time);
 int				ft_linear_gradient(int colors[2], float percent);
 double			ft_dist_pts(double x1, double y1, double x2, double y2);
+int				ft_grade_color(t_view *view, float x, float y, int color);
 
 
 //Utils

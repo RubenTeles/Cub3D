@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 18:37:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 17:45:31 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	if (!(all())->file)
 		return (0);
 	all()->map = ft_lst_toarr(all());
-	printf("x:%i, y:%i\n", all()->player.x, all()->player.y);
+	all()->fog_color = 11251376;
 	if (ft_start(all()))
 	{
 		array().free(file);

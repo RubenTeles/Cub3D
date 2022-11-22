@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 19:13:10 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:42:18 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #define UDIV 4
 #define VDIV 4
-#define VMOVE 70.0
+#define VMOVE 100.0
 
 void	ft_sort_sprites(int *order, double *dist, int amount)
 {

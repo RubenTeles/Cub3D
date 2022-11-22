@@ -3,75 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 13:02:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:23:31 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_sprites.h>
-
-void	ft_ray_floor(t_view *view, t_alg_fl a)
-{
-	a.h = canva()->data->alt;
-	a.w = canva()->data->larg;
-	a.y = -1;
-	while (++(a.y) < a.h)
-	{
-		a.ray_x0 = (float)(view->dir_x - view->plane_x);
-		a.ray_y0 = (float)(view->dir_y - view->plane_y);
-		a.ray_x1 = (float)(view->dir_x + view->plane_x);
-		a.ray_y1 = (float)(view->dir_y + view->plane_y);
-		a.p = a.y - a.h / 2;
-		a.posz = 0.5 * (float)a.h;
-		a.rowdist = a.posz / a.p;
-		a.stepx = a.rowdist * (a.ray_x1 - a.ray_x0) / (float)a.w;
-		a.stepy = a.rowdist * (a.ray_y1 - a.ray_y0) / (float)a.w;
-		a.floorx = (float)view->pos_x + a.rowdist * a.ray_x0;
-		a.floory = (float)view->pos_y + a.rowdist * a.ray_y0;
-		a.x = -1;
-		while (++(a.x) < a.w)
-		{
-			a.floortex = 5;
-			a.c_tex = 5;
-			a.cellx = (int)(a.floorx);
-			a.celly = (int)(a.floory);
-			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
-			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
-			a.floorx += a.stepx;
-			a.floory += a.stepy;
-			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
-			{
-				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4' || all()->map[(int)a.floory][(int)a.floorx] == '2') && a.p >= 0)
-				{
-					double grade = ft_dist_pts(view->pos_x, view->pos_y, a.floorx, a.floory);
-					if (grade < 5)
-						grade = 5;
-					int	arr[2];
-					arr[0] = 11251376;
-					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
-					if (a.c_tex == 5)
-					{
-						arr[1] = a.color;
-						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
-					}
-					ft_print_color(1, 1, a.x, a.y, a.color);
-					
-					a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
-					if (a.c_tex == 5)
-					{
-						arr[1] = a.color;
-						a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
-					}
-					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
-				}
-			}
-		}
-	}
-}
 
 void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 {
@@ -161,13 +102,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	{
 		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
 		a.texpos += a.step;
-		int	arr[2];
-		arr[0] = 11251376;
-		arr[1] = a.color;
-		double grade = ft_dist_pts(view->pos_x, view->pos_y, (double)a.map_x, (double)a.map_y);
-		if (grade < 5)
-			grade = 5;
-		a.color = ft_linear_gradient(arr, 100.0 * 5 / (float)grade);
+		a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
 		ft_print_color(1, 1, x, a.y, a.color);
 	}
 	a.z_buffer[x] = a.perp_dist;
@@ -175,7 +110,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 
 void	ft_raycasting(t_scene_img *scene)
 {
-	t_data		*data[10];
+	t_data		*data[11];
 	t_spr		sprite[NUMSPRITES];
 	t_view		*view;
 	int			x;
@@ -193,16 +128,17 @@ void	ft_raycasting(t_scene_img *scene)
 	data[7] = (canva())->sprite(DOOR);
 	data[8] = (canva())->sprite(CAVE);
 	data[9] = (canva())->sprite(PIG_S0);
+	data[10] = (canva())->sprite(TREE);
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
 		|| !data[7] || !data[8])
 		return ;
-	sprite[0].texture = 9;
+	sprite[0].texture = 10;
 	sprite[0].x = 10;
 	sprite[0].y = 10;
-	sprite[1].texture = 9;
+	sprite[1].texture = 10;
 	sprite[1].x = 20;
 	sprite[1].y = 10;
-	sprite[2].texture = 7;
+	sprite[2].texture = 10;
 	sprite[2].x = 21;
 	sprite[2].y = 10;
 	all()->data = data;
