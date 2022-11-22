@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:15:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 11:30:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_put_minimap(int x, int y, double larg, double alt)
 	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));	
 }
 
-void	ft_minimap(t_scene *scene)
+void	ft_minimap(t_scene_img *scene)
 {
 	t_data		*data;
 

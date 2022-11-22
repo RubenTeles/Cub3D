@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 18:16:59 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:02:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	a.z_buffer[x] = a.perp_dist;
 }
 
-void	ft_raycasting(void)
+void	ft_raycasting(t_scene_img *scene)
 {
 	t_data		*data[10];
 	t_spr		sprite[NUMSPRITES];
@@ -182,6 +182,7 @@ void	ft_raycasting(void)
 	t_alg_fl	b;
 	t_alg		a;
 
+	(void)scene;
 	data[0] = (canva())->sprite(N_WALL);
 	data[1] = (canva())->sprite(S_WALL);
 	data[2] = (canva())->sprite(W_WALL);

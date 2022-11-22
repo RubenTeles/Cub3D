@@ -6,14 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:10:06 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:15:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 11:30:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 
-void	ft_pause(t_scene *scene)
+void	ft_pause(t_scene_img *scene)
 {
 	(void)scene;
 	ft_print_color((engine())->size[X] * 0.367, (engine())->size[Y] * 0.124,\

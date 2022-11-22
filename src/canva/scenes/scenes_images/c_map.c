@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:15:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 11:30:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_print_map(t_data *data, double x, double y)
 			((engine())->size[Y] * 0.25) + (y * (canva())->rsz[Y]));
 }
 
-void	ft_map(t_scene *scene)
+void	ft_map(t_scene_img *scene)
 {
 	t_object		*aux;
 	static int		avatar = 0;

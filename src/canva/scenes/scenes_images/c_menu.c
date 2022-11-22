@@ -6,13 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:15:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 11:30:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-
 
 void	ft_head_wolf(double move)
 {
@@ -42,23 +41,6 @@ void	ft_head_wolf(double move)
 		(engine())->size[X] / data->larg * (engine())->size[X] * 0.07,\
 		(engine())->size[Y]/ data->alt * (engine())->size[X] * 0.07,
 		(engine())->size[X] * 0.21, (engine())->size[Y] * 0.71);
-}
-
-void	ft_initial_menu(t_scene *scene)
-{
-	t_data	*data;
-
-	(void)scene;
-	data = (canva())->sprite(MENU);
-	if (!data)
-		return ;
-	(canva())->resize(data, (engine())->size[X], (engine())->size[Y],\
-		0, 0);
-	data = (canva())->sprite(SIGN);
-	if (!data)
-		return ;
-	(canva())->resize(data, (engine())->size[X] * 0.4, (engine())->size[Y] * 0.8,\
-		(engine())->size[X] * 0.3, (engine())->size[Y] * 0.22);
 }
 
 void	ft_start_word(char *str, double larg, double alt, int pos_x, int pos_y)
@@ -93,4 +75,25 @@ void	ft_words_menu(void)
 		0.032, (engine())->size[X] * 0.013, (engine())->size[Y] * 0.948, 0xe6be7e);
 	ft_put_word("MADE BY RTELES AMARIA/M", (engine())->size[X] * 0.35, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.022, (engine())->size[Y] * 0.949);
+}
+
+void	ft_initial_menu(t_scene_img *scene)
+{
+	t_data	*data;
+	double	animation;
+
+	(void)scene;
+	animation = 0;
+	data = (canva())->sprite(MENU);
+	if (!data)
+		return ;
+	(canva())->resize(data, (engine())->size[X], (engine())->size[Y],\
+		0, 0);
+	data = (canva())->sprite(SIGN);
+	if (!data)
+		return ;
+	(canva())->resize(data, (engine())->size[X] * 0.4, (engine())->size[Y] * 0.8,\
+		(engine())->size[X] * 0.3, (engine())->size[Y] * 0.22);
+	ft_words_menu();
+	ft_head_wolf(animation);
 }

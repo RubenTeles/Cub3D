@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:15:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 11:29:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_fatigue(void)
 		(engine())->size[X] * 0.104, (engine())->size[Y] * 0.144, 0x2259f0);
 }
 
-void	ft_life(t_scene *scene)
+void	ft_life(t_scene_img *scene)
 {
 	(void)scene;
 	ft_put_word("WOLF", (engine())->size[X] * 0.10, (engine())->size[Y] *\

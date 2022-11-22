@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 10:26:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:01:35 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_canva				t_canva;
 typedef struct s_data				t_data;
 typedef struct s_key				t_key;
 typedef struct s_scene				t_scene;
+typedef struct s_scene_img			t_scene_img;
 typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
 
@@ -43,11 +44,19 @@ struct s_key
 
 struct s_scene
 {
+	int			complete;
+	void		(*init)(void);
+	int			(*key)(void);
+    t_scene		*next;
+};
+
+struct s_scene_img
+{
 	int		on;
 	double	animation;
 	int		animation_on;
 	int		option;
-    void	(*show)(t_scene *scene);
+    void	(*show)(t_scene_img *scene);
 };
 
 struct s_data
@@ -92,6 +101,8 @@ struct s_canva
 	t_data		*data;
 	int			rsz[2];
 	t_scene		*scene;
+	t_scene		*scene_show;
+	t_scene_img	*scene_img;
 	t_data		*(*sprite)(int sprite);
 	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
@@ -101,6 +112,8 @@ struct s_canva
 	void 		(*create_data)(int min, int max);
 	t_data		(*create_sprite)(t_data new, int sprite);
 	t_data		*(*alphabet)(char c);
+	void		(*reset_scenes)(void);
+	void		(*show_scenes)(void);
 	void		(*destroy)(void);
 };
 
@@ -199,8 +212,6 @@ void			ft_head_wolf(double move);
 void		 	ft_create_game(void);
 int 			menu_game(double time);
 
-//Pause
-
 //PLAYER
 void			new_player(void);
 int				all_interation(t_object *obj, double x, double y);
@@ -214,22 +225,30 @@ unsigned char	get_g(int trgb);
 unsigned char	get_b(int trgb);
 
 //Scenes
-void			new_scenes(int len);
-void			ft_login(t_scene *scene);
-void			ft_initial_menu(t_scene *scene);
-void			ft_background(t_scene *scene);
-void			ft_hands(t_scene *scene);
-void			ft_map(t_scene *scene);
-void			ft_minimap(t_scene *scene);
-void			ft_life(t_scene *scene);
-void			ft_pause(t_scene *scene);
-void			ft_press_e(t_scene *scene);
+void			new_scenes(void);
+void			init_management_scenes(void);
+void 			scene_login(void);
+void 			scene_menu(void);
+void 			scene_game(void);
+void 			scene_pause(void);
+
+//Image_Scenes
+void			new_scenes_img(void);
+void			ft_login(t_scene_img *scene);
+void			ft_initial_menu(t_scene_img *scene);
+void			ft_background(t_scene_img *scene);
+void			ft_hands(t_scene_img *scene);
+void			ft_map(t_scene_img *scene);
+void			ft_minimap(t_scene_img *scene);
+void			ft_life(t_scene_img *scene);
+void			ft_pause(t_scene_img *scene);
+void			ft_press_e(t_scene_img *scene);
 
 // Raycasting
 double			ft_abs(double x);
 void			ft_set_camera(void);
 void			ft_calc_plane(void);
-void			ft_raycasting(void);
+void			ft_raycasting(t_scene_img *scene);
 void			ft_rotate_dir(double a);
 int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition);
 int				ft_texture_num(int map_x, int map_y, int side, t_view view);

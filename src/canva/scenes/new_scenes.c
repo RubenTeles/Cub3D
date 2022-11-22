@@ -5,67 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 18:58:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:21:56 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/22 11:04:27 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/22 13:03:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+#include <ft_cub.h>
 #include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
-/*
-void	magnament_scenes(void)
+void scene_login(void)
+{
+	(canva())->scene_show[SC_LOGIN].complete = 0;
+	(canva())->scene_img[S_LOGIN].on = 1;
+}
+
+void scene_menu(void)
+{
+	(canva())->scene_show[SC_MENU].complete = 0;
+	(canva())->reset_scenes();
+	(canva())->scene_img[S_MENU].on = 1;
+}
+
+void scene_game(void)
+{
+	(canva())->scene_show[SC_GAME].complete = 0;
+	(canva())->reset_scenes();
+	(canva())->scene_img[S_BACKGROUND].on = 1;
+	(canva())->scene_img[S_RAYCAST].on = 1;
+	(canva())->scene_img[S_HAND].on = 1;
+	(canva())->scene_img[S_LIFE].on = 1;
+	(canva())->scene_img[S_MINI_MAP].on = 1;
+}
+
+void scene_pause(void)
+{
+	(canva())->scene_show[SC_PAUSE].complete = 0;
+	(canva())->scene_img[S_PAUSE].on = 1;
+}
+
+void	new_scenes(void)
 {
 	int	i;
 
 	i = -1;
-	while (++i <= len)
-		(canva())->scene[i].on = 0;
-}*/
-
-void	reset_scenes(void)
-{
-	int	i;
-
-	i = -1;
-	while (++i < S_MAX_SCENES)
-		(canva())->scene[i].on = 0;
-}
-
-void	scenes_show(void)
-{
-	(canva())->scene[S_LOGIN].show = ft_login;
-	(canva())->scene[S_MENU].show = ft_initial_menu;
-	(canva())->scene[S_BACKGROUND].show = ft_background;
-	(canva())->scene[S_HAND].show = ft_hands;
-	(canva())->scene[S_MAP].show = ft_map;
-	(canva())->scene[S_MINI_MAP].show = ft_minimap;
-	(canva())->scene[S_LIFE].show = ft_life;
-	(canva())->scene[S_PAUSE].show = ft_pause;
-	(canva())->scene[S_PRESS_E].show = ft_press_e;
-}
-
-void	scenes_animation(void)
-{
-	(canva())->scene[S_LOGIN].animation = 0;
-	(canva())->scene[S_MENU].animation = 0;
-	(canva())->scene[S_BACKGROUND].animation = 0.00017;
-	(canva())->scene[S_HAND].animation = 0.0004;
-	(canva())->scene[S_MAP].animation = 0;
-	(canva())->scene[S_MINI_MAP].animation = 0;
-	(canva())->scene[S_LIFE].animation = 0;
-	(canva())->scene[S_PAUSE].animation = 0;
-	(canva())->scene[S_PRESS_E].animation = 0;
-	scenes_show();
-}
-
-void	new_scenes(int len)
-{
-	int i;
-
-	(canva())->scene = malloc(sizeof(t_scene) * len);
-	scenes_animation();
-	i = -1;
-	while (++i <= len)
-		(canva())->scene[i].on = 0;
+	new_scenes_img();
+	(canva())->scene_show = malloc(sizeof(t_scene) * SC_MAX_SCENES);
+	(canva())->scene_show[SC_LOGIN].init = scene_login;
+	(canva())->scene_show[SC_MENU].init = scene_menu;
+	(canva())->scene_show[SC_GAME].init = scene_game;
+	(canva())->scene_show[SC_PAUSE].init = scene_pause;
+	while (++i < SC_MAX_SCENES)
+	{
+		(canva())->scene_show[i].complete = 0;
+		if (i + 1 < SC_MAX_SCENES)
+			(canva())->scene_show[i].next = &(canva())->scene_show[i + 1];
+		else
+			(canva())->scene_show[i].next = &(canva())->scene_show[i - 1];
+	}
+	key_management();
+	init_management_scenes();
 }

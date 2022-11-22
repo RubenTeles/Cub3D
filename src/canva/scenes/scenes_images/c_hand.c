@@ -6,26 +6,26 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 10:02:21 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:19:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
-void	ft_animation_hand(t_scene *scene, t_data *data)
+void	ft_animation_hand(double animation, t_data *data)
 {
 	static int		a = 0;
 	static double	x1 = 0.20;
 	static double	x2 = 0.55;
 	static double	y = 0.60;
 
-	if (a == 1 && a--)
-		scene->animation *= -1;
-	x1 += scene->animation;
-	x2 -= scene->animation;
-	y += scene->animation;
+	if (a == 1)
+		animation *= -1;
+	x1 += animation;
+	x2 -= animation;
+	y += animation;
 	if (data->title == HAND)
 	{
 		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
@@ -40,25 +40,37 @@ void	ft_animation_hand(t_scene *scene, t_data *data)
 		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
 			0.4, (engine())->size[X] * 0.31, (engine())->size[Y] * (0.06 + y));
 	}
-	if (x1 > 0.21 || x1 <= 0.20)
+	if (x1 > 0.21)
 		a = 1;
+	else if (x1 <= 0.20)
+		a = 0;
 }
 
-void	ft_hands(t_scene *scene)
+void	ft_hands(t_scene_img *scene)
 {
-	t_data			*data;
 	static int		count = 0;
+	static int		option = 0;
+	t_data			*data;
+	double			animation;
 
-	if (scene->option == 1 && ++count)
+	animation = 0;
+	if (scene)
+	{
+		option = scene->option;
+		animation = scene->animation;
+	}
+	if (option == 1 && !(engine())->pause && ++count)
 		(player())->sprite = (canva())->sprite(NICE);
 	if (count == 15)
 	{
 		count = 0;
-		scene->option = 0;
+		if (scene)
+			scene->option = 0;
+		option = 0;
 		(player())->sprite = (canva())->sprite(HAND);
 	}
 	data = (player())->sprite;
 	if (!data)
 		return ;
-	ft_animation_hand(scene, data);
+	ft_animation_hand(animation, data);
 }

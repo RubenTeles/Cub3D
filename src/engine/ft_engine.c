@@ -6,13 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:14:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:20:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 long long	time_current(void)
 {
@@ -25,28 +26,6 @@ long long	time_current(void)
 long long	time_diff(long long past, long long pres)
 {
 	return (pres - past);
-}
-
-int	pause_game()
-{
-	static int	count = 0;
-
-	(canva())->scene[S_BACKGROUND].show(0);
-	ft_raycasting();
-	(canva())->scene[S_HAND].show(0);
-	(canva())->scene[S_LIFE].show(0);
-	(canva())->scene[S_MINI_MAP].show(0);
-	if (count >= 3)
-		key_management();
-	if ((engine())->map)
-		(canva())->scene[S_MAP].show(0);
-	(canva())->scene[S_PAUSE].show(0);
-	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
-		(canva())->data->img, 0, 0);
-	count++;
-	if ((engine())->pause == 0)
-		count = 0;
-	return (0);
 }
 
 int	loop_game(void)
@@ -64,19 +43,8 @@ int	loop_game(void)
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
 		x_wall++;
-		if ((engine())->menu)
-			return (menu_game((engine())->count * 0.001));
-		if ((engine())->pause > 0)
-			return (pause_game());
-		(canva())->scene[S_BACKGROUND].show(&(canva())->scene[S_BACKGROUND]);
-		ft_raycasting();
-		(canva())->scene[S_HAND].show(&(canva())->scene[S_HAND]);
-		key_management();
-		(canva())->scene[S_LIFE].show(&(canva())->scene[S_LIFE]);
-		(canva())->scene[S_MINI_MAP].show(&(canva())->scene[S_MINI_MAP]);
+		(canva())->show_scenes();
 		a = 1;
-		if ((engine())->map)
-			(canva())->scene[S_MAP].show(&(canva())->scene[S_MAP]);
 		(engine())->time += (engine())->count * 0.001;
 		// printf("%fs\n", (engine())->time);
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
@@ -100,7 +68,9 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
-	(canva())->scene[S_LOGIN].show(&(canva())->scene[S_LOGIN]);
+	(canva())->scene = &(canva())->scene_show[SC_LOGIN];
+	(canva())->scene->init();
+//	printf("c: %i\n", (canva())->scene->complete);
 	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
 	return (0);

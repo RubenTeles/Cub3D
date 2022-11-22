@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 10:44:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:17:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ft_keys.h>
 #include <ft_sprites.h>
 #include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 
 static int key_atack(void)
@@ -50,7 +51,11 @@ static int key_pause(void)
 	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 1))
 		(engine())->pause = 2;
 	if (!(engine())->key->search(KEY_P)->on && ((engine())->pause == 2))
+	{
 		(engine())->pause = 0;
+		(canva())->scene = &(canva())->scene_show[SC_GAME];
+		(canva())->scene->init();
+	}
 	return (0);
 }
 
@@ -100,7 +105,10 @@ static int key_game_2(void)
 		(player())->vel = 0.10;
 	}
 	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 0))
+	{
 		(engine())->pause = 1;
+		(canva())->scene->complete = 1;
+	}
 	if ((engine())->key->search(KEY_T)->on)
 	{
 		printf("Mostrar barra de Vidas\n");
@@ -114,13 +122,19 @@ static int key_game_2(void)
 static int key_game(void)
 {
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 0))
+	{
 		(engine())->map = 1;
+		(canva())->scene_img[S_MAP].on = 1;
+	}
 	if ((engine())->key->search(KEY_M)->on && ((engine())->map == 2))
 		(engine())->map = 3;
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 1))
 		(engine())->map = 2;
 	if (!(engine())->key->search(KEY_M)->on && ((engine())->map == 3))
+	{
 		(engine())->map = 0;
+		(canva())->scene_img[S_MAP].on = 0;
+	}
 	if ((engine())->key->search(KEY_W)->on && ++(player())->move)
 		(player())->movement(1, 1, X, Y);
 	if ((engine())->key->search(KEY_A)->on && ++(player())->move)
@@ -129,8 +143,8 @@ static int key_game(void)
 		(player())->movement(-1, -1, X, Y);
 	if ((engine())->key->search(KEY_D)->on && ++(player())->move)
 		(player())->movement(-1, 1, Y, X);
-	if ((engine())->key->search(KEY_N)->on)
-		(canva())->scene[S_HAND].option = 1;
+	if ((engine())->key->search(KEY_N)->on) //TODO
+		(canva())->scene_img[S_HAND].option = 1;
 	if ((engine())->key->search(KEY_RIGHT)->on)
 	{
 		ft_rotate_dir((player())->turn);
@@ -148,8 +162,6 @@ static int key_game(void)
 //Quando pressionar uma tecla
 static int key_menu(void)
 {
-	if ((engine())->time < 0.01)
-		return (0);
 	if ((engine())->menu == 1)
 	{
 		if ((engine())->key->search(KEY_W)->on)
@@ -158,6 +170,7 @@ static int key_menu(void)
 			(engine())->menu = 2;
 		else if ((engine())->key->search(KEY_ENTER)->on)
 		{
+			(canva())->scene->complete = 1;
 			//(engine())->sound("paplay src/sound/wolf.ogg");
 			(engine())->menu = 0;
 			(engine())->time = 0;
@@ -190,11 +203,15 @@ static int key_menu(void)
 
 int	key_management(void)
 {
-	if ((engine())->menu > 0)
+	(canva())->scene_show[SC_LOGIN].key = 0;
+	(canva())->scene_show[SC_MENU].key = key_menu;
+	(canva())->scene_show[SC_GAME].key = key_game;
+	(canva())->scene_show[SC_PAUSE].key = key_pause;
+	/*if ((engine())->menu > 0)
 		return (key_menu());
 	if ((engine())->pause)
 		return (key_pause());
 	if ((engine())->menu == 0)
-		return (key_game());
+		return (key_game());*/
 	return (0);
 }

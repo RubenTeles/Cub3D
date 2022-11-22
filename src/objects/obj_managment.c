@@ -6,13 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:12:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:04:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 int	is_collision(t_object *obj, double x, double y)
 {
@@ -83,11 +83,13 @@ int	all_interation(t_object *obj, double x, double y)
 			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 			{
 				if (aux->title == DOOR)
-					(canva())->scene[S_PRESS_E].show(0);
+					(canva())->scene_img[S_PRESS_E].on = 1;
 				return (1);
 			}
 		aux = aux->next;
 	}
+	if ((canva())->scene_img[S_PRESS_E].on)
+		(canva())->scene_img[S_PRESS_E].on = 0;
 	return (0);
 }
 

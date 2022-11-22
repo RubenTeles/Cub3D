@@ -6,19 +6,24 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 09:26:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 12:51:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
+#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 void	ft_login_metric(double move)
 {
 	static double	x = 0;
 
 	if (x >= 0.37)
+	{
+		(canva())->scene_show[SC_LOGIN].complete = 1;
 		return ;
+	}
 	x += move;
 	if (x > 0.37)
 		x = 0.37;
@@ -62,7 +67,7 @@ void	ft_login_2(double move)
 }
 
 
-void	ft_login(t_scene *scene)
+void	ft_login(t_scene_img *scene)
 {
 	static double	x = 0;
 	t_data			*data;
