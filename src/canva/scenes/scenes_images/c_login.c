@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 12:51:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:05:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ft_sprites.h>
 #include <ft_scenes.h>
 #include <ft_scenes_images.h>
+#include <ft_sound.h>
 
 void	ft_login_metric(double move)
 {

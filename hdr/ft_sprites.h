@@ -24,6 +24,7 @@
 # define MENU 5
 # define SIGN 6
 # define WALK 7
+# define HEART 97
 
 //Player
 # define AVATAR 8
@@ -129,6 +130,6 @@
 # define _Z 90
 
 //Number Max Sprites
-# define _MAX_SPRITES_ 97
+# define _MAX_SPRITES_ 98
 
 #endif

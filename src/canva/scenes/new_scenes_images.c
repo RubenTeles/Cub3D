@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:58:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:03:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:29:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	scenes_show(void)
 	(canva())->scene_img[S_MINI_MAP].show = ft_minimap;
 	(canva())->scene_img[S_LIFE].show = ft_life;
 	(canva())->scene_img[S_PAUSE].show = ft_pause;
+	(canva())->scene_img[S_TASKS].show = ft_tasks;
 	(canva())->scene_img[S_PRESS_E].show = ft_press_e;
 }
 
@@ -38,6 +39,7 @@ void	scenes_animation(void)
 	(canva())->scene_img[S_MINI_MAP].animation = 0;
 	(canva())->scene_img[S_LIFE].animation = 0;
 	(canva())->scene_img[S_PAUSE].animation = 0;
+	(canva())->scene_img[S_TASKS].animation = 0;
 	(canva())->scene_img[S_PRESS_E].animation = 0;
 }
 

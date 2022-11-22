@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:20:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/22 18:22:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	loop_game(void)
 		x_wall++;
 		(canva())->show_scenes();
 		a = 1;
-		(engine())->time += (engine())->count * 0.001;
-		// printf("%fs\n", (engine())->time);
+		(engine())->time = time_diff((engine())->start_time, time_current())\
+		* 0.001;
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0);
 	}
