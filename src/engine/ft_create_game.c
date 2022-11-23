@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:36:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 11:02:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	game_read_map(char **map)
 			if (map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'W' &&
 				map[y][x] != 'E' && map[y][x] != '0' && map[y][x] != '3')
 				{
-					//printf("%c\n", map[y][x]);
-					ft_new_object(map[y][x], x, y);		
+					ft_new_object(map[y][x], x, y);
+					if (map[y][x] == 'p')
+						map[y][x] = '0';
 				}
 			if (x > (engine())->max[X])
 				(engine())->max[X] = x;

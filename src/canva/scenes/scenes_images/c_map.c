@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 11:30:07 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 11:03:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_map(t_scene_img *scene)
 	static int		avatar = 0;
 
 	(void)scene;
-	aux = (engine())->object;
 	avatar++;
 	if ((player())->move > 0)
 	{
@@ -55,6 +54,14 @@ void	ft_map(t_scene_img *scene)
 	ft_put_word("MAP", (engine())->size[X] * 0.15,\
 	(engine())->size[Y] * 0.05, (engine())->size[X] * 0.425,\
 	(engine())->size[Y] * 0.16);
+	aux = (engine())->object;
+	while (aux)
+	{
+		if (aux->avatar)
+			ft_print_map(aux->avatar, aux->pos[X], aux->pos[Y]);
+		aux = aux->next;
+	}
+	aux = (engine())->enemies;
 	while (aux)
 	{
 		if (aux->avatar)

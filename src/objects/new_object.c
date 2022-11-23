@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:57:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 11:01:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,20 @@ static void	destroy_object(void)
 		aux = aux->next;
 		free(destroy);
 	}
+	aux = (engine())->enemies;
+	while (aux)
+	{
+		destroy = aux;
+		aux = aux->next;
+		free(destroy);
+	}
 }
 
-static t_object	*last_object(void)
+static t_object	*last_object(t_object *obj)
 {
 	t_object	*aux;
 
-	aux = (engine())->object;
+	aux = obj;
 	while (aux)
 	{
 		if (!aux->next)
@@ -69,9 +76,13 @@ void	ft_new_object(char title, int x, int y)
 	new->last = last_object;
 	new->destroy = destroy_object;
 	new->next = 0;
-	if (!(engine())->object)
+	if (new->title == PIG_S0 && !(engine())->enemies) 
+		(engine())->enemies = new;
+	else if (new->title == PIG_S0 && (engine())->enemies) 
+		(engine())->enemies->last((engine())->enemies)->next = new;
+	else if (!(engine())->object)
 		(engine())->object = new;
 	else
-		(engine())->object->last()->next = new;
+		(engine())->object->last((engine())->object)->next = new;
 	ft_managemen_objects(title, new);
 }

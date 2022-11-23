@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 17:59:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 10:21:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	new_engine(t_all *all, int larg, int alt)
 	(engine())->menu = 1;
 	(engine())->key = 0;
 	(engine())->object = 0;
+	(engine())->enemies = 0;
 	new_sound();
 	new_canva();
 	new_key();

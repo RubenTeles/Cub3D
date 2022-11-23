@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 18:05:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 10:28:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ void	ft_put_minimap(int x, int y, double larg, double alt)
 	(canva())->rsz[X] = (engine())->size[X] * 0.221 / 20;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.174 / 16;
 	aux = (engine())->object;
+	while (aux)
+	{
+		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
+			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
+			if (aux->avatar)
+				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
+				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
+				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
+		aux = aux->next;
+	}
+	aux = (engine())->enemies;
 	while (aux)
 	{
 		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\

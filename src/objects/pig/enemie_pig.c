@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_door.c                                         :+:      :+:    :+:   */
+/*   enemie_pig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 14:58:17 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 10:25:25 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/23 10:26:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 
-int ft_create_door(t_object *door)
+int ft_create_pig(t_object *pig)
 {
-	door->avatar = (canva())->sprite(DOOR);
-	door->sprite = (canva())->sprite(DOOR);
-	door->collision = 1;
-	door->interation = 0.5;
+	pig->avatar = (canva())->sprite(PIG_S0);
+	pig->sprite = (canva())->sprite(PIG_S0);
+	pig->collision = 1;
+	pig->interation = 0.5;
 	return (1);
 }

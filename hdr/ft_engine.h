@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 21:50:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:01:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,28 @@ typedef struct s_scene_img			t_scene_img;
 typedef struct s_sound				t_sound;
 typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
+typedef struct s_aux				t_aux;
 
 # define X 0
 # define Y 1
 # define FLOOR 0
 # define CEILLING 1
 
+struct s_aux
+{
+	double		x;
+	double		y;
+	int			larg;
+	int			alt;
+	double		dir[2];
+};
+
 struct s_key
 {
 	int		key;
 	int		on;
 	t_key	*next;
-    t_key	*(*create)(int keycode);
+	t_key	*(*create)(int keycode);
 	t_key	*(*search)(int keycode);
 	t_key	*(*last)(void);
 	void	(*destroy)(void);
@@ -48,7 +58,7 @@ struct s_scene
 	int			complete;
 	void		(*init)(void);
 	int			(*key)(void);
-    t_scene		*next;
+	t_scene		*next;
 };
 
 struct s_scene_img
@@ -107,6 +117,7 @@ struct s_engine
 	int			menu;
 	int			pause;
 	t_key		*key;
+	t_object	*enemies;
 	t_object	*object;
 	t_sound		*sound;
 };
@@ -146,7 +157,7 @@ struct s_object
 	double		interation;
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y);
-	t_object	*(*last)(void);
+	t_object	*(*last)(t_object *obj);
 	void		(*destroy)(void);
 	t_object	*next;
 };
@@ -212,20 +223,23 @@ int				key_management(void);
 int 			begin(void *param);
 int				key_esc(void);
 
-//Object
-void			ft_new_object(char title, int x, int y);
-int				is_collision(t_object *obj, double x, double y);
-int				ft_managemen_objects(char tittle, t_object *obj);
-int				map_to_sprite(char title);
-int				ft_create_door(t_object *door);
-t_object		*is_interation(t_object *obj, double x, double y);
-
 //Menu
 int 			menu_hooks(void);
 void			ft_words_menu(void);
 void			ft_head_wolf(double move);
 void		 	ft_create_game(void);
 int 			menu_game(double time);
+
+//Object
+void			ft_new_object(char title, int x, int y);
+int				is_collision(t_object *obj, double x, double y);
+int				ft_managemen_objects(char tittle, t_object *obj);
+int				map_to_sprite(char title);
+t_object		*is_interation(t_object *obj, double x, double y);
+
+//Objects and Enimes
+int				ft_create_door(t_object *door);
+int 			ft_create_pig(t_object *pig);
 
 //PLAYER
 void			new_player(void);

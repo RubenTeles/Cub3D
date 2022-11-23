@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 18:21:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 10:15:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ static int key_atack_2(void)
 		(engine())->sound[SD_WOLF_DIE].dif = time_diff(time_start, time_current());
 		if ((engine())->sound[SD_WOLF_DIE].dif > 750 || time_start == 0)
 		{
-			printf("sound\n");
 			time_start = time_current();
 			//(engine())->sound->play(&(engine())->sound[SD_WOLF_DIE]);
 		}
-		(player())->fadigue -= 2;
 	}
 	else if ((engine())->key->search(BUTTON_LEFT)->on)
 		(engine())->key->search(BUTTON_LEFT)->on = 0;
