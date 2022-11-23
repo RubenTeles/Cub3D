@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 10:15:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:47:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ static int key_game_3(void)
 
 static int key_game_2(void)
 {
-	t_data	*data;
-
 	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
 		(player())->fadigue - 2 >= 0)
 	{
@@ -115,24 +113,29 @@ static int key_game_2(void)
 		(player())->vel = 0.30;
 		(player())->move = 0;
 		//(player())->fadigue -= 2;
-		data = (canva())->sprite(RUN);
-		(canva())->resize(data, (canva())->data->larg,\
-		(canva())->data->alt, 0, 0);
+		(canva())->scene_img[S_RUN].on = 1;
 	}
-	else if ((engine())->key->search(KEY_SHIFT)->on &&
+	else if ((engine())->key->search(KEY_SHIFT)->on &&\
 		(player())->vision <= 0.66 && (player())->move == 0)
-			(player())->vision += 0.001;
+	{
+		(player())->vision += 0.001;
+		(canva())->scene_img[S_RUN].on = 0;
+	}
 	if ((engine())->key->search(KEY_SHIFT)->on && (player())->move &&\
 		(player()->fadigue - 3 <= 0))
+	{
 		(player())->vel = 0.10;
-	if ((engine())->key->search(KEY_SHIFT)->on == 0 &&\
+		(canva())->scene_img[S_RUN].on = 0;
+	}
+	if (!(engine())->key->search(KEY_SHIFT)->on &&\
 		((player())->vision <= 0.66 || (player())->fadigue + 0.25 < 100))
 	{
 		if ((player())->fadigue <= 100)
 			(player())->fadigue += 0.25;
-		if ((player())->vision <= 0.66)
+		if ((player())->vision < 0.66)
 			(player())->vision += 0.1;
 		(player())->vel = 0.10;
+		(canva())->scene_img[S_RUN].on = 0;
 	}
 	if ((engine())->key->search(KEY_P)->on && ((engine())->pause == 0))
 	{

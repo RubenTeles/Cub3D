@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 11:01:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:24:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,7 @@ void			new_scenes_img(void);
 void			ft_login(t_scene_img *scene);
 void			ft_initial_menu(t_scene_img *scene);
 void			ft_background(t_scene_img *scene);
+void			ft_run(t_scene_img *scene);
 void			ft_hands(t_scene_img *scene);
 void			ft_life(t_scene_img *scene);
 void			ft_minimap(t_scene_img *scene);
