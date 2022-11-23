@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/23 00:53:27 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:18:07 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,21 @@ int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 	return (texnum + 3);
 }
 
-float	ft_convert_time(double time)
+float	ft_convert_time(double time, int n)
 {
-	return ((double)(((int)(time - 1) % 100) + 1));
+	static float	time_convert_n;	
+	float			t;
+	float			t2;
+
+	t = (float)(((int)(time - 1) % n) + 1);
+	t2 = n - t;
+	if (t == n)
+		time_convert_n = t;
+	if (t < time_convert_n)
+	{
+		return (t2);
+	}
+	if (time_convert_n == t)
+		time_convert_n = 0;
+	return (t);
 }

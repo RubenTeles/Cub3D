@@ -8,26 +8,7 @@ N S W E = wolf (directions)
 ' ' = Nothing
 
 --- Item's --- (UPPER CASE)
-A = MENU BACKGROUND (DON'T USE) *
-B = Bush
-C = Cristal
-D = Door
-E = [Player] (East)
-F = Door_Open
-H = Hand (DONT'T USE)	*
-I = CLOUD_1 (DONT'T USE)*
-J = CLOUD_2 (DONT'T USE)*
-K = CLOUD_3 (DONT'T USE)*
-N = [Player] (Nort)
-M = MAP (DON'T USE)		*
-R = Rock
-S = [Player] (South)
-T = TREE
-U = SIGN (DON'T USE)	*
-W = [Player] (West)
-X = AVATAR (DON'T USE)	*
-Y = AVATAR_2 (DON'T USE)*
-Z = canva (DON'T USE)	*
+d - 
 
 --- Enimies --- (DOWN CASE)
 b = bull

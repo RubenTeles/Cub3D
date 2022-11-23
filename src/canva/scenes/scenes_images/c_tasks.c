@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_tasks.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 11:12:44 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 18:54:24 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	*ft_how_many_enimies(int sprite)
 		{
 			if (aux->life <= 0)
 				kill_and_max[0]++;
-			kill_and_max[1]++;	
+			kill_and_max[1]++;
 		}
 		aux = aux->next;
 	}

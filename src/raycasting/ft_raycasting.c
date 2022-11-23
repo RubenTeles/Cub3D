@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 18:23:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:04:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void	ft_raycasting(t_scene_img *scene)
 	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
 		|| !data[7] || !data[8])
 		return ;
+	// (engine())->enemies->next;
 	sprite[0].texture = 10;
 	sprite[0].x = 10;
 	sprite[0].y = 10;
