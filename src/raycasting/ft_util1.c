@@ -6,13 +6,14 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 17:40:23 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:53:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_sprites.h>
+#include <ft_raycaster.h>
 
 int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 {
@@ -33,4 +34,9 @@ int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 			return (2);
 	}
 	return (texnum + 3);
+}
+
+float	ft_convert_time(double time)
+{
+	return ((double)(((int)(time - 1) % 100) + 1));
 }

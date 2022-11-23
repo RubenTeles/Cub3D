@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:34:46 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/21 10:32:37 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/22 21:51:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_set_camera(void)
 	if (all()->caster.player.dir_x == 0 && all()->caster.player.dir_y == 0)
 	{
 		dir = all()->map[(int)(player())->pos[Y]][(int)(player())->pos[X]];
-		printf("1\n");
 		all()->map[(int)(player())->pos[Y]][(int)(player())->pos[X]] = '0';
 		if (dir == 'N' || dir == 'S')
 			all()->caster.player.dir_x = 0;

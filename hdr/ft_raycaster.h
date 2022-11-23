@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 17:59:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:48:48 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,6 @@ void	ft_ray_floor(t_view *view, t_alg_fl a);
 
 // GRADIENT UTILS
 int		ft_linear_gradient(int colors[2], float percent);
+float	ft_convert_time(double time);
 
 #endif

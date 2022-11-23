@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 19:12:03 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:49:55 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	ft_fog(t_data *data, double time)
 	float	t;
 
 	y = -1;
-	t = (float)(time / 0.3);
-	if (t <= 0.0F)
-		t = 0.0F;
+	t = ft_convert_time(time);
 	while (++y < data->alt)
 	{
 		x = -1;
@@ -45,7 +43,7 @@ int	ft_fog(t_data *data, double time)
 			color = canva()->getPxColor(data, x, y);
 			arr[0] = all()->fog_color;
 			arr[1] = color;
-			if (y < (data->alt / 2) && (t < 100.0F))
+			if (y < (data->alt / 2))
 				color = ft_linear_gradient(arr, t);
 			ft_print_color(0, 0, x, y, color);
 		}

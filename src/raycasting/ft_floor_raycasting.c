@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 18:54:03 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/23 01:00:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,14 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	int		arr[2];
 	float	time;
 
-	time = (float)((engine())->time / 2.0);
-	if (time >= 100.0F)
-		time = 100.0F - (time / 30.0F);
-	if (time <= 0.0F)
-		time = 0.0F;
+	time = ft_convert_time((engine())->time);
 	arr[0] = all()->fog_color;
 	arr[1] = color;
 	grade = ft_dist_pts(view->pos_x, view->pos_y, x, y);
 	if (grade < 1)
 		grade = 1;
-	time = (100.0F * 1.0 / ((float)grade / time));
-	if (time <= 0.0F)
-		time = 0.0F;
-	if (time >= 100.0F)
+	time *= (100.0 / (float)grade);
+	if (time > 100.0F)
 		time = 100.0F;
 	return (ft_linear_gradient(arr, time));
 }
