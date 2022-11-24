@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 10:28:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:12:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,34 @@ void	ft_time(void)
 	ft_put_word((string()).itoa((engine())->time),\
 	(engine())->size[X] * 0.05, (engine())->size[Y] * 0.05,\
 	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030);
+}
+
+void	ft_put_minimap_enimies(int x, int y, double larg, double alt)
+{
+	t_object	*aux;
+	double		board_x;
+	double		board_y;
+
+	board_x = 0;
+	if (((player())->pos[X] - x) > 0)
+		board_x = ((player())->pos[X] - x);
+	board_y = 0;
+	if (((player())->pos[Y] - y) > 0)
+		board_y = ((player())->pos[Y] - y);
+	aux = (engine())->enemies;
+	while (aux)
+	{
+		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
+			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
+			if (aux->avatar)
+				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
+				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
+				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
+		aux = aux->next;
+	}
+	(canva())->resize((player())->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
+	larg + (((player())->pos[X] - board_x) * (canva())->rsz[X]),\
+	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));
 }
 
 void	ft_put_minimap(int x, int y, double larg, double alt)
@@ -50,20 +78,7 @@ void	ft_put_minimap(int x, int y, double larg, double alt)
 				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
 		aux = aux->next;
 	}
-	aux = (engine())->enemies;
-	while (aux)
-	{
-		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
-			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
-			if (aux->avatar)
-				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
-				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
-				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
-		aux = aux->next;
-	}
-	(canva())->resize((player())->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
-	larg + (((player())->pos[X] - board_x) * (canva())->rsz[X]),\
-	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));	
+	ft_put_minimap_enimies(x, y, larg, alt);
 }
 
 void	ft_minimap(t_scene_img *scene)
@@ -76,8 +91,8 @@ void	ft_minimap(t_scene_img *scene)
 		return ;
 	ft_print_color((engine())->size[X] * 0.221, (engine())->size[Y] * 0.174,\
 		 (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086, 0xe6be7e);
-	ft_put_minimap(10, 8, (canva())->data->larg * 0.745,\
-		(canva())->data->alt * 0.09);
+	ft_put_minimap(11, 9, (canva())->data->larg * 0.725,\
+		(canva())->data->alt * 0.08);
 	(canva())->resize(data, (engine())->size[X] * 0.30, (engine())->size[Y] *\
 		0.35, (engine())->size[X] * 0.70, (engine())->size[Y] * 0.00);
 	ft_put_word("MINI MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
