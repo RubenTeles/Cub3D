@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:17:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 13:10:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 {
 	if (!is_collision(0, (player())->pos[X] + (move_x * ((player())->vel *\
-		(player())->dir[dir_x])), (player())->pos[Y]))
+		(player())->dir[dir_x])), (player())->pos[Y], 0))
 	{
 		(player())->pos[X] += move_x * ((player())->vel *\
 		(player())->dir[dir_x]);
@@ -25,7 +25,7 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 		(player())->pos[Y], 1);
 	}
 	if (!is_collision(0, (player())->pos[X], (player())->pos[Y] +\
-		(move_y * ((player())->vel * (player())->dir[dir_y]))))
+		(move_y * ((player())->vel * (player())->dir[dir_y])), 0))
 	{
 		(player())->pos[Y] += move_y * ((player())->vel *\
 		(player())->dir[dir_y]);

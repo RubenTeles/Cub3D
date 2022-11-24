@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:17:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 20:58:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include <ft_sprites.h>
 #include <ft_scenes_images.h>
 
-int	is_collision(t_object *obj, double x, double y)
+int	is_collision(t_object *obj, double x, double y, int option)
 {
 	t_object	*aux;
 
 	aux = (engine())->object;
+	if (option == 1)
+		aux = (engine())->enemies;
 	while (aux)
 	{
 		if (aux->collision == 1 && aux != obj && \
@@ -34,6 +36,8 @@ int	is_collision(t_object *obj, double x, double y)
 		printf("colide com o player\n");
 		return (1);
 	}
+	if (option == 0)
+		return (is_collision(obj, x, y, 1));
 	return (0);
 }
 
