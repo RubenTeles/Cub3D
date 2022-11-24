@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 18:15:32 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:59:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	game_read_map(char **map)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_object	*obj;
 
 	y = -1;
 	while (map[++y])
@@ -26,7 +27,8 @@ void	game_read_map(char **map)
 			if (map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'W' &&
 				map[y][x] != 'E' && map[y][x] != '0' && map[y][x] != '3')
 				{
-					ft_new_object(map[y][x], x, y);
+					obj = ft_new_object(map[y][x], x, y);
+					obj->map = &map[y][x];
 					if (map[y][x] == 'p')
 						map[y][x] = '0';
 				}

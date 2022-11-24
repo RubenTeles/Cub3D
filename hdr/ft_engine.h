@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 11:01:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:37:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ struct s_key
 {
 	int		key;
 	int		on;
-	t_key	*next;
-	t_key	*(*create)(int keycode);
-	t_key	*(*search)(int keycode);
-	t_key	*(*last)(void);
+	int		is_on;
+	int		(*search)(int keycode);
+	void	(*turn_on_off)(int keycode, int turn);
 	void	(*destroy)(void);
 };
 
@@ -148,6 +147,7 @@ struct s_object
 	int			title;
 	t_data		*avatar;
 	t_data		*sprite;
+	char		*map;
 	double		pos[2];
 	double		dir[2];
 	double		vel;
@@ -155,6 +155,9 @@ struct s_object
 	int			life;
 	int			collision;
 	double		interation;
+	int			is_near;
+	void		(*player_interation)(t_object *obj, int key);
+	void		(*player_near)(t_object *obj, int key);
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(t_object *obj);
@@ -181,7 +184,7 @@ struct s_player1
 	int		lives;
 	int		atack;
 	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
-	void	(*obj_interation)(void);
+	void	(*obj_interation)(int key);
 };
 
 //static
@@ -231,11 +234,10 @@ void		 	ft_create_game(void);
 int 			menu_game(double time);
 
 //Object
-void			ft_new_object(char title, int x, int y);
+t_object		*ft_new_object(char title, int x, int y);
 int				is_collision(t_object *obj, double x, double y);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
-t_object		*is_interation(t_object *obj, double x, double y);
 
 //Objects and Enimes
 int				ft_create_door(t_object *door);
@@ -243,7 +245,8 @@ int 			ft_create_pig(t_object *pig);
 
 //PLAYER
 void			new_player(void);
-int				all_interation(t_object *obj, double x, double y);
+void			all_interation(t_object *obj, double x, double y, int option);
+void			is_interation(t_object *obj, int keycode);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
@@ -266,6 +269,7 @@ void			new_scenes_img(void);
 void			ft_login(t_scene_img *scene);
 void			ft_initial_menu(t_scene_img *scene);
 void			ft_background(t_scene_img *scene);
+void			ft_run(t_scene_img *scene);
 void			ft_hands(t_scene_img *scene);
 void			ft_life(t_scene_img *scene);
 void			ft_minimap(t_scene_img *scene);

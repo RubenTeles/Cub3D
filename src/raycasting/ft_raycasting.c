@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/23 19:04:35 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:59:47 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	ft_raycasting(t_scene_img *scene)
 	data[3] = (canva())->sprite(E_WALL);
 	data[4] = (canva())->sprite(HAY);
 	data[5] = (canva())->sprite(CAVE);
-	data[6] = (canva())->sprite(WINDOW);
+	data[6] = (canva())->sprite(DOOR_OPEN);
 	data[7] = (canva())->sprite(DOOR);
 	data[8] = (canva())->sprite(CAVE);
 	data[9] = (canva())->sprite(PIG_S0);

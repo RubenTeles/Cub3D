@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:56:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 17:44:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:58:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,86 +15,71 @@
 
 static void	destroy_key(void)
 {
-	t_key	*aux;
-	t_key	*destroy;
-
-	aux = (engine())->key;
-	while (aux)
-	{
-		destroy = aux;
-		aux = aux->next;
-		free(destroy);
-	}
+	free((engine())->key);
 }
 
-static t_key	*search_key(int keycode)
+static int	search_key(int keycode)
 {
-	t_key	*aux;
+	int	i;
 
-	aux = (engine())->key;
-	while (aux)
+	i = -1;
+	while (++i < _MAX_KEYS_)
 	{
-		if (aux->key && aux->key == keycode)
-			return (aux);
-		aux = aux->next;
+		if ((engine())->key[i].key == keycode)
+			return (1);
 	}
 	return (0);
 }
 
-static t_key	*last_key(void)
+static void	turn_on_of_key(int keycode, int turn)
 {
-	t_key	*aux;
+	int	i;
 
-	aux = (engine())->key;
-	while (aux)
+	i = -1;
+	while (++i < _MAX_KEYS_)
 	{
-		if (!aux->next)
-			break ;
-		aux = aux->next;
+		if ((engine())->key[i].key == keycode)
+		{
+			if (turn)
+				(engine())->key->is_on++;
+			else if (!turn && (engine())->key->is_on > 0)
+				(engine())->key->is_on--;
+			(engine())->key[i].on = turn;
+			return ;
+		}
 	}
-	return (aux);
 }
 
-static t_key	*create_key(int keycode)
+static void	_reset_keys(void)
 {
-	t_key	*new;
-	t_key	*aux;
+	int	i;
 
-	new = malloc(sizeof(t_key));
-	if (!new)
-		return (0);
-	new->key = keycode;
-	new->on = 0;
-	new->next = NULL;
-	new->create = create_key;
-	new->search = search_key;
-	new->last = last_key;
-	new->destroy = destroy_key;
-	if (!(engine())->key)
-		(engine())->key = new;
-	else
-	{
-		aux = new->last();
-		aux->next = new;
-	}
-	return (new);
+	i = -1;
+	while (++i < _MAX_KEYS_)
+		(engine())->key[i].on = 0;
 }
 
 void	new_key(void)
 {
-	create_key(KEY_W);
-	create_key(KEY_A);
-	create_key(KEY_S);
-	create_key(KEY_D);
-	create_key(KEY_N);
-	create_key(KEY_M);
-	create_key(KEY_E);
-	create_key(KEY_ENTER);
-	create_key(BUTTON_RIGHT);
-	create_key(BUTTON_LEFT);
-	create_key(KEY_RIGHT);
-	create_key(KEY_LEFT);
-	create_key(KEY_SHIFT);
-	create_key(KEY_P);
-	create_key(KEY_TAB);
+	(engine())->key = malloc(sizeof(t_key) * _MAX_KEYS_);
+	(engine())->key->is_on = 0;
+	(engine())->key->search = search_key;
+	(engine())->key->turn_on_off = turn_on_of_key;
+	(engine())->key->destroy = destroy_key;
+	(engine())->key[_KEY_W].key = KEY_W;
+	(engine())->key[_KEY_A].key = KEY_A;
+	(engine())->key[_KEY_S].key = KEY_S;
+	(engine())->key[_KEY_D].key = KEY_D;
+	(engine())->key[_KEY_N].key = KEY_N;
+	(engine())->key[_KEY_M].key = KEY_M;
+	(engine())->key[_KEY_E].key = KEY_E;
+	(engine())->key[_KEY_ENTER].key = KEY_ENTER;
+	(engine())->key[_BUTTON_RIGHT].key = BUTTON_RIGHT;
+	(engine())->key[_BUTTON_LEFT].key = BUTTON_LEFT;
+	(engine())->key[_KEY_RIGHT].key = KEY_RIGHT;
+	(engine())->key[_KEY_LEFT].key = KEY_LEFT;
+	(engine())->key[_KEY_SHIFT].key = KEY_SHIFT;
+	(engine())->key[_KEY_P].key = KEY_P;
+	(engine())->key[_KEY_TAB].key = KEY_TAB;
+	_reset_keys();
 }

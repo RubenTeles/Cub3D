@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:58:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:29:07 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:20:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	scenes_show(void)
 	(canva())->scene_img[S_MENU].show = ft_initial_menu;
 	(canva())->scene_img[S_BACKGROUND].show = ft_background;
 	(canva())->scene_img[S_RAYCAST].show = ft_raycasting;
+	(canva())->scene_img[S_RUN].show = ft_run;
 	(canva())->scene_img[S_HAND].show = ft_hands;
 	(canva())->scene_img[S_MAP].show = ft_map;
 	(canva())->scene_img[S_MINI_MAP].show = ft_minimap;
@@ -34,6 +35,8 @@ void	scenes_animation(void)
 	(canva())->scene_img[S_LOGIN].animation = 0;
 	(canva())->scene_img[S_MENU].animation = 0;
 	(canva())->scene_img[S_BACKGROUND].animation = 0.00017;
+	(canva())->scene_img[S_RAYCAST].animation = 0;
+	(canva())->scene_img[S_RUN].animation = 0;
 	(canva())->scene_img[S_HAND].animation = 0.0004;
 	(canva())->scene_img[S_MAP].animation = 0;
 	(canva())->scene_img[S_MINI_MAP].animation = 0;

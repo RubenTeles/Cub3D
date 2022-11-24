@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:46:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:17:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,25 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 	if (!is_collision(0, (player())->pos[X] + (move_x * ((player())->vel *\
 		(player())->dir[dir_x])), (player())->pos[Y]))
 	{
-		(player())->pos[X] += move_x * ((player())->vel * (player())->dir[dir_x]);
-		all_interation(0, (player())->pos[X], (player())->pos[Y]);
+		(player())->pos[X] += move_x * ((player())->vel *\
+		(player())->dir[dir_x]);
+		all_interation((engine())->object, (player())->pos[X],\
+		(player())->pos[Y], 1);
 	}
 	if (!is_collision(0, (player())->pos[X], (player())->pos[Y] +\
 		(move_y * ((player())->vel * (player())->dir[dir_y]))))
 	{
-		(player())->pos[Y] += move_y * ((player())->vel * (player())->dir[dir_y]);
-		all_interation(0, (player())->pos[X], (player())->pos[Y]);
+		(player())->pos[Y] += move_y * ((player())->vel *\
+		(player())->dir[dir_y]);
+		all_interation((engine())->object, (player())->pos[X],\
+		(player())->pos[Y], 0);
 	}
 }
 
-static void	player_interation(void)
+static void	player_interation(int key)
 {
-	t_object *obj;
-
-	obj = is_interation(0, (player())->pos[X], (player())->pos[Y]);
-	if (!obj)
-		return ;
-	if (obj->title == DOOR && obj->collision == 1)
-	{
-		obj->avatar = (canva())->sprite(DOOR_OPEN);
-		obj->sprite = (canva())->sprite(DOOR_OPEN);
-		obj->collision = 0;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
-	}
-	else if (obj->title == DOOR && obj->collision == 0)
-	{
-		obj->avatar = (canva())->sprite(DOOR);
-		obj->sprite = (canva())->sprite(DOOR);
-		obj->collision = 1;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
-	}
+	is_interation((engine())->object, key);
+	is_interation((engine())->enemies, key);
 }
 
 void	new_player(void)
