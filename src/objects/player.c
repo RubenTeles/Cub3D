@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:46:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:57:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,8 @@ static void	player_interation(void)
 	obj = is_interation(0, (player())->pos[X], (player())->pos[Y]);
 	if (!obj)
 		return ;
-	if (obj->title == DOOR && obj->collision == 1)
-	{
-		obj->avatar = (canva())->sprite(DOOR_OPEN);
-		obj->sprite = (canva())->sprite(DOOR_OPEN);
-		obj->collision = 0;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
-	}
-	else if (obj->title == DOOR && obj->collision == 0)
-	{
-		obj->avatar = (canva())->sprite(DOOR);
-		obj->sprite = (canva())->sprite(DOOR);
-		obj->collision = 1;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
-	}
+	if (obj->title == DOOR)
+		obj->player_interation(obj);
 }
 
 void	new_player(void)

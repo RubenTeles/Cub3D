@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:24:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:52:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ struct s_object
 	int			life;
 	int			collision;
 	double		interation;
+	void		(*player_interation)(t_object *obj);
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(t_object *obj);
