@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 10:24:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:17:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,60 +37,46 @@ int	is_collision(t_object *obj, double x, double y)
 	return (0);
 }
 
-t_object	*is_interation(t_object *obj, double x, double y)
+void	is_interation(t_object *obj, int keycode)
 {
 	t_object	*aux;
 
-	aux = (engine())->object;
+	aux = obj;
 	while (aux)
 	{
-		if (aux->interation > 0 && aux != obj && \
-			((aux->pos[X] + 1.10 + aux->interation >= x &&\
-			aux->pos[X] - 0.1 - aux->interation <= x) &&\
-			(aux->pos[Y] + 1.10 + aux->interation >= y  &&\
-			aux->pos[Y] - 0.1 - aux->interation <= y )) &&\
-			!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
-			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
-				return (aux);
+		if (aux->is_near)
+			aux->player_interation(aux, keycode);
 		aux = aux->next;
 	}
-	if (obj && (((player())->pos[X] + 1.10 + (player())->interation >= x &&\
-				(player())->pos[X] - 0.10 - (player())->interation <= x) &&\
-				((player())->pos[Y] + 1.10 + (player())->interation >= y &&\
-				(player())->pos[Y] - 0.10 - (player())->interation <= y)) &&\
-				!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
-				(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
-	{
-		printf("interagiu com o player\n");
-		return (0);
-	}
-	return (0);
 }
 
-int	all_interation(t_object *obj, double x, double y)
+void	all_interation(t_object *obj, double x, double y, int option)
 {
 	t_object	*aux;
 
-	aux = (engine())->object;
+	aux = obj;
+	if ((canva())->scene_img[S_PRESS_E].on && option == 1)
+		(canva())->scene_img[S_PRESS_E].on = 0;
 	while (aux)
 	{
-		if (aux->interation > 0 && aux != obj && \
-			((aux->pos[X] + 1.10 + aux->interation >= x &&\
-			aux->pos[X] - 0.1 - aux->interation <= x) &&\
-			(aux->pos[Y] + 1.10 + aux->interation >= y  &&\
-			aux->pos[Y] - 0.1 - aux->interation <= y )) &&\
-			!((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
+		if (aux->interation > 0)
+		{
+			if (((aux->pos[X] + 1.10 + aux->interation >= x && aux->pos[X] -\
+			0.1 - aux->interation <= x) && (aux->pos[Y] + 1.10 +\
+			aux->interation >= y  && aux->pos[Y] - 0.1 - aux->interation <=\
+			y)) && !((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
 			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
 			{
-				if (aux->title == DOOR)
-					(canva())->scene_img[S_PRESS_E].on = 1;
-				return (1);
+				aux->is_near = 1;
+				aux->player_near(aux, 0);
 			}
+			else
+				aux->is_near = 0;
+		}
 		aux = aux->next;
 	}
-	if ((canva())->scene_img[S_PRESS_E].on)
-		(canva())->scene_img[S_PRESS_E].on = 0;
-	return (0);
+	if (option == 1)
+		all_interation((engine())->enemies, x, y, 0);
 }
 
 int	map_to_sprite(char title)

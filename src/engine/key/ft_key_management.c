@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:47:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:09:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static int key_game_3(void)
 
 	if (!(engine())->key->search(KEY_E)->on && a == 1)
 	{
-		(player())->obj_interation();
+		(player())->obj_interation(KEY_E);
 		a = 0;
 	}
 	else if ((engine())->key->search(KEY_E)->on && a == 0)

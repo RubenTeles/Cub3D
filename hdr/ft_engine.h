@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:52:23 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:10:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,9 @@ struct s_object
 	int			life;
 	int			collision;
 	double		interation;
-	void		(*player_interation)(t_object *obj);
+	int			is_near;
+	void		(*player_interation)(t_object *obj, int key);
+	void		(*player_near)(t_object *obj, int key);
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y);
 	t_object	*(*last)(t_object *obj);
@@ -182,7 +184,7 @@ struct s_player1
 	int		lives;
 	int		atack;
 	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
-	void	(*obj_interation)(void);
+	void	(*obj_interation)(int key);
 };
 
 //static
@@ -236,7 +238,6 @@ void			ft_new_object(char title, int x, int y);
 int				is_collision(t_object *obj, double x, double y);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
-t_object		*is_interation(t_object *obj, double x, double y);
 
 //Objects and Enimes
 int				ft_create_door(t_object *door);
@@ -244,7 +245,8 @@ int 			ft_create_pig(t_object *pig);
 
 //PLAYER
 void			new_player(void);
-int				all_interation(t_object *obj, double x, double y);
+void			all_interation(t_object *obj, double x, double y, int option);
+void			is_interation(t_object *obj, int keycode);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
