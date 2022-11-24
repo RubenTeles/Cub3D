@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:12:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:38:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static void	_interation_zero_(t_object	*obj, int key)
 	(void)key;
 }
 
-void	ft_new_object(char title, int x, int y)
+t_object	*ft_new_object(char title, int x, int y)
 {
 	t_object	*new;
 
 	new = malloc(sizeof(t_object));
 	if (!new)
-		return ;
+		return (0);
 	new->title = map_to_sprite(title);
 	new->avatar = 0;
 	if (new->title != 0)
@@ -80,7 +80,6 @@ void	ft_new_object(char title, int x, int y)
 	new->is_near = 0;
 	new->player_near = _interation_zero_;
 	new->player_interation = _interation_zero_;
-	new->create = ft_new_object;
 	new->is_collision = is_collision;
 	new->last = last_object;
 	new->destroy = destroy_object;
@@ -94,4 +93,5 @@ void	ft_new_object(char title, int x, int y)
 	else
 		(engine())->object->last((engine())->object)->next = new;
 	ft_managemen_objects(title, new);
+	return (new);
 }

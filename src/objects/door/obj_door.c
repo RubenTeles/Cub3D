@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:58:17 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:11:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:43:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,22 @@ static void	_player_near_door(t_object *door, int key)
 
 static void	_interation_door(t_object *door, int key)
 {
-	if (key == KEY_E && door->collision == 1)
+	if (key != KEY_E)
+		return ;
+	(engine())->sound->play(&(engine())->sound[SD_DOOR]);
+	if (door->collision == 1)
 	{
 		door->avatar = (canva())->sprite(DOOR_OPEN);
 		door->sprite = (canva())->sprite(DOOR_OPEN);
+		door->map[0] = '4';
 		door->collision = 0;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
 	}
-	else if (key == KEY_E && door->collision == 0)
+	else if (door->collision == 0)
 	{
 		door->avatar = (canva())->sprite(DOOR);
 		door->sprite = (canva())->sprite(DOOR);
+		door->map[0] = '5';
 		door->collision = 1;
-		(engine())->sound->play(&(engine())->sound[SD_DOOR]);
 	}
 }
 

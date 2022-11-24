@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:52:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:37:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ struct s_object
 	int			title;
 	t_data		*avatar;
 	t_data		*sprite;
+	char		*map;
 	double		pos[2];
 	double		dir[2];
 	double		vel;
@@ -233,7 +234,7 @@ void		 	ft_create_game(void);
 int 			menu_game(double time);
 
 //Object
-void			ft_new_object(char title, int x, int y);
+t_object		*ft_new_object(char title, int x, int y);
 int				is_collision(t_object *obj, double x, double y);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
