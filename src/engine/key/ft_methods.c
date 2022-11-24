@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 17:44:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:55:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	key_press_in(int keycode)
 	if (keycode == ESC)
 		return (end_game());
 	if ((engine())->key->search(keycode))
-		(engine())->key->search(keycode)->on = 1;
+		(engine())->key->turn_on_off(keycode, 1);
 	return (0);
 }
 
 int	key_press_out(int keycode)
 {
 	if ((engine())->key->search(keycode))
-		(engine())->key->search(keycode)->on = 0;
+		(engine())->key->turn_on_off(keycode, 0);
 	return (0);
 }
 

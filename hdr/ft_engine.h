@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:10:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/24 11:52:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ struct s_key
 {
 	int		key;
 	int		on;
-	t_key	*next;
-	t_key	*(*create)(int keycode);
-	t_key	*(*search)(int keycode);
-	t_key	*(*last)(void);
+	int		is_on;
+	int		(*search)(int keycode);
+	void	(*turn_on_off)(int keycode, int turn);
 	void	(*destroy)(void);
 };
 
