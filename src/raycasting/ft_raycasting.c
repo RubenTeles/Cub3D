@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 15:43:08 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:56:51 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,33 +106,10 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	a.z_buffer[x] = a.perp_dist;
 }
 
-int	ft_setup_ray_imgs(t_data **data)
-{
-	data[0] = (canva())->sprite(N_WALL);
-	data[1] = (canva())->sprite(S_WALL);
-	data[2] = (canva())->sprite(W_WALL);
-	data[3] = (canva())->sprite(E_WALL);
-	data[4] = (canva())->sprite(DOOR_OPEN);
-	data[5] = (canva())->sprite(DOOR);
-	data[6] = (canva())->sprite(WINDOW);
-	data[7] = (canva())->sprite(HAY);
-	data[8] = (canva())->sprite(CAVE);
-	data[9] = (canva())->sprite(PIG_S0);
-	data[10] = (canva())->sprite(TREE);
-	if (!data[2] || !data[1] || !data[2] || !data[3])
-		return (1);
-	if (!data[4] || !data[5] || !data[6] || !data[7])
-		return (1);
-	if (!data[8] || !data[9] || !data[10])
-		return (1);
-	return (0);
-}
-
 void	ft_raycasting(t_scene_img *scene)
 {
-	t_data		*data[11];
-	t_spr		sprite[NUMSPRITES];
-	t_view		*view;
+	t_data		*data[9];
+	t_spr		*sprites;
 	int			x;
 	t_alg_fl	b;
 	t_alg		a;
@@ -140,27 +117,18 @@ void	ft_raycasting(t_scene_img *scene)
 	(void)scene;
 	if (ft_setup_ray_imgs(data))
 		return ;
-	// (engine())->enemies->next;
-	sprite[0].texture = 9;
-	sprite[0].x = 10;
-	sprite[0].y = 10;
-	sprite[1].texture = 9;
-	sprite[1].x = 20;
-	sprite[1].y = 10;
-	sprite[2].texture = 9;
-	sprite[2].x = 21;
-	sprite[2].y = 10;
+	sprites = ft_setup_sprites((engine())->enemies);
 	all()->data = data;
 	ft_set_camera();
 	ft_calc_plane();
-	view = &(all()->caster.view);
 	b.data = data;
 	x = -1;
 	a.x = 0;
-	ft_ray_floor(view, b);
+	ft_ray_floor(&(all()->caster.view), b);
 	a.z_buffer = malloc(sizeof(double) * canva()->data->larg);
 	while (++x < canva()->data->larg)
-		ft_ray(x, view, data, a);
-	ft_ray_sprites(a.z_buffer, view, data, sprite);
+		ft_ray(x, &(all()->caster.view), data, a);
+	if (sprites)
+		ft_ray_sprites(a.z_buffer, &(all()->caster.view), sprites);
 	free(a.z_buffer);
 }

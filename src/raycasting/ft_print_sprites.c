@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/22 16:42:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:43:49 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	ft_sort_sprites(int *order, double *dist, int amount)
 	}
 }
 
-void	ft_print_stripe(t_spr_vls *copy, t_data **data, int i, int vmovescreen)
+void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen)
 {
 	t_spr_vls	a;
 
 	a = *copy;
 	a.tex_x = (int)(256 * (a.stripe - (-a.sprite_wdt / 2 + a.sprite_scrn_x)) \
-	* data[a.sprite[a.sprite_order[i]].texture]->alt / a.sprite_wdt) / 256;
+	* a.sprite[a.sprite_order[i]].texture->alt / a.sprite_wdt) / 256;
 	if (a.transform_y > 0 && a.stripe > 0 && a.stripe < canva()->data->larg \
 	&& a.transform_y < a.buffer[a.stripe])
 	{
@@ -58,10 +58,10 @@ void	ft_print_stripe(t_spr_vls *copy, t_data **data, int i, int vmovescreen)
 		{
 			a.d = (a.y - vmovescreen) * 256 - canva()->data->alt * 128 + \
 			a.sprite_hgt * 128;
-			a.tex_y = ((a.d * data[a.sprite[a.sprite_order[i]].texture]->alt) \
+			a.tex_y = ((a.d * a.sprite[a.sprite_order[i]].texture->alt) \
 			/ a.sprite_hgt) / 256;
 			a.color = canva()->getPxColor(\
-			data[a.sprite[a.sprite_order[i]].texture], a.tex_x, a.tex_y);
+			a.sprite[a.sprite_order[i]].texture, a.tex_x, a.tex_y);
 			if ((a.color & 0x00FFFFFF) != 0)
 				ft_print_color(1, 1, a.stripe, a.y, a.color);
 		}
@@ -112,27 +112,28 @@ void	ft_spr_part2(t_spr_vls *b, int vms, double *buffer, t_spr *sprite)
 	*b = a;
 }
 
-void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *spr)
+void	ft_ray_sprites(double *buffer, t_view *view, t_spr *spr)
 {
 	t_spr_vls	a;
 	int			i;
 	int			vmovescreen;
 
 	i = -1;
-	while (++i < NUMSPRITES)
+	while (++i < spr->len)
 	{
 		a.sprite_order[i] = i;
 		a.sprite_dist[i] = ((view->pos_x - spr[i].x) * \
 		(view->pos_x - spr[i].x) + (view->pos_x - \
 		spr[i].y) * (view->pos_y - spr[i].y));
 	}
-	ft_sort_sprites(a.sprite_order, a.sprite_dist, NUMSPRITES);
+	ft_sort_sprites(a.sprite_order, a.sprite_dist, spr->len);
 	i = -1;
-	while (++i < NUMSPRITES)
+	while (++i < spr->len)
 	{
 		vmovescreen = ft_spr_part1(&a, view, i, spr);
 		ft_spr_part2(&a, vmovescreen, buffer, spr);
 		while (++(a.stripe) < a.draw_end_x)
-			ft_print_stripe(&a, data, i, vmovescreen);
+			ft_print_stripe(&a, i, vmovescreen);
 	}
+	free(spr);
 }

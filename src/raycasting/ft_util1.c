@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 15:42:24 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:56:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,61 @@ float	ft_convert_time(double time, int n)
 	if (time_convert_n == t)
 		time_convert_n = 0;
 	return (t);
+}
+
+int	ft_setup_ray_imgs(t_data **data)
+{
+	data[0] = (canva())->sprite(N_WALL);
+	data[1] = (canva())->sprite(S_WALL);
+	data[2] = (canva())->sprite(W_WALL);
+	data[3] = (canva())->sprite(E_WALL);
+	data[4] = (canva())->sprite(DOOR_OPEN);
+	data[5] = (canva())->sprite(DOOR);
+	data[6] = (canva())->sprite(WINDOW);
+	data[7] = (canva())->sprite(HAY);
+	data[8] = (canva())->sprite(CAVE);
+	if (!data[2] || !data[1] || !data[2] || !data[3])
+		return (1);
+	if (!data[4] || !data[5] || !data[6] || !data[7])
+		return (1);
+	if (!data[8])
+		return (1);
+	return (0);
+}
+
+int	ft_objects_len(t_object *sprites)
+{
+	int	i;
+
+	i = 0;
+	while (sprites)
+	{
+		sprites = sprites->next;
+		i++;
+	}
+	return (i);
+}
+
+t_spr	*ft_setup_sprites(t_object *objs)
+{
+	t_spr	*sprites;
+	int		len;
+	int		i;
+
+	len = ft_objects_len(objs);
+	if (!len)
+		return (NULL);
+	sprites = malloc(sizeof(t_spr) * (len + 1));
+	if (!sprites)
+		return (NULL);
+	i = -1;
+	while (++i < len && objs)
+	{
+		sprites[i].len = len;
+		sprites[i].texture = objs->sprite;
+		sprites[i].x = objs->pos[0];
+		sprites[i].y = objs->pos[1];
+		objs = objs->next;
+	}
+	return (sprites);
 }

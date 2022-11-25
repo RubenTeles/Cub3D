@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/23 17:42:43 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:55:24 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define NUMSPRITES 3
 
 typedef struct s_data	t_data;
+typedef struct s_object	t_object;
 
 typedef struct s_player
 {
@@ -101,9 +102,10 @@ typedef struct s_alg_floor
 
 typedef struct s_sprite
 {
+	int		len;
 	double	x;
 	double	y;
-	int		texture;
+	t_data	*texture;
 }			t_spr;
 
 typedef struct s_sprites_values
@@ -140,15 +142,17 @@ typedef struct s_caster
 }				t_caster;
 
 // SPRITES
-void	ft_ray_sprites(double *buffer, t_view *view, t_data **data, t_spr *sprite);
+void	ft_ray_sprites(double *buffer, t_view *view, t_spr *sprite);
 void	ft_sort_sprites(int *order, double *dist, int amount);
-void	ft_print_stripe(t_spr_vls *copy, t_data **data, int i, int vmovescreen);
+void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen);
+t_spr	*ft_setup_sprites(t_object *objs);
 
 // FLOOR
 void	ft_ray_floor(t_view *view, t_alg_fl a);
 
-// GRADIENT UTILS
+// UTILS
 int		ft_linear_gradient(int colors[2], float percent);
 float	ft_convert_time(double time, int n);
+int		ft_setup_ray_imgs(t_data **data);
 
 #endif
