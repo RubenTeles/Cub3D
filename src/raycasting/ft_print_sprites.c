@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:20:28 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:37:56 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
-#define UDIV 4
-#define VDIV 4
-#define VMOVE 100.0
+// 4 nos div fica 300 no move
 
 void	ft_sort_sprites(int *order, double *dist, int amount)
 {
@@ -80,7 +78,7 @@ int	ft_spr_part1(t_spr_vls *b, t_view *view, int i, t_spr *sprite)
 	a.transform_x = a.invdet * (view->dir_y * a.sprite_x - view->dir_x * a.sprite_y);
 	a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + view->plane_x * a.sprite_y);
 	*b = a;
-	return ((int)(VMOVE / a.transform_y));
+	return ((int)(sprite[a.sprite_order[i]].vmove / a.transform_y));
 }
 
 void	ft_spr_part2(t_spr_vls *b, int vms, double *buffer, t_spr *sprite)
@@ -91,7 +89,7 @@ void	ft_spr_part2(t_spr_vls *b, int vms, double *buffer, t_spr *sprite)
 	a.sprite_scrn_x = (int)(((double)(canva()->data->larg) / 2) * (1 + \
 	a.transform_x / a.transform_y));
 	a.sprite_hgt = abs((int)((double)(canva()->data->alt) / \
-	(a.transform_y))) / VDIV;
+	(a.transform_y))) / sprite[a.sprite_order[a.i]].vdiv;
 	a.draw_str_y = -a.sprite_hgt / 2 + canva()->data->alt / 2 + vms;
 	if (a.draw_str_y < 0)
 		a.draw_str_y = 0;
@@ -99,7 +97,7 @@ void	ft_spr_part2(t_spr_vls *b, int vms, double *buffer, t_spr *sprite)
 	if (a.draw_end_y >= canva()->data->alt)
 		a.draw_end_y = canva()->data->alt - 1;
 	a.sprite_wdt = abs((int)((double)(canva()->data->alt) / (a.transform_y))) \
-	/ UDIV;
+	/ sprite[a.sprite_order[a.i]].udiv;
 	a.draw_str_x = -a.sprite_wdt / 2 + a.sprite_scrn_x;
 	if (a.draw_str_x < 0)
 		a.draw_str_x = 0;
@@ -130,6 +128,7 @@ void	ft_ray_sprites(double *buffer, t_view *view, t_spr *spr)
 	i = -1;
 	while (++i < spr->len)
 	{
+		a.i = i;
 		vmovescreen = ft_spr_part1(&a, view, i, spr);
 		ft_spr_part2(&a, vmovescreen, buffer, spr);
 		while (++(a.stripe) < a.draw_end_x)

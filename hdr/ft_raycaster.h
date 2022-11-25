@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:21:41 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:36:01 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ typedef struct s_sprite
 	int		len;
 	double	x;
 	double	y;
+	double	udiv;
+	double	vdiv;
+	double	vmove;
 	t_data	*texture;
 }			t_spr;
 
@@ -128,6 +131,10 @@ typedef struct s_sprites_values
 	int		d;
 	int		tex_y;
 	int		color;
+	double	udiv;
+	double	vdiv;
+	double	v_move;
+	int		i;
 	double	*buffer;
 	t_spr	*sprite;
 }			t_spr_vls;
