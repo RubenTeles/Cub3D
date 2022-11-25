@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:39:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:53:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	path_pig(void)
 {
 	(canva())->data[CRISTAL].path = "./sprite/item/cristal_collect.xpm";
 	(canva())->data[CRISTALS].path = "./sprite/item/cristal.xpm";
-	(canva())->data[PIG_A2].path = 0;
-	(canva())->data[PIG_A3].path = 0;
+	(canva())->data[BUSH].path = "./sprite/item/bush.xpm";
+	(canva())->data[BUSH_AMORAS].path = "./sprite/item/bush_amoras.xpm";
 	(canva())->data[PIG_D0].path = 0;
 	(canva())->data[PIG_D1].path = 0;
 	(canva())->data[PIG_D2].path = 0;

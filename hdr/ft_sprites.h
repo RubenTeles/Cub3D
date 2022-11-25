@@ -44,7 +44,6 @@
 # define CLOUD_1 18
 # define CLOUD_2 19
 # define CLOUD_3 20
-# define TREE 21
 # define WOOD_FLOOR 22
 # define WINDOW 95
 # define DOOR 23
@@ -52,11 +51,14 @@
 # define HAY 25
 # define CAVE 96
 
-//PIG
+//Game Itens
+# define TREE 21
 # define CRISTAL 26
 # define CRISTALS 27
-# define PIG_A2 28
-# define PIG_A3 29
+# define BUSH 28
+# define BUSH_AMORAS 29
+
+//PIG
 # define PIG_D0 30
 # define PIG_D1 31
 # define PIG_D2 32

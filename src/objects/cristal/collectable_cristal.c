@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:42:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:01:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	_interation_cristal(t_object *cristal, int key)
 		cristal->collision = 0;
 		cristal->life = 0;
 		(canva())->scene_img[S_PRESS_E].on = 0;
+		(engine())->sound->play(&(engine())->sound[SD_MINING]);
 	}
 }
 

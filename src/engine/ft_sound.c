@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 18:23:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:00:48 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	sound_path(void)
 	(engine())->sound[SD_DOOR].sound = "paplay src/sound/open_door.ogg";
 	(engine())->sound[SD_WOLF_HAPPY].sound = "paplay src/sound/wolf_celebration.ogg";
 	(engine())->sound[SD_WOLF_DIE].sound = "paplay src/sound/wolf_die.ogg";
+	(engine())->sound[SD_MINING].sound = "paplay src/sound/mining.ogg";
+	(engine())->sound[SD_BUSH].sound = "paplay src/sound/bush.ogg";
 }
 
 static void	destroy_sound(void)

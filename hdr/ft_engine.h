@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:17:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:11:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,7 @@ int				map_to_sprite(char title);
 int				ft_create_door(t_object *door);
 int 			ft_create_pig(t_object *pig);
 int 			ft_create_cristal(t_object *cristal);
+int 			ft_create_bush(t_object *bush);
 
 //PLAYER
 void			new_player(void);
