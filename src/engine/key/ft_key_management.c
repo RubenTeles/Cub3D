@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 00:40:00 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 01:46:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int key_atack_2(void)
 	{
 		(player())->atack = 2;
 		(engine())->sound[SD_WOLF_DIE].dif = time_diff(time_start, time_current());
-		if ((engine())->sound[SD_WOLF_DIE].dif > 510 || time_start == 0)
+		if ((engine())->sound[SD_WOLF_DIE].dif > 50 || time_start == 0)
 		{
 			time_start = time_current();
 			if (animation == 4)
