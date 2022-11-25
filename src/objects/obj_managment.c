@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 20:58:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 00:57:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	map_to_sprite(char title)
 		return (CAVE);
 	if (title == 'p')
 		return (PIG_S0);
+	if (title == 'c')
+		return (CRISTAL);
 	return (0);
 }
 
@@ -113,5 +115,7 @@ int	ft_managemen_objects(char tittle, t_object *obj)
 		return (ft_create_door(obj));
 	if (obj->title == PIG_S0)//5
 		return (ft_create_pig(obj));
+	if (obj->title == CRISTAL)//5
+		return (ft_create_cristal(obj));
 	return (0);
 }

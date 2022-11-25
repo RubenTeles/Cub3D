@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 21:40:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 01:39:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	path_pig(void)
 {
-	(canva())->data[PIG_A0].path = 0;
-	(canva())->data[PIG_A1].path = 0;
+	(canva())->data[CRISTAL].path = "./sprite/item/cristal_collect.xpm";
+	(canva())->data[CRISTALS].path = "./sprite/item/cristal.xpm";
 	(canva())->data[PIG_A2].path = 0;
 	(canva())->data[PIG_A3].path = 0;
 	(canva())->data[PIG_D0].path = 0;
@@ -129,11 +129,12 @@ void	ft_path_start(void)
 	(canva())->data[WALK].path = "./sprite/wolf/wolf_walk.xpm";
 	(canva())->data[AVATAR].path = "./sprite/wolf/head1.xpm";
 	(canva())->data[AVATAR_2].path = "./sprite/wolf/head0.xpm";
-	(canva())->data[HAND].path = "./sprite/wolf/hand_1.xpm";
+	(canva())->data[HAND].path = "./sprite/wolf/wolf_hand.xpm";
 	(canva())->data[NICE].path = "./sprite/wolf/hand_nice.xpm";
-	(canva())->data[ATACK_1].path = 0;
-	(canva())->data[ATACK_2].path = 0;
-	(canva())->data[ATACK_3].path = 0;
+	(canva())->data[ATACK_1].path = "./sprite/wolf/atack/wolf_hand_1.xpm";
+	(canva())->data[ATACK_2].path = "./sprite/wolf/atack/wolf_hand_2.xpm";
+	(canva())->data[ATACK_3].path = "./sprite/wolf/atack/wolf_hand_3.xpm";
+	(canva())->data[ATACK_4].path = "./sprite/wolf/atack/wolf_hand_4.xpm";
 	(canva())->data[RUN].path = "./sprite/item/run_effect.xpm";
 	(canva())->data[HEART].path = "./sprite/item/live.xpm";
 	ft_path_game();

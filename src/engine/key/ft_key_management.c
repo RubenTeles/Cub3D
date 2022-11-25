@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:56:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 00:40:00 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@
 static int key_atack_2(void)
 {
 	static long	long	time_start = 0;
+	static int			animation = 0;
 
 	if ((engine())->key[_BUTTON_LEFT].on && (player())->atack != 1)
 	{
 		(player())->atack = 2;
-		(player())->sprite = 0;
 		(engine())->sound[SD_WOLF_DIE].dif = time_diff(time_start, time_current());
-		if ((engine())->sound[SD_WOLF_DIE].dif > 750 || time_start == 0)
+		if ((engine())->sound[SD_WOLF_DIE].dif > 510 || time_start == 0)
 		{
 			time_start = time_current();
+			if (animation == 4)
+				animation = 0;
+			(player())->sprite = (canva())->sprite(ATACK_1 + animation);
+			animation += 1;
 			//(engine())->sound->play(&(engine())->sound[SD_WOLF_DIE]);
 		}
 	}
@@ -38,6 +42,7 @@ static int key_atack_2(void)
 	{
 		(player())->sprite = (canva())->sprite(HAND);
 		(player())->atack = 0;
+		animation = 0;
 	}
 	return (0);
 }

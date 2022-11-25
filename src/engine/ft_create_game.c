@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 19:59:35 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 01:00:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
+
+char	change_letter(char tittle)
+{
+	if (tittle == 'p')
+		return ('0');
+	if (tittle == 'c')
+		return ('3');
+	return (tittle);
+}
 
 void	game_read_map(char **map)
 {
@@ -29,8 +38,7 @@ void	game_read_map(char **map)
 				{
 					obj = ft_new_object(map[y][x], x, y);
 					obj->map = &map[y][x];
-					if (map[y][x] == 'p')
-						map[y][x] = '0';
+					map[y][x] = change_letter(map[y][x]);
 				}
 			if (x > (engine())->max[X])
 				(engine())->max[X] = x;

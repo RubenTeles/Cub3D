@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 12:38:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 01:17:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ t_object	*ft_new_object(char title, int x, int y)
 	new->last = last_object;
 	new->destroy = destroy_object;
 	new->next = 0;
-	if (new->title == PIG_S0 && !(engine())->enemies) 
+	if ((new->title == PIG_S0 || new->title == CRISTAL) && !(engine())->enemies) 
 		(engine())->enemies = new;
-	else if (new->title == PIG_S0 && (engine())->enemies) 
+	else if ((new->title == PIG_S0 || new->title == CRISTAL) && (engine())->enemies) 
 		(engine())->enemies->last((engine())->enemies)->next = new;
 	else if (!(engine())->object)
 		(engine())->object = new;

@@ -34,9 +34,7 @@
 # define ATACK_1 12
 # define ATACK_2 13
 # define ATACK_3 14
-
-//EFECT
-# define RUN 15
+# define ATACK_4 15
 
 //Game Tools
 # define MAP 16
@@ -55,24 +53,27 @@
 # define CAVE 96
 
 //PIG
-# define PIG_A0 26
-# define PIG_A1 27
+# define CRISTAL 26
+# define CRISTALS 27
 # define PIG_A2 28
 # define PIG_A3 29
 # define PIG_D0 30
 # define PIG_D1 31
 # define PIG_D2 32
 # define PIG_D3 33
+
+//PIG
 # define PIG_S0 34
 # define PIG_S1 35
 # define PIG_S2 36
 # define PIG_S3 37
+
+
 # define PIG_W0 38
 # define PIG_W1 39
 # define PIG_W2 40
 # define PIG_W3 41
 
-//CHICKEN
 # define CHICKEN_A0 42
 # define CHICKEN_A1 43
 # define CHICKEN_A2 44
@@ -81,10 +82,14 @@
 # define CHICKEN_D1 58
 # define CHICKEN_D2 59
 # define CHICKEN_D3 60
+
+//CHICKEN
 # define CHICKEN_S0 61
 # define CHICKEN_S1 62
 # define CHICKEN_S2 63
 # define CHICKEN_S3 64
+
+
 # define CHICKEN_W0 91
 # define CHICKEN_W1 92
 # define CHICKEN_W2 93
@@ -129,7 +134,10 @@
 # define _Y 89
 # define _Z 90
 
+//EFECT
+# define RUN 98
+
 //Number Max Sprites
-# define _MAX_SPRITES_ 98
+# define _MAX_SPRITES_ 99
 
 #endif
