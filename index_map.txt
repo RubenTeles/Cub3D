@@ -1,46 +1,19 @@
-------- Index Map -------
-
-d = Open Door
-D = Closed Door
-m = Wood Window
-M = Wood Wall
-C = Cave Wall
-2 = House Floor
-3 = Cave Floor
-
 ----- Mandatory -----
 
 N S W E = wolf (directions)
 0   = Floor (color)
-1   = Background (color)
+1   = T
 ' ' = Nothing
 
---- Item's --- (UPPER CASE)
-d - 
+------- Index Map -------
 
---- Enimies --- (DOWN CASE)
-b = bull
-c = chicken
-d = donkey
-g = goat
-n = NICE    (DONT'T USE)*
-m = MINIMAP (DONT'T USE)*
-p = pig (need separate in 3)
-s = sheep
-u = RUN
-
---- Background --- (Number's)
-0 = FLOOR
-1 = FOREST
-
--- Wall -- (2 - 5)
-2 = Forest
-3 = House Straw
-4 = House Wood
-5 = House Brick
-
--- Floor -- (6 - 9)
-6 = Cave
-7 = Floor Straw
-8 = Floor Wood
-9 = Floor Brick
+2 = House Floor
+3 = Cave Floor
+d = Open Door
+D = Door
+m = Wood Window
+M = Wood Wall
+C = Cave Wall
+c = Cristals (Collectable)
+B = Bush (Life)
+p = Pig (Enimies)

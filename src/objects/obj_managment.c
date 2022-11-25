@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 00:57:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 17:07:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,23 @@ int	map_to_sprite(char title)
 	if (title == '1')
 		return (TREE);
 	if (title == '2')
-		return (HAY);
-	if (title == '3')
 		return (WOOD_FLOOR);
-	if (title == '4')
+	if (title == '3')
+		return (CAVE);
+	if (title == 'M')
+		return (HAY);
+	if (title == 'm')
 		return (WINDOW);
-	if (title == '5')
+	if (title == 'D')
 		return (DOOR);
-	if (title == '6')
+	if (title == 'C')
 		return (CAVE);
 	if (title == 'p')
 		return (PIG_S0);
 	if (title == 'c')
 		return (CRISTAL);
+	if (title == 'B')
+		return (BUSH);
 	return (0);
 }
 
@@ -117,5 +121,7 @@ int	ft_managemen_objects(char tittle, t_object *obj)
 		return (ft_create_pig(obj));
 	if (obj->title == CRISTAL)//5
 		return (ft_create_cristal(obj));
+	if (obj->title == BUSH)//5
+		return (ft_create_bush(obj));
 	return (0);
 }

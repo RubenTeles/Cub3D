@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:58:17 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 12:43:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 17:05:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static void	_interation_door(t_object *door, int key)
 	{
 		door->avatar = (canva())->sprite(DOOR_OPEN);
 		door->sprite = (canva())->sprite(DOOR_OPEN);
-		door->map[0] = '4';
+		door->map[0] = 'd';
 		door->collision = 0;
 	}
 	else if (door->collision == 0)
 	{
 		door->avatar = (canva())->sprite(DOOR);
 		door->sprite = (canva())->sprite(DOOR);
-		door->map[0] = '5';
+		door->map[0] = 'D';
 		door->collision = 1;
 	}
 }
