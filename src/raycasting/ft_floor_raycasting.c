@@ -6,13 +6,15 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:47:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:45:35 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_sprites.h>
+
+#define FLR "23dmM"
 
 void	ft_floor_part1(t_alg_fl *b, t_view *view)
 {
@@ -51,6 +53,20 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	return (ft_linear_gradient(arr, time));
 }
 
+void	ft_floor_print(t_view *view, t_alg_fl a)
+{
+	a.flrtex = 8;
+	a.c_tex = 7 + (all()->map[a.celly][a.cellx] == '3');
+	a.tx = (int)(a.data[a.flrtex]->larg * (a.floorx - a.cellx));
+	a.ty = (int)(a.data[a.flrtex]->alt * (a.floory - a.celly));
+	a.color = canva()->getPxColor(a.data[a.flrtex], a.tx, a.ty);
+	a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
+	ft_print_color(1, 1, a.x, a.y, a.color);
+	a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
+	a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
+	ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
+}
+
 void	ft_ray_floor(t_view *view, t_alg_fl a)
 {
 	a.h = canva()->data->alt;
@@ -64,21 +80,14 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 		{
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
-			if(a.cellx > 0 && a.celly > 0 && a.celly < array().len(all()->map) && a.cellx < string().len(all()->map[a.celly]))
+			if (a.cellx <= 0 || a.celly <= 0)
+				;
+			else if (a.celly >= array().len(all()->map))
+				;
+			else if (a.cellx < string().len(all()->map[a.celly]) && a.p >= 0)
 			{
-				a.floortex = 8;
-				a.c_tex = 7 + (all()->map[a.celly][a.cellx] == '3');
-				a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
-				a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
-				if ((string().index_char("23dmM", all()->map[a.celly][a.cellx]) >= 0) && a.p >= 0)
-				{
-					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
-					a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
-					ft_print_color(1, 1, a.x, a.y, a.color);
-					a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
-					a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
-					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
-				}
+				if (string().index_char(FLR, all()->map[a.celly][a.cellx]) >= 0)
+					ft_floor_print(view, a);
 			}
 			a.floorx += a.stepx;
 			a.floory += a.stepy;

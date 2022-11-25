@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:37:56 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:46:45 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,12 @@ int	ft_spr_part1(t_spr_vls *b, t_view *view, int i, t_spr *sprite)
 	a = *b;
 	a.sprite_x = sprite[a.sprite_order[i]].x - view->pos_x;
 	a.sprite_y = sprite[a.sprite_order[i]].y - view->pos_y;
-	a.invdet = 1.0 / (view->plane_x * view->dir_y - view->dir_x * view->plane_y);
-	a.transform_x = a.invdet * (view->dir_y * a.sprite_x - view->dir_x * a.sprite_y);
-	a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + view->plane_x * a.sprite_y);
+	a.invdet = 1.0 / (view->plane_x * view->dir_y - view->dir_x * \
+	view->plane_y);
+	a.transform_x = a.invdet * (view->dir_y * a.sprite_x - view->dir_x * \
+	a.sprite_y);
+	a.transform_y = a.invdet * (-view->plane_y * a.sprite_x + \
+	view->plane_x * a.sprite_y);
 	*b = a;
 	return ((int)(sprite[a.sprite_order[i]].vmove / a.transform_y));
 }

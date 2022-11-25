@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:36:01 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:34:12 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_alg_floor
 	int		celly;
 	int		tx;
 	int		ty;
-	int		floortex;
+	int		flrtex;
 	int		c_tex;
 	int		color;
 	t_data	**data;

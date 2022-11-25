@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:11:29 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:48:44 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ void	ft_raycasting(t_scene_img *scene)
 {
 	t_data		*data[9];
 	t_spr		*sprites;
-	int			x;
-	t_alg_fl	b;
 	t_alg		a;
+	t_alg_fl	b;
+	int			x;
 
 	(void)scene;
 	if (ft_setup_ray_imgs(data))
