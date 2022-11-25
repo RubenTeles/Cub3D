@@ -6,14 +6,12 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 16:55:24 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:21:41 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_RAYCASTER_H
 # define FT_RAYCASTER_H
-
-# define NUMSPRITES 3
 
 typedef struct s_data	t_data;
 typedef struct s_object	t_object;
@@ -110,8 +108,8 @@ typedef struct s_sprite
 
 typedef struct s_sprites_values
 {
-	int		sprite_order[NUMSPRITES];
-	double	sprite_dist[NUMSPRITES];
+	int		sprite_order[1000];
+	double	sprite_dist[1000];
 	double	sprite_x;
 	double	sprite_y;
 	double	invdet;
