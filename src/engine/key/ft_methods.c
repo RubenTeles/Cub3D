@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 18:03:14 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:27:23 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,21 @@ int	key_press_out(int keycode)
 //Ao mexer o mouse
 int key_mouse_move(int x, int y, void *param)
 {
+	double	move;
 	(void)param;
 	(void)y;
 
-	if (x > 800)
+	if (x > 720)
 	{
-		ft_rotate_dir((player())->turn);
-		(player())->turn_times -= (player())->turn;
+		move = (player())->turn * (double)((float)(x - 720) / (float)(620));
+		ft_rotate_dir(move);
+		(player())->turn_times -= move;
 	}
-	if (x < 500)
+	if (x < 620)
 	{
-		ft_rotate_dir(-(player())->turn);	
-		(player())->turn_times += (player())->turn;
+		move = (player())->turn * (double)(((float)(620) * 0.1) / (float)(x));
+		ft_rotate_dir(-move);	
+		(player())->turn_times += move;
 	}
-	// printf("X: %i Y: %i\n", x, y);
 	return (0);
 }
