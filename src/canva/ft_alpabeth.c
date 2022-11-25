@@ -1,51 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_alpabeth.c                                       :+:      :+:    :+:   */
+/*   ft_alpabeth.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/08 19:07:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/20 01:19:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-t_data	*create_alphabet(char c)
-{
-	t_data	*letter;
-
-	letter = malloc(sizeof(t_data));
-	if (!letter)
-		return (0);
-	letter->title = c;
-	letter->path = path_alphabet(c);
-	letter->img = mlx_xpm_file_to_image((engine())->ptr, letter->path,\
-		&letter->larg, &letter->alt);
-	if (!letter->img)
-	{
-		printf("Erro: '%c' não existe!\n", c);
-		free(letter);
-		return (0);
-	}
-	letter->addr = mlx_get_data_addr(letter->img, &letter->bits_per_pixel,\
-		&letter->line_length, &letter->endian);
-	letter->next = NULL;
-	if ((canva())->search((canva())->alphabet, c))
-		(canva())->last((canva())->alphabet)->next = letter;
-	else
-		(canva())->alphabet = letter;
-	return (letter);
-}
-
 t_data	*ft_alphabet(char c)
 {
 	t_data	*data;
-
-	data = (canva())->search((canva())->alphabet, c);
-	if (!data && c != ' ')
-		data = (canva())->create_alphabet(c);
+	int		letter;
+	
+	letter = c;
+	if (!((letter >= 47 && letter <= 57) || (letter >= 65 && letter <= 90)))
+		return (0);
+	(canva())->create_data(letter, letter);
+	data = &(canva())->data[letter];
 	if (!data)
 	{
 		if (c == ' ')

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 11:03:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 17:58:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
+#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 long long	time_current(void)
 {
@@ -26,31 +28,10 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
-int	pause_game()
-{
-	static int	count = 0;
-	
-	ft_background(0);
-	ft_walls();
-	ft_hands(0, 0);
-	ft_minimap(0);
-	ft_life();
-	if (count >= 3)
-		key_management();
-	if ((engine())->map)
-		create_images_map(0);
-	ft_pause();
-	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
-		(canva())->data->img, 0, 0);
-	count++;
-	if ((engine())->pause == 0)
-		count = 0;
-	return (0);
-}
-
-int	loop_game(char **map)
+int	loop_game(void)
 {
 	static int		a = 0;
+	static int		x_wall = 0;
 
 	if ((engine())->count < 0 ||\
 		(engine())->count > (1000 / (engine())->sprt_for_sec))
@@ -61,22 +42,11 @@ int	loop_game(char **map)
 	(engine())->count = time_diff((engine())->dif_time, time_current());
 	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
 	{
-		if ((engine())->menu)
-			return (menu_game((engine())->count * 0.001));
-		if ((engine())->pause > 0)
-			return (pause_game());
-		if (all()->wall == 0)
-			ft_background(0.00017);
-		ft_walls();
-		ft_hands(0.0004, 0);
-		ft_life();
-		ft_minimap(map);
-		key_management();
+		x_wall++;
+		(canva())->show_scenes();
 		a = 1;
-		if ((engine())->map)
-			create_images_map(map);
-		(engine())->time += (engine())->count * 0.001;
-		//printf("%fs\n", (engine())->time);
+		(engine())->time = time_diff((engine())->start_time, time_current())\
+		* 0.001;
 		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 			(canva())->data->img, 0, 0);
 	}
@@ -98,7 +68,11 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 4, 1L<<2, key_press_in, 0);
 	mlx_hook((engine())->win, 5, 1L<<3, key_press_out, 0);
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
-	mlx_loop_hook((engine())->ptr, loop_game, all->map);
+	(canva())->scene = &(canva())->scene_show[SC_LOGIN];
+	(canva())->scene->init();
+	all->mouse_x = 700;
+//	printf("c: %i\n", (canva())->scene->complete);
+	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
 	return (0);
 }

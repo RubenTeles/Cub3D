@@ -6,16 +6,28 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/15 21:36:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 17:14:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
+char	change_letter(char tittle)
+{
+	if (tittle == 'p')
+		return ('0');
+	if (tittle == 'c')
+		return ('3');
+	if (tittle == 'B')
+		return ('0');
+	return (tittle);
+}
+
 void	game_read_map(char **map)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	t_object	*obj;
 
 	y = -1;
 	while (map[++y])
@@ -23,11 +35,13 @@ void	game_read_map(char **map)
 		x = -1;
 		while (map[y][++x])
 		{
-			if (map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'W' &&
-				map[y][x] != 'E' && map[y][x] != '0' && map[y][x] != '3')
+			if (map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'W' &&\
+				map[y][x] != 'E' && map[y][x] != '0' && map[y][x] != '3' &&\
+				map[y][x] != '2')
 				{
-					//printf("%c\n", map[y][x]);
-					ft_new_object(map[y][x], x, y);		
+					obj = ft_new_object(map[y][x], x, y);
+					obj->map = &map[y][x];
+					map[y][x] = change_letter(map[y][x]);
 				}
 			if (x > (engine())->max[X])
 				(engine())->max[X] = x;

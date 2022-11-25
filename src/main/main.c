@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 20:39:56 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/16 17:10:51 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:57:10 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	main(int argc, char **argv)
 	if (!(all())->file)
 		return (0);
 	all()->map = ft_lst_toarr(all());
+	all()->fog_color = 11251376;
 	if (ft_start(all()))
 	{
 		array().free(file);

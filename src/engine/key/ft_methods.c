@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_methods.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/17 08:27:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 23:27:23 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,38 @@
 
 int	key_press_in(int keycode)
 {
+	if (keycode == ESC)
+		return (end_game());
 	if ((engine())->key->search(keycode))
-		(engine())->key->search(keycode)->on = 1;
+		(engine())->key->turn_on_off(keycode, 1);
 	return (0);
 }
 
 int	key_press_out(int keycode)
 {
 	if ((engine())->key->search(keycode))
-		(engine())->key->search(keycode)->on = 0;
+		(engine())->key->turn_on_off(keycode, 0);
 	return (0);
 }
 
 //Ao mexer o mouse
 int key_mouse_move(int x, int y, void *param)
 {
+	double	move;
 	(void)param;
-	(void)x;
 	(void)y;
 
-	//printf("X: %i Y: %i\n", x, y);
-	return (0);
-}
-
-int	key_esc(void)
-{
-	if ((engine())->key->search(ESC)->on)
-		return (end_game());
+	if (x > 720)
+	{
+		move = (player())->turn * (double)((float)(x - 720) / (float)(620));
+		ft_rotate_dir(move);
+		(player())->turn_times -= move;
+	}
+	if (x < 620)
+	{
+		move = (player())->turn * (double)(((float)(620) * 0.1) / (float)(x));
+		ft_rotate_dir(-move);	
+		(player())->turn_times += move;
+	}
 	return (0);
 }
