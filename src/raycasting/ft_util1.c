@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 18:45:31 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:07:04 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,23 +109,33 @@ t_spr	*ft_setup_sprites(t_object *objs)
 	i = -1;
 	while (++i < len && objs)
 	{
-		sprites[i].len = len;
-		sprites[i].texture = objs->sprite;
-		sprites[i].x = objs->pos[0];
-		sprites[i].y = objs->pos[1];
-		if (objs->title == 26)
+		if (objs->sprite)
 		{
-			sprites[i].udiv = 2.0;
-			sprites[i].vdiv = 2.0;
-			sprites[i].vmove = 250.0;
+			sprites[i].texture = objs->sprite;
+			sprites[i].x = objs->pos[0];
+			sprites[i].y = objs->pos[1];
+			if (objs->title == 26)
+			{
+				sprites[i].udiv = 2.0;
+				sprites[i].vdiv = 2.0;
+				sprites[i].vmove = 250.0;
+			}
+			else
+			{
+				sprites[i].udiv = 4.0;
+				sprites[i].vdiv = 4.0;
+				sprites[i].vmove = 300.0;
+			}
 		}
 		else
 		{
-			sprites[i].udiv = 4.0;
-			sprites[i].vdiv = 4.0;
-			sprites[i].vmove = 300.0;
+			i--;
+			len--;
 		}
 		objs = objs->next;
 	}
+	i = -1;
+	while (++i < len)
+		sprites[i].len = len;
 	return (sprites);
 }
