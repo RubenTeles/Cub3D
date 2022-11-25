@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_methods.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:55:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:03:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,18 @@ int	key_press_out(int keycode)
 int key_mouse_move(int x, int y, void *param)
 {
 	(void)param;
-	(void)x;
 	(void)y;
 
-	//printf("X: %i Y: %i\n", x, y);
+	if (x > 800)
+	{
+		ft_rotate_dir((player())->turn);
+		(player())->turn_times -= (player())->turn;
+	}
+	if (x < 500)
+	{
+		ft_rotate_dir(-(player())->turn);	
+		(player())->turn_times += (player())->turn;
+	}
+	// printf("X: %i Y: %i\n", x, y);
 	return (0);
 }

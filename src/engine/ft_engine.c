@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 11:14:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/25 17:58:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	ft_start(t_all *all)
 	mlx_hook((engine())->win, 6, 1L<<6, key_mouse_move, 0);
 	(canva())->scene = &(canva())->scene_show[SC_LOGIN];
 	(canva())->scene->init();
+	all->mouse_x = 700;
 //	printf("c: %i\n", (canva())->scene->complete);
 	mlx_loop_hook((engine())->ptr, loop_game, 0);
 	mlx_loop((engine())->ptr);
