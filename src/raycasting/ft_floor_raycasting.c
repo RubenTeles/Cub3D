@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/23 17:57:39 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 15:45:12 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,15 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 		a.x = -1;
 		while (++(a.x) < a.w)
 		{
-			a.floortex = 5;
-			a.c_tex = 5;
 			a.cellx = (int)(a.floorx);
 			a.celly = (int)(a.floory);
-			a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
-			a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
-			a.floorx += a.stepx;
-			a.floory += a.stepy;
-			if(a.floorx > 0 && a.floory > 0 && (int)a.floory < array().len(all()->map) && (int)a.floorx < string().len(all()->map[(int)a.floory]))
+			if(a.cellx > 0 && a.celly > 0 && a.celly < array().len(all()->map) && a.cellx < string().len(all()->map[a.celly]))
 			{
-				if ((all()->map[(int)a.floory][(int)a.floorx] == '3' || all()->map[(int)a.floory][(int)a.floorx] == '4' || all()->map[(int)a.floory][(int)a.floorx] == '2') && a.p >= 0)
+				a.floortex = 8;
+				a.c_tex = 7 + (all()->map[a.celly][a.cellx] == '3');
+				a.tx = (int)(a.data[a.floortex]->larg * (a.floorx - a.cellx));
+				a.ty = (int)(a.data[a.floortex]->alt * (a.floory - a.celly));
+				if ((string().index_char("23dmM", all()->map[a.celly][a.cellx]) >= 0) && a.p >= 0)
 				{
 					a.color = canva()->getPxColor(a.data[a.floortex], a.tx, a.ty);
 					a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
@@ -82,6 +80,8 @@ void	ft_ray_floor(t_view *view, t_alg_fl a)
 					ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
 				}
 			}
+			a.floorx += a.stepx;
+			a.floory += a.stepy;
 		}
 	}
 }

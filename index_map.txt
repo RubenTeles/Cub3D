@@ -1,5 +1,13 @@
 ------- Index Map -------
 
+d = Open Door
+D = Closed Door
+m = Wood Window
+M = Wood Wall
+C = Cave Wall
+2 = House Floor
+3 = Cave Floor
+
 ----- Mandatory -----
 
 N S W E = wolf (directions)

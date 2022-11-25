@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/24 19:59:47 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 15:43:08 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	}
 	else
 	{
-		while (all()->map[a.map_y][a.map_x] == '4')
+		while (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
 		{
 			a.check = (a.side_x < a.side_y);
 			a.side = !a.check;
@@ -63,11 +63,9 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		a.map_x += a.step_x * a.check;
 		a.side_y += a.delta_y * !a.check;
 		a.map_y += a.step_y * !a.check;
-		// if (a.map_x <= 0 || a.map_y <= 0 || a.map_y >= (array().len(all()->map) - 1) || a.map_x >= (string().len(all()->map[a.map_y]) - 1))
-		// 	a.hit = 1;
-		if (all()->map[a.map_y][a.map_x] > '0' && all()->map[a.map_y][a.map_x] != '3')
+		if (string().index_char("1DMC", all()->map[a.map_y][a.map_x]) >= 0)
 			a.hit = 1;
-		if (all()->map[a.map_y][a.map_x] == '4')
+		if (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
 		{
 			a.x = 1;
 			a.hit = 0;
@@ -108,6 +106,28 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	a.z_buffer[x] = a.perp_dist;
 }
 
+int	ft_setup_ray_imgs(t_data **data)
+{
+	data[0] = (canva())->sprite(N_WALL);
+	data[1] = (canva())->sprite(S_WALL);
+	data[2] = (canva())->sprite(W_WALL);
+	data[3] = (canva())->sprite(E_WALL);
+	data[4] = (canva())->sprite(DOOR_OPEN);
+	data[5] = (canva())->sprite(DOOR);
+	data[6] = (canva())->sprite(WINDOW);
+	data[7] = (canva())->sprite(HAY);
+	data[8] = (canva())->sprite(CAVE);
+	data[9] = (canva())->sprite(PIG_S0);
+	data[10] = (canva())->sprite(TREE);
+	if (!data[2] || !data[1] || !data[2] || !data[3])
+		return (1);
+	if (!data[4] || !data[5] || !data[6] || !data[7])
+		return (1);
+	if (!data[8] || !data[9] || !data[10])
+		return (1);
+	return (0);
+}
+
 void	ft_raycasting(t_scene_img *scene)
 {
 	t_data		*data[11];
@@ -118,33 +138,19 @@ void	ft_raycasting(t_scene_img *scene)
 	t_alg		a;
 
 	(void)scene;
-	data[0] = (canva())->sprite(N_WALL);
-	data[1] = (canva())->sprite(S_WALL);
-	data[2] = (canva())->sprite(W_WALL);
-	data[3] = (canva())->sprite(E_WALL);
-	data[4] = (canva())->sprite(HAY);
-	data[5] = (canva())->sprite(CAVE);
-	data[6] = (canva())->sprite(DOOR_OPEN);
-	data[7] = (canva())->sprite(DOOR);
-	data[8] = (canva())->sprite(CAVE);
-	data[9] = (canva())->sprite(PIG_S0);
-	data[10] = (canva())->sprite(TREE);
-	if (!data[2] || !data[1] || !data[2] || !data[3] || !data[4] || !data[5] || !data[6]\
-		|| !data[7] || !data[8])
+	if (ft_setup_ray_imgs(data))
 		return ;
 	// (engine())->enemies->next;
-	sprite[0].texture = 10;
+	sprite[0].texture = 9;
 	sprite[0].x = 10;
 	sprite[0].y = 10;
-	sprite[1].texture = 10;
+	sprite[1].texture = 9;
 	sprite[1].x = 20;
 	sprite[1].y = 10;
-	sprite[2].texture = 10;
+	sprite[2].texture = 9;
 	sprite[2].x = 21;
 	sprite[2].y = 10;
 	all()->data = data;
-	if ((player())->pos[X] < 0 || (player())->pos[Y] < 0)
-		return ;
 	ft_set_camera();
 	ft_calc_plane();
 	view = &(all()->caster.view);
