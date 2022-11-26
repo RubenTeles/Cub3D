@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 23:47:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:50:23 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,34 @@ int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 
 float	ft_convert_time(double time, int n)
 {
-	static float	time_convert_n;	
-	float			t;
-	float			t2;
+	static int	time_capsule;
+	static int	past_value;
+	int			t;
+	int			t2;
 
-	t = (float)(((int)(time - 1) % n) + 1);
-	t2 = n - t;
-	if (t == n)
-		time_convert_n = t;
-	if (t < time_convert_n)
+	t = (((int)time - 1) % n) + 1;
+	if (time_capsule != t)
 	{
-		return (t2);
+		time_capsule = t;
+		past_value = t;
+		t2 = (n - t) + 1;
+		if (t == n)
+		{
+			all()->fog_checker = (all()->fog_checker == 0);
+			if (all()->fog_checker)
+				return ((float)t);
+			past_value = t2;
+			return ((float)t2);
+		}
+		if (all()->fog_checker)
+		{
+			past_value = t2;
+			return ((float)t2);
+		}
+		return ((float)t);
 	}
-	if (time_convert_n == t)
-		time_convert_n = 0;
-	return (t);
+	else
+		return ((float)past_value);
 }
 
 int	ft_setup_ray_imgs(t_data **data)
