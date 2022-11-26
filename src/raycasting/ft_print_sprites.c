@@ -6,15 +6,13 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 23:46:45 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:10:28 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_cub.h>
 #include <ft_sprites.h>
-
-// 4 nos div fica 300 no move
 
 void	ft_sort_sprites(int *order, double *dist, int amount)
 {
@@ -41,7 +39,7 @@ void	ft_sort_sprites(int *order, double *dist, int amount)
 	}
 }
 
-void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen)
+void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen, t_view *view)
 {
 	t_spr_vls	a;
 
@@ -60,6 +58,9 @@ void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen)
 			/ a.sprite_hgt) / 256;
 			a.color = canva()->getPxColor(\
 			a.sprite[a.sprite_order[i]].texture, a.tex_x, a.tex_y);
+			if ((a.color & 0x00FFFFFF) != 0)
+				a.color = ft_grade_color(view, a.sprite[a.sprite_order[i]].x, \
+				a.sprite[a.sprite_order[i]].y, a.color);
 			if ((a.color & 0x00FFFFFF) != 0)
 				ft_print_color(1, 1, a.stripe, a.y, a.color);
 		}
@@ -135,7 +136,7 @@ void	ft_ray_sprites(double *buffer, t_view *view, t_spr *spr)
 		vmovescreen = ft_spr_part1(&a, view, i, spr);
 		ft_spr_part2(&a, vmovescreen, buffer, spr);
 		while (++(a.stripe) < a.draw_end_x)
-			ft_print_stripe(&a, i, vmovescreen);
+			ft_print_stripe(&a, i, vmovescreen, view);
 	}
 	free(spr);
 }

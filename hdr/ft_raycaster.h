@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 23:34:12 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:07:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ typedef struct s_caster
 // SPRITES
 void	ft_ray_sprites(double *buffer, t_view *view, t_spr *sprite);
 void	ft_sort_sprites(int *order, double *dist, int amount);
-void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen);
+void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen, t_view *view);
 t_spr	*ft_setup_sprites(t_object *objs);
 
 // FLOOR
