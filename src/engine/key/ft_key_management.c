@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 13:15:10 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 19:36:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,10 @@ static int key_game(void)
 			time_start = time_current();
 			(engine())->sound->play(&(engine())->sound[SD_WOLF_HAPPY]);
 			(canva())->scene_img[S_HAND].option = 1;
+			if ((all())->stop_weather)
+				(all())->stop_weather = 0;
+			else if ((all())->stop_weather == 0)
+				(all())->stop_weather = 1;
 		}
 	}
 	if ((engine())->key[_KEY_RIGHT].on)

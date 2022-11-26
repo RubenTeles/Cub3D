@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 13:41:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 20:13:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,12 @@ int ft_create_bush(t_object *bush)
 {
 	bush->avatar = (canva())->sprite(BUSH_AMORAS);
 	bush->sprite = (canva())->sprite(BUSH_AMORAS);
-	bush->pos[X] += 0.5;
-	bush->pos[Y] += 0.5;
 	bush->collision = 1;
 	bush->interation = 0.5;
 	bush->interation = 0.5;
-	bush->dimension[X] = 0;
-	bush->dimension[Y] = 0;
-	bush->dimension[2] = 0;
+	bush->dimension[X] = 1.5;
+	bush->dimension[Y] = 1.5;
+	bush->dimension[2] = 100;
 	bush->player_interation = _interation_bush;
 	bush->player_near = _player_near_bush;
 	//bush->map[0] = '3';

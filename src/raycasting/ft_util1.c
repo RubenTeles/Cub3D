@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:03:03 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:17:27 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int	ft_objects_len(t_object *sprites)
 
 void	ft_choose_spr_size(t_spr *sprite, t_object *obj)
 {
-	sprite->udiv = obj->dimension[0];
-	sprite->vdiv = obj->dimension[1];
+	sprite->udiv = obj->dimension[X];
+	sprite->vdiv = obj->dimension[Y];
 	sprite->vmove = obj->dimension[2];
 }
 

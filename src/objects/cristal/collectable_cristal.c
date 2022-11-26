@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 13:44:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 20:06:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int ft_create_cristal(t_object *cristal)
 {
 	cristal->avatar = (canva())->sprite(CRISTALS);
 	cristal->sprite = (canva())->sprite(CRISTALS);
-	cristal->pos[X] += 0.5;
-	cristal->pos[Y] += 0.5;
+	/*cristal->pos[X] += 0.5;
+	cristal->pos[Y] += 0.5;*/
 	cristal->collision = 1;
 	cristal->interation = 0.5;
-	cristal->dimension[X] = 0;
-	cristal->dimension[Y] = 0;
-	cristal->dimension[2] = 0;
+	cristal->dimension[X] = 2;
+	cristal->dimension[Y] = 2;
+	cristal->dimension[2] = 250;
 	cristal->player_interation = _interation_cristal;
 	cristal->player_near = _player_near_cristal;
 	//cristal->map[0] = '3';
