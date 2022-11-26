@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 11:51:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 13:44:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	_interation_cristal(t_object *cristal, int key)
 {
 	if (key != KEY_E)
 		return ;
-	//(engine())->sound->play(&(engine())->sound[SD_cristal]);
 	if (cristal->collision == 1)
 	{
 		cristal->avatar = 0;
@@ -35,8 +34,10 @@ static void	_interation_cristal(t_object *cristal, int key)
 		cristal->interation = 0;
 		cristal->collision = 0;
 		cristal->life = 0;
+		cristal->is_near = 0;
 		(canva())->scene_img[S_PRESS_E].on = 0;
 		(engine())->sound->play(&(engine())->sound[SD_MINING]);
+
 	}
 }
 
