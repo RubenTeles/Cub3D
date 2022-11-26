@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 21:07:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 23:25:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int key_atack_2(void)
 				animation = 0;
 			(player())->sprite = (canva())->sprite(ATACK_1 + animation);
 			animation += 1;
+			(player())->obj_interation(_BUTTON_LEFT);
 			//(engine())->sound->play(&(engine())->sound[SD_WOLF_DIE]);
 		}
 	}

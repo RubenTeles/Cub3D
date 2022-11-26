@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 20:06:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 23:39:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,32 @@
 static void	_player_near_cristal(t_object *cristal, int key)
 {
 	(void)key;
-	if (cristal->is_near)
-		(canva())->scene_img[S_PRESS_E].on = 1;
+	(void)cristal;
 }
 
 static void	_interation_cristal(t_object *cristal, int key)
 {
-	if (key != KEY_E)
-		return ;
-	if (cristal->collision == 1)
-	{
-		cristal->avatar = 0;
-		cristal->sprite = 0;
-		cristal->interation = 0;
-		cristal->collision = 0;
-		cristal->life = 0;
-		cristal->is_near = 0;
-		(canva())->scene_img[S_PRESS_E].on = 0;
-		(engine())->sound->play(&(engine())->sound[SD_MINING]);
+	static long	long	time_start = 0;
 
+	if (key != _BUTTON_LEFT)
+		return ;
+	(engine())->sound[SD_MINING].dif = time_diff(time_start, time_current());
+	if (cristal->collision == 1 && ((engine())->sound[SD_MINING].dif > 700\
+		|| time_start == 0))
+	{
+		time_start = time_current();
+		cristal->life -= 20;
+		(engine())->sound->play(&(engine())->sound[SD_MINING]);
+		if (cristal->life <= 0)
+		{
+			cristal->avatar = 0;
+			cristal->sprite = 0;
+			cristal->interation = 0;
+			cristal->collision = 0;
+			cristal->life = 0;
+			cristal->is_near = 0;
+			(engine())->sound->play(&(engine())->sound[SD_DIAMOND]);
+		}
 	}
 }
 
@@ -45,8 +52,6 @@ int ft_create_cristal(t_object *cristal)
 {
 	cristal->avatar = (canva())->sprite(CRISTALS);
 	cristal->sprite = (canva())->sprite(CRISTALS);
-	/*cristal->pos[X] += 0.5;
-	cristal->pos[Y] += 0.5;*/
 	cristal->collision = 1;
 	cristal->interation = 0.5;
 	cristal->dimension[X] = 2;
@@ -54,6 +59,5 @@ int ft_create_cristal(t_object *cristal)
 	cristal->dimension[2] = 250;
 	cristal->player_interation = _interation_cristal;
 	cristal->player_near = _player_near_cristal;
-	//cristal->map[0] = '3';
 	return (1);
 }
