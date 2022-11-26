@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 12:50:23 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:18:02 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,22 @@ int	ft_objects_len(t_object *sprites)
 	return (i);
 }
 
+void	ft_choose_spr_size(t_spr *sprite, t_object *obj)
+{
+	if (obj->title == CRISTAL || obj->title == BUSH)
+	{
+		sprite->udiv = 2.0;
+		sprite->vdiv = 2.0;
+		sprite->vmove = 250.0;
+	}
+	else
+	{
+		sprite->udiv = 4.0;
+		sprite->vdiv = 4.0;
+		sprite->vmove = 300.0;
+	}
+}
+
 t_spr	*ft_setup_sprites(t_object *objs)
 {
 	t_spr	*sprites;
@@ -122,29 +138,18 @@ t_spr	*ft_setup_sprites(t_object *objs)
 	i = -1;
 	while (++i < len && objs)
 	{
-		if (objs->sprite)
-		{
-			sprites[i].texture = objs->sprite;
-			sprites[i].x = objs->pos[0];
-			sprites[i].y = objs->pos[1];
-			if (objs->title == 26)
-			{
-				sprites[i].udiv = 2.0;
-				sprites[i].vdiv = 2.0;
-				sprites[i].vmove = 250.0;
-			}
-			else
-			{
-				sprites[i].udiv = 4.0;
-				sprites[i].vdiv = 4.0;
-				sprites[i].vmove = 300.0;
-			}
-		}
-		else
+		while (objs && !objs->sprite)
 		{
 			i--;
 			len--;
+			objs = objs->next;
 		}
+		if (!objs)
+			break ;
+		sprites[i].texture = objs->sprite;
+		sprites[i].x = objs->pos[0];
+		sprites[i].y = objs->pos[1];
+		ft_choose_spr_size(&sprites[i], objs);
 		objs = objs->next;
 	}
 	i = -1;
