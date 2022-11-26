@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 17:59:33 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:03:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 {
-	all()->pitch = 100.0;
+	// all()->pitch = 100.0;
 	if (a.x == 0)
 	{	
 		a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
