@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 11:51:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 13:41:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	_interation_bush(t_object *bush, int key)
 		else if ((player())->fadigue + 20 > 100)
 			(player())->fadigue = 100;
 		(canva())->scene_img[S_PRESS_E].on = 0;
-		
+		bush->is_near = 0;
 	}
 }
 
