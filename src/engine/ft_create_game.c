@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 20:05:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 20:17:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 char	change_letter(char tittle)
 {
 	if (tittle == 'p')
-		return ('3');
+		return ('0');
 	if (tittle == 'c')
 		return ('3');
 	if (tittle == 'B')
-		return ('3');
+		return ('0');
 	return (tittle);
 }
 
