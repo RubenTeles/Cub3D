@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 16:59:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:55:59 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_all
 	int			mouse_x;
 	int			fog_checker;
 	int			stop_weather;
+	double		pitch;
 }			t_all;
 
 // utils

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 17:32:29 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:59:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 {
+	all()->pitch = 100.0;
 	if (a.x == 0)
 	{	
 		a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
@@ -65,10 +66,10 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	else
 		a.perp_dist = (a.side_y - a.delta_y);
 	a.ln_hgt = (int)(canva()->data->alt / a.perp_dist);
-	a.draw_str = -a.ln_hgt / 2 + canva()->data->alt / 2;
+	a.draw_str = -a.ln_hgt / 2 + canva()->data->alt / 2 + all()->pitch;
 	if (a.draw_str < 0)
 		a.draw_str = 0;
-	a.draw_end = a.ln_hgt / 2 + canva()->data->alt / 2;
+	a.draw_end = a.ln_hgt / 2 + canva()->data->alt / 2 + all()->pitch;
 	if (a.draw_end >= canva()->data->alt)
 		a.draw_end = canva()->data->alt - 1;
 	a.texnum = ft_texture_num(a.map_x, a.map_y, a.side, *view);
@@ -81,7 +82,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	if ((a.side == 0 && a.ray_x > 0) || (a.side == 1 && a.ray_y < 0))
 		a.tex_x = data[a.texnum]->larg - a.tex_x - 1;
 	a.step = 1.0 * data[a.texnum]->alt / a.ln_hgt;
-	a.texpos = (a.draw_str - canva()->data->alt / 2 + a.ln_hgt / 2) * a.step;
+	a.texpos = (a.draw_str - all()->pitch - canva()->data->alt / 2 + a.ln_hgt / 2) * a.step;
 	a.y = a.draw_str - 1;
 	while (++(a.y) < a.draw_end)
 	{
