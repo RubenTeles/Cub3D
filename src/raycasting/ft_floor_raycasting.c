@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:55:46 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 21:04:45 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_floor_part1(t_alg_fl *b, t_view *view)
 	a.ray_y0 = (float)(view->dir_y - view->plane_y);
 	a.ray_x1 = (float)(view->dir_x + view->plane_x);
 	a.ray_y1 = (float)(view->dir_y + view->plane_y);
-	a.p = a.y - a.h / 2;
+	a.p = a.y - a.h / 2 - all()->pitch;
 	a.posz = 0.5 * (float)a.h;
 	a.rowdist = a.posz / a.p;
 	a.stepx = a.rowdist * (a.ray_x1 - a.ray_x0) / (float)a.w;

@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:51:28 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 21:17:07 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	ft_raycasting(t_scene_img *scene)
 	b.data = data;
 	x = -1;
 	a.x = 0;
+	all()->pitch = 0.0;
 	ft_ray_floor(&(all()->caster.view), b);
 	a.z_buffer = malloc(sizeof(double) * canva()->data->larg);
 	while (++x < canva()->data->larg)

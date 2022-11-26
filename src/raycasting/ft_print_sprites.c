@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 16:10:28 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 23:08:18 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen, t_view *view)
 {
 	t_spr_vls	a;
 
+	a.tex_x = 0;
+	a.tex_y = 0;
 	a = *copy;
-	a.tex_x = (int)(256 * (a.stripe - (-a.sprite_wdt / 2 + a.sprite_scrn_x)) \
-	* a.sprite[a.sprite_order[i]].texture->alt / a.sprite_wdt) / 256;
+	if (a.sprite[a.sprite_order[i]].texture)
+		a.tex_x = (int)(256 * (a.stripe - (-a.sprite_wdt / 2 + a.sprite_scrn_x)) \
+		* a.sprite[a.sprite_order[i]].texture->alt / a.sprite_wdt) / 256;
 	if (a.transform_y > 0 && a.stripe > 0 && a.stripe < canva()->data->larg \
 	&& a.transform_y < a.buffer[a.stripe])
 	{
@@ -54,14 +57,16 @@ void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen, t_view *view)
 		{
 			a.d = (a.y - vmovescreen) * 256 - canva()->data->alt * 128 + \
 			a.sprite_hgt * 128;
-			a.tex_y = ((a.d * a.sprite[a.sprite_order[i]].texture->alt) \
-			/ a.sprite_hgt) / 256;
-			a.color = canva()->getPxColor(\
-			a.sprite[a.sprite_order[i]].texture, a.tex_x, a.tex_y);
+			if (a.sprite[a.sprite_order[i]].texture)
+				a.tex_y = ((a.d * a.sprite[a.sprite_order[i]].texture->alt) \
+				/ a.sprite_hgt) / 256;
+			if (a.sprite[a.sprite_order[i]].texture)
+				a.color = canva()->getPxColor(\
+				a.sprite[a.sprite_order[i]].texture, a.tex_x, a.tex_y);
 			if ((a.color & 0x00FFFFFF) != 0)
 				a.color = ft_grade_color(view, a.sprite[a.sprite_order[i]].x, \
 				a.sprite[a.sprite_order[i]].y, a.color);
-			if ((a.color & 0x00FFFFFF) != 0)
+			if (a.sprite[a.sprite_order[i]].texture && (a.color & 0x00FFFFFF) != 0)
 				ft_print_color(1, 1, a.stripe, a.y, a.color);
 		}
 	}

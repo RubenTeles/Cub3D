@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:56:54 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 22:53:24 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_setup_ray_imgs(t_data **data)
 	data[6] = (canva())->sprite(WINDOW);
 	data[7] = (canva())->sprite(HAY);
 	data[8] = (canva())->sprite(CAVE);
-	data[9] = (canva())->sprite(GRASS); // MUDA ESTE PARA A IMAGEM DA RELVA
+	data[9] = (canva())->sprite(GRASS);
 	if (!data[2] || !data[1] || !data[2] || !data[3])
 		return (1);
 	if (!data[4] || !data[5] || !data[6] || !data[7])
@@ -124,28 +124,18 @@ t_spr	*ft_setup_sprites(t_object *objs)
 	len = ft_objects_len(objs);
 	if (!len)
 		return (NULL);
-	sprites = malloc(sizeof(t_spr) * (len + 1));
+	sprites = malloc(sizeof(t_spr) * len);
 	if (!sprites)
 		return (NULL);
 	i = -1;
-	while (++i < len && objs)
+	while (++i < len)
 	{
-		while (objs && !objs->sprite)
-		{
-			i--;
-			len--;
-			objs = objs->next;
-		}
-		if (!objs)
-			break ;
+		sprites[i].len = len;
 		sprites[i].texture = objs->sprite;
 		sprites[i].x = objs->pos[0] + 0.5;
 		sprites[i].y = objs->pos[1] + 0.5;
 		ft_choose_spr_size(&sprites[i], objs);
 		objs = objs->next;
 	}
-	i = -1;
-	while (++i < len)
-		sprites[i].len = len;
 	return (sprites);
 }
