@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 23:47:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:29:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,15 @@ int	ft_texture_num(int map_x, int map_y, int side, t_view view)
 
 float	ft_convert_time(double time, int n)
 {
-	static float	time_convert_n;	
 	float			t;
 	float			t2;
 
 	t = (float)(((int)(time - 1) % n) + 1);
-	t2 = n - t;
+	t2 = (n - t) + 1;
 	if (t == n)
-		time_convert_n = t;
-	if (t < time_convert_n)
-	{
+		all()->fog_checker = (all()->fog_checker == 0);
+	if (all()->fog_checker)
 		return (t2);
-	}
-	if (time_convert_n == t)
-		time_convert_n = 0;
 	return (t);
 }
 

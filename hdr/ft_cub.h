@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 19:56:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 17:56:21 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:24:16 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_all
 	t_data		**data;
 	int			fog_color;
 	int			mouse_x;
+	int			fog_checker;
 }			t_all;
 
 // utils
