@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:05:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 13:23:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_login_images(double move, int min, int max)
 	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
 	(canva())->data->img, 0, 0);
 	if (max < _MAX_SPRITES_)
-		ft_login_images(move + 0.01, min + 20, max + 20);
+		ft_login_images(move + 0.01, min + 5, max + 5);
 }
 
 void	ft_login_2(double move)
@@ -64,7 +64,9 @@ void	ft_login_2(double move)
 	ft_put_word("MADE BY RTELES AMARIA/M", (engine())->size[X] * 0.35, (engine())->size[Y] *\
 		0.03, (engine())->size[X] * 0.022, (engine())->size[Y] * 0.949);
 	ft_login_metric(move);
-	ft_login_images(move + 0.01, 1, 20);
+	mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+	(canva())->data->img, 0, 0);
+	ft_login_images(move + 0.01, 1, 10);
 }
 
 

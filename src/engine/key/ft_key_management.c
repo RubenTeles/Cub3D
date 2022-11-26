@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:46:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 13:15:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ static int key_game(void)
 
 	if ((engine())->key[_KEY_M].on && ((engine())->map == 0))
 	{
+		(canva())->scene_img[S_HAND].on = 0;
 		(engine())->map = 1;
 		(canva())->scene_img[S_MAP].on = 1;
 	}
@@ -171,6 +172,7 @@ static int key_game(void)
 		(engine())->map = 2;
 	if (!(engine())->key[_KEY_M].on && ((engine())->map == 3))
 	{
+		(canva())->scene_img[S_HAND].on = 1;
 		(engine())->map = 0;
 		(canva())->scene_img[S_MAP].on = 0;
 	}

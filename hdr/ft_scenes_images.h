@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:19:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 13:33:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # define S_RUN 4
 # define S_HAND 5
 # define S_LIFE 6
-# define S_MINI_MAP 7
-# define S_MAP 8
-# define S_PRESS_E 9
+# define S_PRESS_E 7
+# define S_MINI_MAP 8
+# define S_MAP 9
 # define S_PAUSE 10
 # define S_TASKS 11
 
