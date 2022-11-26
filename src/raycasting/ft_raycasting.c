@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:03:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:51:28 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 
 void	ft_raycasting(t_scene_img *scene)
 {
-	t_data		*data[9];
+	t_data		*data[10];
 	t_spr		*sprites;
 	t_alg		a;
 	t_alg_fl	b;

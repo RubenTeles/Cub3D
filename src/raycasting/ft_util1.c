@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 20:17:27 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:56:25 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,12 @@ int	ft_setup_ray_imgs(t_data **data)
 	data[6] = (canva())->sprite(WINDOW);
 	data[7] = (canva())->sprite(HAY);
 	data[8] = (canva())->sprite(CAVE);
+	data[9] = (canva())->sprite(CAVE); // MUDA ESTE PARA A IMAGEM DA RELVA
 	if (!data[2] || !data[1] || !data[2] || !data[3])
 		return (1);
 	if (!data[4] || !data[5] || !data[6] || !data[7])
 		return (1);
-	if (!data[8])
+	if (!data[8] || !data[9])
 		return (1);
 	return (0);
 }

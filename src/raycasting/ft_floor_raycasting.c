@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 17:35:44 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:55:46 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
-#define FLR "23dmM"
+#define FLR "023dmM"
 
 void	ft_floor_part1(t_alg_fl *b, t_view *view)
 {
@@ -64,15 +64,19 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 void	ft_floor_print(t_view *view, t_alg_fl a)
 {
 	a.flrtex = 8;
+	a.flrtex += (all()->map[a.celly][a.cellx] == '0');
 	a.c_tex = 7 + (all()->map[a.celly][a.cellx] == '3');
 	a.tx = (int)(a.data[a.flrtex]->larg * (a.floorx - a.cellx));
 	a.ty = (int)(a.data[a.flrtex]->alt * (a.floory - a.celly));
 	a.color = canva()->getPxColor(a.data[a.flrtex], a.tx, a.ty);
 	a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
 	ft_print_color(1, 1, a.x, a.y, a.color);
-	a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
-	a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
-	ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
+	if (!(all()->map[a.celly][a.cellx] == '0'))
+	{
+		a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
+		a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
+		ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
+	}
 }
 
 void	ft_ray_floor(t_view *view, t_alg_fl a)
