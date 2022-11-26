@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 11:51:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:58:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	_interation_cristal(t_object *cristal, int key)
 {
 	if (key != KEY_E)
 		return ;
-	//(engine())->sound->play(&(engine())->sound[SD_cristal]);
 	if (cristal->collision == 1)
 	{
 		cristal->avatar = 0;
