@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 16:00:07 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:11:11 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	int		arr[2];
 	float	time;
 
-	if ((int)(engine())->time == 600)
+	if ((int)(engine())->time == 600 && all()->stop_weather == 0)
 		all()->fog_color = 1;
 	time = ft_convert_time((engine())->time / 2, 100);
 	if (time < 1.0F)
@@ -51,8 +51,8 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	grade = ft_dist_pts(view->pos_x, view->pos_y, x, y);
 	if ((engine())->time >= 200.0 && (engine())->time < 600.0)
 		grade = 1.0;
-	if ((engine())->time > 800.0)
-		grade = 100.0F;
+	if ((engine())->time > 800.0 || all()->stop_weather > 0)
+		time = 1.0F;
 	if (grade < 1.0)
 		grade = 1.0;
 	time *= (100.0F / (float)grade);

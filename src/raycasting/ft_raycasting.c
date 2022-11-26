@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/25 23:48:44 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:32:29 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,6 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		else
 			a.side_y = (a.map_y + 1.0 - view->pos_y) * a.delta_y;
 	}
-	else
-	{
-		while (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
-		{
-			a.check = (a.side_x < a.side_y);
-			a.side = !a.check;
-			a.side_x += a.delta_x * a.check;
-			a.map_x += a.step_x * a.check;
-			a.side_y += a.delta_y * !a.check;
-			a.map_y += a.step_y * !a.check;
-		}
-	}
 	while (a.hit == 0)
 	{
 		a.check = (a.side_x < a.side_y);
@@ -68,7 +56,6 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		if (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
 		{
 			a.x = 1;
-			a.hit = 0;
 			ft_ray(x, view, data, a);
 			a.hit = 1;
 		}

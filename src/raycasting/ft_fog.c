@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 15:57:45 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:08:48 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_fog(t_data *data, double time)
 			arr[1] = color;
 			if (((engine())->time >= 200.0 && (engine())->time < 600.0))
 				t = 100.0F;
-			if ((engine())->time > 800.0)
+			if ((engine())->time > 800.0 || all()->stop_weather > 0)
 				t = 0.0F;
 			if (y < (data->alt / 2))
 				color = ft_linear_gradient(arr, t);
