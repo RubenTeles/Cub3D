@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 13:35:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 20:54:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	path_pig(void)
 	(canva())->data[CRISTALS].path = "./sprite/item/cristal.xpm";
 	(canva())->data[BUSH].path = "./sprite/item/bush.xpm";
 	(canva())->data[BUSH_AMORAS].path = "./sprite/item/bush_amoras.xpm";
+	(canva())->data[GRASS].path = "./sprite/item/grass.xpm";;
 	(canva())->data[PIG_D0].path = 0;
 	(canva())->data[PIG_D1].path = 0;
 	(canva())->data[PIG_D2].path = 0;
-	(canva())->data[PIG_D3].path = 0;
+	(canva())->data[PIG].path = "./sprite/pig/s0.xpm";
 	(canva())->data[PIG_S0].path = "./sprite/pig/s0.xpm";
 	(canva())->data[PIG_S1].path = 0;
 	(canva())->data[PIG_S2].path = 0;
@@ -42,7 +43,7 @@ void	path_chicken(void)
 	(canva())->data[CHICKEN_D0].path = 0;
 	(canva())->data[CHICKEN_D1].path = 0;
 	(canva())->data[CHICKEN_D2].path = 0;
-	(canva())->data[CHICKEN_D3].path = 0;
+	(canva())->data[CHICKEN].path = 0;
 	(canva())->data[CHICKEN_S0].path = 0;
 	(canva())->data[CHICKEN_S1].path = 0;
 	(canva())->data[CHICKEN_S2].path = 0;
@@ -50,7 +51,6 @@ void	path_chicken(void)
 	(canva())->data[CHICKEN_W0].path = 0;
 	(canva())->data[CHICKEN_W1].path = 0;
 	(canva())->data[CHICKEN_W2].path = 0;
-	(canva())->data[CHICKEN_W3].path = 0;
 	path_pig();
 }
 

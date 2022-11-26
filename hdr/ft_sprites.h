@@ -62,9 +62,9 @@
 # define PIG_D0 30
 # define PIG_D1 31
 # define PIG_D2 32
-# define PIG_D3 33
 
 //PIG
+# define PIG 33
 # define PIG_S0 34
 # define PIG_S1 35
 # define PIG_S2 36
@@ -83,9 +83,9 @@
 # define CHICKEN_D0 46
 # define CHICKEN_D1 58
 # define CHICKEN_D2 59
-# define CHICKEN_D3 60
 
 //CHICKEN
+# define CHICKEN 60
 # define CHICKEN_S0 61
 # define CHICKEN_S1 62
 # define CHICKEN_S2 63
@@ -95,7 +95,7 @@
 # define CHICKEN_W0 91
 # define CHICKEN_W1 92
 # define CHICKEN_W2 93
-# define CHICKEN_W3 94
+# define GRASS 94
 
 //Alphabet
 # define _BARRA 47
