@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 11:06:37 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:50:57 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_fog(t_data *data, double time)
 	float	t;
 
 	y = -1;
-	t = ft_convert_time(time, 20);
+	t = ft_convert_time(time, 100);
 	while (++y < data->alt)
 	{
 		x = -1;
