@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:04:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 16:00:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 23:39:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 # define SD_WOLF_HAPPY 5
 # define SD_WOLF_DIE 6
 # define SD_MINING 7
-# define SD_BUSH 8
+# define SD_DIAMOND 8
+# define SD_BUSH 9
 
 //NUMBER MAX
-# define _MAX_SOUNDS_ 9
+# define _MAX_SOUNDS_ 10
 
 #endif
