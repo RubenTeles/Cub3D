@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:00:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:51:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int ft_create_pig(t_object *pig)
 	pig->sprite = (canva())->sprite(PIG_S0);
 	pig->collision = 1;
 	pig->interation = 5;
+	pig->dimension[X] = 0;
+	pig->dimension[Y] = 0;
+	pig->dimension[2] = 0;
 	pig->player_interation = _interation_pig;
 	pig->player_near = _player_near_pig;
 	//pig->map[0] = '0';

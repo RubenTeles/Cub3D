@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 16:11:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 11:34:50 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ struct s_object
 	char		*map;
 	double		pos[2];
 	double		dir[2];
+	double		dimension[3];
 	double		vel;
 	double		turn;
 	int			life;
