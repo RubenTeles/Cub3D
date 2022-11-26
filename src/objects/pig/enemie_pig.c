@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 20:08:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 20:56:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	_player_near_pig(t_object *pig, int key)
 {
 	(void)key;
 	(void)pig;
-	printf("PROXIMO DO PORCO\n");
+	pig->pos[X]++;
+	pig->pos[Y]++;
 }
 
 static void	_interation_pig(t_object *pig, int key)

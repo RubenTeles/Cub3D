@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 19:36:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 21:07:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,13 @@ static int key_atack(void)
 static int key_pause(void)
 {
 	if ((engine())->key[_KEY_P].on && ((engine())->pause == 1))
-	{
 		(engine())->pause = 2;
-		(engine())->start_pause = time_current();
-	}
 	if (!(engine())->key[_KEY_P].on && ((engine())->pause == 2))
 	{
 		(engine())->pause = 0;
 		(canva())->scene = &(canva())->scene_show[SC_GAME];
 		(canva())->scene->init();
+		(engine())->start_time += (engine())->pause_time * 1000;
 	}
 	return (0);
 }
@@ -144,6 +142,7 @@ static int key_game_2(void)
 	}
 	if ((engine())->key[_KEY_P].on && ((engine())->pause == 0))
 	{
+		(engine())->start_pause = time_current();
 		(engine())->pause = 1;
 		(canva())->scene->complete = 1;
 	}
