@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 19:41:00 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 14:59:58 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/26 20:01:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,9 @@ int	ft_objects_len(t_object *sprites)
 
 void	ft_choose_spr_size(t_spr *sprite, t_object *obj)
 {
-	if (obj->title == CRISTAL || obj->title == BUSH)
-	{
-		sprite->udiv = 2.0;
-		sprite->vdiv = 2.0;
-		sprite->vmove = 250.0;
-	}
-	else
-	{
-		sprite->udiv = 4.0;
-		sprite->vdiv = 4.0;
-		sprite->vmove = 300.0;
-	}
+	sprite->udiv = obj->dimension[X];
+	sprite->vdiv = obj->dimension[Y];
+	sprite->vmove = obj->dimension[2];
 }
 
 t_spr	*ft_setup_sprites(t_object *objs)
@@ -147,8 +138,8 @@ t_spr	*ft_setup_sprites(t_object *objs)
 		if (!objs)
 			break ;
 		sprites[i].texture = objs->sprite;
-		sprites[i].x = objs->pos[0];
-		sprites[i].y = objs->pos[1];
+		sprites[i].x = objs->pos[0] + 0.5;
+		sprites[i].y = objs->pos[1] + 0.5;
 		ft_choose_spr_size(&sprites[i], objs);
 		objs = objs->next;
 	}
