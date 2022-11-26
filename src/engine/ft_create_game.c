@@ -6,21 +6,53 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 20:17:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/26 21:47:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 
-char	change_letter(char tittle)
+int	is_enimie_or_is_floor(char c, int option)
 {
-	if (tittle == 'p')
-		return ('0');
-	if (tittle == 'c')
-		return ('3');
-	if (tittle == 'B')
-		return ('0');
-	return (tittle);
+	if (option == 1)
+	{
+		if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '0' ||\
+			c == '3' || c == '2')
+			return (0);
+		else
+			return (1);
+	}
+	else
+	{	
+		if (c == '0' || c == '2' || c == '3')
+			return (1);
+		if (c == 'p' || c == 'c' || c == 'B')
+			return (2);
+	}
+	return (0);
+}
+
+char	change_letter(char tittle, char **map , int y, int x)
+{
+	if (is_enimie_or_is_floor(tittle, 0) != 2)
+		return (tittle);
+	if (is_enimie_or_is_floor(map[y - 1][x], 0) == 1)
+		return (map[y - 1][x]);
+	if (is_enimie_or_is_floor(map[y - 1][x + 1], 0) == 1)
+		return (map[y - 1][x + 1]);
+	if (is_enimie_or_is_floor(map[y - 1][x - 1], 0) == 1)
+		return (map[y - 1][x - 1]);
+	if (is_enimie_or_is_floor(map[y][x + 1], 0) == 1)
+		return (map[y][x + 1]);
+	if (is_enimie_or_is_floor(map[y][x - 1], 0) == 1)
+		return (map[y][x - 1]);
+	if (is_enimie_or_is_floor(map[y + 1][x], 0) == 1)
+		return (map[y + 1][x]);
+	if (is_enimie_or_is_floor(map[y + 1][x + 1], 0) == 1)
+		return (map[y + 1][x + 1]);
+	if (is_enimie_or_is_floor(map[y + 1][x - 1], 0) == 1)
+		return (map[y + 1][x - 1]);
+	return ('0');
 }
 
 void	game_read_map(char **map)
@@ -35,14 +67,12 @@ void	game_read_map(char **map)
 		x = -1;
 		while (map[y][++x])
 		{
-			if (map[y][x] != 'N' && map[y][x] != 'S' && map[y][x] != 'W' &&\
-				map[y][x] != 'E' && map[y][x] != '0' && map[y][x] != '3' &&\
-				map[y][x] != '2')
-				{
-					obj = ft_new_object(map[y][x], x, y);
-					obj->map = &map[y][x];
-					map[y][x] = change_letter(map[y][x]);
-				}
+			if (is_enimie_or_is_floor(map[y][x], 1))
+			{
+				obj = ft_new_object(map[y][x], x, y);
+				obj->map = &map[y][x];
+				map[y][x] = change_letter(map[y][x], map, y , x);
+			}
 			if (x > (engine())->max[X])
 				(engine())->max[X] = x;
 		}
