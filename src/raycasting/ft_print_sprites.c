@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:16:14 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 23:08:18 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:05:26 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_print_stripe(t_spr_vls *copy, int i, int vmovescreen, t_view *view)
 	a = *copy;
 	if (a.sprite[a.sprite_order[i]].texture)
 		a.tex_x = (int)(256 * (a.stripe - (-a.sprite_wdt / 2 + a.sprite_scrn_x)) \
-		* a.sprite[a.sprite_order[i]].texture->alt / a.sprite_wdt) / 256;
+		* a.sprite[a.sprite_order[i]].texture->larg / a.sprite_wdt) / 256;
 	if (a.transform_y > 0 && a.stripe > 0 && a.stripe < canva()->data->larg \
 	&& a.transform_y < a.buffer[a.stripe])
 	{
