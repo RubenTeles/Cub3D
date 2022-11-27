@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:50:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 17:01:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 17:13:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	key_atack_3(void)
 }
 
 //BUTTON LEFT 1
-static int	key_atack_2(void)
+static void	key_atack_2(void)
 {
 	static long long	time_start = 0;
 	static int			animation = 0;
@@ -50,12 +50,11 @@ static int	key_atack_2(void)
 		(engine())->key[_BUTTON_LEFT].on = 0;
 	if (!(engine())->key[_BUTTON_LEFT].on && (player())->atack == 2)
 		animation = key_atack_3();
-	return (0);
 }
 //(engine())->sound->play(&(engine())->sound[SD_WOLF_DIE]);
 
 //BUTTON RIGHT 2
-int	key_atack_1(void)
+void	key_atack_1(void)
 {
 	if (!(engine())->key[_BUTTON_RIGHT].on && (player())->atack == 1)
 	{
