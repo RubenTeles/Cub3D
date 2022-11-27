@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:14:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 14:14:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ struct s_aux
 {
 	double		x;
 	double		y;
-	int			larg;
-	int			alt;
-	double		dir[2];
+	double		larg;
+	double		alt;
 };
 
 struct s_key
@@ -131,8 +130,10 @@ struct s_canva
 	t_data		*(*sprite)(int sprite);
 	void		(*put)(t_data *data, int x, int y);
 	int			(*getPxColor)(t_data *data, int x, int y);
-	void		(*resize)(t_data *img, double larg, double alt, \
-	int pos_x, int pos_y);
+	void		(*resize)(t_data *img, t_aux aux);
+	void		(*rvresize)(t_data *img, t_aux aux);
+	void		(*color)(t_aux aux, int color);
+	void		(*word)(char *string, t_aux aux);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	void		(*create_data)(int min, int max);
 	t_data			(*create_sprite)(t_data new, int sprite);
@@ -188,6 +189,8 @@ struct s_player1
 	void	(*obj_interation)(int key);
 };
 
+t_aux			ft_aux(double larg, double alt, int x, int y);
+
 //static
 t_engine		*engine(void);
 t_canva			*canva(void);
@@ -200,20 +203,16 @@ void			new_sound(void);
 void			new_canva(void);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
-void			resize_image(t_data *img, double larg, double alt, int pos_x, \
-					int pos_y);
-void			rev_resize_image(t_data *img, double larg, double alt, \
-					int pos_x, int pos_y);
+void			resize_image(t_data *img, t_aux aux);
+void			rev_resize_image(t_data *img, t_aux aux);
+void			ft_print_color(t_aux aux, int color);
 t_data			*ft_sprite(int sprite);
 void			ft_put_canva(t_data *data, int x, int y);
-void			ft_print_color(int larg, int alt, int pos_x, int pos_y, \
-					int color);
 void			ft_path_start(void);
 t_data			create_sprite(t_data new, int sprite);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
-void			ft_put_word(char *str, double larg, double alt, int pos_x, \
-					int pos_y);
+void			ft_put_word(char *str, t_aux aux);
 
 //Keys
 void			new_key(void);

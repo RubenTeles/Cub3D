@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_floor_raycasting.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 21:04:45 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 14:11:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	ft_floor_print(t_view *view, t_alg_fl a)
 	a.ty = (int)(a.data[a.flrtex]->alt * (a.floory - a.celly));
 	a.color = canva()->getPxColor(a.data[a.flrtex], a.tx, a.ty);
 	a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
-	ft_print_color(1, 1, a.x, a.y, a.color);
+	(canva())->color(ft_aux(1, 1, a.x, a.y), a.color);
 	if (!(all()->map[a.celly][a.cellx] == '0'))
 	{
 		a.color = canva()->getPxColor(a.data[a.c_tex], a.tx, a.ty);
 		a.color = ft_grade_color(view, a.floorx, a.floory, a.color);
-		ft_print_color(1, 1, a.x, a.h - a.y - 1, a.color);
+		(canva())->color(ft_aux(1, 1, a.x, a.h - a.y - 1), a.color);
 	}
 }
 

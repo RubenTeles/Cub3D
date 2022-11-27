@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 21:17:07 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 14:12:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
 		a.texpos += a.step;
 		a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
-		ft_print_color(1, 1, x, a.y, a.color);
+		(canva())->color(ft_aux(1, 1, x, a.y), a.color);
 	}
 	a.z_buffer[x] = a.perp_dist;
 }

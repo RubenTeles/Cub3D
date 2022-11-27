@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:11:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 14:09:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	new_canva(void)
 	(canva())->getPxColor = get_pixel_color;
 	(canva())->put_pixel = my_mlx_pixel_put;
 	(canva())->resize = resize_image;
+	(canva())->rvresize = rev_resize_image;
+	(canva())->color = ft_print_color;
+	(canva())->word = ft_put_word;
 	(canva())->create_data = create_datas;
 	(canva())->create_sprite = create_sprite;
 	(canva())->destroy = __destroy;

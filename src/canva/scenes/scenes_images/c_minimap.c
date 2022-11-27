@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/24 12:12:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 14:02:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 void	ft_time(void)
 {
-	ft_print_color((engine())->size[X] * 0.112, (engine())->size[Y] * 0.086,\
-		(engine())->size[X] * 0.461, (engine())->size[Y] * 0.010, 0X6b4324);
-	ft_print_color((engine())->size[X] * 0.105, (engine())->size[Y] * 0.074,\
-		(engine())->size[X] * 0.464, (engine())->size[Y] * 0.017, 0xe6be7e);
-	ft_put_word((string()).itoa((engine())->time),\
-	(engine())->size[X] * 0.05, (engine())->size[Y] * 0.05,\
-	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030);
+	(canva())->color(ft_aux((engine())->size[X] * 0.112, (engine())->size[Y] * \
+	0.086, (engine())->size[X] * 0.461, (engine())->size[Y] * 0.010), 0X6b4324);
+	(canva())->color(ft_aux((engine())->size[X] * 0.105, (engine())->size[Y] * \
+	0.074, (engine())->size[X] * 0.464, (engine())->size[Y] * 0.017), 0xe6be7e);
+	(canva())->word((string()).itoa((engine())->time), ft_aux(\
+	(engine())->size[X] * 0.05, (engine())->size[Y] * 0.05, \
+	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030));
 }
 
 void	ft_put_minimap_enimies(int x, int y, double larg, double alt)
@@ -40,17 +40,21 @@ void	ft_put_minimap_enimies(int x, int y, double larg, double alt)
 	aux = (engine())->enemies;
 	while (aux)
 	{
-		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
-			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
+		if (aux->pos[X] >= (player())->pos[X] - x && \
+		aux->pos[X] <= (player())->pos[X] + x && \
+		aux->pos[Y] >= (player())->pos[Y] - y && \
+		aux->pos[Y] <= (player())->pos[Y] + y)
 			if (aux->avatar)
-				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
-				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
-				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
+				(canva())->resize(aux->avatar, ft_aux((engine())->size[X] * \
+				0.020, (engine())->size[Y] * 0.018, larg + ((aux->pos[X] - \
+				board_x) * (canva())->rsz[X]),
+				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
 		aux = aux->next;
 	}
-	(canva())->resize((player())->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
-	larg + (((player())->pos[X] - board_x) * (canva())->rsz[X]),\
-	alt + (((player())->pos[Y] - board_y) * (canva())->rsz[Y]));
+	(canva())->resize((player())->avatar, ft_aux((engine())->size[X] * 0.020, \
+	(engine())->size[Y] * 0.018, larg + (((player())->pos[X] - board_x) * \
+	(canva())->rsz[X]), alt + (((player())->pos[Y] - board_y) * \
+	(canva())->rsz[Y])));
 }
 
 void	ft_put_minimap(int x, int y, double larg, double alt)
@@ -70,12 +74,15 @@ void	ft_put_minimap(int x, int y, double larg, double alt)
 	aux = (engine())->object;
 	while (aux)
 	{
-		if (aux->pos[X] >= (player())->pos[X] - x && aux->pos[X] <= (player())->pos[X] + x &&\
-			aux->pos[Y] >= (player())->pos[Y] - y && aux->pos[Y] <= (player())->pos[Y] + y)
+		if (aux->pos[X] >= (player())->pos[X] - x && \
+		aux->pos[X] <= (player())->pos[X] + x && \
+		aux->pos[Y] >= (player())->pos[Y] - y && \
+		aux->pos[Y] <= (player())->pos[Y] + y)
 			if (aux->avatar)
-				(canva())->resize(aux->avatar, (engine())->size[X] * 0.020, (engine())->size[Y] * 0.018,\
+				(canva())->resize(aux->avatar, ft_aux((engine())->size[X] * \
+				0.020, (engine())->size[Y] * 0.018, \
 				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
-				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y]));
+				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
 		aux = aux->next;
 	}
 	ft_put_minimap_enimies(x, y, larg, alt);
@@ -89,13 +96,15 @@ void	ft_minimap(t_scene_img *scene)
 	data = (canva())->sprite(MINIMAP);
 	if (!data)
 		return ;
-	ft_print_color((engine())->size[X] * 0.221, (engine())->size[Y] * 0.174,\
-		 (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086, 0xe6be7e);
-	ft_put_minimap(11, 9, (canva())->data->larg * 0.725,\
-		(canva())->data->alt * 0.08);
-	(canva())->resize(data, (engine())->size[X] * 0.30, (engine())->size[Y] *\
-		0.35, (engine())->size[X] * 0.70, (engine())->size[Y] * 0.00);
-	ft_put_word("MINI MAP", (engine())->size[X] * 0.15, (engine())->size[Y] *\
-		0.04, (engine())->size[X] * 0.775, (engine())->size[Y] * 0.26);
+	(canva())->color(ft_aux((engine())->size[X] * 0.221, (engine())->size[Y] * \
+	0.174, (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086), 0xe6be7e);
+	ft_put_minimap(11, 9, (canva())->data->larg * 0.725, \
+	(canva())->data->alt * 0.08);
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.30, \
+	(engine())->size[Y] * 0.35, (engine())->size[X] * 0.70, \
+	(engine())->size[Y] * 0.00));
+	(canva())->word("MINI MAP", ft_aux((engine())->size[X] * 0.15, \
+	(engine())->size[Y] * 0.04, (engine())->size[X] * 0.775, \
+	(engine())->size[Y] * 0.26));
 	ft_time();
 }

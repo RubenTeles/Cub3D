@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:28:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 13:21:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_data	*ft_alphabet(char c)
 	}
 	return (data);
 }
-
+/*
 void	ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y)
 {
 	int		i;
@@ -46,5 +46,23 @@ void	ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y)
 		letter = ft_alphabet(str[i]);
 		if (letter)
 			(canva())->resize(letter, larg, alt, pos_x + larg * i, pos_y);
+	}
+}*/
+
+void	ft_put_word(char *str, t_aux aux)
+{
+	int		i;
+	int		len;
+	t_data	*letter;
+
+	len = (string()).len(str);
+	i = -1;
+	aux.larg = aux.larg / len;
+	while (str[++i])
+	{
+		letter = ft_alphabet(str[i]);
+		if (letter)
+			(canva())->resize(letter, ft_aux(aux.larg, aux.alt, \
+			aux.x + aux.larg * i, aux.y));
 	}
 }

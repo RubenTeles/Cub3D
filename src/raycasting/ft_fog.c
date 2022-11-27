@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fog.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 17:08:48 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 14:11:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_fog(t_data *data, double time)
 				t = 0.0F;
 			if (y < (data->alt / 2))
 				color = ft_linear_gradient(arr, t);
-			ft_print_color(0, 0, x, y, color);
+			(canva())->color(ft_aux(0, 0, x, y), color);
 		}
 	}
 	return (0);

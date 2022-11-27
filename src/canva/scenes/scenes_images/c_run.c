@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 23:18:19 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:22:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 14:05:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	ft_run(t_scene_img *scene)
 
 	(void)scene;
 	data = (canva())->sprite(RUN);
-	(canva())->resize(data, (canva())->data->larg, (canva())->data->alt, 0, 0);
+	(canva())->resize(data, ft_aux((canva())->data->larg, (canva())->data->alt, \
+	0, 0));
 }
