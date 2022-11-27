@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_methods.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:30:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 22:50:30 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	key_mouse_move(int x, int y, void *param)
 	}
 	if (x < 620)
 	{
+		if (x < 1)
+			x = 1;
 		move = (player())->turn * (double)(((float)620 * 0.1) / (float)(x));
 		ft_rotate_dir(-move);
 		(player())->turn_times += move;
