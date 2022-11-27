@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:13:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:51:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,12 @@ int				key_mouse_move(int x, int y, void *param);
 int				key_management(void);
 int				begin(void *param);
 int				key_esc(void);
+int				key_menu(void);
+int				key_pause(void);
+int				key_game(void);
+int				key_game_2(void);
+int				key_atack(void);
+
 
 //Menu
 int				menu_hooks(void);

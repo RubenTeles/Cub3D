@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 17:07:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:39:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ static void	_interation_zero_(t_object	*obj, int key)
 	(void)key;
 }
 
+t_object	*ft_new_object_2(t_object *new, char title)
+{
+	new->collision = 1;
+	new->interation = 0;
+	new->is_near = 0;
+	new->player_near = _interation_zero_;
+	new->player_interation = _interation_zero_;
+	new->is_collision = is_collision;
+	new->last = last_object;
+	new->destroy = destroy_object;
+	new->next = 0;
+	if ((new->title == PIG_S0 || new->title == CRISTAL || new->title == BUSH) \
+	&& !(engine())->enemies)
+		(engine())->enemies = new;
+	else if ((new->title == PIG_S0 || new->title == CRISTAL || new->title == \
+	BUSH) && (engine())->enemies)
+		(engine())->enemies->last((engine())->enemies)->next = new;
+	else if (!(engine())->object)
+		(engine())->object = new;
+	else
+		(engine())->object->last((engine())->object)->next = new;
+	ft_managemen_objects(title, new);
+	return (new);
+}
+
 t_object	*ft_new_object(char title, int x, int y)
 {
 	t_object	*new;
@@ -75,23 +100,5 @@ t_object	*ft_new_object(char title, int x, int y)
 	new->vel = 0.05;
 	new->turn = 0.05;
 	new->life = 100;
-	new->collision = 1;
-	new->interation = 0;
-	new->is_near = 0;
-	new->player_near = _interation_zero_;
-	new->player_interation = _interation_zero_;
-	new->is_collision = is_collision;
-	new->last = last_object;
-	new->destroy = destroy_object;
-	new->next = 0;
-	if ((new->title == PIG_S0 || new->title == CRISTAL || new->title == BUSH) && !(engine())->enemies) 
-		(engine())->enemies = new;
-	else if ((new->title == PIG_S0 || new->title == CRISTAL || new->title == BUSH) && (engine())->enemies) 
-		(engine())->enemies->last((engine())->enemies)->next = new;
-	else if (!(engine())->object)
-		(engine())->object = new;
-	else
-		(engine())->object->last((engine())->object)->next = new;
-	ft_managemen_objects(title, new);
-	return (new);
+	return (ft_new_object_2(new, title));
 }
