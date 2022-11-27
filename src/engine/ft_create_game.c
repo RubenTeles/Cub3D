@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 21:47:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:31:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_enimie_or_is_floor(char c, int option)
 {
 	if (option == 1)
 	{
-		if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '0' ||\
+		if (c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '0' || \
 			c == '3' || c == '2')
 			return (0);
 		else
@@ -32,7 +32,7 @@ int	is_enimie_or_is_floor(char c, int option)
 	return (0);
 }
 
-char	change_letter(char tittle, char **map , int y, int x)
+char	change_letter(char tittle, char **map, int y, int x)
 {
 	if (is_enimie_or_is_floor(tittle, 0) != 2)
 		return (tittle);
@@ -71,7 +71,7 @@ void	game_read_map(char **map)
 			{
 				obj = ft_new_object(map[y][x], x, y);
 				obj->map = &map[y][x];
-				map[y][x] = change_letter(map[y][x], map, y , x);
+				map[y][x] = change_letter(map[y][x], map, y, x);
 			}
 			if (x > (engine())->max[X])
 				(engine())->max[X] = x;
@@ -80,9 +80,9 @@ void	game_read_map(char **map)
 	(engine())->max[Y] = y;
 }
 
-void 	ft_create_game(void)
+void	ft_create_game(void)
 {
-	static int  a = 0;
+	static int	a = 0;
 
 	if (a > 0)
 		return ;

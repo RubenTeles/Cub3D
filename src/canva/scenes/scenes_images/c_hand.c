@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 00:34:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:16:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_animation_atack(t_data *data, double x1, double x2, double y)
 			a++;
 	}
 	if (!a)
-		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
-			0.4, (engine())->size[X] * x1, (engine())->size[Y] * y);
+		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] \
+			* 0.4, (engine())->size[X] * x1, (engine())->size[Y] * y);
 	else
-		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
+		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] * \
 			0.4, (engine())->size[X] * x2, (engine())->size[Y] * y);
 }
 
@@ -51,16 +51,16 @@ void	ft_animation_hand(double animation, t_data *data)
 	y += animation;
 	if (data->title == HAND)
 	{
-		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
-			0.4, (engine())->size[X] * x1, (engine())->size[Y] * y);
-		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
+		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] \
+			* 0.4, (engine())->size[X] * x1, (engine())->size[Y] * y);
+		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] * \
 			0.4, (engine())->size[X] * x2, (engine())->size[Y] * y);
 	}
 	else if (data->title == NICE)
 	{
-		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
-			0.4, (engine())->size[X] * 0.42, (engine())->size[Y] * (0.06 + y));//0.66 + y));
-		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] *\
+		(canva())->resize(data, (engine())->size[X] * 0.3, (engine())->size[Y] \
+			* 0.4, (engine())->size[X] * 0.42, (engine())->size[Y] * (0.06 + y));
+		rev_resize_image(data, (engine())->size[X] * 0.3, (engine())->size[Y] * \
 			0.4, (engine())->size[X] * 0.31, (engine())->size[Y] * (0.06 + y));
 	}
 	else

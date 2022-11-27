@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_SPRITES.h                                          :+:      :+:    :+:   */
+/*   ft_sprites.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:09:37 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/12 14:09:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:05:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define MENU 5
 # define SIGN 6
 # define WALK 7
-# define HEART 97
 
 //Player
 # define AVATAR 8
@@ -44,24 +43,27 @@
 # define CLOUD_1 18
 # define CLOUD_2 19
 # define CLOUD_3 20
+# define GRASS 64
+
+//WALS
+# define WINDOW 21
 # define WOOD_FLOOR 22
-# define WINDOW 95
 # define DOOR 23
 # define DOOR_OPEN 24
 # define HAY 25
-# define CAVE 96
+# define CAVE 26
 
 //Game Itens
-# define TREE 21
-# define CRISTAL 26
-# define CRISTALS 27
-# define BUSH 28
-# define BUSH_AMORAS 29
+# define CRISTAL 27
+# define CRISTALS 28
+# define BUSH 29
+# define BUSH_AMORAS 30
+# define TREE 31
+# define HEART 32
 
-//PIG
-# define PIG_D0 30
-# define PIG_D1 31
-# define PIG_D2 32
+//EFECT
+# define RUN 58
+# define CHICKEN_D2 59
 
 //PIG
 # define PIG 33
@@ -70,45 +72,37 @@
 # define PIG_S2 36
 # define PIG_S3 37
 
-
-# define PIG_W0 38
-# define PIG_W1 39
-# define PIG_W2 40
-# define PIG_W3 41
-
-# define CHICKEN_A0 42
-# define CHICKEN_A1 43
-# define CHICKEN_A2 44
-# define CHICKEN_A3 45
-# define CHICKEN_D0 46
-# define CHICKEN_D1 58
-# define CHICKEN_D2 59
+//BULL
+# define BULL 38
+# define BULL_2 39
+# define BULL_3 40
+# define BULL_4 41
 
 //CHICKEN
-# define CHICKEN 60
-# define CHICKEN_S0 61
-# define CHICKEN_S1 62
-# define CHICKEN_S2 63
-# define CHICKEN_S3 64
+# define CHICKEN 42
+# define CHICKEN_S0 43
+# define CHICKEN_S1 44
+# define CHICKEN_S2 45
+# define CHICKEN_S3 46
 
-
-# define CHICKEN_W0 91
-# define CHICKEN_W1 92
-# define CHICKEN_W2 93
-# define GRASS 94
+//EMPTY
+# define EMPTY_01 60
+# define EMPTY_02 61
+# define EMPTY_03 62
+# define EMPTY_04 63
 
 //Alphabet
 # define _BARRA 47
-# define _0 48
-# define _1 49
-# define _2 50
-# define _3 51
-# define _4 52
-# define _5 53
-# define _6 54
-# define _7 55
-# define _8 56
-# define _9 57
+# define _ZERO_ 48
+# define _ONE 49
+# define _TWO 50
+# define _THREE 51
+# define _FOUR 52
+# define _FIVE 53
+# define _SIX 54
+# define _SEVEN 55
+# define _EIGHT 56
+# define _NINE 57
 # define _A 65
 # define _B 66
 # define _C 67
@@ -136,10 +130,7 @@
 # define _Y 89
 # define _Z 90
 
-//EFECT
-# define RUN 98
-
 //Number Max Sprites
-# define _MAX_SPRITES_ 99
+# define _MAX_SPRITES_ 91
 
 #endif

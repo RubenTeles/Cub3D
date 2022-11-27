@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:58:17 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 11:52:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:33:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	_interation_door(t_object *door, int key)
 	}
 }
 
-int ft_create_door(t_object *door)
+int	ft_create_door(t_object *door)
 {
 	door->avatar = (canva())->sprite(DOOR);
 	door->sprite = (canva())->sprite(DOOR);

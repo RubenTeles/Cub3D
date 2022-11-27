@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:02:04 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 13:05:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:28:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 void	magnament_scenes_images(void)
 {
-	int	i;
-	t_scene_img *scene;
+	int			i;
+	t_scene_img	*scene;
 
 	scene = 0;
 	i = -1;
@@ -44,13 +44,13 @@ void	reset_scenes(void)
 void	magnament_scenes(void)
 {
 	if ((canva())->scene->complete == 1)
-    {
+	{
 		(canva())->scene = (canva())->scene->next;
 		(canva())->scene->init();
-    }
+	}
 	if ((canva())->scene->key)
 		(canva())->scene->key();
-    magnament_scenes_images();
+	magnament_scenes_images();
 }
 
 void	init_management_scenes(void)

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/20 01:19:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:28:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_data	*ft_alphabet(char c)
 {
 	t_data	*data;
 	int		letter;
-	
+
 	letter = c;
 	if (!((letter >= 47 && letter <= 57) || (letter >= 65 && letter <= 90)))
 		return (0);
@@ -34,10 +34,10 @@ t_data	*ft_alphabet(char c)
 
 void	ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
 	t_data	*letter;
-	
+
 	len = (string()).len(str);
 	i = -1;
 	larg = larg / len;

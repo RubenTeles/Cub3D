@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 13:15:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:11:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,32 @@ static void	__destroy(void)
 	free((canva())->scene_img);
 }
 
-void create_datas(int min, int max)
+void	create_datas(int min, int max)
 {
 	while (min <= max && min < _MAX_SPRITES_)
 	{
 		if (!(canva())->data[min].load && (canva())->data[min].path)
-			(canva())->data[min] = (canva())->create_sprite((canva())->data[min], min);
+			(canva())->data[min] = \
+				(canva())->create_sprite((canva())->data[min], min);
 		min++;
 	}
 }
 
-static void canva_reset_data(void)
+static void	canva_reset_data(void)
 {
 	int	i;
 
 	(canva())->data[CANVA].load = 1;
 	(canva())->data[CANVA].title = 'Z';
 	(canva())->data[CANVA].path = NULL;
-	(canva())->data[CANVA].img = mlx_new_image((engine())->ptr, (engine())->size[X], \
+	(canva())->data[CANVA].img = \
+	mlx_new_image((engine())->ptr, (engine())->size[X], \
 	(engine())->size[X]);
 	(canva())->data[CANVA].larg = (engine())->size[X];
 	(canva())->data[CANVA].alt = (engine())->size[Y];
 	(canva())->data[CANVA].addr = mlx_get_data_addr((canva())->data[CANVA].img, \
-	&(canva())->data[CANVA].bits_per_pixel, &(canva())->data[CANVA].line_length, \
-	&(canva())->data[CANVA].endian);
+	&(canva())->data[CANVA].bits_per_pixel, \
+	&(canva())->data[CANVA].line_length, &(canva())->data[CANVA].endian);
 	ft_path_start();
 	i = 0;
 	while (++i <= _MAX_SPRITES_)

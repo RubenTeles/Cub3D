@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 23:17:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 11:51:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,17 @@ void	path_pig(void)
 	(canva())->data[CRISTALS].path = "./sprite/item/cristal.xpm";
 	(canva())->data[BUSH].path = "./sprite/item/bush.xpm";
 	(canva())->data[BUSH_AMORAS].path = "./sprite/item/bush_amoras.xpm";
-	(canva())->data[GRASS].path = "./sprite/item/grass_3.xpm";;
-	(canva())->data[PIG_D0].path = 0;
-	(canva())->data[PIG_D1].path = 0;
-	(canva())->data[PIG_D2].path = 0;
+	(canva())->data[GRASS].path = "./sprite/item/grass_3.xpm";
 	(canva())->data[PIG].path = "./sprite/pig/s0.xpm";
 	(canva())->data[PIG_S0].path = "./sprite/pig/s0.xpm";
 	(canva())->data[PIG_S1].path = 0;
 	(canva())->data[PIG_S2].path = 0;
 	(canva())->data[PIG_S3].path = 0;
-	(canva())->data[PIG_W0].path = 0;
-	(canva())->data[PIG_W1].path = 0;
-	(canva())->data[PIG_W2].path = 0;
-	(canva())->data[PIG_W3].path = 0;
-}
-
-void	path_chicken(void)
-{
-	(canva())->data[CHICKEN_A0].path = 0;
-	(canva())->data[CHICKEN_A1].path = 0;
-	(canva())->data[CHICKEN_A2].path = 0;
-	(canva())->data[CHICKEN_A3].path = 0;
-	(canva())->data[CHICKEN_D0].path = 0;
-	(canva())->data[CHICKEN_D1].path = 0;
-	(canva())->data[CHICKEN_D2].path = 0;
 	(canva())->data[CHICKEN].path = 0;
 	(canva())->data[CHICKEN_S0].path = 0;
 	(canva())->data[CHICKEN_S1].path = 0;
 	(canva())->data[CHICKEN_S2].path = 0;
 	(canva())->data[CHICKEN_S3].path = 0;
-	(canva())->data[CHICKEN_W0].path = 0;
-	(canva())->data[CHICKEN_W1].path = 0;
-	(canva())->data[CHICKEN_W2].path = 0;
-	path_pig();
 }
 
 void	ft_path_alphabet_2(void)
@@ -78,22 +56,22 @@ void	ft_path_alphabet_2(void)
 	(canva())->data[_X].path = "./sprite/alphabet/X.xpm";
 	(canva())->data[_Y].path = "./sprite/alphabet/Y.xpm";
 	(canva())->data[_Z].path = "./sprite/alphabet/Z.xpm";
-	path_chicken();
+	path_pig();
 }
 
 void	ft_path_alphabet(void)
 {
 	(canva())->data[_BARRA].path = "./sprite/alphabet/barra.xpm";
-	(canva())->data[_0].path = "./sprite/alphabet/0.xpm";
-	(canva())->data[_1].path = "./sprite/alphabet/1.xpm";
-	(canva())->data[_2].path = "./sprite/alphabet/2.xpm";
-	(canva())->data[_3].path = "./sprite/alphabet/3.xpm";
-	(canva())->data[_4].path = "./sprite/alphabet/4.xpm";
-	(canva())->data[_5].path = "./sprite/alphabet/5.xpm";
-	(canva())->data[_6].path = "./sprite/alphabet/6.xpm";
-	(canva())->data[_7].path = "./sprite/alphabet/7.xpm";
-	(canva())->data[_8].path = "./sprite/alphabet/8.xpm";
-	(canva())->data[_9].path = "./sprite/alphabet/9.xpm";
+	(canva())->data[_ZERO_].path = "./sprite/alphabet/0.xpm";
+	(canva())->data[_ONE].path = "./sprite/alphabet/1.xpm";
+	(canva())->data[_TWO].path = "./sprite/alphabet/2.xpm";
+	(canva())->data[_THREE].path = "./sprite/alphabet/3.xpm";
+	(canva())->data[_FOUR].path = "./sprite/alphabet/4.xpm";
+	(canva())->data[_FIVE].path = "./sprite/alphabet/5.xpm";
+	(canva())->data[_SIX].path = "./sprite/alphabet/6.xpm";
+	(canva())->data[_SEVEN].path = "./sprite/alphabet/7.xpm";
+	(canva())->data[_EIGHT].path = "./sprite/alphabet/8.xpm";
+	(canva())->data[_NINE].path = "./sprite/alphabet/9.xpm";
 	(canva())->data[_A].path = "./sprite/alphabet/A.xpm";
 	(canva())->data[_B].path = "./sprite/alphabet/B.xpm";
 	(canva())->data[_C].path = "./sprite/alphabet/C.xpm";

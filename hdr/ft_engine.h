@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 11:34:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:14:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ struct s_scene_img
 
 struct s_sound
 {
-	int 		pid;
+	int			pid;
 	int			status;
 	char		*sound;
 	int			len;
@@ -134,8 +134,8 @@ struct s_canva
 	void		(*resize)(t_data *img, double larg, double alt, \
 	int pos_x, int pos_y);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
-	void 		(*create_data)(int min, int max);
-	t_data		(*create_sprite)(t_data new, int sprite);
+	void		(*create_data)(int min, int max);
+	t_data			(*create_sprite)(t_data new, int sprite);
 	t_data		*(*alphabet)(char c);
 	void		(*reset_scenes)(void);
 	void		(*show_scenes)(void);
@@ -200,20 +200,20 @@ void			new_sound(void);
 void			new_canva(void);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				get_pixel_color(t_data *data, int x, int y);
-void			resize_image(t_data *img, double larg, double alt, int pos_x,\
-int pos_y);
-void			rev_resize_image(t_data *img, double larg, double alt,\
-int pos_x, int pos_y);
+void			resize_image(t_data *img, double larg, double alt, int pos_x, \
+					int pos_y);
+void			rev_resize_image(t_data *img, double larg, double alt, \
+					int pos_x, int pos_y);
 t_data			*ft_sprite(int sprite);
 void			ft_put_canva(t_data *data, int x, int y);
-void			ft_print_color(int larg, int alt, int pos_x, int pos_y,\
-int color);
+void			ft_print_color(int larg, int alt, int pos_x, int pos_y, \
+					int color);
 void			ft_path_start(void);
 t_data			create_sprite(t_data new, int sprite);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
-void			ft_put_word(char *str, double larg, double alt, int pos_x,\
-int pos_y);
+void			ft_put_word(char *str, double larg, double alt, int pos_x, \
+					int pos_y);
 
 //Keys
 void			new_key(void);
@@ -224,15 +224,15 @@ int				key_press_in(int keycode);
 int				key_press_out(int keycode);
 int				key_mouse_move(int x, int y, void *param);
 int				key_management(void);
-int 			begin(void *param);
+int				begin(void *param);
 int				key_esc(void);
 
 //Menu
-int 			menu_hooks(void);
+int				menu_hooks(void);
 void			ft_words_menu(void);
 void			ft_head_wolf(double move);
-void		 	ft_create_game(void);
-int 			menu_game(double time);
+void			ft_create_game(void);
+int				menu_game(double time);
 
 //Object
 t_object		*ft_new_object(char title, int x, int y);
@@ -242,9 +242,9 @@ int				map_to_sprite(char title);
 
 //Objects and Enimes
 int				ft_create_door(t_object *door);
-int 			ft_create_pig(t_object *pig);
-int 			ft_create_cristal(t_object *cristal);
-int 			ft_create_bush(t_object *bush);
+int				ft_create_pig(t_object *pig);
+int				ft_create_cristal(t_object *cristal);
+int				ft_create_bush(t_object *bush);
 
 //PLAYER
 void			new_player(void);
@@ -262,10 +262,10 @@ unsigned char	get_b(int trgb);
 //Scenes
 void			new_scenes(void);
 void			init_management_scenes(void);
-void 			scene_login(void);
-void 			scene_menu(void);
-void 			scene_game(void);
-void 			scene_pause(void);
+void			scene_login(void);
+void			scene_menu(void);
+void			scene_game(void);
+void			scene_pause(void);
 
 //Image_Scenes
 void			new_scenes_img(void);
@@ -287,7 +287,8 @@ void			ft_set_camera(void);
 void			ft_calc_plane(void);
 void			ft_raycasting(t_scene_img *scene);
 void			ft_rotate_dir(double a);
-int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, int condition);
+int				ft_get_ray_color(t_data	*data, int tex_x, int tex_y, \
+				int condition);
 int				ft_texture_num(int map_x, int map_y, int side, t_view view);
 
 // Fog
@@ -295,7 +296,6 @@ int				ft_fog(t_data *data, double time);
 int				ft_linear_gradient(int colors[2], float percent);
 double			ft_dist_pts(double x1, double y1, double x2, double y2);
 int				ft_grade_color(t_view *view, float x, float y, int color);
-
 
 //Utils
 long long		time_current(void);

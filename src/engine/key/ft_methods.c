@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_methods.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 23:27:23 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 12:30:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	key_press_out(int keycode)
 }
 
 //Ao mexer o mouse
-int key_mouse_move(int x, int y, void *param)
+int	key_mouse_move(int x, int y, void *param)
 {
 	double	move;
+
 	(void)param;
 	(void)y;
-
 	if (x > 720)
 	{
 		move = (player())->turn * (double)((float)(x - 720) / (float)(620));
@@ -44,8 +44,8 @@ int key_mouse_move(int x, int y, void *param)
 	}
 	if (x < 620)
 	{
-		move = (player())->turn * (double)(((float)(620) * 0.1) / (float)(x));
-		ft_rotate_dir(-move);	
+		move = (player())->turn * (double)(((float)620 * 0.1) / (float)(x));
+		ft_rotate_dir(-move);
 		(player())->turn_times += move;
 	}
 	return (0);

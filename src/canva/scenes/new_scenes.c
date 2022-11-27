@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:04:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/22 16:29:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:28:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 #include <ft_scenes.h>
 #include <ft_scenes_images.h>
 
-void scene_login(void)
+void	scene_login(void)
 {
 	(canva())->scene_show[SC_LOGIN].complete = 0;
 	(canva())->scene_img[S_LOGIN].on = 1;
 }
 
-void scene_menu(void)
+void	scene_menu(void)
 {
 	(canva())->scene_show[SC_MENU].complete = 0;
 	(canva())->reset_scenes();
 	(canva())->scene_img[S_MENU].on = 1;
 }
 
-void scene_game(void)
+void	scene_game(void)
 {
 	(canva())->scene_show[SC_GAME].complete = 0;
 	(canva())->reset_scenes();
@@ -39,7 +39,7 @@ void scene_game(void)
 	(canva())->scene_img[S_MINI_MAP].on = 1;
 }
 
-void scene_pause(void)
+void	scene_pause(void)
 {
 	(canva())->scene_show[SC_PAUSE].complete = 0;
 	(canva())->scene_img[S_PAUSE].on = 1;

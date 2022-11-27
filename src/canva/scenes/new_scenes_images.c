@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:58:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/23 23:20:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:27:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	scenes_animation(void)
 
 void	new_scenes_img(void)
 {
-	int i;
+	int	i;
 
 	(canva())->scene_img = malloc(sizeof(t_scene_img) * S_MAX_SCENES_IMG);
 	scenes_animation();

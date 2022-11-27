@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 23:25:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:30:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <ft_scenes_images.h>
 #include <ft_sound.h>
 
-static int key_atack_2(void)
+static int	key_atack_2(void)
 {
 	static long	long	time_start = 0;
 	static int			animation = 0;
@@ -48,11 +48,11 @@ static int key_atack_2(void)
 	return (0);
 }
 
-static int key_atack(void)
+static int	key_atack(void)
 {
-	static long	long	time_start = 0;
+	static long long	time_start = 0;
 
-	if ((engine())->key[_BUTTON_RIGHT].on && (player())->fadigue - 2 >= 0 &&\
+	if ((engine())->key[_BUTTON_RIGHT].on && (player())->fadigue - 2 >= 0 && \
 		(player())->atack <= 1)
 	{
 		if (!(player())->atack)
@@ -78,7 +78,7 @@ static int key_atack(void)
 	return (0);
 }
 
-static int key_pause(void)
+static int	key_pause(void)
 {
 	if ((engine())->key[_KEY_P].on && ((engine())->pause == 1))
 		(engine())->pause = 2;
@@ -92,9 +92,9 @@ static int key_pause(void)
 	return (0);
 }
 
-static int key_game_3(void)
+static int	key_game_3(void)
 {
-	static int a = 0;
+	static int	a = 0;
 
 	if (!(engine())->key[_KEY_E].on && a == 1)
 	{
@@ -107,9 +107,9 @@ static int key_game_3(void)
 	return (0);
 }
 
-static int key_game_2(void)
+static int	key_game_2(void)
 {
-	if ((engine())->key[_KEY_SHIFT].on && (player())->move &&\
+	if ((engine())->key[_KEY_SHIFT].on && (player())->move && \
 		(player())->fadigue - 2 >= 0)
 	{
 		if ((player())->vision >= 0.60)
@@ -119,19 +119,19 @@ static int key_game_2(void)
 		//(player())->fadigue -= 2;
 		(canva())->scene_img[S_RUN].on = 1;
 	}
-	else if ((engine())->key[_KEY_SHIFT].on &&\
+	else if ((engine())->key[_KEY_SHIFT].on && \
 		(player())->vision <= 0.66 && (player())->move == 0)
 	{
 		(player())->vision += 0.001;
 		(canva())->scene_img[S_RUN].on = 0;
 	}
-	if ((engine())->key[_KEY_SHIFT].on && (player())->move &&\
+	if ((engine())->key[_KEY_SHIFT].on && (player())->move && \
 		(player()->fadigue - 3 <= 0))
 	{
 		(player())->vel = 0.10;
 		(canva())->scene_img[S_RUN].on = 0;
 	}
-	if (!(engine())->key[_KEY_SHIFT].on &&\
+	if (!(engine())->key[_KEY_SHIFT].on && \
 		((player())->vision <= 0.66 || (player())->fadigue + 0.25 < 100))
 	{
 		if ((player())->fadigue <= 100)
@@ -156,7 +156,7 @@ static int key_game_2(void)
 }
 
 //Quando pressionar uma tecla
-static int key_game(void)
+static int	key_game(void)
 {
 	static long long	time_start = 0;
 
@@ -213,7 +213,7 @@ static int key_game(void)
 }
 
 //Quando pressionar uma tecla
-static int key_menu(void)
+static int	key_menu(void)
 {
 	if ((engine())->menu == 1)
 	{

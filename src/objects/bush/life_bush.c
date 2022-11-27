@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 20:13:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 12:33:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	_interation_bush(t_object *bush, int key)
 	if (key != KEY_E)
 		return ;
 	(engine())->sound->play(&(engine())->sound[SD_BUSH]);
-	if ((bush->interation > 0) && (((player())->life < 1000) ||\
+	if ((bush->interation > 0) && (((player())->life < 1000) || \
 	(player())->fadigue < 100))
 	{
 		bush->avatar = (canva())->sprite(BUSH);
@@ -47,7 +47,7 @@ static void	_interation_bush(t_object *bush, int key)
 	}
 }
 
-int ft_create_bush(t_object *bush)
+int	ft_create_bush(t_object *bush)
 {
 	bush->avatar = (canva())->sprite(BUSH_AMORAS);
 	bush->sprite = (canva())->sprite(BUSH_AMORAS);
@@ -59,6 +59,7 @@ int ft_create_bush(t_object *bush)
 	bush->dimension[2] = 100;
 	bush->player_interation = _interation_bush;
 	bush->player_near = _player_near_bush;
-	//bush->map[0] = '3';
 	return (1);
 }
+
+//bush->map[0] = '3';
