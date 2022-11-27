@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 19:54:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/10/22 19:41:42 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 16:31:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ replace:
 Muda o valor da str1 para o str2.
 
 split:
-divide a string str em várias, tendo em conta o separador div (que pode ter qualquer tamanho)
-retorna uma array de strings
+divide a string str em várias, tendo em conta o separador div (que pode 
+ter qualquer tamanho) retorna uma array de strings
 
 sub_split_option:
 Nova string, divida por um caracter. Se a opção for 0 é do inicio ate ao c,

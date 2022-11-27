@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:16:21 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:21:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 #include <ft_sprites.h>
 #include <ft_scenes_images.h>
 
-void	ft_animation_atack(t_data *data, double x1, double x2, double y)
+void	ft_animation_hand_normal(t_data *data, double x1, double x2, double y)
 {
-	static int	a = 0;
-	static int	loop = 0;
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
+	(engine())->size[Y] * 0.4, (engine())->size[X] * x1, \
+	(engine())->size[Y] * y));
+	(canva())->rvresize(data, ft_aux((engine())->size[X] * 0.3, \
+	(engine())->size[Y] * \
+	0.4, (engine())->size[X] * x2, (engine())->size[Y] * y));
+}
 
-	if ((player())->sprite->title == ATACK_4)
-		loop = 1;
-	if ((player())->sprite->title == ATACK_1 && loop == 1)
-	{
-		loop = 0;
-		if (a)
-			a--;
-		else
-			a++;
-	}
-	if (!a)
-		(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
-		(engine())->size[Y] * 0.4, (engine())->size[X] * x1, \
-		(engine())->size[Y] * y));
-	else
-		(canva())->rvresize(data, ft_aux((engine())->size[X] * 0.3, \
-		(engine())->size[Y] * 0.4, (engine())->size[X] * x2, \
-		(engine())->size[Y] * y));
+void	ft_animation_nice(t_data *data, double y)
+{
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
+	(engine())->size[Y] * 0.4, (engine())->size[X] * 0.42, \
+	(engine())->size[Y] * (0.06 + y)));
+	(canva())->rvresize(data, ft_aux((engine())->size[X] * 0.3, \
+	(engine())->size[Y] * \
+	0.4, (engine())->size[X] * 0.31, (engine())->size[Y] * (0.06 + y)));
 }
 
 void	ft_animation_hand(double animation, t_data *data)
@@ -46,27 +41,17 @@ void	ft_animation_hand(double animation, t_data *data)
 	static double	x2 = 0.55;
 	static double	y = 0.60;
 
+	if (!data)
+		return ;
 	if (a == 1)
 		animation *= -1;
 	x1 += animation;
 	x2 -= animation;
 	y += animation;
 	if (data->title == HAND)
-	{
-		(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
-		(engine())->size[Y] * 0.4, (engine())->size[X] * x1, (engine())->size[Y] * y));
-		(canva())->rvresize(data, ft_aux((engine())->size[X] * 0.3, (engine())->size[Y] * \
-			0.4, (engine())->size[X] * x2, (engine())->size[Y] * y));
-	}
+		ft_animation_hand_normal(data, x1, x2, y);
 	else if (data->title == NICE)
-	{
-		(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
-		(engine())->size[Y] * 0.4, (engine())->size[X] * 0.42, \
-		(engine())->size[Y] * (0.06 + y)));
-		(canva())->rvresize(data, ft_aux((engine())->size[X] * 0.3, \
-		(engine())->size[Y] * \
-		0.4, (engine())->size[X] * 0.31, (engine())->size[Y] * (0.06 + y)));
-	}
+		ft_animation_nice(data, y);
 	else
 		ft_animation_atack(data, 0.20, 0.55, 0.60);
 	if (x1 > 0.21)
@@ -75,19 +60,22 @@ void	ft_animation_hand(double animation, t_data *data)
 		a = 0;
 }
 
+int	ft_animation(t_scene_img *scene)
+{
+	if (scene)
+		return (scene->animation);
+	return (0);
+}
+
 void	ft_hands(t_scene_img *scene)
 {
 	static int		count = 0;
 	static int		option = 0;
-	t_data			*data;
 	double			animation;
 
-	animation = 0;
+	animation = ft_animation(scene);
 	if (scene)
-	{
 		option = scene->option;
-		animation = scene->animation;
-	}
 	if (option >= 1 && !(engine())->pause && ++count)
 	{
 		if (option == 1)
@@ -104,8 +92,5 @@ void	ft_hands(t_scene_img *scene)
 		option = 0;
 		(player())->sprite = (canva())->sprite(HAND);
 	}
-	data = (player())->sprite;
-	if (!data)
-		return ;
-	ft_animation_hand(animation, data);
+	ft_animation_hand(animation, (player())->sprite);
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:14:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:13:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ struct s_canva
 	void		(*word)(char *string, t_aux aux);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	void		(*create_data)(int min, int max);
-	t_data			(*create_sprite)(t_data new, int sprite);
 	t_data		*(*alphabet)(char c);
 	void		(*reset_scenes)(void);
 	void		(*show_scenes)(void);
@@ -273,6 +272,8 @@ void			ft_initial_menu(t_scene_img *scene);
 void			ft_background(t_scene_img *scene);
 void			ft_run(t_scene_img *scene);
 void			ft_hands(t_scene_img *scene);
+void			ft_animation_atack(t_data *data, \
+				double x1, double x2, double y);
 void			ft_life(t_scene_img *scene);
 void			ft_minimap(t_scene_img *scene);
 void			ft_map(t_scene_img *scene);

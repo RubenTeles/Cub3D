@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/26 23:39:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:34:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	_player_near_cristal(t_object *cristal, int key)
 
 static void	_interation_cristal(t_object *cristal, int key)
 {
-	static long	long	time_start = 0;
+	static long long	time_start = 0;
 
 	if (key != _BUTTON_LEFT)
 		return ;
 	(engine())->sound[SD_MINING].dif = time_diff(time_start, time_current());
-	if (cristal->collision == 1 && ((engine())->sound[SD_MINING].dif > 700\
+	if (cristal->collision == 1 && ((engine())->sound[SD_MINING].dif > 700 \
 		|| time_start == 0))
 	{
 		time_start = time_current();
@@ -48,7 +48,7 @@ static void	_interation_cristal(t_object *cristal, int key)
 	}
 }
 
-int ft_create_cristal(t_object *cristal)
+int	ft_create_cristal(t_object *cristal)
 {
 	cristal->avatar = (canva())->sprite(CRISTALS);
 	cristal->sprite = (canva())->sprite(CRISTALS);

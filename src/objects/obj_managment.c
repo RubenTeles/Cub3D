@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:35:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:33:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	is_collision(t_object *obj, double x, double y, int option)
 	while (aux)
 	{
 		if (aux->collision == 1 && aux != obj && \
-			((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) &&\
-			(aux->pos[Y] + 1.10 >= y  && aux->pos[Y] - 0.1 <= y )))
-				return (1);
+			((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) && \
+			(aux->pos[Y] + 1.10 >= y && aux->pos[Y] - 0.1 <= y)))
+			return (1);
 		aux = aux->next;
 	}
-	if (obj && (((player())->pos[X] + 1.10 >= x &&\
-		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y &&\
+	if (obj && (((player())->pos[X] + 1.10 >= x && \
+		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y && \
 		(player())->pos[Y] - 0.1 <= y)))
 	{
 		printf("colide com o player\n");

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:48:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:28:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,8 @@ int	put_clouds(t_data *img, int x, int pos_x)
 	return (animation_x);
 }
 
-void	ft_background_2(double x1, t_data *data)
+void	ft_background_3(double x1, t_data *data)
 {
-	data = (canva())->sprite(CLOUD_2);
-	if (!data)
-		return ;
-	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
-	(engine())->size[Y] * 0.15, (engine())->size[X] * (0.88 + x1), \
-	(engine())->size[Y] * 0.30));
-	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
-	(engine())->size[Y] * \
-		0.15, (engine())->size[X] * (0.395 + x1), (engine())->size[Y] * -0.02));
-	data = (canva())->sprite(CLOUD_3);
 	if (!data)
 		return ;
 	(canva())->resize(data, ft_aux((engine())->size[X] * 0.3, \
@@ -55,8 +45,36 @@ void	ft_background_2(double x1, t_data *data)
 	(canva())->color(ft_aux((engine())->size[X], \
 	(engine())->size[Y] / 2, 0, \
 		(engine())->size[Y] / 2), (engine())->color[FLOOR]);
+}
+
+void	ft_background_2(double x1, t_data *data)
+{
+	if (!data)
+		return ;
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
+	(engine())->size[Y] * 0.15, (engine())->size[X] * (0.88 + x1), \
+	(engine())->size[Y] * 0.30));
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
+	(engine())->size[Y] * \
+		0.15, (engine())->size[X] * (0.395 + x1), (engine())->size[Y] * -0.02));
+	ft_background_3(x1, (canva())->sprite(CLOUD_3));
 	if ((player())->turn_times)
 		(player())->turn_times = 0;
+}
+
+void	ft_background_1(t_data *data, double x1)
+{
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
+	(engine())->size[Y] * \
+		0.15, (engine())->size[X] * (0.80 + x1), (engine())->size[Y] * -0.08));
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
+	(engine())->size[Y] * \
+	0.15, (engine())->size[X] * (0.05 + x1), (engine())->size[Y] * 0.15));
+	(canva())->resize(data, ft_aux((engine())->size[X] * 0.19, \
+	(engine())->size[Y] * \
+		0.16, (engine())->size[X] * (0.33 + x1), (engine())->size[Y] * 0.25));
+	ft_background_2(x1, (canva())->sprite(CLOUD_2));
+	ft_fog(canva()->data, (double)(engine())->time);
 }
 
 void	ft_background(t_scene_img *scene)
@@ -78,14 +96,5 @@ void	ft_background(t_scene_img *scene)
 	data = (canva())->sprite(CLOUD_1);
 	if (!data)
 		return ;
-	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
-	(engine())->size[Y] * \
-		0.15, (engine())->size[X] * (0.80 + x1), (engine())->size[Y] * -0.08));
-	(canva())->resize(data, ft_aux((engine())->size[X] * 0.17, \
-	(engine())->size[Y] * \
-	0.15, (engine())->size[X] * (0.05 + x1), (engine())->size[Y] * 0.15));
-	(canva())->resize(data, ft_aux((engine())->size[X] * 0.19, \
-	(engine())->size[Y] * \
-		0.16, (engine())->size[X] * (0.33 + x1), (engine())->size[Y] * 0.25));
-	ft_fog(canva()->data, (double)(engine())->time);
+	ft_background_1(data, x1);
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:02:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:00:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,67 +25,51 @@ void	ft_time(void)
 	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030));
 }
 
-void	ft_put_minimap_enimies(int x, int y, double larg, double alt)
+void	ft_put_enimies(t_aux sz, t_object *aux, double board_x, double board_y)
 {
-	t_object	*aux;
-	double		board_x;
-	double		board_y;
-
-	board_x = 0;
-	if (((player())->pos[X] - x) > 0)
-		board_x = ((player())->pos[X] - x);
-	board_y = 0;
-	if (((player())->pos[Y] - y) > 0)
-		board_y = ((player())->pos[Y] - y);
 	aux = (engine())->enemies;
 	while (aux)
 	{
-		if (aux->pos[X] >= (player())->pos[X] - x && \
-		aux->pos[X] <= (player())->pos[X] + x && \
-		aux->pos[Y] >= (player())->pos[Y] - y && \
-		aux->pos[Y] <= (player())->pos[Y] + y)
+		if (aux->pos[X] >= (player())->pos[X] - sz.x && \
+		aux->pos[X] <= (player())->pos[X] + sz.x && \
+		aux->pos[Y] >= (player())->pos[Y] - sz.y && \
+		aux->pos[Y] <= (player())->pos[Y] + sz.y)
 			if (aux->avatar)
 				(canva())->resize(aux->avatar, ft_aux((engine())->size[X] * \
-				0.020, (engine())->size[Y] * 0.018, larg + ((aux->pos[X] - \
+				0.020, (engine())->size[Y] * 0.018, sz.larg + ((aux->pos[X] - \
 				board_x) * (canva())->rsz[X]),
-				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
+				sz.alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
 		aux = aux->next;
 	}
 	(canva())->resize((player())->avatar, ft_aux((engine())->size[X] * 0.020, \
-	(engine())->size[Y] * 0.018, larg + (((player())->pos[X] - board_x) * \
-	(canva())->rsz[X]), alt + (((player())->pos[Y] - board_y) * \
+	(engine())->size[Y] * 0.018, sz.larg + (((player())->pos[X] - board_x) * \
+	(canva())->rsz[X]), sz.alt + (((player())->pos[Y] - board_y) * \
 	(canva())->rsz[Y])));
 }
 
-void	ft_put_minimap(int x, int y, double larg, double alt)
+void	ft_put_minimap(t_aux sz, t_object *aux, double board_x, double board_y)
 {
-	t_object	*aux;
-	double		board_x;
-	double		board_y;
-
-	board_x = 0;
-	if (((player())->pos[X] - x) > 0)
-		board_x = ((player())->pos[X] - x);
-	board_y = 0;
-	if (((player())->pos[Y] - y) > 0)
-		board_y = ((player())->pos[Y] - y);
+	if (((player())->pos[X] - sz.x) > 0)
+		board_x = ((player())->pos[X] - sz.x);
+	if (((player())->pos[Y] - sz.y) > 0)
+		board_y = ((player())->pos[Y] - sz.y);
 	(canva())->rsz[X] = (engine())->size[X] * 0.221 / 20;
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.174 / 16;
 	aux = (engine())->object;
 	while (aux)
 	{
-		if (aux->pos[X] >= (player())->pos[X] - x && \
-		aux->pos[X] <= (player())->pos[X] + x && \
-		aux->pos[Y] >= (player())->pos[Y] - y && \
-		aux->pos[Y] <= (player())->pos[Y] + y)
+		if (aux->pos[X] >= (player())->pos[X] - sz.x && \
+		aux->pos[X] <= (player())->pos[X] + sz.x && \
+		aux->pos[Y] >= (player())->pos[Y] - sz.y && \
+		aux->pos[Y] <= (player())->pos[Y] + sz.y)
 			if (aux->avatar)
 				(canva())->resize(aux->avatar, ft_aux((engine())->size[X] * \
 				0.020, (engine())->size[Y] * 0.018, \
-				larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
-				alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
+				sz.larg + ((aux->pos[X] - board_x) * (canva())->rsz[X]),
+				sz.alt + ((aux->pos[Y] - board_y) * (canva())->rsz[Y])));
 		aux = aux->next;
 	}
-	ft_put_minimap_enimies(x, y, larg, alt);
+	ft_put_enimies(sz, 0, board_x, board_y);
 }
 
 void	ft_minimap(t_scene_img *scene)
@@ -98,8 +82,8 @@ void	ft_minimap(t_scene_img *scene)
 		return ;
 	(canva())->color(ft_aux((engine())->size[X] * 0.221, (engine())->size[Y] * \
 	0.174, (engine())->size[X] * 0.741, (engine())->size[Y] * 0.086), 0xe6be7e);
-	ft_put_minimap(11, 9, (canva())->data->larg * 0.725, \
-	(canva())->data->alt * 0.08);
+	ft_put_minimap(ft_aux((canva())->data->larg * 0.725, \
+	(canva())->data->alt * 0.08, 11, 9), 0, 0, 0);
 	(canva())->resize(data, ft_aux((engine())->size[X] * 0.30, \
 	(engine())->size[Y] * 0.35, (engine())->size[X] * 0.70, \
 	(engine())->size[Y] * 0.00));

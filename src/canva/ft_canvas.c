@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:09:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 15:53:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	create_datas(int min, int max)
 	while (min <= max && min < _MAX_SPRITES_)
 	{
 		if (!(canva())->data[min].load && (canva())->data[min].path)
-			(canva())->data[min] = \
-				(canva())->create_sprite((canva())->data[min], min);
+			(canva())->data[min] = create_sprite((canva())->data[min], min);
 		min++;
 	}
 }
@@ -66,7 +65,6 @@ void	new_canva(void)
 	(canva())->color = ft_print_color;
 	(canva())->word = ft_put_word;
 	(canva())->create_data = create_datas;
-	(canva())->create_sprite = create_sprite;
 	(canva())->destroy = __destroy;
 	canva_reset_data();
 	new_scenes();

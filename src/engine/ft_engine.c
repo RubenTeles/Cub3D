@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:32:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:35:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	loop_game(void)
 	static int		a = 0;
 	static int		x_wall = 0;
 
-	if ((engine())->count < 0 ||\
+	if ((engine())->count < 0 || \
 		(engine())->count > (1000 / (engine())->sprt_for_sec))
 	{
 		a = 0;
@@ -46,12 +46,12 @@ int	loop_game(void)
 		(canva())->show_scenes();
 		a = 1;
 		if (!(engine())->pause)
-			(engine())->time = time_diff((engine())->start_time,\
+			(engine())->time = time_diff((engine())->start_time, \
 			time_current()) * 0.001;
 		else
-			(engine())->pause_time = time_diff((engine())->start_pause,\
+			(engine())->pause_time = time_diff((engine())->start_pause, \
 			time_current()) * 0.001;
-		mlx_put_image_to_window((engine())->ptr, (engine())->win,\
+		mlx_put_image_to_window((engine())->ptr, (engine())->win, \
 			(canva())->data->img, 0, 0);
 	}
 	return (0);
