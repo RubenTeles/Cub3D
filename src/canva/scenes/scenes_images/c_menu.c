@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:55:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:48 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,15 @@ void	ft_start_word(char *str, t_aux aux)
 
 void	ft_words_menu(void)
 {
-	ft_start_word("START", ft_aux((engine())->size[X] * 0.24, \
-	(engine())->size[Y] * \
-	0.1, (engine())->size[X] * 0.37, (engine())->size[Y] * 0.36));
+	(canva())->word("START", ft_aux((engine())->size[X] * 0.24, \
+	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.37, \
+	(engine())->size[Y] * 0.36), 0);
 	(canva())->word("MAPS", ft_aux((engine())->size[X] * 0.24, \
-	(engine())->size[Y] * \
-	0.1, (engine())->size[X] * 0.36, (engine())->size[Y] * 0.55));
+	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.36, \
+	(engine())->size[Y] * 0.55), 0);
 	(canva())->word("INSTRUCTIONS", ft_aux((engine())->size[X] * 0.29, \
-	(engine())->size[Y] \
-	* 0.1, (engine())->size[X] * 0.34, (engine())->size[Y] * 0.72));
+	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.34, \
+	(engine())->size[Y] * 0.72), 0);
 	(canva())->color(ft_aux((engine())->size[X] * 0.377, (engine())->size[Y] * \
 	0.0445, (engine())->size[X] * 0.011, (engine())->size[Y] * 0.941), \
 	0X6b4324);
@@ -84,7 +84,7 @@ void	ft_words_menu(void)
 	0.032, (engine())->size[X] * 0.013, (engine())->size[Y] * 0.948), 0xe6be7e);
 	(canva())->word("MADE BY RTELES AMARIA/M", ft_aux((engine())->size[X] * \
 	0.35, (engine())->size[Y] * 0.03, (engine())->size[X] * 0.022, \
-	(engine())->size[Y] * 0.949));
+	(engine())->size[Y] * 0.949), 0);
 }
 
 void	ft_initial_menu(t_scene_img *scene)

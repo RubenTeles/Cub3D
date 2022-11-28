@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 21:21:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 15:53:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:35:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 static void	__destroy(void)
 {
+	int	i;
+
+	i = -1;
+	while (++i < _MAX_SPRITES_)
+		if ((canva())->data[i].img)
+			mlx_destroy_image(engine()->ptr, (canva())->data[i].img);
 	free((canva())->data);
 	free((canva())->scene_show);
 	free((canva())->scene_img);

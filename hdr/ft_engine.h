@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:51:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:00:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ struct s_canva
 	void		(*resize)(t_data *img, t_aux aux);
 	void		(*rvresize)(t_data *img, t_aux aux);
 	void		(*color)(t_aux aux, int color);
-	void		(*word)(char *string, t_aux aux);
+	void		(*word)(char *string, t_aux aux, int option);
 	void		(*put_pixel)(t_data *data, int x, int y, int color);
 	void		(*create_data)(int min, int max);
 	t_data		*(*alphabet)(char c);
@@ -211,7 +211,7 @@ void			ft_path_start(void);
 t_data			create_sprite(t_data new, int sprite);
 int				put_clouds(t_data *img, int x, int pos_x);
 t_data			*ft_alphabet(char c);
-void			ft_put_word(char *str, t_aux aux);
+void			ft_put_word(char *str, t_aux aux, int option);
 
 //Keys
 void			new_key(void);

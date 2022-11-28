@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:10:06 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:03:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_pause(t_scene_img *scene)
 	0.1, (engine())->size[X] * 0.322, (engine())->size[Y] * 0.351), 0xe6be7e);
 	(canva())->word("PAUSE", ft_aux((engine())->size[X] * 0.3, \
 	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.347, \
-	(engine())->size[Y] * 0.348));
+	(engine())->size[Y] * 0.348), 0);
 }

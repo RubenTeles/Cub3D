@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:11:30 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:50:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_map(t_scene_img *scene)
 	(canva())->rsz[Y] = (engine())->size[Y] * 0.58 / (engine())->max[Y];
 	(canva())->word("MAP", ft_aux((engine())->size[X] * 0.15, \
 	(engine())->size[Y] * 0.05, (engine())->size[X] * 0.425, \
-	(engine())->size[Y] * 0.22));
+	(engine())->size[Y] * 0.22), 0);
 	ft_map_2((engine()->object));
 	ft_map_2((engine()->enemies));
 	if (avatar >= 8)

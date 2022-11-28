@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:51:31 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 17:10:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:56:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	key_game_2(void)
 			(player())->vision -= 0.01;
 		(player())->vel = 0.30;
 		(player())->move = 0;
-		//(player())->fadigue -= 2;
+		(player())->fadigue -= 2;
 		(canva())->scene_img[S_RUN].on = 1;
 	}
 	else if ((engine())->key[_KEY_SHIFT].on && \

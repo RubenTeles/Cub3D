@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:52:20 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:21:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:54:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_put_word(char *str, double larg, double alt, int pos_x, int pos_y)
 	}
 }*/
 
-void	ft_put_word(char *str, t_aux aux)
+void	ft_put_word(char *str, t_aux aux, int option)
 {
 	int		i;
 	int		len;
@@ -65,4 +65,6 @@ void	ft_put_word(char *str, t_aux aux)
 			(canva())->resize(letter, ft_aux(aux.larg, aux.alt, \
 			aux.x + aux.larg * i, aux.y));
 	}
+	if (option == 1)
+		free(str);
 }

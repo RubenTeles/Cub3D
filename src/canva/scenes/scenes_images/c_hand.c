@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:49:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:21:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:56:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_animation_hand(double animation, t_data *data)
 		a = 0;
 }
 
-int	ft_animation(t_scene_img *scene)
+double	ft_animation(t_scene_img *scene)
 {
 	if (scene)
 		return (scene->animation);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:40:39 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 10:31:52 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:12:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	end_game(void)
 	(engine())->object->destroy();
 	(engine())->sound->destroy();
 	mlx_destroy_window((engine())->ptr, (engine())->win);
+	free((engine())->ptr);
 	exit(0);
 	return (1);
 }

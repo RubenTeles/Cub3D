@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:15:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:19:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_login_metric(double move)
 	0.039, (engine())->size[X] * 0.314, (engine())->size[Y] * 0.587), 0X467527);
 	(canva())->word("LOADING", ft_aux((engine())->size[X] * 0.25, \
 	(engine())->size[Y] * 0.04, (engine())->size[X] * 0.37, \
-	(engine())->size[Y] * 0.585));
+	(engine())->size[Y] * 0.585), 0);
 }
 
 void	ft_login_images(double move, int min, int max)
@@ -67,7 +67,7 @@ void	ft_login_2(double move)
 	0.032, (engine())->size[X] * 0.013, (engine())->size[Y] * 0.948), 0xe6be7e);
 	(canva())->word("MADE BY RTELES AMARIA/M", \
 	ft_aux((engine())->size[X] * 0.35, (engine())->size[Y] * 0.03, \
-	(engine())->size[X] * 0.022, (engine())->size[Y] * 0.949));
+	(engine())->size[X] * 0.022, (engine())->size[Y] * 0.949), 0);
 	ft_login_metric(move);
 	mlx_put_image_to_window((engine())->ptr, (engine())->win, \
 	(canva())->data->img, 0, 0);
@@ -93,7 +93,7 @@ void	ft_login(t_scene_img *scene)
 	0.2, (engine())->size[X] * 0.07, (engine())->size[Y] * 0.051), 0xe6be7e);
 	(canva())->word("WOLF EAT PIGS", ft_aux((engine())->size[X] * 0.8, \
 	(engine())->size[Y] * 0.2, (engine())->size[X] * 0.1, \
-	(engine())->size[Y] * 0.045));
+	(engine())->size[Y] * 0.045), 0);
 	x++;
 	ft_login_2(scene->animation);
 }

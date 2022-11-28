@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/25 01:17:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:30:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	new_engine(t_all *all, int larg, int alt)
 	new_key();
 	new_sound();
 	new_canva();
-	new_key();
 }
 
 t_engine	*engine(void)

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:00:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:00:06 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_time(void)
 	0.074, (engine())->size[X] * 0.464, (engine())->size[Y] * 0.017), 0xe6be7e);
 	(canva())->word((string()).itoa((engine())->time), ft_aux(\
 	(engine())->size[X] * 0.05, (engine())->size[Y] * 0.05, \
-	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030));
+	(engine())->size[X] * 0.491, (engine())->size[Y] * 0.030), 1);
 }
 
 void	ft_put_enimies(t_aux sz, t_object *aux, double board_x, double board_y)
@@ -89,6 +89,6 @@ void	ft_minimap(t_scene_img *scene)
 	(engine())->size[Y] * 0.00));
 	(canva())->word("MINI MAP", ft_aux((engine())->size[X] * 0.15, \
 	(engine())->size[Y] * 0.04, (engine())->size[X] * 0.775, \
-	(engine())->size[Y] * 0.26));
+	(engine())->size[Y] * 0.26), 0);
 	ft_time();
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:09:20 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:25 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,16 @@ void	ft_tasks_enimies(char *label, int sprite, double larg, double y)
 	(engine())->size[Y] * (0.45 + y)));
 	(canva())->word(label, ft_aux((engine())->size[X] * (0.07 + larg), \
 	(engine())->size[Y] * 0.02, (engine())->size[X] * 0.065, \
-	(engine())->size[Y] * (0.456 + y)));
+	(engine())->size[Y] * (0.456 + y)), 0);
 	(canva())->word((string()).itoa(kill_and_max[0]), ft_aux(\
 	(engine())->size[X] * 0.019, (engine())->size[Y] * 0.02, \
-	(engine())->size[X] * 0.185, (engine())->size[Y] * (0.456 + y)));
+	(engine())->size[X] * 0.185, (engine())->size[Y] * (0.456 + y)), 1);
 	(canva())->word("/", ft_aux((engine())->size[X] * 0.02, (engine())->size[Y] \
-	* 0.019, (engine())->size[X] * 0.205, (engine())->size[Y] * (0.456 + y)));
+	* 0.019, (engine())->size[X] * 0.205, (engine())->size[Y] * \
+	(0.456 + y)), 0);
 	(canva())->word((string()).itoa(kill_and_max[1]), \
 	ft_aux((engine())->size[X] * 0.019, (engine())->size[Y] * 0.02, \
-	(engine())->size[X] * 0.225, (engine())->size[Y] * (0.456 + y)));
+	(engine())->size[X] * 0.225, (engine())->size[Y] * (0.456 + y)), 1);
 	free(kill_and_max);
 }
 
@@ -65,8 +66,8 @@ void	ft_tasks(t_scene_img *scene)
 	(canva())->color(ft_aux((engine())->size[X] * 0.225, (engine())->size[Y] * \
 	0.444, (engine())->size[X] * 0.024, (engine())->size[Y] * 0.357), 0xe6be7e);
 	(canva())->word("TASKS", ft_aux((engine())->size[X] * 0.12, \
-	(engine())->size[Y] \
-	* 0.03, (engine())->size[X] * 0.077, (engine())->size[Y] * 0.376));
+	(engine())->size[Y] * 0.03, (engine())->size[X] * 0.077, \
+	(engine())->size[Y] * 0.376), 0);
 	ft_tasks_enimies("PIGS", PIG_S0, 0, 0);
 	ft_tasks_enimies("CRISTALS", CRISTAL, 0.04, 0.1);
 }

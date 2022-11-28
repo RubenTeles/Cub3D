@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:25:21 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:05:06 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:18:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_press_e(t_scene_img *scene)
 	0.034, (engine())->size[X] * 0.024, (engine())->size[Y] * 0.267), 0X7BB905);
 	(canva())->word("PRESS E", ft_aux((engine())->size[X] * 0.10, \
 	(engine())->size[Y] * 0.03, (engine())->size[X] * 0.027, \
-	(engine())->size[Y] * 0.266));
+	(engine())->size[Y] * 0.266), 0);
 }

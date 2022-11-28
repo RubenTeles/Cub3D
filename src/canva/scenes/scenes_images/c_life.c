@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:58:01 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:47:47 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:19:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	ft_life_percent_2(int x, double life)
 	(engine())->size[Y] * 0.024, (engine())->size[X] * 0.104 + \
 	(engine())->size[X] * x, (engine())->size[Y] * 0.107), 0X6b4324);
 	(canva())->word((string()).itoa((int)(life * 100)), \
-	ft_aux((engine())->size[X] \
-	* 0.04, (engine())->size[Y] * 0.025, (engine())->size[X] * 0.1682, \
-	(engine())->size[Y] * 0.105));
+	ft_aux((engine())->size[X] * 0.04, (engine())->size[Y] * 0.025, \
+	(engine())->size[X] * 0.1682, (engine())->size[Y] * 0.105), 1);
 }
 
 void	ft_life_percent(void)
@@ -89,7 +88,7 @@ void	ft_life(t_scene_img *scene)
 	(void)scene;
 	(canva())->word("WOLF", ft_aux((engine())->size[X] * 0.10, \
 	(engine())->size[Y] * 0.03, (engine())->size[X] * 0.1, \
-	(engine())->size[Y] * 0.065));
+	(engine())->size[Y] * 0.065), 0);
 	(canva())->color(ft_aux((engine())->size[X] * 0.077, \
 	(engine())->size[Y] * 0.136, (engine())->size[X] * 0.021, \
 	(engine())->size[Y] * 0.061), 0X6b4324);
