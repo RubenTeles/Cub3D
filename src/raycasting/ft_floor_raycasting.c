@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/28 11:13:05 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:07:23 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ void	ft_floor_part1(t_alg_fl *b, t_view *view)
 	*b = a;
 }
 
+int	ft_choose_arr0(void)
+{
+	if (all()->stop_weather == 1)
+		return (11251376);
+	else if (all()->stop_weather == 2)
+		return (1);
+	else
+		return (all()->fog_color);
+}
+
 int	ft_grade_color(t_view *view, float x, float y, int color)
 {
 	double	grade;
@@ -46,15 +56,11 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	time = ft_convert_time((engine())->time / 2, 100);
 	if (time < 1.0F)
 		time = 1.0F;
-	if (all()->stop_weather == 1)
-		arr[0] = 11251376;
-	else if (all()->stop_weather == 2)
-		arr[0] = 1;
-	else
-		arr[0] = all()->fog_color;
+	arr[0] = ft_choose_arr0();
 	arr[1] = color;
 	grade = ft_dist_pts(view->pos_x, view->pos_y, x, y);
-	if ((engine())->time >= 200.0 && (engine())->time < 600.0 && all()->stop_weather == 0)
+	if ((engine())->time >= 200.0 && (engine())->time < 600.0 && \
+	all()->stop_weather == 0)
 		grade = 1.0;
 	if ((engine())->time > 800.0 || all()->stop_weather > 0)
 		time = 1.0F;

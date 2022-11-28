@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/27 14:12:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 18:06:04 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,37 @@
 #include <ft_cub.h>
 #include <ft_sprites.h>
 
-void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
+t_alg	ft_ray_part1(t_alg a, t_view *view, int x)
 {
-	// all()->pitch = 100.0;
-	if (a.x == 0)
-	{	
-		a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
-		a.ray_x = view->dir_x + view->plane_x * a.cam_x;
-		a.ray_y = view->dir_y + view->plane_y * a.cam_x;
-		a.map_x = (int)(view->pos_x);
-		a.map_y = (int)(view->pos_y);
-		if (a.ray_x == 0)
-			a.delta_x = 1e30;
-		else
-			a.delta_x = ft_abs(1 / a.ray_x);
-		if (a.ray_y == 0)
-			a.delta_y = 1e30;
-		else
-			a.delta_y = ft_abs(1 / a.ray_y);
-		a.hit = 0;
-		a.step_x = 1 - ((a.ray_x < 0) * 2);
-		if (a.ray_x < 0)
-			a.side_x = (view->pos_x - a.map_x) * a.delta_x;
-		else
-			a.side_x = (a.map_x + 1.0 - view->pos_x) * a.delta_x;
-		a.step_y = 1 - ((a.ray_y < 0) * 2);
-		if (a.ray_y < 0)
-			a.side_y = (view->pos_y - a.map_y) * a.delta_y;
-		else
-			a.side_y = (a.map_y + 1.0 - view->pos_y) * a.delta_y;
-	}
-	while (a.hit == 0)
-	{
-		a.check = (a.side_x < a.side_y);
-		a.side = !a.check;
-		a.side_x += a.delta_x * a.check;
-		a.map_x += a.step_x * a.check;
-		a.side_y += a.delta_y * !a.check;
-		a.map_y += a.step_y * !a.check;
-		if (string().index_char("1DMC", all()->map[a.map_y][a.map_x]) >= 0)
-			a.hit = 1;
-		if (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
-		{
-			a.x = 1;
-			ft_ray(x, view, data, a);
-			a.hit = 1;
-		}
-	}
+	a.cam_x = 2 * x / (double)(canva()->data->larg) - 1;
+	a.ray_x = view->dir_x + view->plane_x * a.cam_x;
+	a.ray_y = view->dir_y + view->plane_y * a.cam_x;
+	a.map_x = (int)(view->pos_x);
+	a.map_y = (int)(view->pos_y);
+	if (a.ray_x == 0)
+		a.delta_x = 1e30;
+	else
+		a.delta_x = ft_abs(1 / a.ray_x);
+	if (a.ray_y == 0)
+		a.delta_y = 1e30;
+	else
+		a.delta_y = ft_abs(1 / a.ray_y);
+	a.hit = 0;
+	a.step_x = 1 - ((a.ray_x < 0) * 2);
+	if (a.ray_x < 0)
+		a.side_x = (view->pos_x - a.map_x) * a.delta_x;
+	else
+		a.side_x = (a.map_x + 1.0 - view->pos_x) * a.delta_x;
+	a.step_y = 1 - ((a.ray_y < 0) * 2);
+	if (a.ray_y < 0)
+		a.side_y = (view->pos_y - a.map_y) * a.delta_y;
+	else
+		a.side_y = (a.map_y + 1.0 - view->pos_y) * a.delta_y;
+	return (a);
+}
+
+t_alg	ft_ray_part2(t_alg a, t_data **data, t_view *view)
+{
 	if (a.side == 0)
 		a.perp_dist = (a.side_x - a.delta_x);
 	else
@@ -82,15 +66,46 @@ void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
 	if ((a.side == 0 && a.ray_x > 0) || (a.side == 1 && a.ray_y < 0))
 		a.tex_x = data[a.texnum]->larg - a.tex_x - 1;
 	a.step = 1.0 * data[a.texnum]->alt / a.ln_hgt;
-	a.texpos = (a.draw_str - all()->pitch - canva()->data->alt / 2 + a.ln_hgt / 2) * a.step;
+	a.texpos = (a.draw_str - all()->pitch - \
+	canva()->data->alt / 2 + a.ln_hgt / 2) * a.step;
 	a.y = a.draw_str - 1;
-	while (++(a.y) < a.draw_end)
+	return (a);
+}
+
+t_alg	ft_print_ray(t_alg a, t_data **data, t_view *view, int x)
+{
+	a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, \
+	(a.side == 1 || a.texnum <= 3));
+	a.texpos += a.step;
+	a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
+	(canva())->color(ft_aux(1, 1, x, a.y), a.color);
+	return (a);
+}
+
+void	ft_ray(int x, t_view *view, t_data **data, t_alg a)
+{
+	if (a.x == 0)
+		a = ft_ray_part1(a, view, x);
+	while (a.hit == 0)
 	{
-		a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, (a.side == 1 || a.texnum <= 3));
-		a.texpos += a.step;
-		a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
-		(canva())->color(ft_aux(1, 1, x, a.y), a.color);
+		a.check = (a.side_x < a.side_y);
+		a.side = !a.check;
+		a.side_x += a.delta_x * a.check;
+		a.map_x += a.step_x * a.check;
+		a.side_y += a.delta_y * !a.check;
+		a.map_y += a.step_y * !a.check;
+		if (string().index_char("1DMC", all()->map[a.map_y][a.map_x]) >= 0)
+			a.hit = 1;
+		if (string().index_char("dm", all()->map[a.map_y][a.map_x]) >= 0)
+		{
+			a.x = 1;
+			ft_ray(x, view, data, a);
+			a.hit = 1;
+		}
 	}
+	a = ft_ray_part2(a, data, view);
+	while (++(a.y) < a.draw_end)
+		a = ft_print_ray(a, data, view, x);
 	a.z_buffer[x] = a.perp_dist;
 }
 
