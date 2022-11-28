@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:49:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 17:09:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 10:19:53 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ int	key_game(void)
 			time_start = time_current();
 			(engine())->sound->play(&(engine())->sound[SD_WOLF_HAPPY]);
 			(canva())->scene_img[S_HAND].option = 1;
-			if ((all())->stop_weather)
-				(all())->stop_weather = 0;
-			else if ((all())->stop_weather == 0)
+			if ((all())->stop_weather == 0)
 				(all())->stop_weather = 1;
+			else if ((all())->stop_weather == 1)
+				(all())->stop_weather = 2;
+			else if ((all())->stop_weather == 2)
+				(all())->stop_weather = 0;
 		}
 	}
 	key_game_left_right();

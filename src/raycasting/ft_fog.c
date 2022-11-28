@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fog.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/27 14:11:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 10:23:01 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int	ft_fog(t_data *data, double time)
 		while (++x < data->larg)
 		{
 			color = canva()->getPxColor(data, x, y);
-			arr[0] = all()->fog_color;
+			if (all()->stop_weather == 1)
+				arr[0] = 11251376;
+			else if (all()->stop_weather == 2)
+				arr[0] = 1;
+			else
+				arr[0] = all()->fog_color;
 			arr[1] = color;
 			if (((engine())->time >= 200.0 && (engine())->time < 600.0))
 				t = 100.0F;
