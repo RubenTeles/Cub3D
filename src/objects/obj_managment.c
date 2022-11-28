@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:33:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 21:45:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_collision(t_object *obj, double x, double y, int option)
 		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y && \
 		(player())->pos[Y] - 0.1 <= y)))
 	{
-		printf("colide com o player\n");
+		(player())->life -= 55;
 		return (1);
 	}
 	if (option == 0)

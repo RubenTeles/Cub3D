@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:00:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 22:17:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,7 @@ int				ft_create_bush(t_object *bush);
 void			new_player(void);
 void			all_interation(t_object *obj, double x, double y, int option);
 void			is_interation(t_object *obj, int keycode);
+void			player_interation_atack(int key);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \

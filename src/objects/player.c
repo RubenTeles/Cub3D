@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:35:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/28 22:18:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	player_interation(int key)
 {
 	is_interation((engine())->object, key);
 	is_interation((engine())->enemies, key);
+	player_interation_atack(key);
 }
 
 void	new_player(void)
@@ -56,7 +57,7 @@ void	new_player(void)
 	(player())->life = 1000;
 	(player())->lives = 3;
 	(player())->collision = 1;
-	(player())->interation = 0.1;
+	(player())->interation = 0.2;
 	(player())->move = 0;
 	(player())->fadigue = 100;
 	(player())->atack = 0;
