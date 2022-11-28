@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:14:54 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/26 16:07:27 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:25:14 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,12 @@ void	ft_ray_floor(t_view *view, t_alg_fl a);
 int		ft_linear_gradient(int colors[2], float percent);
 float	ft_convert_time(double time, int n);
 int		ft_setup_ray_imgs(t_data **data);
+int		ft_choose_arr0(void);
+t_spr	*ft_setup_sprites(t_object *objs);
+int		ft_return_tex_x(t_spr_vls	a, int i);
+void	ft_color_strip_y(t_spr_vls a, t_view *view, int i);
+int		ft_objects_len(t_object *sprites);
+void	ft_choose_spr_size(t_spr *sprite, t_object *obj);
+float	ft_conv_t_block(int t, int t2, int n, int *past_value);
 
 #endif
