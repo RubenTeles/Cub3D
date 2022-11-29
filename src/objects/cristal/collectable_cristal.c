@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 22:28:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 16:43:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,28 @@ static void	_player_near_cristal(t_object *cristal, int key)
 
 static void	_interation_cristal(t_object *cristal, int key)
 {
-	(void)key;
-	(void)cristal;
+	static long long	time_start = 0;
+
+	if (key != _BUTTON_LEFT)
+		return ;
+	(engine())->sound[SD_MINING].dif = time_diff(time_start, time_current());
+	if (cristal->collision == 1 && ((engine())->sound[SD_MINING].dif > 700 \
+		|| time_start == 0))
+	{
+		time_start = time_current();
+		cristal->life -= 20;
+		(engine())->sound->play(&(engine())->sound[SD_MINING]);
+		if (cristal->life <= 0)
+		{
+			cristal->avatar = 0;
+			cristal->sprite = 0;
+			cristal->interation = 0;
+			cristal->collision = 0;
+			cristal->life = 0;
+			cristal->is_near = 0;
+			(engine())->sound->play(&(engine())->sound[SD_DIAMOND]);
+		}
+	}
 }
 
 int	ft_create_cristal(t_object *cristal)

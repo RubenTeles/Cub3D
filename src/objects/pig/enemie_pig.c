@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 15:46:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:46:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	_is_atacked_pig(t_object *pig, int damage)
 	(engine())->sound->play(&(engine())->sound[SD_PIG_ATACKED]);
 	if (pig->life <= 0)
 	{
+		pig->move = 0;
 		pig->avatar = 0;
 		pig->sprite = 0;
 		pig->interation = 0;
@@ -54,8 +55,8 @@ static void	_pig_move(t_object *pig, int move_x)
 	int			move_y;
 
 	move_y = 0;
-	dif_x = (pig->pos[X] > player()->pos[X] - (pig->pos[X] < player()->pos[X]));
-	dif_y = (pig->pos[Y] > player()->pos[Y] - (pig->pos[Y] < player()->pos[Y]));
+	dif_x = (pig->pos[X] > player()->pos[X]) - (pig->pos[X] < player()->pos[X]);
+	dif_y = (pig->pos[Y] > player()->pos[Y]) - (pig->pos[Y] < player()->pos[Y]);
 	if (!pig->is_collision(pig, pig->pos[X] + (dif_x * pig->vel) + 0.5, \
 	pig->pos[Y] + 0.5, 0) && ++move_x)
 		pig->pos[X] += (dif_x * pig->vel);

@@ -6,40 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 13:36:46 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:57:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 #include <ft_scenes_images.h>
-
-int	is_collision(t_object *obj, double x, double y, int option)
-{
-	t_object	*aux;
-
-	aux = (engine())->object;
-	if (option == 1)
-		aux = (engine())->enemies;
-	while (aux)
-	{
-		if (aux->collision == 1 && aux != obj && \
-			((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) && \
-			(aux->pos[Y] + 1.10 >= y && aux->pos[Y] - 0.1 <= y)))
-			return (1);
-		aux = aux->next;
-	}
-	if (obj && (((player())->pos[X] + 1.10 >= x && \
-		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y && \
-		(player())->pos[Y] - 0.1 <= y)))
-	{
-		(player())->life -= 55;
-		return (1);
-	}
-	if (option == 0)
-		return (is_collision(obj, x, y, 1));
-	return (0);
-}
 
 void	is_interation(t_object *obj, int keycode)
 {
@@ -91,20 +64,22 @@ int	map_to_sprite(char title)
 		return (WOOD_FLOOR);
 	if (title == '3')
 		return (CAVE);
+	if (title == 'B')
+		return (BUSH);
+	if (title == 'b')
+		return (BULL);
+	if (title == 'C')
+		return (CAVE);
+	if (title == 'c')
+		return (CRISTAL);
+	if (title == 'D')
+		return (DOOR);
 	if (title == 'M')
 		return (HAY);
 	if (title == 'm')
 		return (WINDOW);
-	if (title == 'D')
-		return (DOOR);
-	if (title == 'C')
-		return (CAVE);
 	if (title == 'p')
 		return (PIG);
-	if (title == 'c')
-		return (CRISTAL);
-	if (title == 'B')
-		return (BUSH);
 	return (0);
 }
 
@@ -119,5 +94,7 @@ int	ft_managemen_objects(char tittle, t_object *obj)
 		return (ft_create_cristal(obj));
 	if (obj->title == BUSH)
 		return (ft_create_bush(obj));
+	if (obj->title == BULL)
+		return (ft_create_bull(obj));
 	return (0);
 }

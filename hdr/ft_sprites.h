@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:09:37 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 13:36:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:15:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@
 
 //BULL
 # define BULL 38
-# define BULL_2 39
+# define BULL_1 39
+# define BULL_2 42
 # define BULL_3 40
 # define BULL_4 41
 
 //CHICKEN
-# define CHICKEN 42
 # define CHICKEN_S0 43
 # define CHICKEN_S1 44
 # define CHICKEN_S2 45

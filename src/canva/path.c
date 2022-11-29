@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 13:37:21 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:02:26 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	path_pig(void)
 	(canva())->data[PIG_W1].path = "./sprite/pig/w1.xpm";
 	(canva())->data[PIG_W2].path = "./sprite/pig/w2.xpm";
 	(canva())->data[PIG_W3].path = "./sprite/pig/w3.xpm";
-	(canva())->data[CHICKEN].path = 0;
-	(canva())->data[CHICKEN_S0].path = 0;
-	(canva())->data[CHICKEN_S1].path = 0;
-	(canva())->data[CHICKEN_S2].path = 0;
-	(canva())->data[CHICKEN_S3].path = 0;
+	(canva())->data[BULL].path = "./sprite/bull/bull.xpm";
+	(canva())->data[BULL_1].path = "./sprite/bull/bull_01.xpm";
+	(canva())->data[BULL_2].path = "./sprite/bull/bull_02.xpm";
+	(canva())->data[BULL_3].path = "./sprite/bull/bull_03.xpm";
+	(canva())->data[BULL_4].path = "./sprite/bull/bull_04.xpm";
 }
 
 void	ft_path_alphabet_2(void)

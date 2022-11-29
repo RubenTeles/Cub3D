@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 15:35:00 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:56:00 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,8 @@ struct s_object
 	double		interation;
 	int			is_near;
 	int			move;
+	long long	time_start;
+	long long	dif;
 	void		(*player_interation)(t_object *obj, int key);
 	void		(*player_near)(t_object *obj, int key);
 	void		(*is_atack)(t_object *obj, int key);
@@ -173,24 +175,26 @@ struct s_object
 
 struct s_player1
 {
-	char	title;
-	t_data	*avatar;
-	t_data	*sprite;
-	double	pos[2];
-	double	dir[2];
-	double	vel;
-	double	turn;
-	double	turn_times;
-	double	vision;
-	int		collision;
-	double	interation;
-	int		move;
-	double	fadigue;
-	int		life;
-	int		lives;
-	int		atack;
-	void	(*movement)(int move_x, int move_y, int dir_x, int dir_y);
-	void	(*obj_interation)(int key);
+	char		title;
+	t_data		*avatar;
+	t_data		*sprite;
+	double		pos[2];
+	double		dir[2];
+	double		vel;
+	double		turn;
+	double		turn_times;
+	double		vision;
+	int			collision;
+	double		interation;
+	int			move;
+	double		fadigue;
+	int			life;
+	int			lives;
+	int			atack;
+	long long	time_start;
+	long long	dif;
+	void		(*movement)(int move_x, int move_y, int dir_x, int dir_y);
+	void		(*obj_interation)(int key);
 };
 
 t_aux			ft_aux(double larg, double alt, int x, int y);
@@ -255,6 +259,7 @@ int				ft_create_door(t_object *door);
 int				ft_create_pig(t_object *pig);
 int				ft_create_cristal(t_object *cristal);
 int				ft_create_bush(t_object *bush);
+int				ft_create_bull(t_object *bull);
 
 //PLAYER
 void			new_player(void);

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:31:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:05:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_enimie_or_is_floor(char c, int option)
 	{	
 		if (c == '0' || c == '2' || c == '3')
 			return (1);
-		if (c == 'p' || c == 'c' || c == 'B')
+		if (c == 'p' || c == 'c' || c == 'B' || c == 'b')
 			return (2);
 	}
 	return (0);

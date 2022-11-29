@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 13:57:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:56:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	_interation_zero_(t_object	*obj, int key)
 
 t_object	*ft_new_object_2(t_object *new, char title)
 {
+	new->dif = 0;
 	new->player_near = _interation_zero_;
 	new->player_interation = _interation_zero_;
 	new->is_move = _interation_zero_;
@@ -64,11 +65,11 @@ t_object	*ft_new_object_2(t_object *new, char title)
 	new->last = last_object;
 	new->destroy = destroy_object;
 	new->next = 0;
-	if ((new->title == PIG || new->title == CRISTAL || new->title == BUSH) \
-	&& !(engine())->enemies)
+	if ((new->title == PIG || new->title == CRISTAL || new->title == BUSH || \
+	new->title == BULL) && !(engine())->enemies)
 		(engine())->enemies = new;
-	else if ((new->title == PIG || new->title == CRISTAL || new->title == \
-	BUSH) && (engine())->enemies)
+	else if ((new->title == PIG || new->title == CRISTAL || new->title == BUSH \
+	|| new->title == BULL) && (engine())->enemies)
 		(engine())->enemies->last((engine())->enemies)->next = new;
 	else if (!(engine())->object)
 		(engine())->object = new;
@@ -103,5 +104,6 @@ t_object	*ft_new_object(char title, int x, int y)
 	new->interation = 0;
 	new->is_near = 0;
 	new->move = 0;
+	new->time_start = 0;
 	return (ft_new_object_2(new, title));
 }

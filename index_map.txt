@@ -9,11 +9,12 @@ N S W E = wolf (directions)
 
 2 = House Floor
 3 = Cave Floor
+B = Bush (Life)
+b = Bull (Enemie)
+C = Cave Wall
+c = Cristals (Collectable)
 d = Open Door
 D = Door
 m = Wood Window
 M = Wood Wall
-C = Cave Wall
-c = Cristals (Collectable)
-B = Bush (Life)
-p = Pig (Enimies)
+p = Pig (Enemie)
