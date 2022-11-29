@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:31:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 23:27:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	_is_atacked_pig(t_object *pig, int damage)
 		pig->life = 0;
 		pig->is_near = 0;
 		(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
+		ft_tasks(0);
 	}
 }
 

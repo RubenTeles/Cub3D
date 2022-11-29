@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 14:21:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 23:37:34 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	player_interation_atack(int key)
 			if (is_in_player_interation(aux->pos[X] + 0.5, \
 				aux->pos[Y] + 0.5, 0.6))
 				aux->is_atack(aux, 20);
-			return ;
 		}
 		aux = aux->next;
 	}

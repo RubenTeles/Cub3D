@@ -6,12 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 17:17:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 23:43:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
+#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 static int	*ft_how_many_enimies(int sprite)
 {
@@ -35,6 +37,13 @@ static int	*ft_how_many_enimies(int sprite)
 	return (kill_and_max);
 }
 
+void	game_end(void)
+{
+	(canva())->scene_img[S_END_GAME].option = 1;
+	(canva())->scene = &(canva())->scene_show[SC_END_GAME];
+	(canva())->scene->init();
+}
+
 void	ft_tasks_enimies(char *label, int sprite, double larg, double y)
 {
 	int	*kill_and_max;
@@ -55,6 +64,8 @@ void	ft_tasks_enimies(char *label, int sprite, double larg, double y)
 	(canva())->word((string()).itoa(kill_and_max[1]), \
 	ft_aux((engine())->size[X] * 0.019, (engine())->size[Y] * 0.02, \
 	(engine())->size[X] * 0.225, (engine())->size[Y] * (0.456 + y)), 1);
+	if (sprite == PIG && (kill_and_max[0] == kill_and_max[1]))
+		game_end();
 	free(kill_and_max);
 }
 
