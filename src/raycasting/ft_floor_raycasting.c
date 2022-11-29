@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:32:15 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/28 16:07:23 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:55:11 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	ft_grade_color(t_view *view, float x, float y, int color)
 	grade = ft_dist_pts(view->pos_x, view->pos_y, x, y);
 	if ((engine())->time >= 200.0 && (engine())->time < 600.0 && \
 	all()->stop_weather == 0)
+		grade = 1.0;
+	if (all()->stop_weather == 3)
 		grade = 1.0;
 	if ((engine())->time > 800.0 || all()->stop_weather > 0)
 		time = 1.0F;

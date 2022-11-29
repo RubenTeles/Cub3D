@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:11:21 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/28 18:25:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:41:38 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_color_strip_y(t_spr_vls a, t_view *view, int i)
 			/ a.sprite_hgt) / 256;
 		a.color = canva()->getPxColor(\
 		a.sprite[a.sprite_order[i]].texture, a.tex_x, a.tex_y);
-		if (a.color > 0)
+		if (a.color > 0 && all()->fog_checker != 3)
 			a.color = ft_grade_color(view, a.sprite[a.sprite_order[i]].x, \
 			a.sprite[a.sprite_order[i]].y, a.color);
 		if ((a.color & 0x00FFFFFF) != 0)
