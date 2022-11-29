@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:07:47 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/28 18:06:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:49:38 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ t_alg	ft_print_ray(t_alg a, t_data **data, t_view *view, int x)
 	a.color = ft_get_ray_color(data[a.texnum], a.tex_x, (int)a.texpos, \
 	(a.side == 1 || a.texnum <= 3));
 	a.texpos += a.step;
-	a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
+	if (all()->stop_weather != 3)
+		a.color = ft_grade_color(view, (float)a.map_x, (float)a.map_y, a.color);
 	(canva())->color(ft_aux(1, 1, x, a.y), a.color);
 	return (a);
 }

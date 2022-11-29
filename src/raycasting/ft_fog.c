@@ -6,7 +6,7 @@
 /*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:39:42 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/11/28 17:54:48 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:46:45 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ double	ft_dist_pts(double x1, double y1, double x2, double y2)
 
 float	ft_return_t(float t)
 {
-	if (((engine())->time >= 200.0 && (engine())->time < 600.0))
+	if (all()->stop_weather == 3)
 		return (100.0F);
-	if ((engine())->time > 800.0 || all()->stop_weather > 0)
+	else if (all()->stop_weather > 0 || (engine())->time > 800.0)
 		return (0.0F);
+	else if (((engine())->time >= 200.0 && (engine())->time < 600.0))
+		return (100.0F);
 	return (t);
 }
 
@@ -53,7 +55,7 @@ int	ft_fog(t_data *data, double time)
 			arr[0] = ft_choose_arr0();
 			arr[1] = color;
 			t = ft_return_t(t);
-			if (y < (data->alt / 2))
+			if (y < (data->alt / 2) && all()->fog_checker != 3)
 				color = ft_linear_gradient(arr, t);
 			(canva())->color(ft_aux(0, 0, x, y), color);
 		}
