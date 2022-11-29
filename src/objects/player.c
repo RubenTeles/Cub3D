@@ -6,13 +6,15 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 22:18:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 20:29:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 #include <ft_sound.h>
+#include <ft_scenes.h>
+#include <ft_scenes_images.h>
 
 static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 {
@@ -32,6 +34,30 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 		all_interation((engine())->object, (player())->pos[X], \
 		(player())->pos[Y], 0);
 	}
+}
+
+static int	_player_dead(void)
+{
+	(player())->life = 0;
+	(engine())->start_pause = time_current();
+	(engine())->pause = 1;
+	if ((player())->lives - 1 >= 0)
+	{
+		(canva())->scene->complete = 1;
+		(canva())->scene_img[S_YOU_DIE].on = 1;
+		(player())->lives -= 1;
+		(player())->life = 1000;
+		(player())->fadigue = 100;
+		(player())->pos[Y] = (double)all()->player.x + 0.5;
+		(player())->pos[X] = (double)all()->player.y + 0.5;
+		(player())->dir[X] = all()->caster.player.dir_x;
+		(player())->dir[Y] = all()->caster.player.dir_y;
+		(engine())->time = time_current();
+		return (1);
+	}
+	(canva())->scene = &(canva())->scene_show[SC_END_GAME];
+	(canva())->scene->init();
+	return (1);
 }
 
 static void	player_interation(int key)
@@ -63,6 +89,7 @@ void	new_player(void)
 	(player())->atack = 0;
 	(player())->movement = player_movement;
 	(player())->obj_interation = player_interation;
+	(player())->dead = _player_dead;
 }
 
 t_player1	*player(void)

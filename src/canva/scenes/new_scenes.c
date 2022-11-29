@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:04:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:28:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 20:24:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	new_scenes(void)
 	(canva())->scene_show[SC_MENU].init = scene_menu;
 	(canva())->scene_show[SC_GAME].init = scene_game;
 	(canva())->scene_show[SC_PAUSE].init = scene_pause;
+	create_scene_end_game();
 	while (++i < SC_MAX_SCENES)
 	{
 		(canva())->scene_show[i].complete = 0;

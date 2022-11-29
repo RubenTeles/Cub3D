@@ -17,8 +17,9 @@
 # define SC_MENU 1
 # define SC_GAME 2
 # define SC_PAUSE 3
+# define SC_END_GAME 4
 
 //Number Max Scenes
-# define SC_MAX_SCENES 5
+# define SC_MAX_SCENES 6
 
 #endif

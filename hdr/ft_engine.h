@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 18:56:00 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 20:32:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ struct s_player1
 	long long	dif;
 	void		(*movement)(int move_x, int move_y, int dir_x, int dir_y);
 	void		(*obj_interation)(int key);
+	int			(*dead)(void);
 };
 
 t_aux			ft_aux(double larg, double alt, int x, int y);
@@ -282,6 +283,7 @@ void			scene_login(void);
 void			scene_menu(void);
 void			scene_game(void);
 void			scene_pause(void);
+void			create_scene_end_game(void);
 
 //Image_Scenes
 void			new_scenes_img(void);
@@ -298,6 +300,8 @@ void			ft_map(t_scene_img *scene);
 void			ft_press_e(t_scene_img *scene);
 void			ft_tasks(t_scene_img *scene);
 void			ft_pause(t_scene_img *scene);
+void			ft_you_die(t_scene_img *scene);
+void			ft_end_game(t_scene_img *scene);
 
 // Raycasting
 double			ft_abs(double x);

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:40:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:54:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 20:00:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 
 int	key_pause(void)
 {
-	if ((engine())->key[_KEY_P].on && ((engine())->pause == 1))
+	if (((engine())->key[_KEY_P].on || (engine())->key[_KEY_ENTER].on) \
+		&& ((engine())->pause == 1))
 		(engine())->pause = 2;
-	if (!(engine())->key[_KEY_P].on && ((engine())->pause == 2))
+	if ((!(engine())->key[_KEY_P].on || !(engine())->key[_KEY_ENTER].on) \
+		&& ((engine())->pause == 2))
 	{
 		(engine())->pause = 0;
+		(engine())->key[_KEY_P].on = 0;
+		(engine())->key[_KEY_ENTER].on = 0;
 		(canva())->scene = &(canva())->scene_show[SC_GAME];
 		(canva())->scene->init();
 		(engine())->start_time += (engine())->pause_time * 1000;

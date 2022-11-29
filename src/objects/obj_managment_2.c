@@ -6,32 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:16:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 19:41:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 #include <ft_scenes_images.h>
-
-static int	_player_dead(void)
-{
-	(player())->life = 0;
-	(engine())->start_pause = time_current();
-	(engine())->pause = 1;
-	(canva())->scene->complete = 1;
-	if ((player())->lives - 1 >= 0)
-	{
-		(player())->lives -= 1;
-		(player())->life = 1000;
-		(player())->fadigue = 100;
-		(player())->pos[Y] = (double)all()->player.x + 0.5;
-		(player())->pos[X] = (double)all()->player.y + 0.5;
-		(player())->dir[X] = all()->caster.player.dir_x;
-		(player())->dir[Y] = all()->caster.player.dir_y;
-	}
-	return (1);
-}
 
 static int	_player_is_atacked(t_object *obj)
 {
@@ -45,7 +26,7 @@ static int	_player_is_atacked(t_object *obj)
 		if ((player())->life - 30 >= 1)
 			(player())->life -= 30;
 		else
-			return (_player_dead());
+			return ((player())->dead());
 		d_x = (obj->pos[X] > player()->pos[X]) - \
 				(obj->pos[X] < player()->pos[X]);
 		d_y = (obj->pos[Y] > player()->pos[Y]) - \

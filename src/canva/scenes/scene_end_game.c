@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_management.c                                :+:      :+:    :+:   */
+/*   scene_end_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 15:37:16 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 20:14:13 by rteles           ###   ########.fr       */
+/*   Created: 2022/11/29 20:11:19 by rteles            #+#    #+#             */
+/*   Updated: 2022/11/29 20:32:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
-#include <ft_keys.h>
-#include <ft_sprites.h>
+#include <ft_cub.h>
 #include <ft_scenes.h>
 #include <ft_scenes_images.h>
-#include <ft_sound.h>
 
-int	key_management(void)
+static void	scene_end_game(void)
 {
-	(canva())->scene_show[SC_LOGIN].key = 0;
-	(canva())->scene_show[SC_MENU].key = key_menu;
-	(canva())->scene_show[SC_GAME].key = key_game;
-	(canva())->scene_show[SC_PAUSE].key = key_pause;
-	(canva())->scene_show[SC_END_GAME].key = 0;
-	return (0);
+	(canva())->reset_scenes();
+	(canva())->scene_img[S_TASKS].on = 1;
+	(canva())->scene_img[S_END_GAME].on = 1;
+}
+
+void	create_scene_end_game(void)
+{
+	(canva())->scene_show[SC_END_GAME].init = scene_end_game;
 }
