@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 22:38:23 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:21:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,6 @@ static int	is_in_player_interation(double x, double y, double colision)
 	return (0);
 }
 
-static void	is_dead(t_object *obj)
-{
-	obj->avatar = 0;
-	obj->sprite = 0;
-	obj->interation = 0;
-	obj->collision = 0;
-	obj->life = 0;
-	obj->is_near = 0;
-}
-
 void	player_interation_atack(int key)
 {
 	t_object	*aux;
@@ -62,12 +52,7 @@ void	player_interation_atack(int key)
 		{
 			if (is_in_player_interation(aux->pos[X] + 0.5, \
 				aux->pos[Y] + 0.5, 0.6))
-			{
-				aux->life = aux->life - 20;
-				if (aux->life <= 0)
-					is_dead(aux);
-				(engine())->sound->play(&(engine())->sound[SD_DIAMOND]);
-			}
+				aux->is_atack(aux, 20);
 			return ;
 		}
 		aux = aux->next;

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:32:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:08:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,50 @@
 #include <ft_sound.h>
 #include <signal.h>
 
-void	ft_sound(t_sound *sound)
+void	play_music(t_sound *sound)
 {
 	int	i;
 
-	sound->pid = fork();
-	if (sound->pid == 0)
+	sound->dif = time_diff(sound->time_start, time_current());
+	if (sound->dif > sound->len || sound->time_start == 0)
 	{
-		i = system(sound->sound);
-		exit(0);
+		sound->time_start = time_current();
+		sound->on = 1;
+		sound->pid = fork();
+		if (sound->pid == 0)
+		{
+			i = system(sound->sound);
+			exit(0);
+		}			
 	}
 	(void)i;
 }
 
-void	stop_music(t_sound *sound)
+void	stop_music(t_sound sound)
 {
-	kill(sound->pid, SIGTERM);
-}
-
-void	sound_path(void)
-{
-	(engine())->sound[SD_WOLF].sound = "paplay src/sound/wolf_2.ogg";
-	(engine())->sound[SD_MUSIC].sound = "paplay src/sound/pMLWWiBvWX8_48.ogg";
-	(engine())->sound[SD_BREADING_IN].sound = "paplay src/sound/breathe_in.ogg";
-	(engine())->sound[SD_BREADING_OUT].sound = \
-	"paplay src/sound/breathe_out.ogg";
-	(engine())->sound[SD_DOOR].sound = "paplay src/sound/open_door.ogg";
-	(engine())->sound[SD_WOLF_HAPPY].sound = \
-	"paplay src/sound/wolf_celebration.ogg";
-	(engine())->sound[SD_WOLF_DIE].sound = "paplay src/sound/wolf_die.ogg";
-	(engine())->sound[SD_MINING].sound = "paplay src/sound/mining.ogg";
-	(engine())->sound[SD_DIAMOND].sound = \
-	"paplay src/sound/diamond_collect.ogg";
-	(engine())->sound[SD_BUSH].sound = "paplay src/sound/bush.ogg";
+	if (sound.on)
+	{
+		if (fork() == 0)
+			kill(sound.pid, SIGTERM);
+	}
 }
 
 static void	destroy_sound(void)
 {
+	int	i;
+
+	i = -1;
+	while (++i < _MAX_SOUNDS_)
+		(engine())->sound->stop((engine())->sound[i]);
 	free((engine())->sound);
 }
 
 void	new_sound(void)
 {
 	(engine())->sound = malloc(sizeof(t_sound) * _MAX_SOUNDS_);
-	sound_path();
-	(engine())->sound->play = ft_sound;
+	(engine())->sound->play = play_music;
 	(engine())->sound->stop = stop_music;
 	(engine())->sound->destroy = destroy_sound;
+	sounds_init();
 }
-
 //(engine())->sound[SD_MUSIC].sound = "paplay src/sound/music_open.ogg";

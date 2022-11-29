@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:18:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:52:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_tasks(t_scene_img *scene)
 	(canva())->word("TASKS", ft_aux((engine())->size[X] * 0.12, \
 	(engine())->size[Y] * 0.03, (engine())->size[X] * 0.077, \
 	(engine())->size[Y] * 0.376), 0);
-	ft_tasks_enimies("PIGS", PIG_S0, 0, 0);
+	ft_tasks_enimies("PIGS", PIG, 0, 0);
 	ft_tasks_enimies("CRISTALS", CRISTAL, 0.04, 0.1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:50:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 17:13:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:06:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,13 @@ void	key_atack_1(void)
 //BUTTON RIGHT 1
 int	key_atack(void)
 {
-	static long long	time_start = 0;
-
 	if ((engine())->key[_BUTTON_RIGHT].on && (player())->fadigue - 2 >= 0 && \
 		(player())->atack <= 1)
 	{
 		if (!(player())->atack)
 			(player())->atack = 1;
 		(player())->sprite = 0;
-		(engine())->sound[SD_BREADING_IN].dif = \
-		time_diff(time_start, time_current());
-		if ((engine())->sound[SD_BREADING_IN].dif > 750 || time_start == 0)
-		{
-			time_start = time_current();
-			(engine())->sound->play(&(engine())->sound[SD_BREADING_IN]);
-		}
+		(engine())->sound->play(&(engine())->sound[SD_BREADING_IN]);
 		(player())->fadigue -= 2;
 	}
 	else if ((engine())->key[_BUTTON_RIGHT].on)

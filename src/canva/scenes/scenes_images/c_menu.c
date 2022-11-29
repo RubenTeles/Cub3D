@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:48:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:18:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:42:50 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	ft_start_word(char *str, t_aux aux)
 
 void	ft_words_menu(void)
 {
-	(canva())->word("START", ft_aux((engine())->size[X] * 0.24, \
+	ft_start_word("START", ft_aux((engine())->size[X] * 0.24, \
 	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.37, \
-	(engine())->size[Y] * 0.36), 0);
+	(engine())->size[Y] * 0.36));
 	(canva())->word("MAPS", ft_aux((engine())->size[X] * 0.24, \
 	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.36, \
 	(engine())->size[Y] * 0.55), 0);

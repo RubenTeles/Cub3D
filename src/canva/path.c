@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 11:51:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:37:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	path_pig(void)
 	(canva())->data[BUSH_AMORAS].path = "./sprite/item/bush_amoras.xpm";
 	(canva())->data[GRASS].path = "./sprite/item/grass_3.xpm";
 	(canva())->data[PIG].path = "./sprite/pig/s0.xpm";
-	(canva())->data[PIG_S0].path = "./sprite/pig/s0.xpm";
-	(canva())->data[PIG_S1].path = 0;
-	(canva())->data[PIG_S2].path = 0;
-	(canva())->data[PIG_S3].path = 0;
+	(canva())->data[PIG_W0].path = "./sprite/pig/w0.xpm";
+	(canva())->data[PIG_W1].path = "./sprite/pig/w1.xpm";
+	(canva())->data[PIG_W2].path = "./sprite/pig/w2.xpm";
+	(canva())->data[PIG_W3].path = "./sprite/pig/w3.xpm";
 	(canva())->data[CHICKEN].path = 0;
 	(canva())->data[CHICKEN_S0].path = 0;
 	(canva())->data[CHICKEN_S1].path = 0;

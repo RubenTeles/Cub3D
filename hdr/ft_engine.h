@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 22:17:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:35:00 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,12 @@ struct s_sound
 	int			pid;
 	int			status;
 	char		*sound;
-	int			len;
+	int			on;
+	double		len;
+	long long	time_start;
 	long long	dif;
 	void		(*play)(t_sound *sound);
-	void		(*stop)(t_sound *sound);
+	void		(*stop)(t_sound sound);
 	void		(*destroy)(void);
 };
 
@@ -157,8 +159,11 @@ struct s_object
 	int			collision;
 	double		interation;
 	int			is_near;
+	int			move;
 	void		(*player_interation)(t_object *obj, int key);
 	void		(*player_near)(t_object *obj, int key);
+	void		(*is_atack)(t_object *obj, int key);
+	void		(*is_move)(t_object *obj, int key);
 	void		(*create)(char title, int x, int y);
 	int			(*is_collision)(t_object *obj, double x, double y, int option);
 	t_object	*(*last)(t_object *obj);
@@ -197,6 +202,7 @@ t_player1		*player(void);
 
 //Sound
 void			new_sound(void);
+void			sounds_init(void);
 
 //canva
 void			new_canva(void);
@@ -230,7 +236,6 @@ int				key_game(void);
 int				key_game_2(void);
 int				key_atack(void);
 
-
 //Menu
 int				menu_hooks(void);
 void			ft_words_menu(void);
@@ -243,6 +248,7 @@ t_object		*ft_new_object(char title, int x, int y);
 int				is_collision(t_object *obj, double x, double y, int option);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
+void			ft_enemies_move(void);
 
 //Objects and Enimes
 int				ft_create_door(t_object *door);

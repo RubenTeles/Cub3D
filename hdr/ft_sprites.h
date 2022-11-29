@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:09:37 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:05:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:36:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@
 
 //PIG
 # define PIG 33
-# define PIG_S0 34
-# define PIG_S1 35
-# define PIG_S2 36
-# define PIG_S3 37
+# define PIG_W0 34
+# define PIG_W1 35
+# define PIG_W2 36
+# define PIG_W3 37
 
 //BULL
 # define BULL 38

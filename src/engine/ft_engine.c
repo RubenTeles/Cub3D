@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:30:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 15:50:26 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
+void	loop_aux(void)
+{
+	ft_enemies_move();
+	(engine())->time = time_diff((engine())->start_time, \
+	time_current()) * 0.001;
+}
+
 int	loop_game(void)
 {
 	static int		a = 0;
@@ -46,8 +53,7 @@ int	loop_game(void)
 		(canva())->show_scenes();
 		a = 1;
 		if (!(engine())->pause)
-			(engine())->time = time_diff((engine())->start_time, \
-			time_current()) * 0.001;
+			loop_aux();
 		else
 			(engine())->pause_time = time_diff((engine())->start_pause, \
 			time_current()) * 0.001;

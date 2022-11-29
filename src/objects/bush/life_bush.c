@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 12:33:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:24:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@ static void	_player_near_bush(t_object *bush, int key)
 	(void)key;
 	if (bush->is_near)
 		(canva())->scene_img[S_PRESS_E].on = 1;
+}
+
+static void	_is_atacked_bush(t_object *bush, int damage)
+{
+	(engine())->sound->play(&(engine())->sound[SD_BUSH]);
+	bush->life -= damage;
+	if (bush->life <= 0)
+	{
+		bush->avatar = 0;
+		bush->sprite = 0;
+		bush->interation = 0;
+		bush->collision = 0;
+		bush->life = 0;
+		bush->is_near = 0;
+	}
 }
 
 static void	_interation_bush(t_object *bush, int key)
@@ -59,6 +74,7 @@ int	ft_create_bush(t_object *bush)
 	bush->dimension[2] = 100;
 	bush->player_interation = _interation_bush;
 	bush->player_near = _player_near_bush;
+	bush->is_atack = _is_atacked_bush;
 	return (1);
 }
 
