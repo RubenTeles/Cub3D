@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 20:32:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 00:37:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ struct s_object
 	int			(*is_collision)(t_object *obj, double x, double y, int option);
 	t_object	*(*last)(t_object *obj);
 	void		(*destroy)(void);
+	t_object	*prev;
 	t_object	*next;
 };
 
@@ -191,6 +192,7 @@ struct s_player1
 	int			life;
 	int			lives;
 	int			atack;
+	int			atack_breath_life;
 	long long	time_start;
 	long long	dif;
 	void		(*movement)(int move_x, int move_y, int dir_x, int dir_y);
@@ -261,6 +263,7 @@ int				ft_create_pig(t_object *pig);
 int				ft_create_cristal(t_object *cristal);
 int				ft_create_bush(t_object *bush);
 int				ft_create_bull(t_object *bull);
+int				ft_create_breath(t_object *breath);
 
 //PLAYER
 void			new_player(void);

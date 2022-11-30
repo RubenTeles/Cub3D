@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:09:37 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 17:15:24 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 00:05:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define ATACK_2 13
 # define ATACK_3 14
 # define ATACK_4 15
+# define BREATH 43
 
 //Game Tools
 # define MAP 16
@@ -63,7 +64,6 @@
 
 //EFECT
 # define RUN 58
-# define CHICKEN_D2 59
 
 //PIG
 # define PIG 33
@@ -80,12 +80,12 @@
 # define BULL_4 41
 
 //CHICKEN
-# define CHICKEN_S0 43
 # define CHICKEN_S1 44
 # define CHICKEN_S2 45
 # define CHICKEN_S3 46
 
 //EMPTY
+# define EMPTY_00 59
 # define EMPTY_01 60
 # define EMPTY_02 61
 # define EMPTY_03 62

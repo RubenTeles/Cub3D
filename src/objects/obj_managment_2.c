@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:41:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 01:08:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ static int	_player_is_atacked(t_object *obj)
 	return (1);
 }
 
+int	ft_exception(t_object *obj, t_object *aux)
+{
+	if ((obj && obj->title == BREATH) && \
+	(aux->title == PIG || aux->title == BULL || \
+	aux->title == CRISTAL))
+	{
+		aux->is_atack(aux, 10);
+		return (1);
+	}
+	if (obj && obj->title == PIG && aux->title == WINDOW)
+		return (0);
+	return (1);
+}
+
 int	is_collision(t_object *obj, double x, double y, int option)
 {
 	t_object	*aux;
@@ -53,10 +67,10 @@ int	is_collision(t_object *obj, double x, double y, int option)
 		if (aux->collision == 1 && aux != obj && \
 			((aux->pos[X] + 1.10 >= x && aux->pos[X] - 0.1 <= x) && \
 			(aux->pos[Y] + 1.10 >= y && aux->pos[Y] - 0.1 <= y)))
-			return (1);
+			return (ft_exception(obj, aux));
 		aux = aux->next;
 	}
-	if (obj && (((player())->pos[X] + 1.10 >= x && \
+	if (obj && obj->title != BREATH && (((player())->pos[X] + 1.10 >= x && \
 		(player())->pos[X] - 0.1 <= x) && ((player())->pos[Y] + 1.10 >= y && \
 		(player())->pos[Y] - 0.1 <= y)))
 		return (_player_is_atacked(obj));

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:29:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 01:12:47 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,68 @@
 #include <ft_sound.h>
 #include <ft_scenes_images.h>
 #include <ft_keys.h>
-/*
-static void	_breath_move(t_object *atack, int move_x)
-{
-	static int	i = -1;
-	double		d_x;
-	double		d_y;
-	int			move_y;
 
-	move_y = 0;
-	d_x = (player()->pos[X] * 2 < player()->pos[X]) - \
-	(player()->pos[X] * 2 > player()->pos[X]);
-	d_y = (atack->pos[Y] < player()->pos[Y]) - \
-	(atack->pos[Y] > player()->pos[Y]);
-	if (!atack->is_collision(atack, atack->pos[X] + (d_x * atack->vel) + 0.5, \
-	atack->pos[Y] + 0.5, 0) && ++move_x)
-		atack->pos[X] += (d_x * atack->vel);
-	if (!atack->is_collision(atack, atack->pos[X] + 0.5, \
-	atack->pos[Y] + (d_y * atack->vel) + 0.5, 0) && ++move_y)
-		atack->pos[Y] += (d_y * atack->vel);
-	if (move_y || move_x)
+static int	_breath_in_move(t_object *breath)
+{
+	int	colide_x;
+	int	colide_y;
+
+	colide_x = 0;
+	colide_y = 0;
+	if (!is_collision(breath, breath->pos[X] + (1 * (breath->vel * \
+		breath->dir[X])), breath->pos[Y], 0))
 	{
-		//(engine())->sound->play(&(engine())->sound[SD_atack_RUN]);
-		atack->sprite = (canva())->sprite(atack_1 + i++);
-		if (i > 3)
-			i = 0;
+		colide_x = 1;
+		breath->pos[X] += 1 * (breath->vel * \
+		breath->dir[X]);
 	}
-	else if (atack->sprite)
-		atack->sprite = (canva())->sprite(atack);
-	if (i == 0)
-		_player_near_atack(atack, 0);
+	if (!is_collision(breath, breath->pos[X], breath->pos[Y] + \
+		(1 * (breath->vel * breath->dir[Y])), 0))
+	{
+		colide_y = 1;
+		breath->pos[Y] += 1 * (breath->vel * \
+		breath->dir[Y]);
+	}
+	if (colide_x && colide_y)
+		return (1);
+	return (0);
+}
+
+static void	_breath_move(t_object *breath, int destroy_breath)
+{
+	destroy_breath = 0;
+	if (breath->life - 10 > 0)
+	{
+		breath->life -= 13;
+		_breath_in_move(breath);
+	}
+	else
+		destroy_breath = 1;
+	if (destroy_breath)
+	{
+		breath->avatar = 0;
+		breath->sprite = 0;
+		breath->prev->next = breath->next;
+		free(breath);
+	}
 }
 
 int	ft_create_breath(t_object *breath)
 {
-	breath->avatar = (canva())->sprite(breath);
-	breath->sprite = (canva())->sprite(breath);
-	breath->life = 200;
-	breath->collision = 1;
-	breath->interation = 5;
+	breath->avatar = (canva())->sprite(BREATH);
+	breath->sprite = (canva())->sprite(BREATH);
+	breath->life = (player())->atack_breath_life;
+	breath->collision = 0;
+	breath->interation = 0;
+	breath->pos[X] = (player())->pos[X];
+	breath->pos[Y] = (player())->pos[Y];
+	breath->dir[X] = (player())->dir[X];
+	breath->dir[Y] = (player())->dir[Y];
 	breath->dimension[X] = 1;
 	breath->dimension[Y] = 1;
 	breath->dimension[2] = 100;
-	breath->vel = 0.2;
-	breath->player_interation = _interation_breath;
-	breath->player_near = _player_near_breath;
-	breath->is_atack = _is_atacked_breath;
+	breath->vel = 0.8;
+	breath->move = 1;
 	breath->is_move = _breath_move;
 	return (1);
 }
-*/

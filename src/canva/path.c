@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 17:02:26 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 00:06:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	path_pig(void)
 	(canva())->data[BULL_2].path = "./sprite/bull/bull_02.xpm";
 	(canva())->data[BULL_3].path = "./sprite/bull/bull_03.xpm";
 	(canva())->data[BULL_4].path = "./sprite/bull/bull_04.xpm";
+	(canva())->data[BREATH].path = "./sprite/item/cloud_2.xpm";
 }
 
 void	ft_path_alphabet_2(void)

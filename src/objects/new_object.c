@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 18:56:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 00:12:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ t_object	*ft_new_object_2(t_object *new, char title)
 	new->is_collision = is_collision;
 	new->last = last_object;
 	new->destroy = destroy_object;
+	new->prev = 0;
 	new->next = 0;
+	if ((engine())->enemies)
+		new->prev = new->last((engine())->enemies);
 	if ((new->title == PIG || new->title == CRISTAL || new->title == BUSH || \
-	new->title == BULL) && !(engine())->enemies)
+	new->title == BULL || new->title == BREATH) && !(engine())->enemies)
 		(engine())->enemies = new;
 	else if ((new->title == PIG || new->title == CRISTAL || new->title == BUSH \
-	|| new->title == BULL) && (engine())->enemies)
+	|| new->title == BULL || new->title == BREATH) && (engine())->enemies)
 		(engine())->enemies->last((engine())->enemies)->next = new;
 	else if (!(engine())->object)
 		(engine())->object = new;

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 18:57:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 00:14:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	map_to_sprite(char title)
 		return (WINDOW);
 	if (title == 'p')
 		return (PIG);
+	if (title == '=')
+		return (BREATH);
 	return (0);
 }
 
@@ -96,5 +98,7 @@ int	ft_managemen_objects(char tittle, t_object *obj)
 		return (ft_create_bush(obj));
 	if (obj->title == BULL)
 		return (ft_create_bull(obj));
+	if (obj->title == BREATH)
+		return (ft_create_breath(obj));
 	return (0);
 }
