@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:30:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:50:43 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ static void	_player_near_bull(t_object *bull, int key)
 	bull->move = bull->is_near;
 	if (!bull->is_near && bull->sprite)
 		bull->sprite = (canva())->sprite(BULL);
-}
-
-static void	_interation_bull(t_object *bull, int key)
-{
-	(void)key;
-	(void)bull;
 }
 
 static void	_is_atacked_bull(t_object *bull, int damage)
@@ -97,8 +91,7 @@ int	ft_create_bull(t_object *bull)
 	bull->dimension[X] = 1;
 	bull->dimension[Y] = 1;
 	bull->dimension[2] = 100;
-	bull->vel = 0.2;
-	bull->player_interation = _interation_bull;
+	bull->vel = 0.1;
 	bull->player_near = _player_near_bull;
 	bull->is_atack = _is_atacked_bull;
 	bull->is_move = _bull_move;

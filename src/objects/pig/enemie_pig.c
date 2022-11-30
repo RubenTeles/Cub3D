@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 23:27:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 20:14:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,18 @@ static void	_interation_pig(t_object *pig, int key)
 
 static void	_is_atacked_pig(t_object *pig, int damage)
 {
+	double		d_x;
+	double		d_y;
+
 	pig->life -= damage;
+	d_x = (pig->pos[X] < player()->pos[X]) - (pig->pos[X] > player()->pos[X]);
+	d_y = (pig->pos[Y] < player()->pos[Y]) - (pig->pos[Y] > player()->pos[Y]);
+	if (!pig->is_collision(pig, pig->pos[X] + (d_x * pig->vel) + 0.5, \
+	pig->pos[Y] + 0.5, 0))
+		pig->pos[X] += (d_x * pig->vel);
+	if (!pig->is_collision(pig, pig->pos[X] + 0.5, \
+	pig->pos[Y] + (d_y * pig->vel) + 0.5, 0))
+		pig->pos[Y] += (d_y * pig->vel);
 	(engine())->sound->play(&(engine())->sound[SD_PIG_ATACKED]);
 	if (pig->life <= 0)
 	{
@@ -87,7 +98,7 @@ int	ft_create_pig(t_object *pig)
 	pig->dimension[X] = 1;
 	pig->dimension[Y] = 1;
 	pig->dimension[2] = 100;
-	pig->vel = 0.5;
+	pig->vel = 0.25;
 	pig->player_interation = _interation_pig;
 	pig->player_near = _player_near_pig;
 	pig->is_atack = _is_atacked_pig;

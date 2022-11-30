@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:23:46 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 16:28:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:21:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	ft_background_1(t_data *data, double x1)
 	(engine())->size[Y] * \
 		0.16, (engine())->size[X] * (0.33 + x1), (engine())->size[Y] * 0.25));
 	ft_background_2(x1, (canva())->sprite(CLOUD_2));
-	ft_fog(canva()->data, (double)(engine())->time);
+	if ((all())->stop_weather != 3)
+		ft_fog(canva()->data, (double)(engine())->time);
 }
 
 void	ft_background(t_scene_img *scene)

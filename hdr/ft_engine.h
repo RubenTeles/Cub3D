@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 00:37:24 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 17:48:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ struct s_engine
 	int			color[2];
 	int			size[2];
 	int			max[2];
-	int			count;
+	double		count;
 	int			pos[2];
 	int			map;
 	long long	start_time;	

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 01:12:47 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:53:06 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	_breath_move(t_object *breath, int destroy_breath)
 		breath->avatar = 0;
 		breath->sprite = 0;
 		breath->prev->next = breath->next;
+		if (breath->next)
+			breath->next->prev = breath->prev;
 		free(breath);
 	}
 }
@@ -68,8 +70,8 @@ int	ft_create_breath(t_object *breath)
 	breath->life = (player())->atack_breath_life;
 	breath->collision = 0;
 	breath->interation = 0;
-	breath->pos[X] = (player())->pos[X];
-	breath->pos[Y] = (player())->pos[Y];
+	breath->pos[X] = (player())->pos[X] - 0.5;
+	breath->pos[Y] = (player())->pos[Y] - 0.5;
 	breath->dir[X] = (player())->dir[X];
 	breath->dir[Y] = (player())->dir[Y];
 	breath->dimension[X] = 1;

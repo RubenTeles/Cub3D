@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 01:08:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:54:34 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static int	_player_is_atacked(t_object *obj)
 				(obj->pos[X] < player()->pos[X]);
 		d_y = (obj->pos[Y] > player()->pos[Y]) - \
 				(obj->pos[Y] < player()->pos[Y]);
-		if (!obj->is_collision(obj, obj->pos[X] + (d_x * (obj->vel * 2)) + 0.5, \
+		if (!obj->is_collision(obj, obj->pos[X] + (d_x * 0.1) + 0.5, \
 			obj->pos[Y] + 0.5, 0))
-			obj->pos[X] += (d_x * (obj->vel * 2));
+			obj->pos[X] += (d_x * 0.1);
 		if (!obj->is_collision(obj, obj->pos[X] + 0.5, \
-			obj->pos[Y] + (d_y * (obj->vel * 2)) + 0.5, 0))
-			obj->pos[Y] += (d_y * (obj->vel * 2));
+			obj->pos[Y] + (d_y * 0.1) + 0.5, 0))
+			obj->pos[Y] += (d_y * 0.1);
 	}
 	return (1);
 }

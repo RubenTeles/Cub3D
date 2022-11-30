@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 19:47:11 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 20:03:49 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,25 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
-void	loop_aux(void)
+void	loop_aux(int time)
 {
 	ft_enemies_move();
 	(engine())->time = time_diff((engine())->start_time, \
 	time_current()) * 0.001;
+	(canva())->word("FPS ", \
+	ft_aux((engine())->size[X] * 0.05, (engine())->size[Y] * 0.02, \
+	(engine())->size[X] * 0.915, (engine())->size[Y] * 0.956), 0);
+	(canva())->word((string()).itoa(time), \
+	ft_aux((engine())->size[X] * 0.03, (engine())->size[Y] * 0.02, \
+	(engine())->size[X] * 0.955, (engine())->size[Y] * 0.956), 1);
 }
 
 int	loop_game(void)
 {
 	static int		a = 0;
-	static int		x_wall = 0;
+	long long		start;
 
+	start = time_current();
 	if ((engine())->count < 0 || \
 		(engine())->count > (1000 / (engine())->sprt_for_sec))
 	{
@@ -47,13 +54,12 @@ int	loop_game(void)
 		(engine())->dif_time = time_current();
 	}
 	(engine())->count = time_diff((engine())->dif_time, time_current());
-	if ((engine())->count == (1000 / (engine())->sprt_for_sec) && a == 0)
+	if (a == 0)
 	{
-		x_wall++;
 		(canva())->show_scenes();
 		a = 1;
 		if (!(engine())->pause)
-			loop_aux();
+			loop_aux((int)(1000 / time_diff(start, time_current())));
 		else
 			(engine())->pause_time = time_diff((engine())->start_pause, \
 			time_current()) * 0.001;
