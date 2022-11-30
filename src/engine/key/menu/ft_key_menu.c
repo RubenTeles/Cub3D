@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:41:43 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 20:39:15 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 20:47:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	key_menu_1(void)
 int	key_menu(void)
 {
 	static long long	time_start = 0;
-	long long	dif;
+	long long			dif;
 
 	dif = time_diff(time_start, time_current());
 	if (dif > 100 || time_start == 0)
@@ -75,6 +75,5 @@ int	key_menu(void)
 		else if ((engine())->menu == 3)
 			return (key_menu_3());
 	}
-	
 	return (0);
 }
