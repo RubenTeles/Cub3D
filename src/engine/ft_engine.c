@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 20:03:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 20:34:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ long long	time_diff(long long past, long long pres)
 	return (pres - past);
 }
 
-void	loop_aux(int time)
+int	loop_aux(long long start, int time)
 {
+	if (time > (engine())->sprt_for_sec)
+		usleep((time - (engine())->sprt_for_sec) * 250);
 	ft_enemies_move();
 	(engine())->time = time_diff((engine())->start_time, \
 	time_current()) * 0.001;
@@ -39,12 +41,15 @@ void	loop_aux(int time)
 	(canva())->word((string()).itoa(time), \
 	ft_aux((engine())->size[X] * 0.03, (engine())->size[Y] * 0.02, \
 	(engine())->size[X] * 0.955, (engine())->size[Y] * 0.956), 1);
+	time = (int)(1000 / time_diff(start, time_current()));
+	return (time);
 }
 
 int	loop_game(void)
 {
 	static int		a = 0;
 	long long		start;
+	static int		fps = 0;
 
 	start = time_current();
 	if ((engine())->count < 0 || \
@@ -59,7 +64,7 @@ int	loop_game(void)
 		(canva())->show_scenes();
 		a = 1;
 		if (!(engine())->pause)
-			loop_aux((int)(1000 / time_diff(start, time_current())));
+			fps = loop_aux(start, fps);
 		else
 			(engine())->pause_time = time_diff((engine())->start_pause, \
 			time_current()) * 0.001;
