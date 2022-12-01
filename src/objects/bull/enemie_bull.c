@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 00:04:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:50:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,33 @@ static void	_player_near_bull(t_object *bull, int key)
 	bull->move = bull->is_near;
 	if (!bull->is_near && bull->sprite)
 		bull->sprite = (canva())->sprite(BULL);
+}
+
+static void	_bull_die(t_object *bull)
+{
+	bull->move = 0;
+	bull->avatar = 0;
+	bull->sprite = 0;
+	bull->interation = 0;
+	bull->collision = 0;
+	bull->life = 0;
+	bull->is_near = 0;
+	(engine())->task.bull++;
+	if (bull->prev)
+	{
+		if (bull->next)
+			bull->prev->next = bull->next;
+		else
+			bull->prev->next = 0;
+	}
+	else
+	{
+		if (bull->next)
+			bull->next->prev = bull->prev;
+		else
+			bull->next->prev = 0;
+	}
+	free(bull);
 }
 
 static void	_is_atacked_bull(t_object *bull, int damage)
@@ -40,15 +67,7 @@ static void	_is_atacked_bull(t_object *bull, int damage)
 	bull->pos[Y] + (d_y * bull->vel * 2) + 0.5, 0))
 		bull->pos[Y] += (d_y * bull->vel * 2);
 	if (bull->life <= 0)
-	{
-		bull->move = 0;
-		bull->avatar = 0;
-		bull->sprite = 0;
-		bull->interation = 0;
-		bull->collision = 0;
-		bull->life = 0;
-		bull->is_near = 0;
-	}
+		_bull_die(bull);
 }
 
 static void	_bull_move(t_object *bull, int move_x)
@@ -94,5 +113,6 @@ int	ft_create_bull(t_object *bull)
 	bull->player_near = _player_near_bull;
 	bull->is_atack = _is_atacked_bull;
 	bull->is_move = _bull_move;
+	(engine())->task.max_bull++;
 	return (1);
 }

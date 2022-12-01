@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 02:10:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:38:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,35 @@
 
 static int	*ft_how_many_enimies(int sprite)
 {
-	t_object	*aux;
-	int			*kill_and_max;
+	int	*kill_and_max;
 
 	kill_and_max = malloc(sizeof(int) * 2);
-	kill_and_max[0] = 0;
-	kill_and_max[1] = 0;
-	aux = (engine())->enemies;
-	while (aux)
+	if (sprite == PIG)
 	{
-		if (aux->title == sprite)
-		{
-			if (aux->life <= 0)
-				kill_and_max[0]++;
-			kill_and_max[1]++;
-		}
-		aux = aux->next;
+		kill_and_max[0] = (engine())->task.pig;
+		kill_and_max[1] = (engine())->task.max_pig;
+	}
+	if (sprite == BULL)
+	{
+		kill_and_max[0] = (engine())->task.bull;
+		kill_and_max[1] = (engine())->task.max_bull;
+	}
+	if (sprite == CRISTAL)
+	{
+		kill_and_max[0] = (engine())->task.cristal;
+		kill_and_max[1] = (engine())->task.max_cristal;
 	}
 	return (kill_and_max);
 }
 
 void	game_end(void)
 {
+	static int	sound = 0;
+
 	(engine())->sound->play(&(engine())->sound[SD_WOLF]);
 	(canva())->scene_img[S_END_GAME].option = 1;
-	(canva())->scene = &(canva())->scene_show[SC_END_GAME];
+	if (!sound)
+		(canva())->scene = &(canva())->scene_show[SC_END_GAME];
 	(canva())->scene->init();
 }
 

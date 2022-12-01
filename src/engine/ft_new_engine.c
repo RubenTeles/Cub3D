@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:30:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:28:56 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ static void	colors_floor_ceilling(char **floor, char **ceilling)
 	(engine())->color[CEILLING] = ft_trgb(0, r, g, b);
 }
 
+static void	new_engine_2(void)
+{	
+	(engine())->task.pig = 0;
+	(engine())->task.max_pig = 0;
+	(engine())->task.bull = 0;
+	(engine())->task.max_bull = 0;
+	(engine())->task.cristal = 0;
+	(engine())->task.max_cristal = 0;
+}	
+
 void	new_engine(t_all *all, int larg, int alt)
 {
 	(engine())->ptr = mlx_init();
@@ -50,6 +60,7 @@ void	new_engine(t_all *all, int larg, int alt)
 	(engine())->menu = 1;
 	(engine())->object = 0;
 	(engine())->enemies = 0;
+	new_engine_2();
 	new_key();
 	new_sound();
 	new_canva();

@@ -6,40 +6,14 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 19:54:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:06:32 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
 #include <ft_scenes_images.h>
-
-static int	_player_is_atacked(t_object *obj)
-{
-	double	d_x;
-	double	d_y;
-
-	obj->dif = time_diff(obj->time_start, time_current());
-	if (obj->dif > 200 || obj->time_start == 0)
-	{
-		obj->time_start = time_current();
-		if ((player())->life - 30 >= 1)
-			(player())->life -= 30;
-		else
-			return ((player())->dead());
-		d_x = (obj->pos[X] > player()->pos[X]) - \
-				(obj->pos[X] < player()->pos[X]);
-		d_y = (obj->pos[Y] > player()->pos[Y]) - \
-				(obj->pos[Y] < player()->pos[Y]);
-		if (!obj->is_collision(obj, obj->pos[X] + (d_x * 0.1) + 0.5, \
-			obj->pos[Y] + 0.5, 0))
-			obj->pos[X] += (d_x * 0.1);
-		if (!obj->is_collision(obj, obj->pos[X] + 0.5, \
-			obj->pos[Y] + (d_y * 0.1) + 0.5, 0))
-			obj->pos[Y] += (d_y * 0.1);
-	}
-	return (1);
-}
+#include <ft_sound.h>
 
 int	ft_exception(t_object *obj, t_object *aux)
 {

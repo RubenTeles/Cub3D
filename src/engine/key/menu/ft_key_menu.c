@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:41:43 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 02:02:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:08:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,11 @@ int	key_menu_2(void)
 		(engine())->sound->play(&(engine())->sound[SD_KEYS]);
 		(engine())->menu = 3;
 	}
+	if ((engine())->key[_KEY_ENTER].on)
+		(engine())->sound->play(&(engine())->sound[SD_DENNY]);
 	return (1);
 }
-/*if ((engine())->key[_KEY_ENTER].on)
-{
-	(engine())->sound->play(&(engine())->sound[SD_KEYS]);
-	(engine())->menu = 4;
-}*/
+/*(engine())->menu = 4;*/
 
 //Button 1
 int	key_menu_1(void)

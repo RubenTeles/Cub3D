@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 23:22:21 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:48:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,33 @@ static void	_player_near_pig(t_object *pig, int key)
 	}
 }
 
-static void	_interation_pig(t_object *pig, int key)
+static void	_pig_die(t_object *pig)
 {
-	(void)key;
-	(void)pig;
+	pig->move = 0;
+	pig->avatar = 0;
+	pig->sprite = 0;
+	pig->interation = 0;
+	pig->collision = 0;
+	pig->life = 0;
+	pig->is_near = 0;
+	(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
+	(engine())->task.pig++;
+	if (pig->prev)
+	{
+		if (pig->next)
+			pig->prev->next = pig->next;
+		else
+			pig->prev->next = 0;
+	}
+	else
+	{
+		if (pig->next)
+			pig->next->prev = pig->prev;
+		else
+			pig->next->prev = 0;
+	}
+	free(pig);
+	ft_tasks(0);
 }
 
 static void	_is_atacked_pig(t_object *pig, int damage)
@@ -50,17 +73,7 @@ static void	_is_atacked_pig(t_object *pig, int damage)
 		pig->pos[Y] += (d_y * pig->vel);
 	(engine())->sound->play(&(engine())->sound[SD_PIG_ATACKED]);
 	if (pig->life <= 0)
-	{
-		pig->move = 0;
-		pig->avatar = 0;
-		pig->sprite = 0;
-		pig->interation = 0;
-		pig->collision = 0;
-		pig->life = 0;
-		pig->is_near = 0;
-		(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
-		ft_tasks(0);
-	}
+		_pig_die(pig);
 }
 
 static void	_pig_move(t_object *pig, int move_x)
@@ -103,9 +116,9 @@ int	ft_create_pig(t_object *pig)
 	pig->dimension[Y] = 1;
 	pig->dimension[2] = 100;
 	pig->vel = 0.25;
-	pig->player_interation = _interation_pig;
 	pig->player_near = _player_near_pig;
 	pig->is_atack = _is_atacked_pig;
 	pig->is_move = _pig_move;
+	(engine())->task.max_pig++;
 	return (1);
 }

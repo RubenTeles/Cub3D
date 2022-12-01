@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 16:43:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:50:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,32 @@ static void	_player_near_cristal(t_object *cristal, int key)
 {
 	(void)key;
 	(void)cristal;
+}
+
+static void	_cristal_die(t_object *cristal)
+{
+	cristal->avatar = 0;
+	cristal->sprite = 0;
+	cristal->interation = 0;
+	cristal->collision = 0;
+	cristal->life = 0;
+	cristal->is_near = 0;
+	(engine())->task.cristal++;
+	if (cristal->prev)
+	{
+		if (cristal->next)
+			cristal->prev->next = cristal->next;
+		else
+			cristal->prev->next = 0;
+	}
+	else
+	{
+		if (cristal->next)
+			cristal->next->prev = cristal->prev;
+		else
+			cristal->next->prev = 0;
+	}
+	free(cristal);
 }
 
 static void	_interation_cristal(t_object *cristal, int key)
@@ -37,13 +63,8 @@ static void	_interation_cristal(t_object *cristal, int key)
 		(engine())->sound->play(&(engine())->sound[SD_MINING]);
 		if (cristal->life <= 0)
 		{
-			cristal->avatar = 0;
-			cristal->sprite = 0;
-			cristal->interation = 0;
-			cristal->collision = 0;
-			cristal->life = 0;
-			cristal->is_near = 0;
 			(engine())->sound->play(&(engine())->sound[SD_DIAMOND]);
+			_cristal_die(cristal);
 		}
 	}
 }
@@ -59,5 +80,6 @@ int	ft_create_cristal(t_object *cristal)
 	cristal->dimension[2] = 250;
 	cristal->player_interation = _interation_cristal;
 	cristal->player_near = _player_near_cristal;
+	(engine())->task.max_cristal++;
 	return (1);
 }

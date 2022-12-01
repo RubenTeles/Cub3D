@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 00:13:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:09:50 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	sound_path(void)
 	(engine())->sound[SD_DOOR].sound = "paplay src/sound/open_door.ogg";
 	(engine())->sound[SD_WOLF_HAPPY].sound = \
 	"paplay src/sound/wolf_celebration.ogg";
+	(engine())->sound[SD_WOLF_HURT].sound = "paplay src/sound/wolf_hurt.ogg";
 	(engine())->sound[SD_WOLF_DIE].sound = "paplay src/sound/wolf_die.ogg";
 	(engine())->sound[SD_MINING].sound = "paplay src/sound/mining.ogg";
 	(engine())->sound[SD_DIAMOND].sound = \
@@ -34,6 +35,7 @@ static void	sound_path(void)
 	(engine())->sound[SD_BULL].sound = "paplay src/sound/bull.ogg";
 	(engine())->sound[SD_BULL_RUN].sound = "paplay src/sound/bull_run.ogg";
 	(engine())->sound[SD_KEYS].sound = "paplay src/sound/keys.ogg";
+	(engine())->sound[SD_DENNY].sound = "paplay src/sound/denny.ogg";
 }
 
 static void	sound_len(void)
@@ -44,16 +46,18 @@ static void	sound_len(void)
 	(engine())->sound[SD_BREADING_OUT].len = 0;
 	(engine())->sound[SD_DOOR].len = 0;
 	(engine())->sound[SD_WOLF_HAPPY].len = 900;
+	(engine())->sound[SD_WOLF_HURT].len = 0;
 	(engine())->sound[SD_WOLF_DIE].len = 1000;
-	(engine())->sound[SD_MINING].len = 800;
+	(engine())->sound[SD_MINING].len = 700;
 	(engine())->sound[SD_DIAMOND].len = 0;
 	(engine())->sound[SD_BUSH].len = 700;
 	(engine())->sound[SD_PIG_RUN].len = 500;
 	(engine())->sound[SD_PIG_ATACKED].len = 650;
 	(engine())->sound[SD_PIG_DIED].len = 1000;
 	(engine())->sound[SD_BULL].len = 1200;
-	(engine())->sound[SD_BULL_RUN].len = 1250;
+	(engine())->sound[SD_BULL_RUN].len = 1400;
 	(engine())->sound[SD_KEYS].len = 0;
+	(engine())->sound[SD_DENNY].len = 0;
 }
 
 void	sounds_init(void)

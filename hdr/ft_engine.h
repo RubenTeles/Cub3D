@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 01:21:27 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 17:06:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_scene_img			t_scene_img;
 typedef struct s_sound				t_sound;
 typedef struct s_object				t_object;
 typedef struct s_player1			t_player1;
+typedef struct s_tasks				t_tasks;
 typedef struct s_aux				t_aux;
 
 # define X 0
@@ -39,6 +40,16 @@ struct s_aux
 	double		y;
 	double		larg;
 	double		alt;
+};
+
+struct s_tasks
+{
+	int		pig;
+	int		max_pig;
+	int		bull;
+	int		max_bull;
+	int		cristal;
+	int		max_cristal;
 };
 
 struct s_key
@@ -116,6 +127,7 @@ struct s_engine
 	int			sprt_for_sec;
 	int			menu;
 	int			pause;
+	t_tasks		task;
 	t_key		*key;
 	t_object	*enemies;
 	t_object	*object;
@@ -270,6 +282,7 @@ void			new_player(void);
 void			all_interation(t_object *obj, double x, double y, int option);
 void			is_interation(t_object *obj, int keycode);
 void			player_interation_atack(int key);
+int				_player_is_atacked(t_object *obj);
 
 //Colors
 int				ft_trgb(unsigned char t, unsigned char r, \
