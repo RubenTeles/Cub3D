@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 19:50:43 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 00:04:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	_is_atacked_bull(t_object *bull, int damage)
 	double		d_y;
 
 	bull->life -= damage;
-	(engine())->sound->play(&(engine())->sound[SD_PIG_ATACKED]);
+	(engine())->sound->play(&(engine())->sound[SD_BULL]);
 	d_x = (bull->pos[X] > player()->pos[X]) - (bull->pos[X] < player()->pos[X]);
 	d_y = (bull->pos[Y] > player()->pos[Y]) - (bull->pos[Y] < player()->pos[Y]);
 	if (!bull->is_collision(bull, bull->pos[X] + (d_x * bull->vel * 2) + 0.5, \
@@ -48,7 +48,6 @@ static void	_is_atacked_bull(t_object *bull, int damage)
 		bull->collision = 0;
 		bull->life = 0;
 		bull->is_near = 0;
-		(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
 	}
 }
 
@@ -70,7 +69,7 @@ static void	_bull_move(t_object *bull, int move_x)
 		bull->pos[Y] += (d_y * bull->vel);
 	if (move_y || move_x)
 	{
-		//(engine())->sound->play(&(engine())->sound[SD_bull_RUN]);
+		(engine())->sound->play(&(engine())->sound[SD_BULL_RUN]);
 		bull->sprite = (canva())->sprite(BULL_1 + i++);
 		if (i > 3)
 			i = 0;

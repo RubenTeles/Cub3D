@@ -6,18 +6,17 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 15:12:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 00:13:01 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sound.h>
-#include <signal.h>
 
 static void	sound_path(void)
 {
-	(engine())->sound[SD_WOLF].sound = "paplay src/sound/wolf_2.ogg";
-	(engine())->sound[SD_MUSIC].sound = "paplay src/sound/pMLWWiBvWX8_48.ogg";
+	(engine())->sound[SD_WOLF].sound = "paplay src/sound/wolf_.ogg";
+	(engine())->sound[SD_MUSIC].sound = "paplay src/sound/music.ogg";
 	(engine())->sound[SD_BREADING_IN].sound = "paplay src/sound/breathe_in.ogg";
 	(engine())->sound[SD_BREADING_OUT].sound = \
 	"paplay src/sound/breathe_out.ogg";
@@ -32,6 +31,9 @@ static void	sound_path(void)
 	(engine())->sound[SD_PIG_RUN].sound = "paplay src/sound/pig_run.ogg";
 	(engine())->sound[SD_PIG_ATACKED].sound = "paplay src/sound/pig_atack.ogg";
 	(engine())->sound[SD_PIG_DIED].sound = "paplay src/sound/pig_die.ogg";
+	(engine())->sound[SD_BULL].sound = "paplay src/sound/bull.ogg";
+	(engine())->sound[SD_BULL_RUN].sound = "paplay src/sound/bull_run.ogg";
+	(engine())->sound[SD_KEYS].sound = "paplay src/sound/keys.ogg";
 }
 
 static void	sound_len(void)
@@ -49,6 +51,9 @@ static void	sound_len(void)
 	(engine())->sound[SD_PIG_RUN].len = 500;
 	(engine())->sound[SD_PIG_ATACKED].len = 650;
 	(engine())->sound[SD_PIG_DIED].len = 1000;
+	(engine())->sound[SD_BULL].len = 1200;
+	(engine())->sound[SD_BULL_RUN].len = 1250;
+	(engine())->sound[SD_KEYS].len = 0;
 }
 
 void	sounds_init(void)

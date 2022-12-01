@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:04:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 14:13:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:38:44 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@
 # define SD_PIG_RUN 10
 # define SD_PIG_ATACKED 11
 # define SD_PIG_DIED 12
+# define SD_BULL 13
+# define SD_BULL_RUN 14
+# define SD_KEYS 15
 
 //NUMBER MAX
-# define _MAX_SOUNDS_ 13
+# define _MAX_SOUNDS_ 16
 
 #endif

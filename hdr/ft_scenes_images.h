@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:00:33 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 20:30:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 01:19:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # define S_MAP 9
 # define S_PAUSE 10
 # define S_TASKS 11
-# define S_YOU_DIE 12
-# define S_END_GAME 13
+# define S_INSTRUTIONS 12
+# define S_YOU_DIE 13
+# define S_END_GAME 14
 
 //Number Max Scenes
-# define S_MAX_SCENES_IMG 14
+# define S_MAX_SCENES_IMG 15
 
 #endif

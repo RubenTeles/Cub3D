@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:09:37 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 00:05:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 01:11:35 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MENU 5
 # define SIGN 6
 # define WALK 7
+# define INSTRUTIONS 44
 
 //Player
 # define AVATAR 8
@@ -80,7 +81,6 @@
 # define BULL_4 41
 
 //CHICKEN
-# define CHICKEN_S1 44
 # define CHICKEN_S2 45
 # define CHICKEN_S3 46
 

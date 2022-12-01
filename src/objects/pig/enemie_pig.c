@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 20:14:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:22:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ static void	_player_near_pig(t_object *pig, int key)
 	(void)key;
 	pig->move = pig->is_near;
 	if (!pig->is_near && pig->sprite)
+	{
+		if (pig->sprite == (canva())->sprite(PIG))
+			pig->sprite = (canva())->sprite(PIG + 2);
 		pig->sprite = (canva())->sprite(PIG);
+	}
 }
 
 static void	_interation_pig(t_object *pig, int key)

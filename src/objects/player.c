@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:10:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 00:18:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:48:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void	player_movement(int move_x, int move_y, int dir_x, int dir_y)
 }
 
 static int	_player_dead(void)
-{
+{	
+	(engine())->sound->play(&(engine())->sound[SD_WOLF_DIE]);
 	(player())->life = 0;
 	(engine())->start_pause = time_current();
 	(engine())->pause = 1;

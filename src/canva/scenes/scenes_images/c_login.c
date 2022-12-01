@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 00:19:52 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/28 19:19:02 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 00:12:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	ft_login(t_scene_img *scene)
 
 	if (x > 0)
 		ft_login_metric(scene->animation);
+	(engine())->sound->play(&(engine())->sound[SD_MUSIC]);
 	(canva())->create_data(N_WALL, AVATAR);
 	data = (canva())->sprite(MENU);
 	if (!data)

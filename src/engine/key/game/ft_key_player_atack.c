@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:50:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 01:12:36 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:20:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	key_atack_1(void)
 	{
 		(player())->sprite = (canva())->sprite(HAND);
 		(engine())->sound->play(&(engine())->sound[SD_BREADING_OUT]);
-		if ((player())->atack_breath_life > 10)
+		if ((player())->atack_breath_life > 20)
 			ft_new_object('=', (player())->pos[X], (player())->pos[Y]);
 		(player())->atack = 0;
 		(player())->atack_breath_life = 0;

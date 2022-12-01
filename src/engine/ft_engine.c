@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:36:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 20:34:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:12:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ long long	time_diff(long long past, long long pres)
 int	loop_aux(long long start, int time)
 {
 	if (time > (engine())->sprt_for_sec)
-		usleep((time - (engine())->sprt_for_sec) * 250);
+	{
+		while (time > 60)
+		{
+			time = (int)(1000 / time_diff(start, time_current()));
+			usleep(10);
+		}
+	}
 	ft_enemies_move();
 	(engine())->time = time_diff((engine())->start_time, \
 	time_current()) * 0.001;

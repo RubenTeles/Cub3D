@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:49:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 20:09:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/11/30 23:15:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ static void	key_game_wsad(void)
 		(player())->movement(-1, -1, X, Y);
 	if ((engine())->key[_KEY_D].on && ++(player())->move)
 		(player())->movement(-1, 1, Y, X);
+	if (!(engine())->key[_KEY_W].on && !(engine())->key[_KEY_D].on \
+		&& !(engine())->key[_KEY_A].on && !(engine())->key[_KEY_S].on)
+		(player())->move = 0;
 }
 
 //KEY M
