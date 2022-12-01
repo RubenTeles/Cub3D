@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:48:45 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 00:12:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:47:15 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ static void	destroy_object(void)
 		aux = aux->next;
 		free(destroy);
 	}
-	aux = (engine())->enemies;
-	while (aux)
+	if ((engine())->enemies)
 	{
-		destroy = aux;
-		aux = aux->next;
-		free(destroy);
+		aux = (engine())->enemies;
+		while (aux)
+		{
+			destroy = aux;
+			aux = aux->next;
+			free(destroy);
+		}
 	}
 }
 

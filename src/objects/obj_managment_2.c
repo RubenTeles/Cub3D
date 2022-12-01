@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:02:42 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 17:06:32 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:56:23 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,31 @@ void	ft_enemies_move(void)
 			aux->is_move(aux, 0);
 		aux = aux->next;
 	}
+}
+
+void	ft_destroy_enemies(t_object *obj)
+{
+	if ((engine())->enemies == obj)
+	{
+		if (obj->next)
+			(engine())->enemies = obj->next;
+		else
+			return ;
+		printf("aaa\n");
+	}
+	if (obj->prev)
+	{
+		if (obj->next)
+			obj->prev->next = obj->next;
+		else
+			obj->prev->next = 0;
+	}
+	else
+	{
+		if (obj->next)
+			obj->next->prev = obj->prev;
+		else
+			obj->next->prev = 0;
+	}
+	free(obj);
 }

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:45:13 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:55:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,8 @@ static void	_breath_die(t_object *breath)
 {
 	breath->avatar = 0;
 	breath->sprite = 0;
-	if (breath->prev)
-	{
-		if (breath->next)
-			breath->prev->next = breath->next;
-		else
-			breath->prev->next = 0;
-	}
-	else
-	{
-		if (breath->next)
-			breath->next->prev = breath->prev;
-		else
-			breath->next->prev = 0;
-	}
-	free(breath);
+	breath->move = 0;
+	ft_destroy_enemies(breath);
 }
 
 static void	_breath_move(t_object *breath, int destroy_breath)

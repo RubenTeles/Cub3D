@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:50:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:38:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,7 @@ static void	_bull_die(t_object *bull)
 	bull->life = 0;
 	bull->is_near = 0;
 	(engine())->task.bull++;
-	if (bull->prev)
-	{
-		if (bull->next)
-			bull->prev->next = bull->next;
-		else
-			bull->prev->next = 0;
-	}
-	else
-	{
-		if (bull->next)
-			bull->next->prev = bull->prev;
-		else
-			bull->next->prev = 0;
-	}
-	free(bull);
+	ft_destroy_enemies(bull);
 }
 
 static void	_is_atacked_bull(t_object *bull, int damage)

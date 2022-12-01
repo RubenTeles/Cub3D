@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:47:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:38:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,7 @@ static void	_is_atacked_bush(t_object *bush, int damage)
 	{
 		bush->avatar = 0;
 		bush->sprite = 0;
-		if (bush->prev)
-		{
-			if (bush->next)
-				bush->prev->next = bush->next;
-			else
-				bush->prev->next = 0;
-		}
-		else
-		{
-			if (bush->next)
-				bush->next->prev = bush->prev;
-			else
-				bush->next->prev = 0;
-		}
-		free(bush);
+		ft_destroy_enemies(bush);
 	}
 }
 

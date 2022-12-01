@@ -6,39 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:15:54 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 14:16:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:46:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-
-/*void	resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y)
-{
-	int		x;
-	int		y;
-	int		color;
-	double	x_red;
-	double	y_red;	
-
-	x_red = 0;
-	y_red = 0;
-	y = -1;
-	while (++y <= alt)
-	{
-		x = -1;
-		x_red = 0;
-		while (++x <= larg)
-		{
-			color = get_pixel_color(img, x_red, y_red);
-			if (color > 0)
-				my_mlx_pixel_put(&(canva())->data[CANVA], \
-					put_clouds(img, x, pos_x), y + pos_y, color);
-			x_red += img->larg / larg;
-		}
-		y_red += img->alt / alt;
-	}
-}*/
 
 void	resize_image(t_data *img, t_aux aux)
 {
@@ -93,33 +66,6 @@ void	rev_resize_image(t_data *img, t_aux aux)
 		y_red += img->alt / aux.alt;
 	}
 }
-/*
-void	rev_resize_image(t_data *img, double larg, double alt, int pos_x, int pos_y)
-{
-	int		x;
-	int		y;
-	int		color;
-	double	x_red;
-	double	y_red;	
-
-	x_red = 0;
-	y_red = 0;
-	y = -1;
-	while (++y <= alt)
-	{
-		x = larg;
-		x_red = 0;
-		while (--x >= 0)
-		{
-			color = get_pixel_color(img, x_red, y_red);
-			if (color > 0)
-				my_mlx_pixel_put(&(canva())->data[CANVA], \
-					x + pos_x, y + pos_y, color);
-			x_red += img->larg / larg;
-		}
-		y_red += img->alt / alt;
-	}
-}*/
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {

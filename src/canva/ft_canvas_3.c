@@ -6,28 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:17:23 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/27 13:23:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:46:03 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_engine.h>
 #include <ft_sprites.h>
-
-/*void	ft_print_color(int larg, int alt, int pos_x, int pos_y, int color)
-{
-	int		x;
-	int		y;
-
-	y = -1;
-	while (++y <= alt)
-	{
-		x = -1;
-		while (++x <= larg)
-			if (color > 0)
-				my_mlx_pixel_put(&(canva())->data[CANVA], \
-					x + pos_x, y + pos_y, color);
-	}
-}*/
 
 void	ft_print_color(t_aux aux, int color)
 {

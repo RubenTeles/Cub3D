@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 00:46:08 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:50:02 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:38:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,7 @@ static void	_cristal_die(t_object *cristal)
 	cristal->life = 0;
 	cristal->is_near = 0;
 	(engine())->task.cristal++;
-	if (cristal->prev)
-	{
-		if (cristal->next)
-			cristal->prev->next = cristal->next;
-		else
-			cristal->prev->next = 0;
-	}
-	else
-	{
-		if (cristal->next)
-			cristal->next->prev = cristal->prev;
-		else
-			cristal->next->prev = 0;
-	}
-	free(cristal);
+	ft_destroy_enemies(cristal);
 }
 
 static void	_interation_cristal(t_object *cristal, int key)

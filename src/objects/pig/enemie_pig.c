@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:48:02 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:38:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,7 @@ static void	_pig_die(t_object *pig)
 	pig->is_near = 0;
 	(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
 	(engine())->task.pig++;
-	if (pig->prev)
-	{
-		if (pig->next)
-			pig->prev->next = pig->next;
-		else
-			pig->prev->next = 0;
-	}
-	else
-	{
-		if (pig->next)
-			pig->next->prev = pig->prev;
-		else
-			pig->next->prev = 0;
-	}
-	free(pig);
+	ft_destroy_enemies(pig);
 	ft_tasks(0);
 }
 

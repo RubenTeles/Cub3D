@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 00:34:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 17:06:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:34:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,7 @@ int				is_collision(t_object *obj, double x, double y, int option);
 int				ft_managemen_objects(char tittle, t_object *obj);
 int				map_to_sprite(char title);
 void			ft_enemies_move(void);
+void			ft_destroy_enemies(t_object *obj);
 
 //Objects and Enimes
 int				ft_create_door(t_object *door);
