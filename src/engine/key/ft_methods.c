@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/30 23:58:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 22:13:02 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ int	key_mouse_move(int x, int y, void *param)
 
 	(void)param;
 	(void)y;
-	if (x > 720)
+	if (x > (engine())->size[X] * 0.425 && x < (engine())->size[X])
 	{
-		move = (player())->turn * (double)((float)(x - 720) / (float)(620));
+		move = (player())->turn * 0.07;
 		ft_rotate_dir(move);
 		(player())->turn_times -= move;
 	}
-	if (x < 620)
+	if (x < (engine())->size[X] * 0.575 && x > 1)
 	{
-		if (x < 1)
-			x = 1;
-		move = (player())->turn * (double)(((float)620 * 0.1) / (float)(x));
+		move = (player())->turn * 0.07;
 		ft_rotate_dir(-move);
 		(player())->turn_times += move;
 	}

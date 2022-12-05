@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:56:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/11/29 17:05:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 22:00:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ char	change_letter(char tittle, char **map, int y, int x)
 {
 	if (is_enimie_or_is_floor(tittle, 0) != 2)
 		return (tittle);
+	if (is_enimie_or_is_floor(map[y + 1][x], 0) == 1)
+		return (map[y + 1][x]);
+	if (is_enimie_or_is_floor(map[y + 1][x + 1], 0) == 1)
+		return (map[y + 1][x + 1]);
+	if (is_enimie_or_is_floor(map[y + 1][x - 1], 0) == 1)
+		return (map[y + 1][x - 1]);
 	if (is_enimie_or_is_floor(map[y - 1][x], 0) == 1)
 		return (map[y - 1][x]);
 	if (is_enimie_or_is_floor(map[y - 1][x + 1], 0) == 1)
@@ -46,12 +52,6 @@ char	change_letter(char tittle, char **map, int y, int x)
 		return (map[y][x + 1]);
 	if (is_enimie_or_is_floor(map[y][x - 1], 0) == 1)
 		return (map[y][x - 1]);
-	if (is_enimie_or_is_floor(map[y + 1][x], 0) == 1)
-		return (map[y + 1][x]);
-	if (is_enimie_or_is_floor(map[y + 1][x + 1], 0) == 1)
-		return (map[y + 1][x + 1]);
-	if (is_enimie_or_is_floor(map[y + 1][x - 1], 0) == 1)
-		return (map[y + 1][x - 1]);
 	return ('0');
 }
 
@@ -78,6 +78,7 @@ void	game_read_map(char **map)
 		}
 	}
 	(engine())->max[Y] = y;
+	(all())->stop_weather = 3;
 }
 
 void	ft_create_game(void)

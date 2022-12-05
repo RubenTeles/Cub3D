@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 02:06:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 17:09:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:19:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	sound_len(void)
 	(engine())->sound[SD_PIG_ATACKED].len = 650;
 	(engine())->sound[SD_PIG_DIED].len = 1000;
 	(engine())->sound[SD_BULL].len = 1200;
-	(engine())->sound[SD_BULL_RUN].len = 1400;
+	(engine())->sound[SD_BULL_RUN].len = 2500;
 	(engine())->sound[SD_KEYS].len = 0;
 	(engine())->sound[SD_DENNY].len = 0;
 }

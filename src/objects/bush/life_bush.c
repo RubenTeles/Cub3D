@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:42:41 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 19:03:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 21:42:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	_is_atacked_bush(t_object *bush, int damage)
 		bush->collision = 0;
 		bush->life = 0;
 		bush->is_near = 0;
+		ft_destroy_enemies(bush);
 	}
 }
 

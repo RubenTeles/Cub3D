@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 01:15:47 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 01:15:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:16:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_you_die(t_scene_img *scene)
 	0.334, (engine())->size[X] * 0.315, (engine())->size[Y] * 0.340), 0X6b4324);
 	(canva())->color(ft_aux((engine())->size[X] * 0.35, (engine())->size[Y] * \
 	0.31, (engine())->size[X] * 0.322, (engine())->size[Y] * 0.351), 0xe6be7e);
-	(canva())->word("YOU DIE", ft_aux((engine())->size[X] * 0.3, \
+	(canva())->word("YOU ARE DEAD", ft_aux((engine())->size[X] * 0.3, \
 	(engine())->size[Y] * 0.1, (engine())->size[X] * 0.347, \
 	(engine())->size[Y] * 0.358), 0);
 	(canva())->word("TO CONTINUE", ft_aux((engine())->size[X] * 0.20, \

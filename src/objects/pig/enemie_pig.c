@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:25:28 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 19:03:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 21:43:26 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	_pig_die(t_object *pig)
 	(engine())->sound->play(&(engine())->sound[SD_PIG_DIED]);
 	(engine())->task.pig++;
 	ft_tasks(0);
+	ft_destroy_enemies(pig);
 }
 
 static void	_is_atacked_pig(t_object *pig, int damage)

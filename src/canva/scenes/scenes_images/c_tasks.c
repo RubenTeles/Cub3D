@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/01 16:38:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/05 19:20:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	game_end(void)
 	(canva())->scene_img[S_END_GAME].option = 1;
 	if (!sound)
 		(canva())->scene = &(canva())->scene_show[SC_END_GAME];
+	sound = 1;
 	(canva())->scene->init();
 }
 
