@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:04:27 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/05 19:54:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/06 18:48:05 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	scene_login(void)
 {
 	(canva())->scene_show[SC_LOGIN].complete = 0;
 	(canva())->scene_img[S_LOGIN].on = 1;
+	mlx_mouse_hide((engine())->ptr, (engine())->win);
 }
 
 void	scene_menu(void)

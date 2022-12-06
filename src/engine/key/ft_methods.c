@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:06:02 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/05 22:13:02 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/06 19:09:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,21 @@ int	key_mouse_move(int x, int y, void *param)
 
 	(void)param;
 	(void)y;
+	if ((engine())->pause || (engine())->menu)
+		return (0);
 	if (x > (engine())->size[X] * 0.425 && x < (engine())->size[X])
 	{
-		move = (player())->turn * 0.07;
+		move = (player())->turn * 0.50;
 		ft_rotate_dir(move);
 		(player())->turn_times -= move;
 	}
 	if (x < (engine())->size[X] * 0.575 && x > 1)
 	{
-		move = (player())->turn * 0.07;
+		move = (player())->turn * 0.50;
 		ft_rotate_dir(-move);
 		(player())->turn_times += move;
 	}
+	mlx_mouse_move((engine())->ptr, (engine())->win, \
+		(engine())->size[X] * 0.5, (engine())->size[Y] * 0.5);
 	return (0);
 }
