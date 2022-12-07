@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 16:49:10 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/05 22:11:21 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/07 00:14:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ int	key_game(void)
 	key_game_m();
 	key_game_wsad();
 	key_game_2();
+	mlx_mouse_move((engine())->ptr, (engine())->win, \
+		(engine())->size[X] * 0.5, (engine())->size[Y] * 0.5);
 	return (0);
 }

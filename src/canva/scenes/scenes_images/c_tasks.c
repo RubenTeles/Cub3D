@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:32 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/05 19:20:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/07 00:23:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	game_end(void)
 {
 	static int	sound = 0;
 
-	(engine())->sound->play(&(engine())->sound[SD_WOLF]);
 	(canva())->scene_img[S_END_GAME].option = 1;
 	if (!sound)
-		(canva())->scene = &(canva())->scene_show[SC_END_GAME];
+		(engine())->sound->play(&(engine())->sound[SD_WOLF]);
 	sound = 1;
+	(canva())->scene = &(canva())->scene_show[SC_END_GAME];
 	(canva())->scene->init();
 }
 

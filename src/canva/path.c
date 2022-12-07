@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:24:48 by rteles            #+#    #+#             */
-/*   Updated: 2022/12/06 18:58:16 by rteles           ###   ########.fr       */
+/*   Updated: 2022/12/07 00:22:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ void	ft_path_game(void)
 	(canva())->data[CLOUD_2].path = "./sprite/item/cloud_2.xpm";
 	(canva())->data[CLOUD_3].path = "./sprite/item/cloud_3.xpm";
 	(canva())->data[TREE].path = "./sprite/item/tree_02.xpm";
-	(canva())->data[GRASS].path = "./sprite/item/grass_3_.xpm";
-	(canva())->data[WOOD_FLOOR].path = "./sprite/item/house_wall_.xpm";
-	(canva())->data[WINDOW].path = "./sprite/item/house_window_.xpm";
-	(canva())->data[DOOR].path = "./sprite/item/house_door_.xpm";
-	(canva())->data[DOOR_OPEN].path = "./sprite/item/house_door_open_.xpm";
-	(canva())->data[HAY].path = "./sprite/item/house_wall_.xpm";
-	(canva())->data[CAVE].path = "./sprite/item/cave_.xpm";
+	(canva())->data[GRASS].path = "./sprite/item/grass_3.xpm";
+	(canva())->data[WOOD_FLOOR].path = "./sprite/item/house_wall.xpm";
+	(canva())->data[WINDOW].path = "./sprite/item/house_window.xpm";
+	(canva())->data[DOOR].path = "./sprite/item/house_door.xpm";
+	(canva())->data[DOOR_OPEN].path = "./sprite/item/house_door_open.xpm";
+	(canva())->data[HAY].path = "./sprite/item/house_wall.xpm";
+	(canva())->data[CAVE].path = "./sprite/item/cave.xpm";
 	return (ft_path_alphabet());
 }
 
