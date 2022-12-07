@@ -12,17 +12,17 @@ https://user-images.githubusercontent.com/75394884/206157902-2c281588-b9a4-4755-
 
 ## Game Controller Keys
 
-Move player: W, A, S, D
-Move camera: 🡠, 🡢 or Mouse Move
-Close Atack: Left Mouse
-Breath Atack: Rigth Mouse
-Run: Press Shift + Move
-Interact: E
-Map: M
-Tasks: T
-Change Weather: N
-Pause: P
-Exit: ESC
+* Move player: W, A, S, D
+* Move camera: 🡠, 🡢 or Mouse Move
+* Close Atack: Left Mouse
+* Breath Atack: Rigth Mouse
+* Run: Press Shift + Move
+* Interact: E
+* Map: M
+* Tasks: T
+* Change Weather: N
+* Pause: P
+* Exit: ESC
 
 ```diff
 # Requirements: X11 miscellaneous extensions library and Utility functions from BSD
