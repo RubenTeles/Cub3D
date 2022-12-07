@@ -25,10 +25,6 @@ https://user-images.githubusercontent.com/75394884/206157902-2c281588-b9a4-4755-
 * Exit: ESC
 
 ```diff
-# Requirements: X11 miscellaneous extensions library and Utility functions from BSD
-# To install the dependencies, open the terminal window and write
-sudo apt-get install libxext-dev libbsd-dev
-
 # Clone the project and access the folder
 git clone https://github.com/RubenTeles/Cub3D && cd Cub3D/
 
