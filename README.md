@@ -23,3 +23,16 @@ Tasks: T
 Change Weather: N
 Pause: P
 Exit: ESC
+
+```diff
+# Requirements: X11 miscellaneous extensions library and Utility functions from BSD
+# To install the dependencies, open the terminal window and write
+sudo apt-get install libxext-dev libbsd-dev
+
+# Clone the project and access the folder
+git clone https://github.com/RubenTeles/Cub3D && cd Cub3D/
+
+# Run make so you can build the game
+make e
+
+# Well done!
