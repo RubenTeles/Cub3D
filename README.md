@@ -32,3 +32,4 @@ git clone https://github.com/RubenTeles/Cub3D && cd Cub3D/
 make e
 
 # Well done!
+```
